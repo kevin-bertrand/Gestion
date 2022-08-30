@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
-		0661ABD728BD50CC00E88116 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD628BD50CC00E88116 /* ContentView.swift */; };
-		0661ABD928BD50CD00E88116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABD828BD50CD00E88116 /* Assets.xcassets */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		0661ABE628BD50CD00E88116 /* GestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABE528BD50CD00E88116 /* GestionTests.swift */; };
 		0661ABF028BD50CD00E88116 /* GestionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABEF28BD50CD00E88116 /* GestionUITests.swift */; };
 		0661ABF228BD50CD00E88116 /* GestionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABF128BD50CD00E88116 /* GestionUITestsLaunchTests.swift */; };
+		06A63AEC28BD51EC009805CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A63AEB28BD51EC009805CB /* Assets.xcassets */; };
+		06A63AF028BD53C0009805CB /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AEF28BD53C0009805CB /* StartView.swift */; };
+		06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AF228BD55CB009805CB /* AnyTransition.swift */; };
+		06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B128BDE4E2004D0960 /* StartSubview.swift */; };
+		06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B428BDE974004D0960 /* ButtonCustom.swift */; };
+		06C349B728BDEF02004D0960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B628BDEF02004D0960 /* LoginView.swift */; };
+		06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B828BDEF28004D0960 /* TextFieldCustom.swift */; };
+		06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349BA28BDF71E004D0960 /* SignupSubview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +42,20 @@
 /* Begin PBXFileReference section */
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
-		0661ABD628BD50CC00E88116 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0661ABD828BD50CD00E88116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0661ABE128BD50CD00E88116 /* GestionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GestionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABE528BD50CD00E88116 /* GestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionTests.swift; sourceTree = "<group>"; };
 		0661ABEB28BD50CD00E88116 /* GestionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GestionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABEF28BD50CD00E88116 /* GestionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionUITests.swift; sourceTree = "<group>"; };
 		0661ABF128BD50CD00E88116 /* GestionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		06A63AEB28BD51EC009805CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06A63AEF28BD53C0009805CB /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		06A63AF228BD55CB009805CB /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
+		06C349B128BDE4E2004D0960 /* StartSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSubview.swift; sourceTree = "<group>"; };
+		06C349B428BDE974004D0960 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
+		06C349B628BDEF02004D0960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		06C349B828BDEF28004D0960 /* TextFieldCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustom.swift; sourceTree = "<group>"; };
+		06C349BA28BDF71E004D0960 /* SignupSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSubview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +106,11 @@
 		0661ABD328BD50CC00E88116 /* Gestion */ = {
 			isa = PBXGroup;
 			children = (
-				0661ABD428BD50CC00E88116 /* GestionApp.swift */,
-				0661ABD628BD50CC00E88116 /* ContentView.swift */,
-				0661ABD828BD50CD00E88116 /* Assets.xcassets */,
-				0661ABDA28BD50CD00E88116 /* Preview Content */,
+				06A63AF128BD55B8009805CB /* Extensions */,
+				0661AC0128BD517700E88116 /* Supporting Files */,
+				0661AC0028BD517200E88116 /* Controller */,
+				0661ABFF28BD516E00E88116 /* View */,
+				0661ABFE28BD516600E88116 /* Model */,
 			);
 			path = Gestion;
 			sourceTree = "<group>";
@@ -125,6 +138,67 @@
 				0661ABF128BD50CD00E88116 /* GestionUITestsLaunchTests.swift */,
 			);
 			path = GestionUITests;
+			sourceTree = "<group>";
+		};
+		0661ABFE28BD516600E88116 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0661ABFF28BD516E00E88116 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06C349B328BDE959004D0960 /* Global Components */,
+				06C349B028BDE3D7004D0960 /* StartSubviews */,
+				06A63AEF28BD53C0009805CB /* StartView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0661AC0028BD517200E88116 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0661AC0128BD517700E88116 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06A63AEB28BD51EC009805CB /* Assets.xcassets */,
+				0661ABD428BD50CC00E88116 /* GestionApp.swift */,
+				0661ABDA28BD50CD00E88116 /* Preview Content */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06A63AF128BD55B8009805CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				06A63AF228BD55CB009805CB /* AnyTransition.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		06C349B028BDE3D7004D0960 /* StartSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				06C349B128BDE4E2004D0960 /* StartSubview.swift */,
+				06C349B628BDEF02004D0960 /* LoginView.swift */,
+				06C349BA28BDF71E004D0960 /* SignupSubview.swift */,
+			);
+			path = StartSubviews;
+			sourceTree = "<group>";
+		};
+		06C349B328BDE959004D0960 /* Global Components */ = {
+			isa = PBXGroup;
+			children = (
+				06C349B428BDE974004D0960 /* ButtonCustom.swift */,
+				06C349B828BDEF28004D0960 /* TextFieldCustom.swift */,
+			);
+			path = "Global Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */,
-				0661ABD928BD50CD00E88116 /* Assets.xcassets in Resources */,
+				06A63AEC28BD51EC009805CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0661ABD728BD50CC00E88116 /* ContentView.swift in Sources */,
+				06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */,
+				06C349B728BDEF02004D0960 /* LoginView.swift in Sources */,
+				06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */,
+				06A63AF028BD53C0009805CB /* StartView.swift in Sources */,
+				06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */,
+				06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */,
+				06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */,
 				0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,7 +496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = 6MAUVS763K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -445,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = 6MAUVS763K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
