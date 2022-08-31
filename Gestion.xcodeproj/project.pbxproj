@@ -12,14 +12,40 @@
 		0661ABE628BD50CD00E88116 /* GestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABE528BD50CD00E88116 /* GestionTests.swift */; };
 		0661ABF028BD50CD00E88116 /* GestionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABEF28BD50CD00E88116 /* GestionUITests.swift */; };
 		0661ABF228BD50CD00E88116 /* GestionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABF128BD50CD00E88116 /* GestionUITestsLaunchTests.swift */; };
+		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
+		066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */; };
+		066F406E28BE7ECA000718D7 /* InfoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406D28BE7ECA000718D7 /* InfoTile.swift */; };
+		066F407028BEA1C3000718D7 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406F28BEA1C3000718D7 /* TileView.swift */; };
+		066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F407228BF3C92000718D7 /* EstimatePDF.swift */; };
 		06A63AEC28BD51EC009805CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A63AEB28BD51EC009805CB /* Assets.xcassets */; };
 		06A63AF028BD53C0009805CB /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AEF28BD53C0009805CB /* StartView.swift */; };
 		06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AF228BD55CB009805CB /* AnyTransition.swift */; };
+		06ACC36428BF4DCC0012166D /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36328BF4DCC0012166D /* Double.swift */; };
+		06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36528BF51510012166D /* TotalSectionLine.swift */; };
+		06ACC36828BF52110012166D /* ClientTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36728BF52110012166D /* ClientTile.swift */; };
+		06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36928BF523E0012166D /* PdfHeader.swift */; };
+		06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36B28BF52640012166D /* DesynticTile.swift */; };
+		06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36D28BF52800012166D /* TableColumnTitles.swift */; };
+		06ACC37128BF56B60012166D /* InvoicePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC37028BF56B60012166D /* InvoicePDF.swift */; };
+		06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC37228BF597F0012166D /* InvoiceDetail.swift */; };
 		06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B128BDE4E2004D0960 /* StartSubview.swift */; };
 		06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B428BDE974004D0960 /* ButtonCustom.swift */; };
 		06C349B728BDEF02004D0960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B628BDEF02004D0960 /* LoginView.swift */; };
 		06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B828BDEF28004D0960 /* TextFieldCustom.swift */; };
 		06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349BA28BDF71E004D0960 /* SignupSubview.swift */; };
+		06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */; };
+		06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1328BF4BE800BF1ACF /* TableRow.swift */; };
+		06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */; };
+		06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */; };
+		06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */; };
+		06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67328BE2A980052BEA0 /* AppView.swift */; };
+		06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67628BE2C550052BEA0 /* SettingsView.swift */; };
+		06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */; };
+		06EFE67C28BE4D8E0052BEA0 /* EstimatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67B28BE4D8E0052BEA0 /* EstimatesView.swift */; };
+		06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67D28BE4ED80052BEA0 /* InvoicesView.swift */; };
+		06EFE68028BE4F140052BEA0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67F28BE4F140052BEA0 /* HomeView.swift */; };
+		06EFE68228BE581B0052BEA0 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE68128BE581B0052BEA0 /* PieChart.swift */; };
+		06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE68328BE59830052BEA0 /* PieSlideChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +74,40 @@
 		0661ABEB28BD50CD00E88116 /* GestionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GestionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABEF28BD50CD00E88116 /* GestionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionUITests.swift; sourceTree = "<group>"; };
 		0661ABF128BD50CD00E88116 /* GestionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleCustom.swift; sourceTree = "<group>"; };
+		066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleCustom.swift; sourceTree = "<group>"; };
+		066F406D28BE7ECA000718D7 /* InfoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTile.swift; sourceTree = "<group>"; };
+		066F406F28BEA1C3000718D7 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		066F407228BF3C92000718D7 /* EstimatePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatePDF.swift; sourceTree = "<group>"; };
 		06A63AEB28BD51EC009805CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06A63AEF28BD53C0009805CB /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		06A63AF228BD55CB009805CB /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
+		06ACC36328BF4DCC0012166D /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		06ACC36528BF51510012166D /* TotalSectionLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSectionLine.swift; sourceTree = "<group>"; };
+		06ACC36728BF52110012166D /* ClientTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTile.swift; sourceTree = "<group>"; };
+		06ACC36928BF523E0012166D /* PdfHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfHeader.swift; sourceTree = "<group>"; };
+		06ACC36B28BF52640012166D /* DesynticTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesynticTile.swift; sourceTree = "<group>"; };
+		06ACC36D28BF52800012166D /* TableColumnTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumnTitles.swift; sourceTree = "<group>"; };
+		06ACC37028BF56B60012166D /* InvoicePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicePDF.swift; sourceTree = "<group>"; };
+		06ACC37228BF597F0012166D /* InvoiceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetail.swift; sourceTree = "<group>"; };
 		06C349B128BDE4E2004D0960 /* StartSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSubview.swift; sourceTree = "<group>"; };
 		06C349B428BDE974004D0960 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		06C349B628BDEF02004D0960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		06C349B828BDEF28004D0960 /* TextFieldCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustom.swift; sourceTree = "<group>"; };
 		06C349BA28BDF71E004D0960 /* SignupSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSubview.swift; sourceTree = "<group>"; };
+		06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionTitle.swift; sourceTree = "<group>"; };
+		06DABF1328BF4BE800BF1ACF /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
+		06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvoiceView.swift; sourceTree = "<group>"; };
+		06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListUpdateView.swift; sourceTree = "<group>"; };
+		06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceView.swift; sourceTree = "<group>"; };
+		06EFE67328BE2A980052BEA0 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		06EFE67628BE2C550052BEA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
+		06EFE67B28BE4D8E0052BEA0 /* EstimatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesView.swift; sourceTree = "<group>"; };
+		06EFE67D28BE4ED80052BEA0 /* InvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesView.swift; sourceTree = "<group>"; };
+		06EFE67F28BE4F140052BEA0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		06EFE68128BE581B0052BEA0 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		06EFE68328BE59830052BEA0 /* PieSlideChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieSlideChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +202,7 @@
 		0661ABFF28BD516E00E88116 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				06EFE67228BE28000052BEA0 /* App */,
 				06C349B328BDE959004D0960 /* Global Components */,
 				06C349B028BDE3D7004D0960 /* StartSubviews */,
 				06A63AEF28BD53C0009805CB /* StartView.swift */,
@@ -174,12 +227,32 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		066F407128BF3C81000718D7 /* EstimatesSubview */ = {
+			isa = PBXGroup;
+			children = (
+				066F407228BF3C92000718D7 /* EstimatePDF.swift */,
+			);
+			path = EstimatesSubview;
+			sourceTree = "<group>";
+		};
 		06A63AF128BD55B8009805CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				06A63AF228BD55CB009805CB /* AnyTransition.swift */,
+				06ACC36328BF4DCC0012166D /* Double.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		06ACC36F28BF56A80012166D /* InvoicesSubview */ = {
+			isa = PBXGroup;
+			children = (
+				06ACC37028BF56B60012166D /* InvoicePDF.swift */,
+				06ACC37228BF597F0012166D /* InvoiceDetail.swift */,
+				06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */,
+				06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */,
+			);
+			path = InvoicesSubview;
 			sourceTree = "<group>";
 		};
 		06C349B028BDE3D7004D0960 /* StartSubviews */ = {
@@ -195,10 +268,55 @@
 		06C349B328BDE959004D0960 /* Global Components */ = {
 			isa = PBXGroup;
 			children = (
+				06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */,
+				06DABF1328BF4BE800BF1ACF /* TableRow.swift */,
+				06ACC36528BF51510012166D /* TotalSectionLine.swift */,
+				06ACC36728BF52110012166D /* ClientTile.swift */,
+				06ACC36928BF523E0012166D /* PdfHeader.swift */,
+				06ACC36B28BF52640012166D /* DesynticTile.swift */,
+				06ACC36D28BF52800012166D /* TableColumnTitles.swift */,
 				06C349B428BDE974004D0960 /* ButtonCustom.swift */,
 				06C349B828BDEF28004D0960 /* TextFieldCustom.swift */,
+				06EFE68128BE581B0052BEA0 /* PieChart.swift */,
+				06EFE68328BE59830052BEA0 /* PieSlideChart.swift */,
+				066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */,
+				066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */,
+				066F406D28BE7ECA000718D7 /* InfoTile.swift */,
+				066F406F28BEA1C3000718D7 /* TileView.swift */,
+				06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */,
 			);
 			path = "Global Components";
+			sourceTree = "<group>";
+		};
+		06EFE67228BE28000052BEA0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				06EFE67528BE2C4B0052BEA0 /* AppPages */,
+				06EFE67328BE2A980052BEA0 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		06EFE67528BE2C4B0052BEA0 /* AppPages */ = {
+			isa = PBXGroup;
+			children = (
+				06ACC36F28BF56A80012166D /* InvoicesSubview */,
+				066F407128BF3C81000718D7 /* EstimatesSubview */,
+				06EFE67828BE4CFB0052BEA0 /* SettingsSubview */,
+				06EFE67628BE2C550052BEA0 /* SettingsView.swift */,
+				06EFE67B28BE4D8E0052BEA0 /* EstimatesView.swift */,
+				06EFE67D28BE4ED80052BEA0 /* InvoicesView.swift */,
+				06EFE67F28BE4F140052BEA0 /* HomeView.swift */,
+			);
+			path = AppPages;
+			sourceTree = "<group>";
+		};
+		06EFE67828BE4CFB0052BEA0 /* SettingsSubview */ = {
+			isa = PBXGroup;
+			children = (
+				06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */,
+			);
+			path = SettingsSubview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,14 +449,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,
+				06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */,
 				06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */,
+				06EFE68028BE4F140052BEA0 /* HomeView.swift in Sources */,
 				06C349B728BDEF02004D0960 /* LoginView.swift in Sources */,
+				06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */,
 				06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */,
+				06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */,
+				06EFE67C28BE4D8E0052BEA0 /* EstimatesView.swift in Sources */,
+				06ACC36828BF52110012166D /* ClientTile.swift in Sources */,
+				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
+				06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */,
+				06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */,
+				06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */,
+				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
+				06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */,
+				06ACC37128BF56B60012166D /* InvoicePDF.swift in Sources */,
+				066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */,
+				066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */,
 				06A63AF028BD53C0009805CB /* StartView.swift in Sources */,
+				06EFE68228BE581B0052BEA0 /* PieChart.swift in Sources */,
+				06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */,
+				06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */,
 				06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */,
 				06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */,
+				06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */,
+				06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */,
 				06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */,
 				0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */,
+				06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */,
+				06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */,
+				066F407028BEA1C3000718D7 /* TileView.swift in Sources */,
+				06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */,
+				066F406E28BE7ECA000718D7 /* InfoTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
