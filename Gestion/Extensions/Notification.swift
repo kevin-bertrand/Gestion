@@ -16,6 +16,11 @@ extension Notification {
         case loginSuccess = "Successfull login!"
         case loginWrongCredentials = "Your credentials are not correct!"
         
+        // Revenues
+        case revenuesSuccess = "The summary of revenues is downloaded!"
+        case revenueThisMonth = "Getting this month success!"
+        case revenueAllMonths = "All months are downloaded!"
+        
         // Getting the notification message
         var notificationMessage: String {
             return self.rawValue

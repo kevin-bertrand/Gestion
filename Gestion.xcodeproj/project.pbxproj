@@ -70,6 +70,9 @@
 		06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE68328BE59830052BEA0 /* PieSlideChart.swift */; };
 		06F5C17028C0B73300B3F37A /* LoadingInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C16F28C0B73300B3F37A /* LoadingInProgressView.swift */; };
 		06F5C17228C0B75E00B3F37A /* CircularSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */; };
+		06F5C17428C0CE6F00B3F37A /* RevenuesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */; };
+		06F5C17628C0D0BF00B3F37A /* Revenues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17528C0D0BF00B3F37A /* Revenues.swift */; };
+		06F5C17828C0D25E00B3F37A /* RevenuesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,9 @@
 		06EFE68328BE59830052BEA0 /* PieSlideChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieSlideChart.swift; sourceTree = "<group>"; };
 		06F5C16F28C0B73300B3F37A /* LoadingInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInProgressView.swift; sourceTree = "<group>"; };
 		06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularSpinnerView.swift; sourceTree = "<group>"; };
+		06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenuesController.swift; sourceTree = "<group>"; };
+		06F5C17528C0D0BF00B3F37A /* Revenues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revenues.swift; sourceTree = "<group>"; };
+		06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenuesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +255,7 @@
 				06D1A14E28BFB189002533F5 /* Codables */,
 				06D1A14928BFAA42002533F5 /* Network */,
 				06AA687528C0A9270075B635 /* UserManager.swift */,
+				06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +277,7 @@
 			children = (
 				06AA686F28C091FC0075B635 /* UserController.swift */,
 				06AA687328C09E5D0075B635 /* AppController.swift */,
+				06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -366,6 +374,7 @@
 				06D1A15C28BFB49E002533F5 /* Invoice.swift */,
 				06D1A15E28BFB4B9002533F5 /* Product.swift */,
 				06AA687728C0A9DA0075B635 /* User.swift */,
+				06F5C17528C0D0BF00B3F37A /* Revenues.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -564,6 +573,7 @@
 				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,
 				06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */,
 				06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */,
+				06F5C17428C0CE6F00B3F37A /* RevenuesController.swift in Sources */,
 				06D1A15D28BFB49E002533F5 /* Invoice.swift in Sources */,
 				06D1A16128BFB4DB002533F5 /* InvoiceStatus.swift in Sources */,
 				06EFE68028BE4F140052BEA0 /* HomeView.swift in Sources */,
@@ -603,6 +613,7 @@
 				06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */,
 				06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */,
 				06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */,
+				06F5C17828C0D25E00B3F37A /* RevenuesManager.swift in Sources */,
 				06AA687E28C0AE3C0075B635 /* Notification.swift in Sources */,
 				06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */,
 				06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */,
@@ -612,6 +623,7 @@
 				06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */,
 				06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */,
 				066F407028BEA1C3000718D7 /* TileView.swift in Sources */,
+				06F5C17628C0D0BF00B3F37A /* Revenues.swift in Sources */,
 				06D1A15728BFB2F7002533F5 /* Gender.swift in Sources */,
 				06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */,
 				06D1A15528BFB2CE002533F5 /* PersonType.swift in Sources */,

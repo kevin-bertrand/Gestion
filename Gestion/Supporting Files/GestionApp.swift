@@ -14,12 +14,14 @@ struct GestionApp: App {
     
     @StateObject private var appController: AppController
     @StateObject private var userController: UserController
+    @StateObject private var revenuesController: RevenuesController
     
     // Initialization
     init() {
         let appController = AppController()
         _appController = StateObject(wrappedValue: appController)
         _userController = StateObject(wrappedValue: UserController(appController: appController))
+        _revenuesController = StateObject(wrappedValue: RevenuesController(appController: appController))
     }
     
     var body: some Scene {
@@ -42,6 +44,7 @@ struct GestionApp: App {
             }
             .environmentObject(userController)
             .environmentObject(appController)
+            .environmentObject(revenuesController)
             .preferredColorScheme(useDefaultColorScheme ? nil : (useDarkMode ? .dark : .light))
             .alert(isPresented: $appController.showAlertView) {
                 Alert(title: Text(appController.alertViewTitle), message: Text(appController.alertViewMessage), dismissButton: .default(Text("OK")))

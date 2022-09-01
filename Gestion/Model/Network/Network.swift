@@ -44,6 +44,7 @@ enum NetworkConfigurations {
     // MARK: Revenues
     case revenueGetYear
     case revenueGetMonth
+    case revenueAllMonths
     
     // MARK: Staff
     case staffLogin
@@ -74,7 +75,7 @@ enum NetworkConfigurations {
                 .invoiceGetReference, .invoiceGetList,
                 .productGetList, .productGetCategories, .productGetDomains,
                 .paymentGetList,
-                .revenueGetYear, .revenueGetMonth,
+                .revenueGetYear, .revenueGetMonth, .revenueAllMonths,
                 .staffGetList, .staffGetOne:
             method = .get
         case .paymentDelete,
@@ -119,6 +120,8 @@ enum NetworkConfigurations {
             params = ["product", "categories"]
         case .productGetDomains:
             params = ["product", "domains"]
+        case.revenueAllMonths:
+            params = ["revenues", "allMonths"]
         case .revenueGetYear:
             params = ["revenues", "year"]
         case .revenueGetMonth:

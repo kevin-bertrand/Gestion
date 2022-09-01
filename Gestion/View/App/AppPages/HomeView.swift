@@ -15,6 +15,9 @@ struct MountPrice: Identifiable {
 }
 
 struct HomeView: View {
+    @EnvironmentObject var userController: UserController
+    @EnvironmentObject var revenuesController: RevenuesController
+    
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: Int
     
@@ -35,13 +38,14 @@ struct HomeView: View {
                 AnyView(HStack {
                     Spacer()
                     
-                    InfoTile(title: "This month", value: "250 €")
+                    InfoTile(title: "This month", value: "\(revenuesController.thisMonthRevenue.grandTotal.twoDigitPrecision) €")
                     
                     Spacer()
                     Divider()
+                        .padding(.vertical)
                     Spacer()
                     
-                    InfoTile(title: "This year", value: "250 €")
+                    InfoTile(title: "This year", value: "\(revenuesController.yearRevenues.twoDigitPrecision) €")
 
                     Spacer()
                 })
@@ -54,13 +58,15 @@ struct HomeView: View {
                 RoundedRectangleCustom {
                     AnyView(VStack {
                         Spacer()
-                        PieChartView(values: [1, 20], names: ["Materials", "Services"], formatter: { number in
+                        PieChartView(values: [revenuesController.thisMonthRevenue.totalMaterials, revenuesController.thisMonthRevenue.totalServices, revenuesController.thisMonthRevenue.totalDivers],
+                                     names: ["Materials", "Services", "Divers"],
+                                     formatter: { number in
                             return "\(number)"
                         }, colorScheme: colorScheme)
                         .padding()
                         Spacer()
                     })
-                }.frame(height: 420)
+                }.frame(height: 475)
             }
             
             VStack {
@@ -68,18 +74,18 @@ struct HomeView: View {
 
                 RoundedRectangleCustom {
                     AnyView(VStack {
-                        Text("Total revenues of this year: 250€")
+                        Text("Total revenues of this year: \(revenuesController.yearRevenues.twoDigitPrecision)€")
                             .font(.title2)
                             .foregroundColor(.accentColor)
                         
-                        Chart(data) {
+                        Chart(revenuesController.thisYearRevenues) {
                             LineMark(
-                                x: .value("Mount", $0.mount),
-                                y: .value("Value", $0.value)
+                                x: .value("Mount", "\($0.month)/\($0.year)"),
+                                y: .value("Value", $0.grandTotal)
                             )
                             PointMark(
-                                x: .value("Mount", $0.mount),
-                                y: .value("Value", $0.value)
+                                x: .value("Mount", "\($0.month)/\($0.year)"),
+                                y: .value("Value", $0.grandTotal)
                             )
                         }
                         .frame(height: 300)
@@ -122,6 +128,11 @@ struct HomeView: View {
         }
         .navigationTitle(Text("Welcome"))
         .padding(.horizontal)
+        .onAppear {
+            revenuesController.downloadRevenues(for: userController.connectedUser)
+            revenuesController.downloadThisMonth(for: userController.connectedUser)
+            revenuesController.downloadAllMonths(for: userController.connectedUser)
+        }
     }
 }
 
@@ -129,6 +140,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView(selectedTab: .constant(1))
+                .environmentObject(UserController(appController: AppController()))
+                .environmentObject(RevenuesController(appController: AppController()))
         }
     }
 }

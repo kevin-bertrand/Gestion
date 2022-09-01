@@ -13,8 +13,9 @@ final class UserController: ObservableObject {
     // MARK: Public
     // MARK: Properties
     // General properties
-    var appController: AppController
     @Published var userIsConnected: Bool = false
+    var appController: AppController
+    var connectedUser: User? { userManager.connectedUser }
     
     // Login properties
     @AppStorage("desyntic-savedEmail") var savedEmail: String = ""

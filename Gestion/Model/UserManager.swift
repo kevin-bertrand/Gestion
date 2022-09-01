@@ -12,7 +12,6 @@ final class UserManager {
     // MARK: Properties
     var connectedUser: User?
     
-    
     // MARK: Methods
     func login(user: User.Login) {
         networkManager.request(urlParams: NetworkConfigurations.staffLogin.urlParams,
