@@ -12,6 +12,7 @@ struct TileView: View {
     var title: String
     var value: String
     var limit: String
+    var iconColor: Color = .accentColor
     
     var body: some View {
         RoundedRectangleCustom {
@@ -19,7 +20,7 @@ struct TileView: View {
                 Image(systemName: icon)
                     .resizable()
                     .frame(width: 40, height: 40)
-                    .foregroundColor(.red)
+                    .foregroundColor(iconColor)
                 VStack(spacing: 10) {
                     Text(title)
                     Text(value)

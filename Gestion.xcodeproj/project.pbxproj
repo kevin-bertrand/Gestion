@@ -73,6 +73,10 @@
 		06F5C17428C0CE6F00B3F37A /* RevenuesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */; };
 		06F5C17628C0D0BF00B3F37A /* Revenues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17528C0D0BF00B3F37A /* Revenues.swift */; };
 		06F5C17828C0D25E00B3F37A /* RevenuesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */; };
+		06F5C17A28C0EA9900B3F37A /* EstimatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17928C0EA9900B3F37A /* EstimatesManager.swift */; };
+		06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17B28C0EFA900B3F37A /* EstimatesController.swift */; };
+		06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17D28C114A800B3F37A /* InvoicesController.swift */; };
+		06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17F28C114F300B3F37A /* InvoicesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +166,10 @@
 		06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenuesController.swift; sourceTree = "<group>"; };
 		06F5C17528C0D0BF00B3F37A /* Revenues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revenues.swift; sourceTree = "<group>"; };
 		06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenuesManager.swift; sourceTree = "<group>"; };
+		06F5C17928C0EA9900B3F37A /* EstimatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesManager.swift; sourceTree = "<group>"; };
+		06F5C17B28C0EFA900B3F37A /* EstimatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesController.swift; sourceTree = "<group>"; };
+		06F5C17D28C114A800B3F37A /* InvoicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesController.swift; sourceTree = "<group>"; };
+		06F5C17F28C114F300B3F37A /* InvoicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +264,8 @@
 				06D1A14928BFAA42002533F5 /* Network */,
 				06AA687528C0A9270075B635 /* UserManager.swift */,
 				06F5C17728C0D25E00B3F37A /* RevenuesManager.swift */,
+				06F5C17928C0EA9900B3F37A /* EstimatesManager.swift */,
+				06F5C17F28C114F300B3F37A /* InvoicesManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +288,8 @@
 				06AA686F28C091FC0075B635 /* UserController.swift */,
 				06AA687328C09E5D0075B635 /* AppController.swift */,
 				06F5C17328C0CE6F00B3F37A /* RevenuesController.swift */,
+				06F5C17B28C0EFA900B3F37A /* EstimatesController.swift */,
+				06F5C17D28C114A800B3F37A /* InvoicesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -582,6 +594,8 @@
 				06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */,
 				06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */,
 				06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */,
+				06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */,
+				06F5C17A28C0EA9900B3F37A /* EstimatesManager.swift in Sources */,
 				06EFE67C28BE4D8E0052BEA0 /* EstimatesView.swift in Sources */,
 				06ACC36828BF52110012166D /* ClientTile.swift in Sources */,
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
@@ -593,6 +607,7 @@
 				06F5C17028C0B73300B3F37A /* LoadingInProgressView.swift in Sources */,
 				06AA687228C09D940075B635 /* String.swift in Sources */,
 				06AA687028C091FC0075B635 /* UserController.swift in Sources */,
+				06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */,
 				06D1A14D28BFAA96002533F5 /* Network.swift in Sources */,
 				06AA687C28C0ACCD0075B635 /* Permissions.swift in Sources */,
 				06AA687A28C0AC620075B635 /* Position.swift in Sources */,
@@ -609,6 +624,7 @@
 				066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */,
 				06A63AF028BD53C0009805CB /* StartView.swift in Sources */,
 				06AA687628C0A9270075B635 /* UserManager.swift in Sources */,
+				06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */,
 				06EFE68228BE581B0052BEA0 /* PieChart.swift in Sources */,
 				06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */,
 				06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */,

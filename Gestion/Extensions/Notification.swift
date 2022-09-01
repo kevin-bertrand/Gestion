@@ -21,6 +21,12 @@ extension Notification {
         case revenueThisMonth = "Getting this month success!"
         case revenueAllMonths = "All months are downloaded!"
         
+        // Estimates
+        case estimatesSummarySuccess = "Estimates for home page are downloaded!"
+        
+        // Invoices
+        case invoicesSummarySuccess = "Invoices for home page are downloaded!"
+        
         // Getting the notification message
         var notificationMessage: String {
             return self.rawValue

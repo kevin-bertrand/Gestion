@@ -8,30 +8,15 @@
 import Charts
 import SwiftUI
 
-struct MountPrice: Identifiable {
-    var id = UUID()
-    var mount: String
-    var value: Double
-}
-
 struct HomeView: View {
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var revenuesController: RevenuesController
+    @EnvironmentObject var estimatesController: EstimatesController
+    @EnvironmentObject var invoicesController: InvoicesController
     
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: Int
-    
-    let data: [MountPrice] = [
-        MountPrice(mount: "jan/22", value: 5),
-        MountPrice(mount: "feb/22", value: 4),
-        MountPrice(mount: "mar/22", value: 7),
-        MountPrice(mount: "apr/22", value: 15),
-        MountPrice(mount: "may/22", value: 14),
-        MountPrice(mount: "jun/22", value: 27),
-        MountPrice(mount: "jul/22", value: 27)
-    ]
-    
-    
+        
     var body: some View {
         ScrollView(showsIndicators: false) {
             RoundedRectangleCustom {
@@ -101,10 +86,15 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal) {
                     HStack {
-                        NavigationLink {
-                            Text("Estimate")
-                        } label: {
-                            TileView(icon: "pencil.and.ruler.fill", title: "D-2022-01", value: "240€", limit: "Limit: 15/09/2022")
+                        ForEach(estimatesController.estimatesSummary, id: \.reference) { estimate in
+                            NavigationLink {
+                                Text("Estimate")
+                            } label: {
+                                TileView(icon: "pencil.and.ruler.fill",
+                                         title: estimate.reference,
+                                         value: "\(estimate.grandTotal.twoDigitPrecision) €", limit: "Limit: \(estimate.limitValidifyDate.formatted(date: .numeric, time: .omitted))",
+                                         iconColor: getEstimateColor(status: estimate.status))
+                            }
                         }
                     }
                 }
@@ -117,10 +107,16 @@ struct HomeView: View {
                                 
                 ScrollView(.horizontal) {
                     HStack {
-                        NavigationLink {
-                            InvoiceDetail()
-                        } label: {
-                            TileView(icon: "eurosign", title: "F-2022-01", value: "240€", limit: "Limit: 01/10/2022")
+                        ForEach(invoicesController.invoicesSummary, id:\.reference) { invoice in
+                            NavigationLink {
+                                InvoiceDetail()
+                            } label: {
+                                TileView(icon: "eurosign",
+                                         title: "\(invoice.reference)",
+                                         value: "\(invoice.grandTotal.twoDigitPrecision) €",
+                                         limit: "Limit: \(invoice.limitPayementDate.formatted(date: .numeric, time: .omitted))",
+                                         iconColor: getInvoiceColor(status: invoice.status))
+                            }
                         }
                     }
                 }
@@ -132,6 +128,34 @@ struct HomeView: View {
             revenuesController.downloadRevenues(for: userController.connectedUser)
             revenuesController.downloadThisMonth(for: userController.connectedUser)
             revenuesController.downloadAllMonths(for: userController.connectedUser)
+            estimatesController.downloadEstimatesSummary(for: userController.connectedUser)
+            invoicesController.downloadInvoicesSummary(for: userController.connectedUser)
+        }
+    }
+    
+    private func getEstimateColor(status: EstimateStatus) -> Color {
+        switch status {
+        case .inCreation:
+            return .accentColor
+        case .sent:
+            return .green
+        case .refused:
+            return .gray
+        case .late:
+            return .red
+        }
+    }
+    
+    private func getInvoiceColor(status: InvoiceStatus) -> Color {
+        switch status {
+        case .inCreation:
+            return .accentColor
+        case .sent:
+            return .gray
+        case .payed:
+            return .green
+        case .overdue:
+            return .red
         }
     }
 }
@@ -142,6 +166,7 @@ struct HomeView_Previews: PreviewProvider {
             HomeView(selectedTab: .constant(1))
                 .environmentObject(UserController(appController: AppController()))
                 .environmentObject(RevenuesController(appController: AppController()))
+                .environmentObject(EstimatesController(appController: AppController()))
         }
     }
 }
