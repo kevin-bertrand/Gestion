@@ -5,14 +5,17 @@
 //  Created by Kevin Bertrand on 30/08/2022.
 //
 
+import LocalAuthentication
 import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var userController: UserController
     
-    @State private var useDefaultColorScheme: Bool = true
-    @State private var useDarkMode: Bool = false
+    @AppStorage("desyntic_useDefaultScheme") var useDefaultColorScheme: Bool = true
+    @AppStorage("desyntic_useDarkMode") var useDarkMode: Bool = false
     @State private var allowNotifications: Bool = true
+    
+    private let laContext = LAContext()
     
     var body: some View {
         VStack {
@@ -71,13 +74,15 @@ struct SettingsView: View {
                 
                 Section {
                     Toggle("Use default iPhone scheme", isOn: $useDefaultColorScheme)
-                        .disabled(true)
                     
                     if !useDefaultColorScheme {
                         Toggle("Use dark mode", isOn: $useDarkMode)
-                            .disabled(true)
                     }
-                                        
+                    
+                    if userController.appController.isBiometricAvailable {
+                        Toggle("Use \(laContext.biometryType == .faceID ? "Face ID" : "Touch ID" )", isOn: $userController.canUseBiometric)
+                    }
+                    
                     Toggle("Allow notifications", isOn: $allowNotifications)
                         .disabled(true)
                 } header: {
