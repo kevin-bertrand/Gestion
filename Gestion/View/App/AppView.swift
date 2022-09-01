@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AppView: View {
+    @EnvironmentObject var userController: UserController
+    
     @State private var selectedTab: Int = 1
     
     var body: some View {
@@ -50,5 +52,6 @@ struct AppView: View {
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
         AppView()
+            .environmentObject(UserController(appController: AppController()))
     }
 }

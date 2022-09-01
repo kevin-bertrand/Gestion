@@ -64,8 +64,8 @@ class NetworkManager: NetworkProtocol {
         
     // MARK: Private
     // MARK: Properties
-    private let url = "http://api.gestion.desyntic.com"
-    private let apiPort = 2565
+    private let url = "http://192.168.1.169"
+    private let apiPort = 2574
 }
 
 protocol NetworkProtocol {

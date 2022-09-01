@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var userController: UserController
+    
     @State private var useDefaultColorScheme: Bool = true
     @State private var useDarkMode: Bool = false
     @State private var allowNotifications: Bool = true
@@ -84,7 +86,7 @@ struct SettingsView: View {
                 
                 Section {
                     Button {
-                        // TODO: Disconnect
+                        userController.disconnectUser()
                     } label: {
                         HStack {
                             Spacer()
@@ -114,6 +116,7 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SettingsView()
+                .environmentObject(UserController(appController: AppController()))
         }
     }
 }
