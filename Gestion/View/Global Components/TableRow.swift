@@ -19,14 +19,14 @@ struct TableRow: View {
                 HStack {
                     Text(title)
                     Spacer()
-                }
+                }.frame(minWidth: 100)
                 
                 Group {
                     Text("\(quantity.twoDigitPrecision) \(unity)")
                     Text("\(unitaryPrice.twoDigitPrecision) €")
                     Text("\((quantity * unitaryPrice).twoDigitPrecision) €")
                     Text("0.0 %")
-                }.frame(width: 50, height: 50)
+                }.frame(width: 70, height: 50)
                     .multilineTextAlignment(.center)
             }
             .frame(height: 40)

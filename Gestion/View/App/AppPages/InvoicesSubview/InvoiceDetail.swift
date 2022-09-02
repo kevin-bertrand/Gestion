@@ -75,7 +75,7 @@ struct InvoiceDetail: View {
                     InvoicePDF(invoice: invoicesController.selectedInvoice)
                         .toolbar {
                             Button {
-                                // TODO: Share
+                                invoicesController.exportToPDF()
                             } label: {
                                 Image(systemName: "square.and.arrow.up")
                             }

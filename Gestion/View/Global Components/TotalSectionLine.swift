@@ -17,7 +17,7 @@ struct TotalSectionLine: View {
                 HStack {
                     Text("Total \(section)")
                     Spacer()
-                }
+                }.frame(minWidth: 100)
                 
                 Group {
                     Group {
@@ -31,7 +31,7 @@ struct TotalSectionLine: View {
                     
                     Rectangle()                                    .foregroundColor(Color("UnusedBackgroundTable"))
                         .padding(.horizontal, -5)
-                }.frame(width: 50, height: 50)
+                }.frame(width: 70, height: 50)
             }
             .frame(height: 40)
             .padding(5)

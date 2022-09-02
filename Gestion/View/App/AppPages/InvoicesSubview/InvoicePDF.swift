@@ -11,7 +11,7 @@ struct InvoicePDF: View {
     let invoice: Invoice.Informations
     
     var body: some View {
-        ScrollView {
+        ScrollView() {
             VStack(alignment: .leading, spacing: 15) {
                 PdfHeader(documentReference: "\(invoice.reference)", date: "01/08/2022")
                 
@@ -85,7 +85,9 @@ struct InvoicePDF: View {
                         .padding(5)
                         .border(.black)
                     }
-                                        
+                    
+                    Spacer()
+                    
                     VStack(alignment: .trailing, spacing: 15) {
                         Text("Total HT.    \(invoice.grandTotal.twoDigitPrecision) €")
                         Text("Total TTC.   \(invoice.grandTotal.twoDigitPrecision) €")
@@ -113,6 +115,5 @@ struct InvoicePDF: View {
 struct InvoicePDF_Previews: PreviewProvider {
     static var previews: some View {
         InvoicePDF(invoice: InvoicesManager.emptyInvoiceDetail)
-            .environmentObject(InvoicesController(appController: AppController()))
     }
 }

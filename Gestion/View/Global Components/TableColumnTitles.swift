@@ -14,14 +14,14 @@ struct TableColumnTitles: View {
                 HStack {
                     Text("Désignation")
                     Spacer()
-                }
+                }.frame(minWidth: 100)
                 
                 Group {
                     Text("Qté.")
                     Text("PU TTC")
                     Text("Mont. TTC")
                     Text("TVA")
-                }.frame(width: 50, height: 50)
+                }.frame(width: 70, height: 50)
                     .multilineTextAlignment(.center)
             }
             .frame(height: 40)
