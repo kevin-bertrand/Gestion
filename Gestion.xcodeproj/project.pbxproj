@@ -41,7 +41,6 @@
 		06C349B728BDEF02004D0960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B628BDEF02004D0960 /* LoginView.swift */; };
 		06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B828BDEF28004D0960 /* TextFieldCustom.swift */; };
 		06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349BA28BDF71E004D0960 /* SignupSubview.swift */; };
-		06D1A14828BFAA36002533F5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06D1A14728BFAA36002533F5 /* Alamofire */; };
 		06D1A14B28BFAA51002533F5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14A28BFAA51002533F5 /* NetworkManager.swift */; };
 		06D1A14D28BFAA96002533F5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14C28BFAA96002533F5 /* Network.swift */; };
 		06D1A15028BFB19B002533F5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14F28BFB19B002533F5 /* Address.swift */; };
@@ -79,6 +78,9 @@
 		06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17F28C114F300B3F37A /* InvoicesManager.swift */; };
 		06F5C18228C1177300B3F37A /* InvoiceTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18128C1177300B3F37A /* InvoiceTileView.swift */; };
 		06F5C18428C1FF9000B3F37A /* InvoiceListTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */; };
+		06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */; };
+		06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18728C23A6600B3F37A /* EstimateDetail.swift */; };
+		06F5C18B28C23C6800B3F37A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06F5C18A28C23C6800B3F37A /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		06F5C17F28C114F300B3F37A /* InvoicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesManager.swift; sourceTree = "<group>"; };
 		06F5C18128C1177300B3F37A /* InvoiceTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTileView.swift; sourceTree = "<group>"; };
 		06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListTileView.swift; sourceTree = "<group>"; };
+		06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateListTileView.swift; sourceTree = "<group>"; };
+		06F5C18728C23A6600B3F37A /* EstimateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06D1A14828BFAA36002533F5 /* Alamofire in Frameworks */,
+				06F5C18B28C23C6800B3F37A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				066F407228BF3C92000718D7 /* EstimatePDF.swift */,
+				06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */,
+				06F5C18728C23A6600B3F37A /* EstimateDetail.swift */,
 			);
 			path = EstimatesSubview;
 			sourceTree = "<group>";
@@ -468,7 +474,7 @@
 			);
 			name = Gestion;
 			packageProductDependencies = (
-				06D1A14728BFAA36002533F5 /* Alamofire */,
+				06F5C18A28C23C6800B3F37A /* Alamofire */,
 			);
 			productName = Gestion;
 			productReference = 0661ABD128BD50CC00E88116 /* Gestion.app */;
@@ -543,7 +549,7 @@
 			);
 			mainGroup = 0661ABC828BD50CC00E88116;
 			packageReferences = (
-				06D1A14628BFAA36002533F5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 0661ABD228BD50CC00E88116 /* Products */;
 			projectDirPath = "";
@@ -608,6 +614,7 @@
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
 				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
 				06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */,
+				06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */,
 				06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */,
 				06F5C17228C0B75E00B3F37A /* CircularSpinnerView.swift in Sources */,
 				06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */,
@@ -624,6 +631,7 @@
 				06D1A15228BFB27C002533F5 /* Client.swift in Sources */,
 				06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */,
 				06ACC37128BF56B60012166D /* InvoicePDF.swift in Sources */,
+				06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */,
 				06D1A15928BFB31D002533F5 /* Estimate.swift in Sources */,
 				06D1A14B28BFAA51002533F5 /* NetworkManager.swift in Sources */,
 				066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */,
@@ -983,7 +991,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		06D1A14628BFAA36002533F5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -994,9 +1002,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		06D1A14728BFAA36002533F5 /* Alamofire */ = {
+		06F5C18A28C23C6800B3F37A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 06D1A14628BFAA36002533F5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

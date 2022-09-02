@@ -13,7 +13,14 @@ final class EstimatesController: ObservableObject {
     // General properties
     var appController: AppController
     
+    // Home page
     @Published var estimatesSummary: [Estimate.Summary] = []
+    
+    // Estimate list
+    @Published var estimatesList: [Estimate.Summary] = []
+    
+    // Detail page
+    @Published var selectedEstimate: Estimate.Informations = EstimatesManager.emptyDetail
     
     // MARK: Methods
     /// Download estimates for home page
@@ -23,12 +30,34 @@ final class EstimatesController: ObservableObject {
         estimatesManager.downloadThreeLatests(for: user)
     }
     
+    /// Download all estimates
+    func downloadAllEstimatesSummary(for user: User?) {
+        guard let user = user else { return }
+        
+        estimatesManager.downloadAllEstimates(for: user)
+    }
+    
+    /// Download estimate detail
+    func downloadEstimateDetail(id: UUID?, by user: User?) {
+        guard let user = user, let id = id else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Downloading in progress... Please wait!")
+        
+        estimatesManager.downloadEstimateDetails(id: id, for: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
         
         // Configure home notifications
         configureNotification(for: Notification.Desyntic.estimatesSummarySuccess.notificationName)
+        
+        // Configure list notification
+        configureNotification(for: Notification.Desyntic.estimatesListDownload.notificationName)
+        
+        // Configure estimate details notifications
+        configureNotification(for: Notification.Desyntic.estimateGettingOne.notificationName)
     }
     
     // MARK: Private
@@ -51,6 +80,10 @@ final class EstimatesController: ObservableObject {
                 switch notificationName {
                 case Notification.Desyntic.estimatesSummarySuccess.notificationName:
                     self.estimatesSummary = self.estimatesManager.estimatesSummary
+                case Notification.Desyntic.estimatesListDownload.notificationName:
+                    self.estimatesList = self.estimatesManager.estimatesList
+                case Notification.Desyntic.estimateGettingOne.notificationName:
+                    self.selectedEstimate = self.estimatesManager.estimateDetail
                 default: break
                 }
             }

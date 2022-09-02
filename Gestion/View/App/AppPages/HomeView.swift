@@ -88,7 +88,7 @@ struct HomeView: View {
                     HStack {
                         ForEach(estimatesController.estimatesSummary, id: \.reference) { estimate in
                             NavigationLink {
-                                Text("Estimate")
+                                EstimateDetail(selectedEstimate: estimate.id)
                             } label: {
                                 TileView(icon: "pencil.and.ruler.fill",
                                          title: estimate.reference,
@@ -130,11 +130,13 @@ struct HomeView: View {
         case .inCreation:
             return .accentColor
         case .sent:
-            return .green
+            return .purple
         case .refused:
             return .gray
         case .late:
             return .red
+        case .accepted:
+            return .green
         }
     }
 }

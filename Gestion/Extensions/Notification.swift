@@ -23,6 +23,8 @@ extension Notification {
         
         // Estimates
         case estimatesSummarySuccess = "Estimates for home page are downloaded!"
+        case estimatesListDownload = "The list of estimates is downloaded!"
+        case estimateGettingOne = "The details for the estimate are downloaded!"
         
         // Invoices
         case invoicesSummarySuccess = "Invoices for home page are downloaded!"
