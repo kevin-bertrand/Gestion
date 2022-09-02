@@ -77,6 +77,7 @@
 		06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17B28C0EFA900B3F37A /* EstimatesController.swift */; };
 		06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17D28C114A800B3F37A /* InvoicesController.swift */; };
 		06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17F28C114F300B3F37A /* InvoicesManager.swift */; };
+		06F5C18228C1177300B3F37A /* InvoiceTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18128C1177300B3F37A /* InvoiceTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,7 @@
 		06F5C17B28C0EFA900B3F37A /* EstimatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesController.swift; sourceTree = "<group>"; };
 		06F5C17D28C114A800B3F37A /* InvoicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesController.swift; sourceTree = "<group>"; };
 		06F5C17F28C114F300B3F37A /* InvoicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesManager.swift; sourceTree = "<group>"; };
+		06F5C18128C1177300B3F37A /* InvoiceTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 				066F406F28BEA1C3000718D7 /* TileView.swift */,
 				06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */,
 				06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */,
+				06F5C18128C1177300B3F37A /* InvoiceTileView.swift */,
 			);
 			path = "Global Components";
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				06C349B728BDEF02004D0960 /* LoginView.swift in Sources */,
 				06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */,
 				06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */,
+				06F5C18228C1177300B3F37A /* InvoiceTileView.swift in Sources */,
 				06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */,
 				06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */,
 				06F5C17A28C0EA9900B3F37A /* EstimatesManager.swift in Sources */,

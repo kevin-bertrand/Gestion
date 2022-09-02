@@ -23,6 +23,7 @@ enum NetworkConfigurations {
     case estimateExportToInvoice
     
     // MARK: Invoices
+    case invoiceGetOne
     case invoiceGetReference
     case invoiceAdd
     case invoiceUpdate
@@ -72,7 +73,7 @@ enum NetworkConfigurations {
             method = .patch
         case .clientGetList,
                 .estimateGetReference, .estimateGetList, .estimateGetDetails,
-                .invoiceGetReference, .invoiceGetList,
+                .invoiceGetOne, .invoiceGetReference, .invoiceGetList,
                 .productGetList, .productGetCategories, .productGetDomains,
                 .paymentGetList,
                 .revenueGetYear, .revenueGetMonth, .revenueAllMonths,
@@ -104,7 +105,7 @@ enum NetworkConfigurations {
             params = ["estimate", "add"]
         case .estimateExportToInvoice:
             params = ["estimate", "toInvoice"]
-        case .invoiceAdd, .invoiceUpdate, .invoiceGetList:
+        case .invoiceAdd, .invoiceUpdate, .invoiceGetList, .invoiceGetOne:
             params = ["invoice"]
         case .invoiceGetReference:
             params = ["invoice", "reference"]

@@ -17,5 +17,5 @@ struct Address: Codable {
     let country: String
     let latitude: Double
     let longitude: Double
-    let comment: String
+    let comment: String?
 }

@@ -16,6 +16,9 @@ final class InvoicesController: ObservableObject {
     // Home page
     @Published var invoicesSummary: [Invoice.Summary] = []
     
+    // Detail page
+    @Published var selectedInvoice: Invoice.Informations
+    
     // MARK: Methods
     /// Download invoices for home page
     func downloadInvoicesSummary(for user: User?) {
@@ -24,12 +27,30 @@ final class InvoicesController: ObservableObject {
         invoicesManager.downloadThreeLatests(for: user)
     }
     
+    /// Select invoice
+    func selectInvoice(id: UUID?, by user: User?) {
+        guard let user = user, let id = id else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Downloading in progress... Please wait!")
+        
+        invoicesManager.downloadInvoiceDetails(id: id, for: user)
+    }
+    
+    /// Unselect invoice
+    func unselectInvoice() {
+        selectedInvoice = InvoicesManager.emptyInvoiceDetail
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
+        selectedInvoice = InvoicesManager.emptyInvoiceDetail
         
         // Configure home notifications
         configureNotification(for: Notification.Desyntic.invoicesSummarySuccess.notificationName)
+        
+        // Configure details notification
+        configureNotification(for: Notification.Desyntic.invoicesGettingOne.notificationName)
     }
     
     // MARK: Private
@@ -52,6 +73,8 @@ final class InvoicesController: ObservableObject {
                 switch notificationName {
                 case Notification.Desyntic.invoicesSummarySuccess.notificationName:
                     self.invoicesSummary = self.invoicesManager.invoicesSummary
+                case Notification.Desyntic.invoicesGettingOne.notificationName:
+                    self.selectedInvoice = self.invoicesManager.invoiceDetail
                 default: break
                 }
             }

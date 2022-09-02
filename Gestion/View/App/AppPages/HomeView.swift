@@ -108,15 +108,7 @@ struct HomeView: View {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(invoicesController.invoicesSummary, id:\.reference) { invoice in
-                            NavigationLink {
-                                InvoiceDetail()
-                            } label: {
-                                TileView(icon: "eurosign",
-                                         title: "\(invoice.reference)",
-                                         value: "\(invoice.grandTotal.twoDigitPrecision) €",
-                                         limit: "Limit: \(invoice.limitPayementDate.formatted(date: .numeric, time: .omitted))",
-                                         iconColor: getInvoiceColor(status: invoice.status))
-                            }
+                            InvoiceTileView(invoice: invoice)
                         }
                     }
                 }
@@ -142,19 +134,6 @@ struct HomeView: View {
         case .refused:
             return .gray
         case .late:
-            return .red
-        }
-    }
-    
-    private func getInvoiceColor(status: InvoiceStatus) -> Color {
-        switch status {
-        case .inCreation:
-            return .accentColor
-        case .sent:
-            return .gray
-        case .payed:
-            return .green
-        case .overdue:
             return .red
         }
     }

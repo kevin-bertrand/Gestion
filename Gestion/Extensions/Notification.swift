@@ -26,6 +26,7 @@ extension Notification {
         
         // Invoices
         case invoicesSummarySuccess = "Invoices for home page are downloaded!"
+        case invoicesGettingOne = "The details for the invoice are downloaded!"
         
         // Getting the notification message
         var notificationMessage: String {

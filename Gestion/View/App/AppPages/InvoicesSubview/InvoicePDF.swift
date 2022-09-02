@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct InvoicePDF: View {
+    let invoice: Invoice.Informations
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
-                PdfHeader(documentReference: "Facture F-202208-001", date: "01/08/2022")
+                PdfHeader(documentReference: "\(invoice.reference)", date: "01/08/2022")
                 
                 HStack {
                     DesynticTile()
@@ -22,24 +24,46 @@ struct InvoicePDF: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Ref. interne: EL22001")
-                    Text("Objet: Installation")
+                    Text("Ref. interne: \(invoice.internalReference)")
+                    Text("Objet: \(invoice.object)")
                 }
                 
                 VStack(spacing: 0) {
                     TableColumnTitles()
-                    TableSectionTitle(title: "Services")
-                    TableRow(title: "Installation", quantity: 1, unity: "jours", unitaryPrice: 150)
-                    TotalSectionLine(section: "Services", total: 150)
-                    TableSectionTitle(title: "Matériel")
-                    TotalSectionLine(section: "Matériel", total: 0)
-                    TableSectionTitle(title: "Divers")
-                    TotalSectionLine(section: "Divers", total: 0)
+                    if invoice.totalServices > 0 {
+                        TableSectionTitle(title: "Services")
+                        ForEach(invoice.products, id: \.title) { product in
+                            if product.productCategory == .service {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Services", total: invoice.totalServices)
+                    }
+                    
+                    if invoice.totalMaterials > 0 {
+                        TableSectionTitle(title: "Matériel")
+                        ForEach(invoice.products, id: \.title) { product in
+                            if product.productCategory == .material {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Matériel", total: invoice.totalMaterials)
+                    }
+                    
+                    if invoice.totalDivers > 0 {
+                        TableSectionTitle(title: "Divers")
+                        ForEach(invoice.products, id: \.title) { product in
+                            if product.productCategory == .divers {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Divers", total: invoice.totalDivers)
+                    }
                 }
                 
                 HStack(alignment: .top, spacing: 10) {
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Date d'échéance: 01/08/2022")
+                        Text("Date d'échéance: \(invoice.limitPayementDate.formatted(date: .numeric, time: .omitted))")
                         Text("Mode de règlement: Virement bancaire")
                         
                         VStack(alignment: .leading) {
@@ -63,8 +87,8 @@ struct InvoicePDF: View {
                     }
                                         
                     VStack(alignment: .trailing, spacing: 15) {
-                        Text("Total HT.    150 €")
-                        Text("Total TTC.   150 €")
+                        Text("Total HT.    \(invoice.grandTotal.twoDigitPrecision) €")
+                        Text("Total TTC.   \(invoice.grandTotal.twoDigitPrecision) €")
                             .bold()
                     }.font(.footnote)
                 }
@@ -88,6 +112,7 @@ struct InvoicePDF: View {
 
 struct InvoicePDF_Previews: PreviewProvider {
     static var previews: some View {
-        InvoicePDF()
+        InvoicePDF(invoice: InvoicesManager.emptyInvoiceDetail)
+            .environmentObject(InvoicesController(appController: AppController()))
     }
 }

@@ -14,11 +14,7 @@ struct InvoicesView: View {
     var body: some View {
         List {
             ForEach(invoiceList, id: \.self) { invoice in
-                NavigationLink {
-                    InvoiceDetail()
-                } label: {
-                    Text(invoice)
-                }
+//                InvoiceTileView(invoice: invoice)
             }
         }
         .searchable(text: $searchingText)
