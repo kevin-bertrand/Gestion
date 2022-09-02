@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import PDFKit
+import SwiftUI
 
 final class EstimatesController: ObservableObject {
     // MARK: Public
@@ -45,6 +47,49 @@ final class EstimatesController: ObservableObject {
         
         estimatesManager.downloadEstimateDetails(id: id, for: user)
     }
+    
+    /// Export to PDF
+    func exportToPDF() {
+        var isSuccess: Bool = false
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let outputFileURL = documentDirectory.appendingPathComponent("\(selectedEstimate.reference).pdf")
+        
+        //Normal width
+        let width: CGFloat = 8.5 * 72.0
+        //Estimate the height of your view
+        let height: CGFloat = 1000
+        let estimate = EstimatePDF(estimate: selectedEstimate)
+        
+        let pdfVC = UIHostingController(rootView: estimate)
+        pdfVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        //Render the view behind all other views
+        let rootVC = UIApplication.shared.windows.first?.rootViewController
+        rootVC?.addChild(pdfVC)
+        rootVC?.view.insertSubview(pdfVC.view, at: 0)
+        
+        //Render the PDF
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 8.5 * 72.0, height: height))
+        
+        do {
+            try pdfRenderer.writePDF(to: outputFileURL, withActions: { (context) in
+                context.beginPage()
+                pdfVC.view.layer.render(in: context.cgContext)
+            })
+            isSuccess = true
+        }catch {
+            print("Could not create PDF file: \(error)")
+        }
+        pdfVC.removeFromParent()
+        pdfVC.view.removeFromSuperview()
+        
+        if isSuccess {
+            appController.showAlertView(withMessage: "The PDF is exported! Find it in your Files App", andTitle: "Success")
+        } else {
+            appController.showAlertView(withMessage: "The PDF could not be export!", andTitle: "Error")
+        }
+    }
+    
     
     // MARK: Initialization
     init(appController: AppController) {

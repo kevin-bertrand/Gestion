@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EstimatePDF: View {
+    let estimate: Estimate.Informations
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
-                PdfHeader(documentReference: "Devis D-202208-001", date: "01/08/2022")
+                PdfHeader(documentReference: "Devis \(estimate.reference)", date: "01/08/2022")
                 
                 HStack {
                     DesynticTile()
@@ -22,34 +24,56 @@ struct EstimatePDF: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Ref. interne: EL22001")
-                    Text("Objet: Installation")
+                    Text("Ref. interne: \(estimate.internalReference)")
+                    Text("Objet: \(estimate.object)")
                 }
                 
                 VStack(spacing: 0) {
                     TableColumnTitles()
-                    TableSectionTitle(title: "Services")
-                    TableRow(title: "Installation", quantity: 1, unity: "jours", unitaryPrice: 150)
-                    TotalSectionLine(section: "Services", total: 150)
-                    TableSectionTitle(title: "Matériel")
-                    TotalSectionLine(section: "Matériel", total: 0)
-                    TableSectionTitle(title: "Divers")
-                    TotalSectionLine(section: "Divers", total: 0)
+                    if estimate.totalServices > 0 {
+                        TableSectionTitle(title: "Services")
+                        ForEach(estimate.products, id: \.title) { product in
+                            if product.productCategory == .service {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Services", total: estimate.totalServices)
+                    }
+                    
+                    if estimate.totalServices > 0 {
+                        TableSectionTitle(title: "Matériels")
+                        ForEach(estimate.products, id: \.title) { product in
+                            if product.productCategory == .material {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Matériels", total: estimate.totalServices)
+                    }
+                    
+                    if estimate.totalServices > 0 {
+                        TableSectionTitle(title: "Divers")
+                        ForEach(estimate.products, id: \.title) { product in
+                            if product.productCategory == .divers {
+                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
+                            }
+                        }
+                        TotalSectionLine(section: "Divers", total: estimate.totalServices)
+                    }
                 }
                 
                 HStack(spacing: 10) {
                     VStack(alignment: .leading) {
                         Text("T.V.A. non applicable ou exonérée")
                         Text("Micro-entreprise, TVA non applicable en vertu de l'article 293 B du CGI")
-                        Text("Date de validité: 01/08/2022")
+                        Text("Date de validité: \(estimate.limitValidityDate.formatted(date: .numeric, time: .omitted))")
                         Text("Mode de règlement: Virement bancaire")
                     }
                     
                     Spacer()
                     
                     VStack(alignment: .trailing, spacing: 15) {
-                        Text("Total HT.    150 €")
-                        Text("Total TTC.   150 €")
+                        Text("Total HT.    \(estimate.grandTotal.twoDigitPrecision) €")
+                        Text("Total TTC.   \(estimate.grandTotal.twoDigitPrecision) €")
                             .bold()
                     }.font(.footnote)
                 }
@@ -70,6 +94,6 @@ struct EstimatePDF: View {
 
 struct EstimatePDF_Previews: PreviewProvider {
     static var previews: some View {
-        EstimatePDF()
+        EstimatePDF(estimate: EstimatesManager.emptyDetail)
     }
 }

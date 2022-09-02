@@ -23,7 +23,7 @@ struct EstimateDetail: View {
                    let lastname = estimateController.selectedEstimate.client.lastname {
                     Label("\(estimateController.selectedEstimate.client.gender == .man ? "M " : ((estimateController.selectedEstimate.client.gender == .woman) ? "Mme " : ""))\(firstname) \(lastname)", systemImage: "person.fill")
                 }
-                
+
                 if let company = estimateController.selectedEstimate.client.company {
                     Label("\(company)", systemImage: "building.2.fill")
                 }
@@ -35,7 +35,7 @@ struct EstimateDetail: View {
                 if let tva = estimateController.selectedEstimate.client.tva {
                     Label("TVA: \(tva)", systemImage: "eurosign")
                 }
-
+                
                 if let siret = estimateController.selectedEstimate.client.siret {
                     Label("SIRET: \(siret)", systemImage: "person.badge.shield.checkmark.fill")
                 }
@@ -44,7 +44,7 @@ struct EstimateDetail: View {
             }
             
             Section {
-//                Label("Creation date", systemImage: "calendar")
+                //                Label("Creation date", systemImage: "calendar")
                 Label("Limit: \(estimateController.selectedEstimate.limitValidityDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(estimateController.selectedEstimate.status.rawValue)", systemImage: "list.triangle")
             } header: {
@@ -69,14 +69,14 @@ struct EstimateDetail: View {
                             } label: {
                                 Image(systemName: "v.circle")
                             }
-
+                            
                         }
                 }
                 NavigationLink("Show PDF") {
-                    EstimatePDF()
+                    EstimatePDF(estimate: estimateController.selectedEstimate)
                         .toolbar {
                             Button {
-                                // TODO: Export to PDF
+                                estimateController.exportToPDF()
                             } label: {
                                 Image(systemName: "square.and.arrow.up")
                             }
