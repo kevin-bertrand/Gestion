@@ -78,6 +78,7 @@
 		06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17D28C114A800B3F37A /* InvoicesController.swift */; };
 		06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C17F28C114F300B3F37A /* InvoicesManager.swift */; };
 		06F5C18228C1177300B3F37A /* InvoiceTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18128C1177300B3F37A /* InvoiceTileView.swift */; };
+		06F5C18428C1FF9000B3F37A /* InvoiceListTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		06F5C17D28C114A800B3F37A /* InvoicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesController.swift; sourceTree = "<group>"; };
 		06F5C17F28C114F300B3F37A /* InvoicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesManager.swift; sourceTree = "<group>"; };
 		06F5C18128C1177300B3F37A /* InvoiceTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTileView.swift; sourceTree = "<group>"; };
+		06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,10 +330,12 @@
 		06ACC36F28BF56A80012166D /* InvoicesSubview */ = {
 			isa = PBXGroup;
 			children = (
+				06F5C18128C1177300B3F37A /* InvoiceTileView.swift */,
 				06ACC37028BF56B60012166D /* InvoicePDF.swift */,
 				06ACC37228BF597F0012166D /* InvoiceDetail.swift */,
 				06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */,
 				06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */,
+				06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */,
 			);
 			path = InvoicesSubview;
 			sourceTree = "<group>";
@@ -366,7 +370,6 @@
 				066F406F28BEA1C3000718D7 /* TileView.swift */,
 				06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */,
 				06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */,
-				06F5C18128C1177300B3F37A /* InvoiceTileView.swift */,
 			);
 			path = "Global Components";
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */,
 				06D1A15028BFB19B002533F5 /* Address.swift in Sources */,
 				066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */,
+				06F5C18428C1FF9000B3F37A /* InvoiceListTileView.swift in Sources */,
 				06A63AF028BD53C0009805CB /* StartView.swift in Sources */,
 				06AA687628C0A9270075B635 /* UserManager.swift in Sources */,
 				06F5C18028C114F300B3F37A /* InvoicesManager.swift in Sources */,

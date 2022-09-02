@@ -21,12 +21,22 @@ final class InvoicesController: ObservableObject {
     // Detail page
     @Published var selectedInvoice: Invoice.Informations
     
+    // Invoices list
+    @Published var invoicesList: [Invoice.Summary] = []
+    
     // MARK: Methods
     /// Download invoices for home page
     func downloadInvoicesSummary(for user: User?) {
         guard let user = user else { return }
         
         invoicesManager.downloadThreeLatests(for: user)
+    }
+    
+    /// Download all invoices summary
+    func downloadAllInvoicesSummary(for user: User?) {
+        guard let user = user else { return }
+        
+        invoicesManager.downloadAllInvoiceSummary(for: user)
     }
     
     /// Select invoice
@@ -95,6 +105,9 @@ final class InvoicesController: ObservableObject {
         
         // Configure details notification
         configureNotification(for: Notification.Desyntic.invoicesGettingOne.notificationName)
+        
+        // Confifure invoice list notificaitons
+        configureNotification(for: Notification.Desyntic.invoicesListDownloaded.notificationName)
     }
     
     // MARK: Private
@@ -119,6 +132,8 @@ final class InvoicesController: ObservableObject {
                     self.invoicesSummary = self.invoicesManager.invoicesSummary
                 case Notification.Desyntic.invoicesGettingOne.notificationName:
                     self.selectedInvoice = self.invoicesManager.invoiceDetail
+                case Notification.Desyntic.invoicesListDownloaded.notificationName:
+                    self.invoicesList = self.invoicesManager.invoicesList
                 default: break
                 }
             }

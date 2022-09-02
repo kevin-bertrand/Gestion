@@ -15,6 +15,7 @@ final class InvoicesManager {
     // MARK: Properties
     var invoicesSummary: [Invoice.Summary] = []
     var invoiceDetail: Invoice.Informations = InvoicesManager.emptyInvoiceDetail
+    var invoicesList: [Invoice.Summary] = []
     
     // MARK: Methods
     /// Download three latest invoices
@@ -30,6 +31,25 @@ final class InvoicesManager {
                let invoices = try? JSONDecoder().decode([Invoice.Summary].self, from: data) {
                 self.invoicesSummary = invoices
                 Notification.Desyntic.invoicesSummarySuccess.sendNotification()
+            }
+        }
+    }
+    
+    /// Download all invoices summary
+    func downloadAllInvoiceSummary(for user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.invoiceGetList.urlParams,
+                               method: NetworkConfigurations.invoiceGetList.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { [weak self] data, response, error in
+            if let self = self,
+               let statusCode = response?.statusCode,
+               statusCode == 200,
+               let data = data,
+               let invoices = try? JSONDecoder().decode([Invoice.Summary].self, from: data) {
+                self.invoicesList = invoices
+                Notification.Desyntic.invoicesListDownloaded.sendNotification()
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
             }
         }
     }
