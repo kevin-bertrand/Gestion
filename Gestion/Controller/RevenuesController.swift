@@ -64,7 +64,7 @@ final class RevenuesController: ObservableObject {
     /// Initialise all notification for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let notificationMessage = notification.userInfo?["message"] as? String {
+           let _ = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 

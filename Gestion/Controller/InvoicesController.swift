@@ -69,7 +69,9 @@ final class InvoicesController: ObservableObject {
         pdfVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         
         //Render the view behind all other views
-        let rootVC = UIApplication.shared.windows.first?.rootViewController
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScenes = scenes.first as? UIWindowScene
+        let rootVC = windowScenes?.windows.first?.rootViewController
         rootVC?.addChild(pdfVC)
         rootVC?.view.insertSubview(pdfVC.view, at: 0)
         
@@ -123,7 +125,7 @@ final class InvoicesController: ObservableObject {
     /// Initialise all notification for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let notificationMessage = notification.userInfo?["message"] as? String {
+           let _ = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
