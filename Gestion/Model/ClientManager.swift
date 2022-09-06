@@ -10,7 +10,7 @@ import Foundation
 final class ClientManager {
     // MARK: Public
     // MARK: Properties
-    var clients: [Client] = []
+    var clients: [Client.Informations] = []
     
     // MARK: Methods
     /// Getting client list
@@ -23,7 +23,7 @@ final class ClientManager {
                let statusCode = response?.statusCode,
                statusCode == 200,
                let data = data,
-               let clients = try? JSONDecoder().decode([Client].self, from: data) {
+               let clients = try? JSONDecoder().decode([Client.Informations].self, from: data) {
                 self.clients = clients
                 Notification.Desyntic.clientGettingList.sendNotification()
             } else {

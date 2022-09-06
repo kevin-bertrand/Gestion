@@ -8,13 +8,16 @@
 import Foundation
 
 final class ClientController: ObservableObject {
+    // MARK: Static
+    static let emptyClientInfo: Client.Informations = .init(id: nil, firstname: nil, lastname: nil, company: nil, phone: "", email: "", personType: .company, gender: .notDetermined, siret: nil, tva: nil, address: Address(id: "", roadName: "", streetNumber: "", complement: nil, zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: nil))
+    
     // MARK: Public
     // MARK: Properties
     // General properties
     var appController: AppController
     
     // Client list
-    @Published var clients: [Client] = []
+    @Published var clients: [Client.Informations] = []
     @Published var searchingField: String = ""
     
     // MARK: Methods

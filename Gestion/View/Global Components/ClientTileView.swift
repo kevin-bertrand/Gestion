@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClientTileView: View {
-    let client: Client
+    let client: Client.Informations
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,6 +29,6 @@ struct ClientTileView: View {
 
 struct ClientTileView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientTileView(client: Client(id: UUID(uuid: UUID_NULL), firstname: "Kevin", lastname: "Bertrand", company: "Desyntic", phone: "", email: "", personType: .company, gender: .man, address: Address.Id(id: ""), siret: "", tva: ""))
+        ClientTileView(client: Client.Informations(id: nil, firstname: nil, lastname: nil, company: nil, phone: "", email: "", personType: .company, gender: nil, siret: nil, tva: nil, address: Address(id: "", roadName: "", streetNumber: "", complement: nil, zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: nil)))
     }
 }

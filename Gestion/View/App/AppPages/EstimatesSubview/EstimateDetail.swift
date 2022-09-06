@@ -18,30 +18,7 @@ struct EstimateDetail: View {
     
     var body: some View {
         List {
-            Section {
-                if let firstname = estimateController.selectedEstimate.client.firstname,
-                   let lastname = estimateController.selectedEstimate.client.lastname {
-                    Label("\(estimateController.selectedEstimate.client.gender == .man ? "M " : ((estimateController.selectedEstimate.client.gender == .woman) ? "Mme " : ""))\(firstname) \(lastname)", systemImage: "person.fill")
-                }
-
-                if let company = estimateController.selectedEstimate.client.company {
-                    Label("\(company)", systemImage: "building.2.fill")
-                }
-                
-                Label("\(estimateController.selectedEstimate.client.address.streetNumber) \(estimateController.selectedEstimate.client.address.roadName)\n\(estimateController.selectedEstimate.client.address.zipCode), \(estimateController.selectedEstimate.client.address.city)\n\(estimateController.selectedEstimate.client.address.country)", systemImage: "pin.fill")
-                Label("\((estimateController.selectedEstimate.client.email))", systemImage: "envelope.fill")
-                Label("\(estimateController.selectedEstimate.client.phone)", systemImage: "phone.fill")
-                
-                if let tva = estimateController.selectedEstimate.client.tva {
-                    Label("TVA: \(tva)", systemImage: "eurosign")
-                }
-                
-                if let siret = estimateController.selectedEstimate.client.siret {
-                    Label("SIRET: \(siret)", systemImage: "person.badge.shield.checkmark.fill")
-                }
-            } header: {
-                Text("Client informations")
-            }
+            ClientDetailsView(selectedClient: .constant(ClientController.emptyClientInfo))
             
             Section {
                 //                Label("Creation date", systemImage: "calendar")

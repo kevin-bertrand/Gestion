@@ -58,6 +58,8 @@
 		06D357F028C719EC0093C564 /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D357EF28C719EC0093C564 /* ClientManager.swift */; };
 		06D357F228C71B4E0093C564 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D357F128C71B4E0093C564 /* ClientController.swift */; };
 		06D357F428C720980093C564 /* ClientTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D357F328C720980093C564 /* ClientTileView.swift */; };
+		06D357F628C722DA0093C564 /* ClientListSelectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D357F528C722DA0093C564 /* ClientListSelectingView.swift */; };
+		06D357F828C7260C0093C564 /* ClientDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D357F728C7260C0093C564 /* ClientDetailsView.swift */; };
 		06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */; };
 		06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1328BF4BE800BF1ACF /* TableRow.swift */; };
 		06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */; };
@@ -160,6 +162,8 @@
 		06D357EF28C719EC0093C564 /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 		06D357F128C71B4E0093C564 /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
 		06D357F328C720980093C564 /* ClientTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTileView.swift; sourceTree = "<group>"; };
+		06D357F528C722DA0093C564 /* ClientListSelectingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientListSelectingView.swift; sourceTree = "<group>"; };
+		06D357F728C7260C0093C564 /* ClientDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailsView.swift; sourceTree = "<group>"; };
 		06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionTitle.swift; sourceTree = "<group>"; };
 		06DABF1328BF4BE800BF1ACF /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 		06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvoiceView.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 				06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */,
 				06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */,
 				06D357F328C720980093C564 /* ClientTileView.swift */,
+				06D357F728C7260C0093C564 /* ClientDetailsView.swift */,
 			);
 			path = "Global Components";
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				06F5C16F28C0B73300B3F37A /* LoadingInProgressView.swift */,
+				06D357F528C722DA0093C564 /* ClientListSelectingView.swift */,
 			);
 			path = "Global Views";
 			sourceTree = "<group>";
@@ -632,6 +638,7 @@
 				06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */,
 				06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */,
 				06F5C17228C0B75E00B3F37A /* CircularSpinnerView.swift in Sources */,
+				06D357F628C722DA0093C564 /* ClientListSelectingView.swift in Sources */,
 				06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */,
 				06F5C17028C0B73300B3F37A /* LoadingInProgressView.swift in Sources */,
 				06AA687228C09D940075B635 /* String.swift in Sources */,
@@ -666,6 +673,7 @@
 				06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */,
 				06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */,
 				06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */,
+				06D357F828C7260C0093C564 /* ClientDetailsView.swift in Sources */,
 				06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */,
 				0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */,
 				06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */,

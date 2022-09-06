@@ -8,43 +8,27 @@
 import SwiftUI
 
 struct AddInvoiceView: View {
-    @State private var internalRef: String = ""
-    @State private var validityDate: Date = Date()
-    @State private var status: [String] = ["1", "2"]
-    @State private var selectedStatus: String = "1"
-    
+    @EnvironmentObject var invoiceController: InvoicesController
+    @EnvironmentObject var userController: UserController
+        
     @State private var services: [String] = []
     @State private var materials: [String] = []
     @State private var divers: [String] = []
     
+    @State private var client: Client.Informations = ClientController.emptyClientInfo
+    
     var body: some View {
         Form {
-            Section {
-                Button {
-                    // TODO: Select client
-                } label: {
-                    Text("Select client")
-                        .bold()
-                }
-
-                Label("Name", systemImage: "person.fill")
-                Label("Address", systemImage: "pin.fill")
-                Label("Email", systemImage: "envelope.fill")
-                Label("Phone", systemImage: "phone.fill")
-                Label("TVA", systemImage: "eurosign")
-                Label("SIRET", systemImage: "person.badge.shield.checkmark.fill")
-            } header: {
-                Text("Client")
-            }
+            ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
-                TextField("Référence interne", text: $internalRef)
-                DatePicker(selection: $validityDate, displayedComponents: .date) {
+                TextField("Référence interne", text: $invoiceController.newInvoice.internalReference)
+                DatePicker(selection: $invoiceController.newInvoice.limitPayementDate, displayedComponents: .date) {
                     Text("Date de validité")
                 }
-                Picker("Statut", selection: $selectedStatus) {
-                    ForEach(status, id: \.self) { stat in
-                        Text(stat)
+                Picker("Statut", selection: $invoiceController.newInvoice.status) {
+                    ForEach(InvoiceStatus.allCases, id: \.self) { status in
+                        Text(status.rawValue)
                     }
                 }
             } header: {
@@ -61,7 +45,10 @@ struct AddInvoiceView: View {
                 Text("Total")
             }
         }
-        .navigationTitle("F-202208-001")
+        .navigationTitle(invoiceController.newInvoice.reference)
+        .onAppear {
+            invoiceController.gettingNewReference(for: userController.connectedUser)
+        }
     }
 }
 
@@ -69,6 +56,8 @@ struct AddInvoiceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AddInvoiceView()
+                .environmentObject(InvoicesController(appController: AppController()))
+                .environmentObject(UserController(appController: AppController()))
         }
     }
 }

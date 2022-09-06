@@ -24,7 +24,17 @@ final class InvoicesController: ObservableObject {
     // Invoices list
     @Published var invoicesList: [Invoice.Summary] = []
     
+    // New invoice
+    @Published var newInvoice: Invoice.Create = .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, limitPayementDate: Date(), clientID: UUID(uuid: UUID_NULL), products: [])
+    
     // MARK: Methods
+    /// Getting new invoice reference
+    func gettingNewReference(for user: User?) {
+        guard let user = user else { return }
+        
+        invoicesManager.gettingNewReference(for: user)
+    }
+    
     /// Download invoices for home page
     func downloadInvoicesSummary(for user: User?) {
         guard let user = user else { return }
@@ -110,6 +120,9 @@ final class InvoicesController: ObservableObject {
         
         // Confifure invoice list notificaitons
         configureNotification(for: Notification.Desyntic.invoicesListDownloaded.notificationName)
+        
+        // Configure new invoice list notification
+        configureNotification(for: Notification.Desyntic.invoicesGettingReference.notificationName)
     }
     
     // MARK: Private
@@ -125,7 +138,7 @@ final class InvoicesController: ObservableObject {
     /// Initialise all notification for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let _ = notification.userInfo?["message"] as? String {
+           let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
@@ -136,6 +149,8 @@ final class InvoicesController: ObservableObject {
                     self.selectedInvoice = self.invoicesManager.invoiceDetail
                 case Notification.Desyntic.invoicesListDownloaded.notificationName:
                     self.invoicesList = self.invoicesManager.invoicesList
+                case Notification.Desyntic.invoicesGettingReference.notificationName:
+                    self.newInvoice.reference = notificationMessage
                 default: break
                 }
             }

@@ -30,6 +30,7 @@ extension Notification {
         case invoicesSummarySuccess = "Invoices for home page are downloaded!"
         case invoicesGettingOne = "The details for the invoice are downloaded!"
         case invoicesListDownloaded = "The list of invoices is downloaded!"
+        case invoicesGettingReference = "The invoice reference is downloaded"
         
         // Client notifications
         case clientGettingList = "The list of clients is downloaded!"
@@ -45,8 +46,8 @@ extension Notification {
         }
         
         // Send the notification throw the NotificationCenter
-        func sendNotification() {
-            let notificationBuilder = Notification(name: notificationName, object: self, userInfo: ["name": self.notificationName, "message": self.notificationMessage])
+        func sendNotification(customMessage: String? = nil) {
+            let notificationBuilder = Notification(name: notificationName, object: self, userInfo: ["name": self.notificationName, "message": customMessage != nil ? customMessage! : self.notificationMessage])
             NotificationCenter.default.post(notificationBuilder)
         }
     }

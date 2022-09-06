@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum InvoiceStatus: String, Codable {
+enum InvoiceStatus: String, Codable, CaseIterable {
     case inCreation, sent, payed, overdue
 }
