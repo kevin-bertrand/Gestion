@@ -35,6 +35,9 @@ extension Notification {
         // Client notifications
         case clientGettingList = "The list of clients is downloaded!"
         
+        // Products notifications
+        case productsGettingList = "Product list is downloaded!"
+        
         // Getting the notification message
         var notificationMessage: String {
             return self.rawValue

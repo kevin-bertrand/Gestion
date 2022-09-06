@@ -10,11 +10,8 @@ import SwiftUI
 struct AddInvoiceView: View {
     @EnvironmentObject var invoiceController: InvoicesController
     @EnvironmentObject var userController: UserController
-        
-    @State private var services: [String] = []
-    @State private var materials: [String] = []
-    @State private var divers: [String] = []
-    
+
+    @State private var products: [Product.CreateDocument] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
     
     var body: some View {
@@ -35,12 +32,31 @@ struct AddInvoiceView: View {
                 Text("Informations")
             }
             
-            ProductListUpdateView(sectionTitle: "Services", products: $services)
-            ProductListUpdateView(sectionTitle: "Materials", products: $materials)
-            ProductListUpdateView(sectionTitle: "Divers", products: $divers)
+            Section {
+                NavigationLink {
+                    SelectProductView(selectedProducts: $products)
+                } label: {
+                    Text("Select new product")
+                        .foregroundColor(.accentColor)
+                }
+            }
+            
+            ProductListUpdateView(sectionTitle: "Services",
+                                  products: $products,
+                                  category: .service)
+            ProductListUpdateView(sectionTitle: "Materials",
+                                  products: $products,
+                                  category: .material)
+            ProductListUpdateView(sectionTitle: "Divers",
+                                  products: $products,
+                                  category: .divers)
             
             Section {
-                
+                Text("Total services: \(calculateTotal(for: .service).twoDigitPrecision) €")
+                Text("Total material: \(calculateTotal(for: .material).twoDigitPrecision) €")
+                Text("Total Divers: \(calculateTotal(for: .divers).twoDigitPrecision) €")
+                Text("Grand total: \(calculateTotal(for: nil).twoDigitPrecision) €")
+                    .font(.title2.bold())
             } header: {
                 Text("Total")
             }
@@ -49,6 +65,21 @@ struct AddInvoiceView: View {
         .onAppear {
             invoiceController.gettingNewReference(for: userController.connectedUser)
         }
+    }
+    
+    private func calculateTotal(for category: ProductCategory?) -> Double {
+        var total = 0.0
+        for product in products {
+            if let category = category {
+                if product.productCategory == category {
+                    total += (product.price * product.quantity)
+                }
+            } else {
+                total += (product.price * product.quantity)
+            }
+        }
+        
+        return total
     }
 }
 

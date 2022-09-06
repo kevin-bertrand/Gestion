@@ -7,7 +7,24 @@
 
 import Foundation
 
-struct Product {
+struct Product: Codable {
+    let id: UUID
+    let productCategory: ProductCategory
+    let title: String
+    let domain: Domain
+    let unity: String
+    let price: Double
+    
+    struct CreateDocument: Codable {
+        let id: UUID
+        let productCategory: ProductCategory
+        let title: String
+        let domain: Domain
+        let unity: String
+        let price: Double
+        let quantity: Double
+    }
+    
     struct Create: Codable {
         let productID: UUID
         let quantity: Double

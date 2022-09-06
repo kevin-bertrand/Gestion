@@ -52,13 +52,21 @@ struct SettingsView: View {
                     }
 
                     NavigationLink {
-                        Label("Articles categories", systemImage: "folder.fill")
+                        List {
+                            ForEach(ProductCategory.allCases, id: \.self) {
+                                Text($0.rawValue)
+                            }
+                        }.navigationTitle("Categories")
                     } label: {
                         Label("Articles categories", systemImage: "folder.fill")
                     }
                     
                     NavigationLink {
-                        Label("Article domain", systemImage: "tray.2.fill")
+                        List {
+                            ForEach(Domain.allCases, id: \.self) {
+                                Text($0.rawValue)
+                            }
+                        }.navigationTitle("Domains")
                     } label: {
                         Label("Article domain", systemImage: "tray.2.fill")
                     }

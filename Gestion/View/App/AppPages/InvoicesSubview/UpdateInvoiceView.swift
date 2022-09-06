@@ -46,9 +46,9 @@ struct UpdateInvoiceView: View {
                 Text("Informations")
             }
             
-            ProductListUpdateView(sectionTitle: "Services", products: $services)
-            ProductListUpdateView(sectionTitle: "Materials", products: $materials)
-            ProductListUpdateView(sectionTitle: "Divers", products: $divers)
+//            ProductListUpdateView(sectionTitle: "Services", products: $services)
+//            ProductListUpdateView(sectionTitle: "Materials", products: $materials)
+//            ProductListUpdateView(sectionTitle: "Divers", products: $divers)
             
             Section {
                 

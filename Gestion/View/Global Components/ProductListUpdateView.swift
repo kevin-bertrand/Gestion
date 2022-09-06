@@ -10,35 +10,25 @@ import SwiftUI
 struct ProductListUpdateView: View {
     let sectionTitle: String
     @State private var numberOfProducts: [Int] = []
-    @Binding var products: [String]
+    @Binding var products: [Product.CreateDocument]
+    let category: ProductCategory
     
     var body: some View {
         Section(header: Text(sectionTitle)) {
-            HStack {
-                Text("Adding a product")
-                    .onTapGesture {
-                        self.products.append("")
-                        self.numberOfProducts.append(numberOfProducts.count)
-                    }
-                    .foregroundColor(.accentColor)
-                    .font(.body.bold())
-            }
             List {
-                ForEach(numberOfProducts, id:\.self) { index in
-                    TextField(sectionTitle, text: Binding(
-                        get: { return products[index] },
-                        set: { (newValue) in return self.products[index] = newValue}
-                    ))
+                ForEach(products, id:\.title) { product in
+                    if product.productCategory == category {
+                        VStack(alignment: .leading) {
+                            Text(product.title)
+                                .font(.title2.bold())
+                            Text("Quantity: \(product.quantity.twoDigitPrecision)")
+                            Text("Price: \(product.price.twoDigitPrecision) \(product.unity)")
+                            Text("Total product: \((product.quantity * product.price).twoDigitPrecision) €")
+                        }
+                    }
                 }.onDelete { index in
                     self.products.remove(atOffsets: index)
-                    self.numberOfProducts = self.numberOfProducts.dropLast(1)
                 }
-            }
-        }
-        .onAppear {
-            numberOfProducts = []
-            for index in 0..<products.count {
-                numberOfProducts.append(index)
             }
         }
     }
@@ -46,6 +36,6 @@ struct ProductListUpdateView: View {
 
 struct ProductListUpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListUpdateView(sectionTitle: "", products: .constant([]))
+        ProductListUpdateView(sectionTitle: "", products: .constant([]), category: .divers)
     }
 }
