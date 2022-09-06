@@ -29,8 +29,10 @@ final class AppController: ObservableObject {
     // MARK: Methods
     /// Setting loading in progress
     func setLoadingInProgress(withMessage message: String) {
-        loadingInProgress = true
-        loadingMessage = message
+        DispatchQueue.main.async {
+            self.loadingInProgress = true
+            self.loadingMessage = message
+        }
     }
     
     /// Reset loading in progress
