@@ -12,7 +12,7 @@ struct ClientDetailsView: View {
     var canSelectUser: Bool = false
     
     var body: some View {
-        Section {
+        Section("Client informations") {
             if canSelectUser {
                 NavigationLink {
                     ClientListSelectingView(client: $selectedClient)
@@ -43,8 +43,6 @@ struct ClientDetailsView: View {
             if let siret = selectedClient.siret {
                 Label("SIRET: \(siret)", systemImage: "person.badge.shield.checkmark.fill")
             }
-        } header: {
-            Text("Client informations")
         }
     }
 }

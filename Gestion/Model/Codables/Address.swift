@@ -22,4 +22,17 @@ struct Address: Codable {
     struct Id: Codable {
         let id: String
     }
+    
+    struct New: Codable {
+        let id: String
+        var roadName: String
+        var streetNumber: String
+        var complement: String
+        var zipCode: String
+        var city: String
+        var country: String
+        var latitude: Double
+        var longitude: Double
+        var comment: String
+    }
 }

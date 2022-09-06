@@ -43,4 +43,18 @@ struct Client: Codable {
         let lastname: String?
         let company: String?
     }
+    
+    struct Update: Codable {
+        var id: UUID
+        var firstname: String
+        var lastname: String
+        var company: String
+        var phone: String
+        var email: String
+        var personType: PersonType
+        var gender: Gender
+        var siret: String
+        var tva: String
+        var address: Address.New
+    }
 }

@@ -32,6 +32,33 @@ final class ClientManager {
         }
     }
     
+    /// Update client
+    func update(client: Client.Informations, by user: User) {
+        guard let clientId = client.id else {
+            Notification.Desyntic.unknownError.sendNotification()
+            return
+        }
+        var params = NetworkConfigurations.clientUpdate.urlParams
+        params.append("\(clientId)")
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.clientUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: client) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode{
+                case 200:
+                    Notification.Desyntic.clientUpdated.sendNotification()
+                case 401, 406:
+                    Notification.Desyntic.clientUpdateError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

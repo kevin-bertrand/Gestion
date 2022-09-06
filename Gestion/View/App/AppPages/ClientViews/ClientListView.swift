@@ -18,7 +18,15 @@ struct ClientListView: View {
                     List{
                         ClientDetailsView(selectedClient: .constant(client))
                     }
-                        .navigationTitle("Client informations")
+                    .toolbar {
+                        NavigationLink {
+                            UpdateClientView(selectedClient: .constant(client))
+                        } label: {
+                            Image(systemName: "pencil.circle")
+                        }
+
+                    }
+                    .navigationTitle("Client informations")
                 } label: {
                     ClientTileView(client: client)
                 }

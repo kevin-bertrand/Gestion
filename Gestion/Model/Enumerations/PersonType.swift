@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum PersonType: String, Codable {
+enum PersonType: String, Codable, CaseIterable{
     case company, person
 }

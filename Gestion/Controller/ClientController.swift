@@ -20,6 +20,9 @@ final class ClientController: ObservableObject {
     @Published var clients: [Client.Informations] = []
     @Published var searchingField: String = ""
     
+    // Update client
+    @Published var updateSuccess: Bool = false
+    
     // MARK: Methods
     /// Getting client list
     func gettingList(for user: User?) {
@@ -28,12 +31,21 @@ final class ClientController: ObservableObject {
         clientManager.getList(for: user)
     }
     
+    /// Update client
+    func update(client: Client.Informations, for user: User?) {
+        guard let user = user else { return }
+        appController.setLoadingInProgress(withMessage: "Update in progress...")
+        clientManager.update(client: client, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
         
         // Configure notifications
         configureNotification(for: Notification.Desyntic.clientGettingList.notificationName)
+        configureNotification(for: Notification.Desyntic.clientUpdated.notificationName)
+        configureNotification(for: Notification.Desyntic.clientUpdateError.notificationName)
     }
     
     // MARK: Private
@@ -49,13 +61,17 @@ final class ClientController: ObservableObject {
     /// Initialise all notifications for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let _ = notification.userInfo?["message"] as? String {
+           let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
                 switch notificationName {
                 case Notification.Desyntic.clientGettingList.notificationName:
                     self.clients =  self.clientManager.clients
+                case Notification.Desyntic.clientUpdated.notificationName:
+                    self.updateSuccess = true
+                case Notification.Desyntic.clientUpdateError.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
                 }
             }
