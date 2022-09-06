@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum EstimateStatus: String, Codable {
+enum EstimateStatus: String, Codable, CaseIterable {
     case inCreation, sent, refused, late, accepted
 }

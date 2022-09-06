@@ -9,35 +9,35 @@ import Foundation
 
 struct Estimate {
     struct Create: Codable {
-        let reference: String
-        let internalReference: String
-        let object: String
-        let totalServices: Double
-        let totalMaterials: Double
-        let totalDivers: Double
-        let total: Double
-        let reduction: Double
-        let grandTotal: Double
-        let status: EstimateStatus
-        let limitValidifyDate: Date?
-        let clientID: UUID
-        let products: [Product.Create]
+        var reference: String
+        var internalReference: String
+        var object: String
+        var totalServices: Double
+        var totalMaterials: Double
+        var totalDivers: Double
+        var total: Double
+        var reduction: Double
+        var grandTotal: Double
+        var status: EstimateStatus
+        var limitValidifyDate: String?
+        var clientID: UUID
+        var products: [Product.Create]
     }
     
     struct Update: Codable {
-        let id: UUID
-        let reference: String
-        let internalReference: String
-        let object: String
-        let totalServices: Double
-        let totalMaterials: Double
-        let totalDivers: Double
-        let total: Double
-        let reduction: Double
-        let grandTotal: Double
-        let status: EstimateStatus
-        let limitValidifyDate: Date?
-        let products: [Product.Update]
+        var id: UUID
+        var reference: String
+        var internalReference: String
+        var object: String
+        var totalServices: Double
+        var totalMaterials: Double
+        var totalDivers: Double
+        var total: Double
+        var reduction: Double
+        var grandTotal: Double
+        var status: EstimateStatus
+        var limitValidifyDate: Date?
+        var products: [Product.Update]
     }
     
     struct Summary: Codable {

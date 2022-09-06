@@ -74,7 +74,7 @@ struct EstimatesView: View {
         }
         .toolbar {
             NavigationLink {
-                Text("Add estimate")
+                AddEstimateView()
             } label: {
                 Image(systemName: "plus.circle")
             }

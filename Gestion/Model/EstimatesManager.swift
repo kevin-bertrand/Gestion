@@ -18,6 +18,44 @@ final class EstimatesManager {
     var estimateDetail: Estimate.Informations = EstimatesManager.emptyDetail
     
     // MARK: Methods
+    /// Getting new estimate reference
+    func gettingNewReference(by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.estimateGetReference.urlParams,
+                               method: NetworkConfigurations.estimateGetReference.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { data, response, error in
+            if let statusCode = response?.statusCode,
+               statusCode == 200,
+               let data = data,
+               let reference = try? JSONDecoder().decode(String.self, from: data) {
+                Notification.Desyntic.estimateGettingReference.sendNotification(customMessage: reference)
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
+    /// Create new estimate
+    func create(estimate: Estimate.Create, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.estimateAdd.urlParams,
+                               method: NetworkConfigurations.estimateAdd.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: estimate) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 201:
+                    Notification.Desyntic.estimateCreated.sendNotification()
+                case 500:
+                    Notification.Desyntic.estimateFailedCreated.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     /// Download three latest estimates
     func downloadThreeLatests(for user: User) {
         var params = NetworkConfigurations.estimateGetList.urlParams

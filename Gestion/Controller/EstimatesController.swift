@@ -24,6 +24,10 @@ final class EstimatesController: ObservableObject {
     // Detail page
     @Published var selectedEstimate: Estimate.Informations = EstimatesManager.emptyDetail
     
+    // New invoice page
+    @Published var newEstimateReference: String = ""
+    @Published var newEstimateCreateSuccess: Bool = false
+    
     // MARK: Methods
     /// Download estimates for home page
     func downloadEstimatesSummary(for user: User?) {
@@ -46,6 +50,20 @@ final class EstimatesController: ObservableObject {
         appController.setLoadingInProgress(withMessage: "Downloading in progress... Please wait!")
         
         estimatesManager.downloadEstimateDetails(id: id, for: user)
+    }
+    
+    /// Getting new estimate reference
+    func gettingNewReference(by user: User?) {
+        guard let user = user else { return }
+        
+        estimatesManager.gettingNewReference(by: user)
+    }
+    
+    /// Create new estimate
+    func create(estimate: Estimate.Create, by user: User?) {
+        guard let user = user else { return }
+        
+        estimatesManager.create(estimate: estimate, by: user)
     }
     
     /// Export to PDF
@@ -105,6 +123,11 @@ final class EstimatesController: ObservableObject {
         
         // Configure estimate details notifications
         configureNotification(for: Notification.Desyntic.estimateGettingOne.notificationName)
+        
+        // Configure new estimate notification
+        configureNotification(for: Notification.Desyntic.estimateCreated.notificationName)
+        configureNotification(for: Notification.Desyntic.estimateFailedCreated.notificationName)
+        configureNotification(for: Notification.Desyntic.estimateGettingReference.notificationName)
     }
     
     // MARK: Private
@@ -120,7 +143,7 @@ final class EstimatesController: ObservableObject {
     /// Initialise all notification for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let _ = notification.userInfo?["message"] as? String {
+           let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
@@ -131,6 +154,12 @@ final class EstimatesController: ObservableObject {
                     self.estimatesList = self.estimatesManager.estimatesList
                 case Notification.Desyntic.estimateGettingOne.notificationName:
                     self.selectedEstimate = self.estimatesManager.estimateDetail
+                case Notification.Desyntic.estimateGettingReference.notificationName:
+                    self.newEstimateReference = notificationMessage
+                case Notification.Desyntic.estimateCreated.notificationName:
+                    self.newEstimateCreateSuccess = true
+                case Notification.Desyntic.estimateFailedCreated.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
                 }
             }
