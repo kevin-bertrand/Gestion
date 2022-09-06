@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EstimateDetail: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var estimateController: EstimatesController
     @EnvironmentObject var userController: UserController
@@ -74,6 +74,11 @@ struct EstimateDetail: View {
                         }
                         .navigationBarTitleDisplayMode(.inline)
                 }
+                Button {
+                    estimateController.exportToInvoice(by: userController.connectedUser)
+                } label: {
+                    Text("Export as an invoice")
+                }
             } header: {
                 Text("Actions")
             }
@@ -83,7 +88,12 @@ struct EstimateDetail: View {
             if let id = selectedEstimate {
                 estimateController.downloadEstimateDetail(id: id, by: userController.connectedUser)
             } else {
-                self.presentationMode.wrappedValue.dismiss()
+                dismiss()
+            }
+        }
+        .onChange(of: estimateController.estimateIsExportedToInvoice) { newValue in
+            if newValue {
+                dismiss()
             }
         }
     }

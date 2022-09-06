@@ -133,6 +133,30 @@ final class EstimatesManager {
         }
     }
     
+    /// Export the estimate to an invoice
+    func exportToInvoice(estimate: String, by user: User) {
+        var params = NetworkConfigurations.estimateExportToInvoice.urlParams
+        params.append(estimate)
+        
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.estimateExportToInvoice.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 201:
+                    Notification.Desyntic.estimateExportToInvoiceSuccess.sendNotification()
+                case 404, 500:
+                    Notification.Desyntic.estimateExportToInvoiceFailed.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

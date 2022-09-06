@@ -30,6 +30,8 @@ extension Notification {
         case estimateFailedCreated = "Cannot create the estimate"
         case estimateUpdated = "The estimate is updated"
         case estimateErrorUpdate = "The estimate cannot be updated"
+        case estimateExportToInvoiceSuccess = "The export is a success"
+        case estimateExportToInvoiceFailed = "The export failed"
         
         // Invoices
         case invoicesSummarySuccess = "Invoices for home page are downloaded!"

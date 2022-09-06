@@ -23,6 +23,7 @@ final class EstimatesController: ObservableObject {
     
     // Detail page
     @Published var selectedEstimate: Estimate.Informations = EstimatesManager.emptyDetail
+    @Published var estimateIsExportedToInvoice: Bool = false
     
     // New estimate page
     @Published var newEstimateReference: String = ""
@@ -78,6 +79,15 @@ final class EstimatesController: ObservableObject {
         appController.setLoadingInProgress(withMessage: "Update in progress")
         
         estimatesManager.update(estimate: estimate, by: user)
+    }
+    
+    /// Export to an invoice
+    func exportToInvoice(by user: User?) {
+        guard let user = user, selectedEstimate.reference != "" else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Exporting to an invoice...")
+        
+        estimatesManager.exportToInvoice(estimate: selectedEstimate.reference, by: user)
     }
     
     /// Export to PDF
@@ -137,6 +147,8 @@ final class EstimatesController: ObservableObject {
         
         // Configure estimate details notifications
         configureNotification(for: Notification.Desyntic.estimateGettingOne.notificationName)
+        configureNotification(for: Notification.Desyntic.estimateExportToInvoiceFailed.notificationName)
+        configureNotification(for: Notification.Desyntic.estimateExportToInvoiceSuccess.notificationName)
         
         // Configure new estimate notification
         configureNotification(for: Notification.Desyntic.estimateCreated.notificationName)
@@ -176,12 +188,14 @@ final class EstimatesController: ObservableObject {
                     self.newEstimateReference = notificationMessage
                 case Notification.Desyntic.estimateCreated.notificationName:
                     self.newEstimateCreateSuccess = true
-                case Notification.Desyntic.estimateFailedCreated.notificationName:
-                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
-                case Notification.Desyntic.estimateErrorUpdate.notificationName:
+                case Notification.Desyntic.estimateFailedCreated.notificationName,
+                    Notification.Desyntic.estimateErrorUpdate.notificationName,
+                    Notification.Desyntic.estimateExportToInvoiceFailed.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 case Notification.Desyntic.estimateUpdated.notificationName:
                     self.updateEstimateSuccess = true
+                case Notification.Desyntic.estimateExportToInvoiceSuccess.notificationName :
+                    self.estimateIsExportedToInvoice = true
                 default: break
                 }
             }
