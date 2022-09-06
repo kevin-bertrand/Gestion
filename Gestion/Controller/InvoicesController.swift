@@ -25,7 +25,8 @@ final class InvoicesController: ObservableObject {
     @Published var invoicesList: [Invoice.Summary] = []
     
     // New invoice
-    @Published var newInvoice: Invoice.Create = .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, limitPayementDate: Date(), clientID: UUID(uuid: UUID_NULL), products: [])
+    @Published var newInvoiceReference: String = ""
+    @Published var successCreatingNewInvoice: Bool = false
     
     // MARK: Methods
     /// Getting new invoice reference
@@ -47,6 +48,13 @@ final class InvoicesController: ObservableObject {
         guard let user = user else { return }
         
         invoicesManager.downloadAllInvoiceSummary(for: user)
+    }
+    
+    /// Create new invoie
+    func create(invoice: Invoice.Create, by user: User?) {
+        guard let user = user else { return }
+        
+        invoicesManager.create(invoice: invoice, by: user)
     }
     
     /// Select invoice
@@ -121,8 +129,10 @@ final class InvoicesController: ObservableObject {
         // Confifure invoice list notificaitons
         configureNotification(for: Notification.Desyntic.invoicesListDownloaded.notificationName)
         
-        // Configure new invoice list notification
+        // Configure new invoice notification
         configureNotification(for: Notification.Desyntic.invoicesGettingReference.notificationName)
+        configureNotification(for: Notification.Desyntic.invoicesCreated.notificationName)
+        configureNotification(for: Notification.Desyntic.invoicesFailedCreated.notificationName)
     }
     
     // MARK: Private
@@ -150,7 +160,11 @@ final class InvoicesController: ObservableObject {
                 case Notification.Desyntic.invoicesListDownloaded.notificationName:
                     self.invoicesList = self.invoicesManager.invoicesList
                 case Notification.Desyntic.invoicesGettingReference.notificationName:
-                    self.newInvoice.reference = notificationMessage
+                    self.newInvoiceReference = notificationMessage
+                case Notification.Desyntic.invoicesCreated.notificationName:
+                    self.successCreatingNewInvoice = true
+                case Notification.Desyntic.invoicesFailedCreated.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
                 }
             }

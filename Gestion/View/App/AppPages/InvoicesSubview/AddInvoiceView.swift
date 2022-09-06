@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct AddInvoiceView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @EnvironmentObject var invoiceController: InvoicesController
     @EnvironmentObject var userController: UserController
 
+    @State private var newInvoice: Invoice.Create = .init(reference: "",
+                                                          internalReference: "",
+                                                          object: "",
+                                                          totalServices: 0,
+                                                          totalMaterials: 0,
+                                                          totalDivers: 0,
+                                                          total: 0,
+                                                          reduction: 0,
+                                                          grandTotal: 0,
+                                                          status: .inCreation,
+                                                          limitPayementDate: "",
+                                                          clientID: UUID(uuid: UUID_NULL),
+                                                          products: [])
+    @State private var limitDate: Date = Date()
     @State private var products: [Product.CreateDocument] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
     
@@ -19,11 +35,12 @@ struct AddInvoiceView: View {
             ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
-                TextField("Référence interne", text: $invoiceController.newInvoice.internalReference)
-                DatePicker(selection: $invoiceController.newInvoice.limitPayementDate, displayedComponents: .date) {
+                TextField("Référence interne", text: $newInvoice.internalReference)
+                TextField("Object", text: $newInvoice.object)
+                DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
                 }
-                Picker("Statut", selection: $invoiceController.newInvoice.status) {
+                Picker("Statut", selection: $newInvoice.status) {
                     ForEach(InvoiceStatus.allCases, id: \.self) { status in
                         Text(status.rawValue)
                     }
@@ -52,18 +69,51 @@ struct AddInvoiceView: View {
                                   category: .divers)
             
             Section {
-                Text("Total services: \(calculateTotal(for: .service).twoDigitPrecision) €")
-                Text("Total material: \(calculateTotal(for: .material).twoDigitPrecision) €")
-                Text("Total Divers: \(calculateTotal(for: .divers).twoDigitPrecision) €")
-                Text("Grand total: \(calculateTotal(for: nil).twoDigitPrecision) €")
+                Text("Total services: \(newInvoice.totalServices.twoDigitPrecision) €")
+                Text("Total material: \(newInvoice.totalMaterials.twoDigitPrecision) €")
+                Text("Total Divers: \(newInvoice.totalDivers.twoDigitPrecision) €")
+                Text("Grand total: \(newInvoice.grandTotal.twoDigitPrecision) €")
                     .font(.title2.bold())
             } header: {
                 Text("Total")
             }
         }
-        .navigationTitle(invoiceController.newInvoice.reference)
+        .onChange(of: products, perform: { newValue in
+            newInvoice.totalDivers = calculateTotal(for: .divers)
+            newInvoice.totalServices = calculateTotal(for: .service)
+            newInvoice.totalMaterials = calculateTotal(for: .material)
+            newInvoice.total = calculateTotal(for: nil)
+            newInvoice.grandTotal = newInvoice.total
+            
+            newInvoice.products = products.map({
+                .init(productID: $0.id, quantity: $0.quantity)
+            })
+        })
+        .onChange(of: invoiceController.newInvoiceReference, perform: { newValue in
+            newInvoice.reference = newValue
+        })
+        .onChange(of: limitDate, perform: { newValue in
+            newInvoice.limitPayementDate = newValue.ISO8601Format()
+        })
+        .onChange(of: client, perform: { newValue in
+            newInvoice.clientID = newValue.id ?? UUID(uuid: UUID_NULL)
+        })
+        .onChange(of: invoiceController.successCreatingNewInvoice, perform: { newValue in
+            if newValue {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        })
+        .navigationTitle(newInvoice.reference)
         .onAppear {
             invoiceController.gettingNewReference(for: userController.connectedUser)
+        }
+        .toolbar {
+            Button {
+                invoiceController.create(invoice: newInvoice, by: userController.connectedUser)
+            } label: {
+                Image(systemName: "v.circle")
+            }
+
         }
     }
     

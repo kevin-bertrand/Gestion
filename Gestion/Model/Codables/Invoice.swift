@@ -19,7 +19,7 @@ struct Invoice {
         var reduction: Double
         var grandTotal: Double
         var status: InvoiceStatus
-        var limitPayementDate: Date
+        var limitPayementDate: String
         var clientID: UUID
         var products: [Product.Create]
     }

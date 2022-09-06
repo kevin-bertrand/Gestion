@@ -20,7 +20,11 @@ struct Client: Codable {
     let siret: String?
     let tva: String?
     
-    struct Informations: Codable {
+    struct Informations: Codable, Equatable {
+        static func == (lhs: Client.Informations, rhs: Client.Informations) -> Bool {
+            lhs.id == rhs.id
+        }
+        
         let id: UUID?
         let firstname: String?
         let lastname: String?

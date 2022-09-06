@@ -15,7 +15,7 @@ struct Product: Codable {
     let unity: String
     let price: Double
     
-    struct CreateDocument: Codable {
+    struct CreateDocument: Codable, Equatable {
         let id: UUID
         let productCategory: ProductCategory
         let title: String
