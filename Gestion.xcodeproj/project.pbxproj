@@ -68,6 +68,7 @@
 		06D3580928C782A60093C564 /* UpdateEstimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3580828C782A60093C564 /* UpdateEstimateView.swift */; };
 		06D3580D28C792E10093C564 /* UpdateClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3580C28C792E10093C564 /* UpdateClientView.swift */; };
 		06D3580F28C793650093C564 /* ClientInformationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3580E28C793650093C564 /* ClientInformationTextField.swift */; };
+		06D3581128C7B14C0093C564 /* CreateClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3581028C7B14C0093C564 /* CreateClient.swift */; };
 		06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */; };
 		06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1328BF4BE800BF1ACF /* TableRow.swift */; };
 		06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */; };
@@ -180,6 +181,7 @@
 		06D3580828C782A60093C564 /* UpdateEstimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEstimateView.swift; sourceTree = "<group>"; };
 		06D3580C28C792E10093C564 /* UpdateClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClientView.swift; sourceTree = "<group>"; };
 		06D3580E28C793650093C564 /* ClientInformationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInformationTextField.swift; sourceTree = "<group>"; };
+		06D3581028C7B14C0093C564 /* CreateClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClient.swift; sourceTree = "<group>"; };
 		06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionTitle.swift; sourceTree = "<group>"; };
 		06DABF1328BF4BE800BF1ACF /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 		06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvoiceView.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				06D3580428C75B840093C564 /* Client Components */,
 				06D357ED28C719CA0093C564 /* ClientListView.swift */,
 				06D3580C28C792E10093C564 /* UpdateClientView.swift */,
+				06D3581028C7B14C0093C564 /* CreateClient.swift */,
 			);
 			path = ClientViews;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				06D357F228C71B4E0093C564 /* ClientController.swift in Sources */,
 				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
 				06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */,
+				06D3581128C7B14C0093C564 /* CreateClient.swift in Sources */,
 				06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */,
 				06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */,
 				06F5C17228C0B75E00B3F37A /* CircularSpinnerView.swift in Sources */,

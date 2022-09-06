@@ -47,6 +47,8 @@ extension Notification {
         case clientGettingList = "The list of clients is downloaded!"
         case clientUpdated = "The client is updated"
         case clientUpdateError = "An error occurs during the client update"
+        case clientCreateSuccess = "The client is created"
+        case clientCreateError = "The client could not be created"
         
         // Products notifications
         case productsGettingList = "Product list is downloaded!"

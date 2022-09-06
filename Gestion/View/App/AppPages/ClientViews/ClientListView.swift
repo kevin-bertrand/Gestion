@@ -37,6 +37,14 @@ struct ClientListView: View {
             clientController.gettingList(for: userController.connectedUser)
         }
         .navigationTitle("Client list")
+        .toolbar {
+            NavigationLink {
+                CreateClient()
+            } label: {
+                Image(systemName: "plus.circle")
+            }
+
+        }
     }
 }
 

@@ -59,6 +59,27 @@ final class ClientManager {
         }
     }
     
+    /// Create client
+    func create(client: Client.Create, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.clientAdd.urlParams,
+                               method: NetworkConfigurations.clientAdd.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: client) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode{
+                case 200:
+                    Notification.Desyntic.clientCreateSuccess.sendNotification()
+                case 401:
+                    Notification.Desyntic.clientCreateError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

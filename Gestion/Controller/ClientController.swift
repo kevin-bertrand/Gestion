@@ -23,6 +23,9 @@ final class ClientController: ObservableObject {
     // Update client
     @Published var updateSuccess: Bool = false
     
+    // Create client
+    @Published var createSuccess: Bool = false
+    
     // MARK: Methods
     /// Getting client list
     func gettingList(for user: User?) {
@@ -38,6 +41,13 @@ final class ClientController: ObservableObject {
         clientManager.update(client: client, by: user)
     }
     
+    /// Create client
+    func create(client: Client.Create, for user: User?) {
+        guard let user = user else { return }
+        appController.setLoadingInProgress(withMessage: "Update in progress...")
+        clientManager.create(client: client, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -46,6 +56,8 @@ final class ClientController: ObservableObject {
         configureNotification(for: Notification.Desyntic.clientGettingList.notificationName)
         configureNotification(for: Notification.Desyntic.clientUpdated.notificationName)
         configureNotification(for: Notification.Desyntic.clientUpdateError.notificationName)
+        configureNotification(for: Notification.Desyntic.clientCreateSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.clientCreateError.notificationName)
     }
     
     // MARK: Private
@@ -70,8 +82,11 @@ final class ClientController: ObservableObject {
                     self.clients =  self.clientManager.clients
                 case Notification.Desyntic.clientUpdated.notificationName:
                     self.updateSuccess = true
-                case Notification.Desyntic.clientUpdateError.notificationName:
+                case Notification.Desyntic.clientUpdateError.notificationName,
+                    Notification.Desyntic.clientCreateError.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.clientCreateSuccess.notificationName:
+                    self.createSuccess = true
                 default: break
                 }
             }

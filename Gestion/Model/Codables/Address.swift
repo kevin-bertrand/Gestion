@@ -35,4 +35,16 @@ struct Address: Codable {
         var longitude: Double
         var comment: String
     }
+    
+    struct Create: Codable {
+        var roadName: String
+        var streetNumber: String
+        var complement: String
+        var zipCode: String
+        var city: String
+        var country: String
+        var latitude: Double
+        var longitude: Double
+        var comment: String
+    }
 }
