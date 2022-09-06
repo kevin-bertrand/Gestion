@@ -15,7 +15,10 @@ struct ClientListView: View {
         List {
             ForEach(clientController.clients, id: \.email) { client in
                 NavigationLink {
-                    Text(client.email)
+                    List{
+                        ClientDetailsView(selectedClient: .constant(client))
+                    }
+                        .navigationTitle("Client informations")
                 } label: {
                     ClientTileView(client: client)
                 }
