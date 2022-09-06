@@ -43,7 +43,6 @@ struct InvoiceDetail: View {
             }
             
             Section {
-//                Label("Creation date", systemImage: "calendar")
                 Label("Limit: \(invoicesController.selectedInvoice.limitPayementDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(invoicesController.selectedInvoice.status.rawValue)", systemImage: "list.triangle")
             } header: {

@@ -36,7 +36,7 @@ struct Estimate {
         var reduction: Double
         var grandTotal: Double
         var status: EstimateStatus
-        var limitValidifyDate: Date?
+        var limitValidifyDate: String?
         var products: [Product.Update]
     }
     

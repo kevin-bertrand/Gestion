@@ -18,10 +18,9 @@ struct EstimateDetail: View {
     
     var body: some View {
         List {
-            ClientDetailsView(selectedClient: .constant(ClientController.emptyClientInfo))
+            ClientDetailsView(selectedClient: .constant(estimateController.selectedEstimate.client))
             
             Section {
-                //                Label("Creation date", systemImage: "calendar")
                 Label("Limit: \(estimateController.selectedEstimate.limitValidityDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(estimateController.selectedEstimate.status.rawValue)", systemImage: "list.triangle")
             } header: {
@@ -39,15 +38,30 @@ struct EstimateDetail: View {
             
             Section {
                 NavigationLink("Update") {
-                    Text("Update")
-                        .toolbar {
-                            Button {
-                                // TODO: Save changes
-                            } label: {
-                                Image(systemName: "v.circle")
-                            }
-                            
-                        }
+                    UpdateEstimateView(estimate: Estimate.Update(id: estimateController.selectedEstimate.id,
+                                                                 reference: estimateController.selectedEstimate.reference,
+                                                                 internalReference: estimateController.selectedEstimate.internalReference,
+                                                                 object: estimateController.selectedEstimate.object,
+                                                                 totalServices: estimateController.selectedEstimate.totalServices,
+                                                                 totalMaterials: estimateController.selectedEstimate.totalMaterials,
+                                                                 totalDivers: estimateController.selectedEstimate.totalDivers,
+                                                                 total: estimateController.selectedEstimate.total,
+                                                                 reduction: estimateController.selectedEstimate.reduction,
+                                                                 grandTotal: estimateController.selectedEstimate.grandTotal,
+                                                                 status: estimateController.selectedEstimate.status,
+                                                                 products: []),
+                                       client: Client.Informations(id: estimateController.selectedEstimate.client.id,
+                                                                   firstname: estimateController.selectedEstimate.client.firstname,
+                                                                   lastname: estimateController.selectedEstimate.client.lastname,
+                                                                   company: estimateController.selectedEstimate.client.company,
+                                                                   phone: estimateController.selectedEstimate.client.phone,
+                                                                   email: estimateController.selectedEstimate.client.email,
+                                                                   personType: estimateController.selectedEstimate.client.personType,
+                                                                   gender: estimateController.selectedEstimate.client.gender,
+                                                                   siret: estimateController.selectedEstimate.client.siret,
+                                                                   tva: estimateController.selectedEstimate.client.tva,
+                                                                   address: estimateController.selectedEstimate.client.address),
+                                       products: estimateController.selectedEstimate.products)
                 }
                 NavigationLink("Show PDF") {
                     EstimatePDF(estimate: estimateController.selectedEstimate)

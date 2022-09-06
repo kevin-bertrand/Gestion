@@ -112,6 +112,27 @@ final class EstimatesManager {
         }
     }
     
+    // Update estimate
+    func update(estimate: Estimate.Update, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.estimateUpdate.urlParams,
+                               method: NetworkConfigurations.estimateUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: estimate) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 200:
+                    Notification.Desyntic.estimateUpdated.sendNotification()
+                case 500:
+                    Notification.Desyntic.estimateErrorUpdate.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

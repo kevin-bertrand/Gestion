@@ -28,6 +28,8 @@ extension Notification {
         case estimateGettingReference = "The estimate reference is downloaded"
         case estimateCreated = "The estimate is created"
         case estimateFailedCreated = "Cannot create the estimate"
+        case estimateUpdated = "The estimate is updated"
+        case estimateErrorUpdate = "The estimate cannot be updated"
         
         // Invoices
         case invoicesSummarySuccess = "Invoices for home page are downloaded!"

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UpdateInvoiceView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var invoiceController: InvoicesController
     @EnvironmentObject var userController: UserController
@@ -83,7 +83,7 @@ struct UpdateInvoiceView: View {
         })
         .onChange(of: invoiceController.successUpdateInvoice, perform: { newValue in
             if newValue {
-                self.presentationMode.wrappedValue.dismiss()
+                dismiss()
             }
         })
         .navigationTitle(invoice.reference)

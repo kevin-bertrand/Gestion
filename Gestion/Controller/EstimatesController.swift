@@ -24,9 +24,12 @@ final class EstimatesController: ObservableObject {
     // Detail page
     @Published var selectedEstimate: Estimate.Informations = EstimatesManager.emptyDetail
     
-    // New invoice page
+    // New estimate page
     @Published var newEstimateReference: String = ""
     @Published var newEstimateCreateSuccess: Bool = false
+    
+    // Update estimate page
+    @Published var updateEstimateSuccess: Bool = false
     
     // MARK: Methods
     /// Download estimates for home page
@@ -63,7 +66,18 @@ final class EstimatesController: ObservableObject {
     func create(estimate: Estimate.Create, by user: User?) {
         guard let user = user else { return }
         
+        appController.setLoadingInProgress(withMessage: "Creation in progress")
+        
         estimatesManager.create(estimate: estimate, by: user)
+    }
+    
+    /// Update estimate
+    func update(estimate: Estimate.Update, by user: User?) {
+        guard let user = user else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Update in progress")
+        
+        estimatesManager.update(estimate: estimate, by: user)
     }
     
     /// Export to PDF
@@ -128,6 +142,10 @@ final class EstimatesController: ObservableObject {
         configureNotification(for: Notification.Desyntic.estimateCreated.notificationName)
         configureNotification(for: Notification.Desyntic.estimateFailedCreated.notificationName)
         configureNotification(for: Notification.Desyntic.estimateGettingReference.notificationName)
+        
+        // Configure update estimate
+        configureNotification(for: Notification.Desyntic.estimateErrorUpdate.notificationName)
+        configureNotification(for: Notification.Desyntic.estimateUpdated.notificationName)
     }
     
     // MARK: Private
@@ -160,6 +178,10 @@ final class EstimatesController: ObservableObject {
                     self.newEstimateCreateSuccess = true
                 case Notification.Desyntic.estimateFailedCreated.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.estimateErrorUpdate.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.estimateUpdated.notificationName:
+                    self.updateEstimateSuccess = true
                 default: break
                 }
             }
