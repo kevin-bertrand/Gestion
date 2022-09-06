@@ -61,15 +61,30 @@ struct InvoiceDetail: View {
             
             Section {
                 NavigationLink("Update") {
-                    UpdateInvoiceView()
-                        .toolbar {
-                            Button {
-                                // TODO: Save changes
-                            } label: {
-                                Image(systemName: "v.circle")
-                            }
-
-                        }
+                    UpdateInvoiceView(invoice: Invoice.Update(id: invoicesController.selectedInvoice.id,
+                                                              reference: invoicesController.selectedInvoice.reference,
+                                                              internalReference: invoicesController.selectedInvoice.internalReference,
+                                                              object: invoicesController.selectedInvoice.object,
+                                                              totalServices: invoicesController.selectedInvoice.totalServices,
+                                                              totalMaterials: invoicesController.selectedInvoice.totalMaterials,
+                                                              totalDivers: invoicesController.selectedInvoice.totalDivers,
+                                                              total: invoicesController.selectedInvoice.total,
+                                                              reduction: invoicesController.selectedInvoice.reduction,
+                                                              grandTotal: invoicesController.selectedInvoice.grandTotal,
+                                                              status: invoicesController.selectedInvoice.status,
+                                                              products: []),
+                                      client: .init(id: invoicesController.selectedInvoice.client.id,
+                                                    firstname: invoicesController.selectedInvoice.client.firstname,
+                                                    lastname: invoicesController.selectedInvoice.client.lastname,
+                                                    company: invoicesController.selectedInvoice.client.company,
+                                                    phone: invoicesController.selectedInvoice.client.phone,
+                                                    email: invoicesController.selectedInvoice.client.email,
+                                                    personType: invoicesController.selectedInvoice.client.personType,
+                                                    gender: invoicesController.selectedInvoice.client.gender,
+                                                    siret: invoicesController.selectedInvoice.client.siret,
+                                                    tva: invoicesController.selectedInvoice.client.tva,
+                                                    address: invoicesController.selectedInvoice.client.address),
+                                      products: invoicesController.selectedInvoice.products)
                 }
                 NavigationLink("Show PDF") {
                     InvoicePDF(invoice: invoicesController.selectedInvoice)

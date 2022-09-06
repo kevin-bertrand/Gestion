@@ -15,28 +15,18 @@ struct Product: Codable {
     let unity: String
     let price: Double
     
-    struct CreateDocument: Codable, Equatable {
-        let id: UUID
-        let productCategory: ProductCategory
-        let title: String
-        let domain: Domain
-        let unity: String
-        let price: Double
-        let quantity: Double
-    }
-    
     struct Create: Codable {
         let productID: UUID
         let quantity: Double
     }
     
     struct Update: Codable {
-        let productEstimateID: UUID?
         let productID: UUID
         let quantity: Double
     }
     
-    struct Informations: Codable {
+    struct Informations: Codable, Equatable {
+        let id: UUID
         let quantity: Double
         let title: String
         let unity: String?

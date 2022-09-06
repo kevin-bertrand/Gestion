@@ -122,6 +122,27 @@ final class InvoicesManager {
         }
     }
     
+    /// Updating an invoice
+    func update(invoice: Invoice.Update, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.invoiceUpdate.urlParams,
+                               method: NetworkConfigurations.invoiceUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: invoice) {  _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 200:
+                    Notification.Desyntic.invoicesUpdateSuccess.sendNotification()
+                case 500:
+                    Notification.Desyntic.invoicesUpdateFailed.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

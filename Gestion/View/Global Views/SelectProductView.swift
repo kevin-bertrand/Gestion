@@ -13,7 +13,7 @@ struct SelectProductView: View {
     @EnvironmentObject var productsController: ProductsController
     @EnvironmentObject var userController: UserController
     
-    @Binding var selectedProducts: [Product.CreateDocument]
+    @Binding var selectedProducts: [Product.Informations]
     @State private var quantity: String = ""
     @State private var quantityNotEntered: Bool = false
     
@@ -38,13 +38,13 @@ struct SelectProductView: View {
                                 .onTapGesture {
                                     if quantity.isNotEmpty,
                                        let quantityDouble = Double(quantity) {
-                                        selectedProducts.append(.init(id: product.id,
-                                                                productCategory: product.productCategory,
-                                                                title: product.title,
-                                                                domain: product.domain,
-                                                                unity: product.unity,
-                                                                price: product.price,
-                                                                quantity: quantityDouble))
+                                        selectedProducts.append(Product.Informations(id: product.id,
+                                                                                     quantity: quantityDouble,
+                                                                                     title: product.title,
+                                                                                     unity: product.unity,
+                                                                                     domain: product.domain,
+                                                                                     productCategory: product.productCategory,
+                                                                                     price: product.price))
                                         self.presentationMode.wrappedValue.dismiss()
                                     } else {
                                         quantityNotEntered = true
@@ -63,13 +63,13 @@ struct SelectProductView: View {
                                 .onTapGesture {
                                     if quantity.isNotEmpty,
                                        let quantityDouble = Double(quantity) {
-                                        selectedProducts.append(.init(id: product.id,
-                                                                productCategory: product.productCategory,
-                                                                title: product.title,
-                                                                domain: product.domain,
-                                                                unity: product.unity,
-                                                                price: product.price,
-                                                                quantity: quantityDouble))
+                                        selectedProducts.append(Product.Informations(id: product.id,
+                                                                                     quantity: quantityDouble,
+                                                                                     title: product.title,
+                                                                                     unity: product.unity,
+                                                                                     domain: product.domain,
+                                                                                     productCategory: product.productCategory,
+                                                                                     price: product.price))
                                         self.presentationMode.wrappedValue.dismiss()
                                     } else {
                                         quantityNotEntered = true
@@ -88,13 +88,13 @@ struct SelectProductView: View {
                                 .onTapGesture {
                                     if quantity.isNotEmpty,
                                        let quantityDouble = Double(quantity) {
-                                        selectedProducts.append(.init(id: product.id,
-                                                                productCategory: product.productCategory,
-                                                                title: product.title,
-                                                                domain: product.domain,
-                                                                unity: product.unity,
-                                                                price: product.price,
-                                                                quantity: quantityDouble))
+                                        selectedProducts.append(Product.Informations(id: product.id,
+                                                                                     quantity: quantityDouble,
+                                                                                     title: product.title,
+                                                                                     unity: product.unity,
+                                                                                     domain: product.domain,
+                                                                                     productCategory: product.productCategory,
+                                                                                     price: product.price))
                                         self.presentationMode.wrappedValue.dismiss()
                                     } else {
                                         quantityNotEntered = true
@@ -117,7 +117,7 @@ struct SelectProductView: View {
 struct SelectProductView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SelectProductView(selectedProducts: .constant([.init(id: UUID(uuid: UUID_NULL), productCategory: .material, title: "", domain: .automation, unity: "", price: 0, quantity: 0)]))
+            SelectProductView(selectedProducts: .constant([.init(id: UUID(uuid: UUID_NULL), quantity: 0, title: "", unity: "", domain: .automation, productCategory: .material, price: 0)]))
                 .environmentObject(ProductsController(appController: AppController()))
                 .environmentObject(UserController(appController: AppController()))
         }

@@ -28,6 +28,9 @@ final class InvoicesController: ObservableObject {
     @Published var newInvoiceReference: String = ""
     @Published var successCreatingNewInvoice: Bool = false
     
+    // Update invoice
+    @Published var successUpdateInvoice: Bool = false
+    
     // MARK: Methods
     /// Getting new invoice reference
     func gettingNewReference(for user: User?) {
@@ -54,7 +57,18 @@ final class InvoicesController: ObservableObject {
     func create(invoice: Invoice.Create, by user: User?) {
         guard let user = user else { return }
         
+        appController.setLoadingInProgress(withMessage: "Creation in progress")
+        
         invoicesManager.create(invoice: invoice, by: user)
+    }
+    
+    /// Update invoice
+    func update(invoice: Invoice.Update, by user: User?) {
+        guard let user = user else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Update in progress")
+        
+        invoicesManager.update(invoice: invoice, by: user)
     }
     
     /// Select invoice
@@ -133,6 +147,10 @@ final class InvoicesController: ObservableObject {
         configureNotification(for: Notification.Desyntic.invoicesGettingReference.notificationName)
         configureNotification(for: Notification.Desyntic.invoicesCreated.notificationName)
         configureNotification(for: Notification.Desyntic.invoicesFailedCreated.notificationName)
+        
+        // Configure update invoice notification
+        configureNotification(for: Notification.Desyntic.invoicesUpdateSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.invoicesUpdateFailed.notificationName)
     }
     
     // MARK: Private
@@ -164,6 +182,10 @@ final class InvoicesController: ObservableObject {
                 case Notification.Desyntic.invoicesCreated.notificationName:
                     self.successCreatingNewInvoice = true
                 case Notification.Desyntic.invoicesFailedCreated.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.invoicesUpdateSuccess.notificationName:
+                    self.successUpdateInvoice = true
+                case Notification.Desyntic.invoicesUpdateFailed.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
                 }

@@ -383,13 +383,9 @@
 		06C349B328BDE959004D0960 /* Global Components */ = {
 			isa = PBXGroup;
 			children = (
-				06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */,
-				06DABF1328BF4BE800BF1ACF /* TableRow.swift */,
-				06ACC36528BF51510012166D /* TotalSectionLine.swift */,
-				06ACC36728BF52110012166D /* ClientTile.swift */,
-				06ACC36928BF523E0012166D /* PdfHeader.swift */,
-				06ACC36B28BF52640012166D /* DesynticTile.swift */,
-				06ACC36D28BF52800012166D /* TableColumnTitles.swift */,
+				06D3580528C75B900093C564 /* Product Components */,
+				06D3580428C75B840093C564 /* Client Components */,
+				06D3580328C75B700093C564 /* PDF Components */,
 				06C349B428BDE974004D0960 /* ButtonCustom.swift */,
 				06C349B828BDEF28004D0960 /* TextFieldCustom.swift */,
 				06EFE68128BE581B0052BEA0 /* PieChart.swift */,
@@ -400,9 +396,6 @@
 				066F406F28BEA1C3000718D7 /* TileView.swift */,
 				06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */,
 				06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */,
-				06D357F328C720980093C564 /* ClientTileView.swift */,
-				06D357F728C7260C0093C564 /* ClientDetailsView.swift */,
-				06D357FF28C741D80093C564 /* ProductTileView.swift */,
 			);
 			path = "Global Components";
 			sourceTree = "<group>";
@@ -443,6 +436,37 @@
 				06AA687B28C0ACCD0075B635 /* Permissions.swift */,
 			);
 			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		06D3580328C75B700093C564 /* PDF Components */ = {
+			isa = PBXGroup;
+			children = (
+				06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */,
+				06DABF1328BF4BE800BF1ACF /* TableRow.swift */,
+				06ACC36528BF51510012166D /* TotalSectionLine.swift */,
+				06ACC36728BF52110012166D /* ClientTile.swift */,
+				06ACC36928BF523E0012166D /* PdfHeader.swift */,
+				06ACC36B28BF52640012166D /* DesynticTile.swift */,
+				06ACC36D28BF52800012166D /* TableColumnTitles.swift */,
+			);
+			path = "PDF Components";
+			sourceTree = "<group>";
+		};
+		06D3580428C75B840093C564 /* Client Components */ = {
+			isa = PBXGroup;
+			children = (
+				06D357F328C720980093C564 /* ClientTileView.swift */,
+				06D357F728C7260C0093C564 /* ClientDetailsView.swift */,
+			);
+			path = "Client Components";
+			sourceTree = "<group>";
+		};
+		06D3580528C75B900093C564 /* Product Components */ = {
+			isa = PBXGroup;
+			children = (
+				06D357FF28C741D80093C564 /* ProductTileView.swift */,
+			);
+			path = "Product Components";
 			sourceTree = "<group>";
 		};
 		06EFE67228BE28000052BEA0 /* App */ = {

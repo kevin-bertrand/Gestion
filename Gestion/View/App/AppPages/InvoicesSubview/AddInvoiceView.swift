@@ -27,7 +27,7 @@ struct AddInvoiceView: View {
                                                           clientID: UUID(uuid: UUID_NULL),
                                                           products: [])
     @State private var limitDate: Date = Date()
-    @State private var products: [Product.CreateDocument] = []
+    @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
     
     var body: some View {
@@ -113,7 +113,6 @@ struct AddInvoiceView: View {
             } label: {
                 Image(systemName: "v.circle")
             }
-
         }
     }
     

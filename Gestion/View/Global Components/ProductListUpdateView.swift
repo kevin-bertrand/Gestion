@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductListUpdateView: View {
     let sectionTitle: String
     @State private var numberOfProducts: [Int] = []
-    @Binding var products: [Product.CreateDocument]
+    @Binding var products: [Product.Informations]
     let category: ProductCategory
     
     var body: some View {
@@ -22,7 +22,7 @@ struct ProductListUpdateView: View {
                             Text(product.title)
                                 .font(.title2.bold())
                             Text("Quantity: \(product.quantity.twoDigitPrecision)")
-                            Text("Price: \(product.price.twoDigitPrecision) \(product.unity)")
+                            Text("Price: \(product.price.twoDigitPrecision) \(product.unity ?? "")")
                             Text("Total product: \((product.quantity * product.price).twoDigitPrecision) €")
                         }
                     }

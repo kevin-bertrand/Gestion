@@ -33,6 +33,8 @@ extension Notification {
         case invoicesGettingReference = "The invoice reference is downloaded"
         case invoicesCreated = "The invoice is created"
         case invoicesFailedCreated = "Cannot create the invoice"
+        case invoicesUpdateSuccess = "The invoice is updated"
+        case invoicesUpdateFailed = "The invoice update failed"
         
         // Client notifications
         case clientGettingList = "The list of clients is downloaded!"
