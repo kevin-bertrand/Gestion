@@ -40,24 +40,24 @@ struct EstimatePDF: View {
                         TotalSectionLine(section: "Services", total: estimate.totalServices)
                     }
                     
-                    if estimate.totalServices > 0 {
+                    if estimate.totalMaterials > 0 {
                         TableSectionTitle(title: "Matériels")
                         ForEach(estimate.products, id: \.title) { product in
                             if product.productCategory == .material {
                                 TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
                             }
                         }
-                        TotalSectionLine(section: "Matériels", total: estimate.totalServices)
+                        TotalSectionLine(section: "Matériels", total: estimate.totalMaterials)
                     }
                     
-                    if estimate.totalServices > 0 {
+                    if estimate.totalDivers > 0 {
                         TableSectionTitle(title: "Divers")
                         ForEach(estimate.products, id: \.title) { product in
                             if product.productCategory == .divers {
                                 TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
                             }
                         }
-                        TotalSectionLine(section: "Divers", total: estimate.totalServices)
+                        TotalSectionLine(section: "Divers", total: estimate.totalDivers)
                     }
                 }
                 
