@@ -46,7 +46,7 @@ struct SettingsView: View {
                 
                 Section {
                     NavigationLink {
-                        Label("Client list", systemImage: "person.3.fill")
+                        ClientListView()
                     } label: {
                         Label("Client list", systemImage: "person.3.fill")
                     }

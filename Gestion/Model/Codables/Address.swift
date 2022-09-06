@@ -18,4 +18,8 @@ struct Address: Codable {
     let latitude: Double
     let longitude: Double
     let comment: String?
+    
+    struct Id: Codable {
+        let id: String
+    }
 }

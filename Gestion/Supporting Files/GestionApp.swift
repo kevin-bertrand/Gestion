@@ -17,6 +17,7 @@ struct GestionApp: App {
     @StateObject private var revenuesController: RevenuesController
     @StateObject private var estimatesController: EstimatesController
     @StateObject private var invoicesController: InvoicesController
+    @StateObject private var clientController: ClientController
     
     // Initialization
     init() {
@@ -26,6 +27,7 @@ struct GestionApp: App {
         _revenuesController = StateObject(wrappedValue: RevenuesController(appController: appController))
         _estimatesController = StateObject(wrappedValue: EstimatesController(appController: appController))
         _invoicesController = StateObject(wrappedValue: InvoicesController(appController: appController))
+        _clientController = StateObject(wrappedValue: ClientController(appController: appController))
     }
     
     var body: some Scene {
@@ -51,6 +53,7 @@ struct GestionApp: App {
             .environmentObject(revenuesController)
             .environmentObject(estimatesController)
             .environmentObject(invoicesController)
+            .environmentObject(clientController)
             .preferredColorScheme(useDefaultColorScheme ? nil : (useDarkMode ? .dark : .light))
             .alert(isPresented: $appController.showAlertView) {
                 Alert(title: Text(appController.alertViewTitle), message: Text(appController.alertViewMessage), dismissButton: .default(Text("OK")))

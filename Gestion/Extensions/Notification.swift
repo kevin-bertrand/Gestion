@@ -31,6 +31,9 @@ extension Notification {
         case invoicesGettingOne = "The details for the invoice are downloaded!"
         case invoicesListDownloaded = "The list of invoices is downloaded!"
         
+        // Client notifications
+        case clientGettingList = "The list of clients is downloaded!"
+        
         // Getting the notification message
         var notificationMessage: String {
             return self.rawValue
