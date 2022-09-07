@@ -76,6 +76,12 @@ struct SettingsView: View {
                     } label: {
                         Label("Products", systemImage: "list.bullet.rectangle.fill")
                     }
+                    
+                    NavigationLink {
+                        PaymentListView()
+                    } label: {
+                        Label("Payments", systemImage: "creditcard.fill")
+                    }
                 } header: {
                     Text("Commpany settings")
                 }
