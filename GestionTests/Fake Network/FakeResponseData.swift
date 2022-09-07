@@ -72,14 +72,22 @@ final class FakeResponseData {
     
     enum DataFiles: String {
         case clientList = "ClientList"
+        
         case login = "Login"
+        
         case revenuesAllMonthsThisYear = "RevenuesAll"
         case revenuesThisMonth = "RevenuesMonth"
         case revenuesThisYear = "RevenuesYear"
+        
         case estimateReference = "EstimatesReference"
         case estimateThreeLatest = "EstimatesLatest"
         case estimateAll = "EstimatesAll"
         case estimateDetails = "EstimatesDetails"
+        
+        case invoiceReference = "InvoicesReference"
+        case invoiceThreeLatest = "InvoicesLatest"
+        case invoiceAll = "InvoicesAll"
+        case invoiceDetails = "InvoicesDetails"
     }
     
     enum SessionStatus {

@@ -1,0 +1,54 @@
+{
+    "id": "2FA270AD-7690-478D-B1EA-146372D921A5",
+    "limitPayementDate": 686829484.36110997,
+    "payment": {
+        "id": "D3D47F1A-E83F-4A25-B6B7-5BB2B6FC1D57",
+        "title": "Défauts",
+        "bic": "ABC",
+        "iban": "1234"
+    },
+    "grandTotal": 4000,
+    "isArchive": false,
+    "totalDivers": 0,
+    "totalServices": 4000,
+    "total": 4000,
+    "internalReference": "Test",
+    "object": "T’es",
+    "reduction": 0,
+    "products": [
+        {
+            "domain": "automation",
+            "quantity": 10,
+            "id": "2197DDC7-6188-4AC1-A89C-331DC58FACDD",
+            "price": 400,
+            "title": "Prestation à la journée",
+            "unity": "€",
+            "productCategory": "service"
+        }
+    ],
+    "reference": "F-202209-001",
+    "totalMaterials": 0,
+    "status": "inCreation",
+    "client": {
+        "phone": "0123456789",
+        "gender": "notDetermined",
+        "address": {
+            "city": "Paris",
+            "country": "France",
+            "longitude": 0,
+            "complement": "",
+            "id": "451FC61E-5D5F-48BE-8728-F0DE3B4AFB3C",
+            "latitude": 0,
+            "roadName": "Test ",
+            "streetNumber": "15",
+            "comment": "",
+            "zipCode": "75001"
+        },
+        "id": "4CEE6022-7886-4540-89EA-721F3885CA04",
+        "company": "Test",
+        "siret": "1234",
+        "email": "jon@doe.com",
+        "personType": "company",
+        "tva": "1234"
+    }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "status": "inCreation",
+    "reference": "F-202209-001",
+    "client": {
+      "company": "Test"
+    },
+    "id": "2FA270AD-7690-478D-B1EA-146372D921A5",
+    "limitPayementDate": 686829484.36110997,
+    "isArchive": false,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  },
+  {
+    "status": "payed",
+    "reference": "F-202209-002",
+    "client": {
+      "company": "Test"
+    },
+    "id": "D9B594B2-95DF-42EA-89A9-283F83795616",
+    "limitPayementDate": 686841041.96280289,
+    "isArchive": true,
+    "grandTotal": 4000
+  }
+]
