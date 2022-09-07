@@ -58,7 +58,7 @@ struct SettingsView: View {
                             }
                         }.navigationTitle("Categories")
                     } label: {
-                        Label("Articles categories", systemImage: "folder.fill")
+                        Label("Products categories", systemImage: "folder.fill")
                     }
                     
                     NavigationLink {
@@ -68,13 +68,13 @@ struct SettingsView: View {
                             }
                         }.navigationTitle("Domains")
                     } label: {
-                        Label("Article domain", systemImage: "tray.2.fill")
+                        Label("Products domain", systemImage: "tray.2.fill")
                     }
                     
                     NavigationLink {
-                        Label("Articles", systemImage: "list.bullet.rectangle.fill")
+                        ProductListView()
                     } label: {
-                        Label("Articles", systemImage: "list.bullet.rectangle.fill")
+                        Label("Products", systemImage: "list.bullet.rectangle.fill")
                     }
                 } header: {
                     Text("Commpany settings")

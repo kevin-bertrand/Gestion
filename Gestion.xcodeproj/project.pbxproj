@@ -96,6 +96,7 @@
 		06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */; };
 		06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18728C23A6600B3F37A /* EstimateDetail.swift */; };
 		06F5C18B28C23C6800B3F37A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06F5C18A28C23C6800B3F37A /* Alamofire */; };
+		06FAE27E28C87BBB0058DCE5 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +209,7 @@
 		06F5C18328C1FF9000B3F37A /* InvoiceListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListTileView.swift; sourceTree = "<group>"; };
 		06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateListTileView.swift; sourceTree = "<group>"; };
 		06F5C18728C23A6600B3F37A /* EstimateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateDetail.swift; sourceTree = "<group>"; };
+		06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,7 +397,6 @@
 		06C349B328BDE959004D0960 /* Global Components */ = {
 			isa = PBXGroup;
 			children = (
-				06D3580528C75B900093C564 /* Product Components */,
 				06D3580328C75B700093C564 /* PDF Components */,
 				06C349B428BDE974004D0960 /* ButtonCustom.swift */,
 				06C349B828BDEF28004D0960 /* TextFieldCustom.swift */,
@@ -504,6 +505,7 @@
 		06EFE67528BE2C4B0052BEA0 /* AppPages */ = {
 			isa = PBXGroup;
 			children = (
+				06FAE27C28C87AC80058DCE5 /* ProductsViews */,
 				06D3580B28C792640093C564 /* ClientViews */,
 				06ACC36F28BF56A80012166D /* InvoicesSubview */,
 				066F407128BF3C81000718D7 /* EstimatesSubview */,
@@ -532,6 +534,15 @@
 				06D357F928C73B470093C564 /* SelectProductView.swift */,
 			);
 			path = "Global Views";
+			sourceTree = "<group>";
+		};
+		06FAE27C28C87AC80058DCE5 /* ProductsViews */ = {
+			isa = PBXGroup;
+			children = (
+				06D3580528C75B900093C564 /* Product Components */,
+				06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */,
+			);
+			path = ProductsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -742,6 +753,7 @@
 				06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */,
 				06D357F828C7260C0093C564 /* ClientDetailsView.swift in Sources */,
 				06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */,
+				06FAE27E28C87BBB0058DCE5 /* ProductListView.swift in Sources */,
 				0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */,
 				06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */,
 				06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */,
