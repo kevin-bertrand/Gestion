@@ -29,6 +29,7 @@
 		06180BEC28C8DEF600E79AC4 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BEB28C8DEF600E79AC4 /* FakeResponseData.swift */; };
 		06180BEE28C8E62800E79AC4 /* FakeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BED28C8E62800E79AC4 /* FakeNetworkManager.swift */; };
 		06180BF128C8E89200E79AC4 /* ClientList.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BF028C8E89200E79AC4 /* ClientList.json */; };
+		06180BF328C8F10600E79AC4 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BF228C8F10600E79AC4 /* Login.json */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		0661ABF028BD50CD00E88116 /* GestionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABEF28BD50CD00E88116 /* GestionUITests.swift */; };
@@ -161,6 +162,7 @@
 		06180BEB28C8DEF600E79AC4 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		06180BED28C8E62800E79AC4 /* FakeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkManager.swift; sourceTree = "<group>"; };
 		06180BF028C8E89200E79AC4 /* ClientList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ClientList.json; sourceTree = "<group>"; };
+		06180BF228C8F10600E79AC4 /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				06180BF028C8E89200E79AC4 /* ClientList.json */,
+				06180BF228C8F10600E79AC4 /* Login.json */,
 			);
 			path = FakeResponses;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06180BF128C8E89200E79AC4 /* ClientList.json in Resources */,
+				06180BF328C8F10600E79AC4 /* Login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,30 +6,103 @@
 //
 
 import XCTest
+@testable import Gestion
 
 final class UserTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var fakeNetworkManager: FakeNetworkManager!
+    var userManager: UserManager!
+    
+    override func setUp() {
+        super.setUp()
+        fakeNetworkManager = FakeNetworkManager()
+        userManager = UserManager(networkManager: fakeNetworkManager)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    // MARK: Connect user
+    /// Success login with correct data
+    func testGivenLoginSuccessWithCorrectData_WhenConnectUser_ThenGettingError() {
+        // Given
+        configureManager(correctData: .login, response: .status200, status: .correctData)
+        
+        // When
+        userManager.login(user: userToConnect())
+        
+        // Then
+        XCTAssertNotNil(userManager.connectedUser)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    /// Success login with incorrect data
+    func testGivenLoginSuccessWithIncorrectData_WhenConnectUser_ThenGettingError() {
+        // Given
+        configureManager(correctData: nil, response: .status200, status: .incorrectData)
+        
+        // When
+        userManager.login(user: userToConnect())
+        
+        // Then
+        XCTAssertNil(userManager.connectedUser)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    /// Wrong credentials
+    func testGivenWrongCredentials_WhenConnectUser_ThenGettingError() {
+        // Given
+        configureManager(correctData: .login, response: .status401, status: .correctData)
+        
+        // When
+        userManager.login(user: userToConnect())
+        
+        // Then
+        XCTAssertNil(userManager.connectedUser)
     }
-
+    
+    /// Unknown status
+    func testGivenUnknownStatusReceived_WhenConnectUser_ThenGettingError() {
+        // Given
+        configureManager(correctData: .login, response: .status0, status: .correctData)
+        
+        // When
+        userManager.login(user: userToConnect())
+        
+        // Then
+        XCTAssertNil(userManager.connectedUser)
+    }
+    
+    /// Server error
+    func testGivenServerError_WhenConnectUser_ThenGettingError() {
+        // Given
+        configureManager(correctData: nil, response: .status0, status: .error)
+        
+        // When
+        userManager.login(user: userToConnect())
+        
+        // Then
+        XCTAssertNil(userManager.connectedUser)
+    }
+    
+    // MARK: Disconnect
+    func testGivenUserDisconnected_WhenDisconnect_ThenConnectedUserFieldShouldBeNil() {
+        // Given (Connect user first)
+        configureManager(correctData: .login, response: .status200, status: .correctData)
+        userManager.login(user: userToConnect())
+        XCTAssertNotNil(userManager.connectedUser)
+        
+        // When
+        userManager.disconnectUser()
+        
+        // Then
+        XCTAssertNil(userManager.connectedUser)
+    }
+    
+    // MARK: Private
+    /// Configure the fake network manager
+    private func configureManager(correctData: FakeResponseData.DataFiles?, response: FakeResponseData.Response, status: FakeResponseData.SessionStatus) {
+        fakeNetworkManager.correctData = correctData
+        fakeNetworkManager.status = status
+        fakeNetworkManager.response = response
+    }
+    
+    /// Getting user to connect
+    private func userToConnect() -> User.Login {
+        return .init(email: "", password: "")
+    }
 }

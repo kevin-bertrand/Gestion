@@ -78,6 +78,7 @@ final class FakeResponseData {
     
     enum DataFiles: String {
         case clientList = "ClientList"
+        case login = "Login"
     }
     
     enum SessionStatus {
