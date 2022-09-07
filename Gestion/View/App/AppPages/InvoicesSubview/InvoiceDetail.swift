@@ -42,6 +42,21 @@ struct InvoiceDetail: View {
                 Text("Client informations")
             }
             
+            Section("Payment information") {
+                NavigationLink {
+                    Text("Select payment method")
+                } label: {
+                    Text("Select payment method")
+                        .foregroundColor(.accentColor)
+                }
+
+                if let payment = invoicesController.selectedInvoice.payment {
+                    Text("Title: \(payment.title)")
+                    Text("BIC: \(payment.bic)")
+                    Text("IBAN: \(payment.iban)")
+                }
+            }
+            
             Section {
                 Label("Limit: \(invoicesController.selectedInvoice.limitPayementDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(invoicesController.selectedInvoice.status.rawValue)", systemImage: "list.triangle")
@@ -71,6 +86,7 @@ struct InvoiceDetail: View {
                                                               reduction: invoicesController.selectedInvoice.reduction,
                                                               grandTotal: invoicesController.selectedInvoice.grandTotal,
                                                               status: invoicesController.selectedInvoice.status,
+                                                              paymentID: invoicesController.selectedInvoice.payment?.id,
                                                               products: []),
                                       client: .init(id: invoicesController.selectedInvoice.client.id,
                                                     firstname: invoicesController.selectedInvoice.client.firstname,

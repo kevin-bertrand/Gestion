@@ -37,6 +37,7 @@ struct Invoice {
         var grandTotal: Double
         var status: InvoiceStatus
         var limitPayementDate: String?
+        var paymentID: UUID?
         var products: [Product.UpdateDocument]
     }
     
@@ -66,5 +67,6 @@ struct Invoice {
         let client: Client.Informations
         let products: [Product.Informations]
         let isArchive: Bool
+        let payment: Payment?
     }
 }

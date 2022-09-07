@@ -10,6 +10,7 @@
 		06180BC028C8832000E79AC4 /* ProductInformationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BBF28C8832000E79AC4 /* ProductInformationTextField.swift */; };
 		06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */; };
 		06180BC628C8919B00E79AC4 /* ProductCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC528C8919B00E79AC4 /* ProductCreateView.swift */; };
+		06180BC828C89FCA00E79AC4 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC728C89FCA00E79AC4 /* Payment.swift */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		0661ABE628BD50CD00E88116 /* GestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABE528BD50CD00E88116 /* GestionTests.swift */; };
@@ -124,6 +125,7 @@
 		06180BBF28C8832000E79AC4 /* ProductInformationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformationTextField.swift; sourceTree = "<group>"; };
 		06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUpdateView.swift; sourceTree = "<group>"; };
 		06180BC528C8919B00E79AC4 /* ProductCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCreateView.swift; sourceTree = "<group>"; };
+		06180BC728C89FCA00E79AC4 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				06D1A15E28BFB4B9002533F5 /* Product.swift */,
 				06AA687728C0A9DA0075B635 /* User.swift */,
 				06F5C17528C0D0BF00B3F37A /* Revenues.swift */,
+				06180BC728C89FCA00E79AC4 /* Payment.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */,
 				06D357F828C7260C0093C564 /* ClientDetailsView.swift in Sources */,
 				06C349BB28BDF71E004D0960 /* SignupSubview.swift in Sources */,
+				06180BC828C89FCA00E79AC4 /* Payment.swift in Sources */,
 				06FAE27E28C87BBB0058DCE5 /* ProductListView.swift in Sources */,
 				0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */,
 				06EFE68428BE59830052BEA0 /* PieSlideChart.swift in Sources */,
