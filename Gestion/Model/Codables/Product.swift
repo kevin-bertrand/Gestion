@@ -8,19 +8,19 @@
 import Foundation
 
 struct Product: Codable {
-    let id: UUID
-    let productCategory: ProductCategory
-    let title: String
-    let domain: Domain
-    let unity: String
-    let price: Double
+    var id: UUID
+    var productCategory: ProductCategory
+    var title: String
+    var domain: Domain
+    var unity: String
+    var price: Double
     
-    struct Create: Codable {
+    struct CreateDocument: Codable {
         let productID: UUID
         let quantity: Double
     }
     
-    struct Update: Codable {
+    struct UpdateDocument: Codable {
         let productID: UUID
         let quantity: Double
     }
@@ -33,5 +33,13 @@ struct Product: Codable {
         let domain: Domain
         let productCategory: ProductCategory
         let price: Double
+    }
+    
+    struct Create: Codable {
+        var productCategory: ProductCategory
+        var title: String
+        var domain: Domain
+        var unity: String
+        var price: Double
     }
 }

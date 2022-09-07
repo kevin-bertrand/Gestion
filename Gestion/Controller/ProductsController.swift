@@ -16,6 +16,12 @@ final class ProductsController: ObservableObject {
     // Product list
     @Published var products: [Product] = []
     
+    // Product update
+    @Published var productIsUpdated: Bool = false
+    
+    // Product create
+    @Published var productIsCreated: Bool = false
+    
     // MARK: Methods
     /// Getting all products
     func gettingProductList(for user: User?) {
@@ -24,12 +30,34 @@ final class ProductsController: ObservableObject {
         productManager.gettingProductList(for: user)
     }
     
+    /// Update product
+    func updateProduct(_ product: Product, by user: User?) {
+        guard let user = user else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Update in progress...")
+        
+        productManager.updateProduct(product, by: user)
+    }
+    
+    /// Create product
+    func createProduct(_ product: Product.Create, by user: User?) {
+        guard let user = user else { return }
+        
+        appController.setLoadingInProgress(withMessage: "Creating in progress...")
+        
+        productManager.create(product, by: user)
+    }
+ 
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
         
         // Configure notifications
         configureNotification(for: Notification.Desyntic.productsGettingList.notificationName)
+        configureNotification(for: Notification.Desyntic.productsUpdateSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.productsUpdateError.notificationName)
+        configureNotification(for: Notification.Desyntic.productsCreateSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.productsCreateError.notificationName)
     }
     
     // MARK: Private
@@ -45,13 +73,20 @@ final class ProductsController: ObservableObject {
     /// Initialise all notifications for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let _ = notification.userInfo?["message"] as? String {
+           let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
                 switch notificationName {
                 case Notification.Desyntic.productsGettingList.notificationName:
                     self.products = self.productManager.products
+                case Notification.Desyntic.productsUpdateSuccess.notificationName:
+                    self.productIsUpdated = true
+                case Notification.Desyntic.productsUpdateError.notificationName,
+                    Notification.Desyntic.productsCreateError.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.productsCreateSuccess.notificationName:
+                    self.productIsCreated = true
                 default: break
                 }
             }

@@ -21,7 +21,7 @@ struct Estimate {
         var status: EstimateStatus
         var limitValidifyDate: String?
         var clientID: UUID
-        var products: [Product.Create]
+        var products: [Product.CreateDocument]
     }
     
     struct Update: Codable {
@@ -37,7 +37,7 @@ struct Estimate {
         var grandTotal: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
-        var products: [Product.Update]
+        var products: [Product.UpdateDocument]
     }
     
     struct Summary: Codable {

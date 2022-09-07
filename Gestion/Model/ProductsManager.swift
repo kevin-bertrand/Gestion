@@ -32,6 +32,51 @@ final class ProductManager {
         }
     }
     
+    /// Update product
+    func updateProduct(_ product: Product, by user: User) {
+        var params = NetworkConfigurations.productUpdate.urlParams
+        params.append("\(product.id)")
+        
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.productUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: product) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 200:
+                    Notification.Desyntic.productsUpdateSuccess.sendNotification()
+                case 401:
+                    Notification.Desyntic.productsUpdateError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
+    /// Create product
+    func create(_ product: Product.Create, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.productAdd.urlParams,
+                               method: NetworkConfigurations.productAdd.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: product) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 201:
+                    Notification.Desyntic.productsCreateSuccess.sendNotification()
+                case 401:
+                    Notification.Desyntic.productsCreateError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

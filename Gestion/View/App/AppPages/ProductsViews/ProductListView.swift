@@ -17,7 +17,7 @@ struct ProductListView: View {
                 ForEach(productsController.products, id: \.id) { product in
                     if product.productCategory == .material {
                         NavigationLink {
-                            Text(product.title)
+                            ProductDetailsView(product: product)
                         } label: {
                             ProductTileView(title: product.title, price: product.price, unity: product.unity)
                         }
@@ -29,7 +29,7 @@ struct ProductListView: View {
                 ForEach(productsController.products, id: \.id) { product in
                     if product.productCategory == .service {
                         NavigationLink {
-                            Text(product.title)
+                            ProductDetailsView(product: product)
                         } label: {
                             ProductTileView(title: product.title, price: product.price, unity: product.unity)
                         }
@@ -41,7 +41,7 @@ struct ProductListView: View {
                 ForEach(productsController.products, id: \.id) { product in
                     if product.productCategory == .divers {
                         NavigationLink {
-                            Text(product.title)
+                            ProductDetailsView(product: product)
                         } label: {
                             ProductTileView(title: product.title, price: product.price, unity: product.unity)
                         }
@@ -55,7 +55,7 @@ struct ProductListView: View {
         }
         .toolbar {
             NavigationLink {
-                Text("Add product")
+                ProductCreateView()
             } label: {
                 Image(systemName: "plus.circle")
             }

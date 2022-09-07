@@ -21,7 +21,7 @@ struct Invoice {
         var status: InvoiceStatus
         var limitPayementDate: String
         var clientID: UUID
-        var products: [Product.Create]
+        var products: [Product.CreateDocument]
     }
     
     struct Update: Codable {
@@ -37,7 +37,7 @@ struct Invoice {
         var grandTotal: Double
         var status: InvoiceStatus
         var limitPayementDate: String?
-        var products: [Product.Update]
+        var products: [Product.UpdateDocument]
     }
     
     struct Summary: Codable {

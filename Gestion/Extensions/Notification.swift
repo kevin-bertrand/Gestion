@@ -52,6 +52,10 @@ extension Notification {
         
         // Products notifications
         case productsGettingList = "Product list is downloaded!"
+        case productsUpdateSuccess = "The product is updated"
+        case productsUpdateError = "The product cannot be update"
+        case productsCreateSuccess = "The new product is created"
+        case productsCreateError = "The new product cannot be created!"
         
         // Getting the notification message
         var notificationMessage: String {

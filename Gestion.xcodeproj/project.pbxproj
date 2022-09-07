@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06180BC028C8832000E79AC4 /* ProductInformationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BBF28C8832000E79AC4 /* ProductInformationTextField.swift */; };
+		06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */; };
+		06180BC628C8919B00E79AC4 /* ProductCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC528C8919B00E79AC4 /* ProductCreateView.swift */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		0661ABE628BD50CD00E88116 /* GestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABE528BD50CD00E88116 /* GestionTests.swift */; };
@@ -97,6 +100,7 @@
 		06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F5C18728C23A6600B3F37A /* EstimateDetail.swift */; };
 		06F5C18B28C23C6800B3F37A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06F5C18A28C23C6800B3F37A /* Alamofire */; };
 		06FAE27E28C87BBB0058DCE5 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */; };
+		06FAE28028C880520058DCE5 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAE27F28C880520058DCE5 /* ProductDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +121,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06180BBF28C8832000E79AC4 /* ProductInformationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformationTextField.swift; sourceTree = "<group>"; };
+		06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUpdateView.swift; sourceTree = "<group>"; };
+		06180BC528C8919B00E79AC4 /* ProductCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCreateView.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -210,6 +217,7 @@
 		06F5C18528C2274A00B3F37A /* EstimateListTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateListTileView.swift; sourceTree = "<group>"; };
 		06F5C18728C23A6600B3F37A /* EstimateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimateDetail.swift; sourceTree = "<group>"; };
 		06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		06FAE27F28C880520058DCE5 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				06D357FF28C741D80093C564 /* ProductTileView.swift */,
+				06180BBF28C8832000E79AC4 /* ProductInformationTextField.swift */,
 			);
 			path = "Product Components";
 			sourceTree = "<group>";
@@ -541,6 +550,9 @@
 			children = (
 				06D3580528C75B900093C564 /* Product Components */,
 				06FAE27D28C87BBB0058DCE5 /* ProductListView.swift */,
+				06FAE27F28C880520058DCE5 /* ProductDetailsView.swift */,
+				06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */,
+				06180BC528C8919B00E79AC4 /* ProductCreateView.swift */,
 			);
 			path = ProductsViews;
 			sourceTree = "<group>";
@@ -719,12 +731,14 @@
 				06AA687228C09D940075B635 /* String.swift in Sources */,
 				06AA687028C091FC0075B635 /* UserController.swift in Sources */,
 				06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */,
+				06180BC028C8832000E79AC4 /* ProductInformationTextField.swift in Sources */,
 				06D1A14D28BFAA96002533F5 /* Network.swift in Sources */,
 				06AA687C28C0ACCD0075B635 /* Permissions.swift in Sources */,
 				06AA687A28C0AC620075B635 /* Position.swift in Sources */,
 				06AA687428C09E5D0075B635 /* AppController.swift in Sources */,
 				06D1A16528BFB50A002533F5 /* ProductCategory.swift in Sources */,
 				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
+				06FAE28028C880520058DCE5 /* ProductDetailsView.swift in Sources */,
 				06D1A15228BFB27C002533F5 /* Client.swift in Sources */,
 				06D3580F28C793650093C564 /* ClientInformationTextField.swift in Sources */,
 				06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */,
@@ -732,6 +746,7 @@
 				06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */,
 				06D1A15928BFB31D002533F5 /* Estimate.swift in Sources */,
 				06D1A14B28BFAA51002533F5 /* NetworkManager.swift in Sources */,
+				06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */,
 				066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */,
 				06D1A15028BFB19B002533F5 /* Address.swift in Sources */,
 				06D357F028C719EC0093C564 /* ClientManager.swift in Sources */,
@@ -760,6 +775,7 @@
 				066F407028BEA1C3000718D7 /* TileView.swift in Sources */,
 				06F5C17628C0D0BF00B3F37A /* Revenues.swift in Sources */,
 				06D1A15728BFB2F7002533F5 /* Gender.swift in Sources */,
+				06180BC628C8919B00E79AC4 /* ProductCreateView.swift in Sources */,
 				06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */,
 				06D1A15528BFB2CE002533F5 /* PersonType.swift in Sources */,
 				06D3580928C782A60093C564 /* UpdateEstimateView.swift in Sources */,
