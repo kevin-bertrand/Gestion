@@ -17,6 +17,7 @@ struct UpdateInvoiceView: View {
     @State var client: Client.Informations
     @State private var limitDate: Date = Date()
     @State var products: [Product.Informations] = []
+    @State private var payment: Payment = Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
     
     var body: some View {
         Form {
@@ -37,6 +38,19 @@ struct UpdateInvoiceView: View {
                 Text("Informations")
             }
             
+            Section("Payment information") {
+                NavigationLink {
+                    SelectPaymentListView(selectedPayment: $payment)
+                } label: {
+                    Text("Select payment method")
+                        .foregroundColor(.accentColor)
+                }
+                
+                Text("Title: \(payment.title)")
+                Text("BIC: \(payment.bic)")
+                Text("IBAN: \(payment.iban)")
+            }
+            
             Section {
                 NavigationLink {
                     SelectProductView(selectedProducts: $products)
@@ -55,7 +69,6 @@ struct UpdateInvoiceView: View {
             ProductListUpdateView(sectionTitle: "Divers",
                                   products: $products,
                                   category: .divers)
-            
             
             Section {
                 Text("Total services: \(invoice.totalServices.twoDigitPrecision) €")
@@ -89,9 +102,18 @@ struct UpdateInvoiceView: View {
         .navigationTitle(invoice.reference)
         .toolbar {
             Button {
+                if payment.id != UUID(uuid: UUID_NULL) {
+                    invoice.paymentID = payment.id
+                }
+                
                 invoiceController.update(invoice: invoice, by: userController.connectedUser)
             } label: {
                 Image(systemName: "v.circle")
+            }
+        }
+        .onAppear {
+            if let oldPayment = invoiceController.selectedInvoice.payment {
+                payment = oldPayment
             }
         }
     }

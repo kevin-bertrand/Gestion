@@ -11,6 +11,10 @@
 		06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */; };
 		06180BC628C8919B00E79AC4 /* ProductCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC528C8919B00E79AC4 /* ProductCreateView.swift */; };
 		06180BC828C89FCA00E79AC4 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC728C89FCA00E79AC4 /* Payment.swift */; };
+		06180BCB28C8BB1400E79AC4 /* SelectPaymentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BCA28C8BB1400E79AC4 /* SelectPaymentListView.swift */; };
+		06180BCD28C8BB7300E79AC4 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BCC28C8BB7300E79AC4 /* PaymentController.swift */; };
+		06180BD128C8BE9200E79AC4 /* PaymentTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BD028C8BE9200E79AC4 /* PaymentTileView.swift */; };
+		06180BD328C8C1CC00E79AC4 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BD228C8C1CC00E79AC4 /* PaymentManager.swift */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		0661ABE628BD50CD00E88116 /* GestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABE528BD50CD00E88116 /* GestionTests.swift */; };
@@ -126,6 +130,10 @@
 		06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUpdateView.swift; sourceTree = "<group>"; };
 		06180BC528C8919B00E79AC4 /* ProductCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCreateView.swift; sourceTree = "<group>"; };
 		06180BC728C89FCA00E79AC4 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		06180BCA28C8BB1400E79AC4 /* SelectPaymentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentListView.swift; sourceTree = "<group>"; };
+		06180BCC28C8BB7300E79AC4 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
+		06180BD028C8BE9200E79AC4 /* PaymentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTileView.swift; sourceTree = "<group>"; };
+		06180BD228C8C1CC00E79AC4 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -248,6 +256,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06180BC928C8BB0600E79AC4 /* PaymentViews */ = {
+			isa = PBXGroup;
+			children = (
+				06180BCF28C8BE8400E79AC4 /* Payment Components */,
+				06180BCA28C8BB1400E79AC4 /* SelectPaymentListView.swift */,
+			);
+			path = PaymentViews;
+			sourceTree = "<group>";
+		};
+		06180BCF28C8BE8400E79AC4 /* Payment Components */ = {
+			isa = PBXGroup;
+			children = (
+				06180BD028C8BE9200E79AC4 /* PaymentTileView.swift */,
+			);
+			path = "Payment Components";
+			sourceTree = "<group>";
+		};
 		0661ABC828BD50CC00E88116 = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +343,7 @@
 				06F5C17928C0EA9900B3F37A /* EstimatesManager.swift */,
 				06F5C17F28C114F300B3F37A /* InvoicesManager.swift */,
 				06D3580128C744540093C564 /* ProductsManager.swift */,
+				06180BD228C8C1CC00E79AC4 /* PaymentManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +370,7 @@
 				06F5C17D28C114A800B3F37A /* InvoicesController.swift */,
 				06D357F128C71B4E0093C564 /* ClientController.swift */,
 				06D357FB28C73B620093C564 /* ProductsController.swift */,
+				06180BCC28C8BB7300E79AC4 /* PaymentController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -517,6 +544,7 @@
 		06EFE67528BE2C4B0052BEA0 /* AppPages */ = {
 			isa = PBXGroup;
 			children = (
+				06180BC928C8BB0600E79AC4 /* PaymentViews */,
 				06FAE27C28C87AC80058DCE5 /* ProductsViews */,
 				06D3580B28C792640093C564 /* ClientViews */,
 				06ACC36F28BF56A80012166D /* InvoicesSubview */,
@@ -696,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06180BD328C8C1CC00E79AC4 /* PaymentManager.swift in Sources */,
 				06AA687828C0A9DA0075B635 /* User.swift in Sources */,
 				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,
 				06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */,
@@ -715,6 +744,7 @@
 				06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */,
 				06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */,
 				06F5C17A28C0EA9900B3F37A /* EstimatesManager.swift in Sources */,
+				06180BD128C8BE9200E79AC4 /* PaymentTileView.swift in Sources */,
 				06EFE67C28BE4D8E0052BEA0 /* EstimatesView.swift in Sources */,
 				06ACC36828BF52110012166D /* ClientTile.swift in Sources */,
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
@@ -735,11 +765,13 @@
 				06AA687028C091FC0075B635 /* UserController.swift in Sources */,
 				06F5C17E28C114A800B3F37A /* InvoicesController.swift in Sources */,
 				06180BC028C8832000E79AC4 /* ProductInformationTextField.swift in Sources */,
+				06180BCB28C8BB1400E79AC4 /* SelectPaymentListView.swift in Sources */,
 				06D1A14D28BFAA96002533F5 /* Network.swift in Sources */,
 				06AA687C28C0ACCD0075B635 /* Permissions.swift in Sources */,
 				06AA687A28C0AC620075B635 /* Position.swift in Sources */,
 				06AA687428C09E5D0075B635 /* AppController.swift in Sources */,
 				06D1A16528BFB50A002533F5 /* ProductCategory.swift in Sources */,
+				06180BCD28C8BB7300E79AC4 /* PaymentController.swift in Sources */,
 				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
 				06FAE28028C880520058DCE5 /* ProductDetailsView.swift in Sources */,
 				06D1A15228BFB27C002533F5 /* Client.swift in Sources */,

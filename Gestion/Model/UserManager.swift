@@ -23,6 +23,7 @@ final class UserManager {
                let data = data {
                 switch statusCode {
                 case 200:
+                    print("connected")
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
                         self.connectedUser = user
                         Notification.Desyntic.loginSuccess.sendNotification()

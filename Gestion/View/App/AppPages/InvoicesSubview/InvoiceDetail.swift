@@ -43,13 +43,6 @@ struct InvoiceDetail: View {
             }
             
             Section("Payment information") {
-                NavigationLink {
-                    Text("Select payment method")
-                } label: {
-                    Text("Select payment method")
-                        .foregroundColor(.accentColor)
-                }
-
                 if let payment = invoicesController.selectedInvoice.payment {
                     Text("Title: \(payment.title)")
                     Text("BIC: \(payment.bic)")

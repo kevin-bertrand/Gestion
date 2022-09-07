@@ -57,6 +57,9 @@ extension Notification {
         case productsCreateSuccess = "The new product is created"
         case productsCreateError = "The new product cannot be created!"
         
+        // Payment notifications
+        case paymentGettingList = "Payment list downloaded"
+        
         // Getting the notification message
         var notificationMessage: String {
             return self.rawValue
