@@ -1,0 +1,24 @@
+[
+  {
+    "phone": "0123456789",
+    "gender": "notDetermined",
+    "address": {
+      "city": "Paris",
+      "country": "France",
+      "id": "451FC61E-5D5F-48BE-8728-F0DE3B4AFB3C",
+      "complement": "",
+      "longitude": 0,
+      "latitude": 0,
+      "roadName": "Devs Avenues",
+      "streetNumber": "15",
+      "zipCode": "75001",
+      "comment": ""
+    },
+    "id": "4CEE6022-7886-4540-89EA-721F3885CA04",
+    "company": "Devs",
+    "siret": "1234",
+    "email": "contact@devs.com ",
+    "personType": "company",
+    "tva": "1234"
+  }
+]

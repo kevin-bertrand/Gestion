@@ -67,7 +67,7 @@ final class ClientManager {
                                body: client) { _, response, error in
             if let statusCode = response?.statusCode {
                 switch statusCode{
-                case 200:
+                case 201:
                     Notification.Desyntic.clientCreateSuccess.sendNotification()
                 case 401:
                     Notification.Desyntic.clientCreateError.sendNotification()
