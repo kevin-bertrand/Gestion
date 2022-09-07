@@ -32,6 +32,27 @@ final class PaymentManager {
         }
     }
     
+    /// Update payment method
+    func update(method: Payment, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.paymentUpdate.urlParams,
+                               method: NetworkConfigurations.paymentUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: method) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 200:
+                    Notification.Desyntic.paymentUpdateSuccess.sendNotification()
+                case 401, 406:
+                    Notification.Desyntic.paymentUpdateError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

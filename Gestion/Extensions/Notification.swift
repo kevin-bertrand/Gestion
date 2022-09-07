@@ -59,6 +59,8 @@ extension Notification {
         
         // Payment notifications
         case paymentGettingList = "Payment list downloaded"
+        case paymentUpdateSuccess = "The update of the payment is a success"
+        case paymentUpdateError = "The update of the payment could not be done!"
         
         // Getting the notification message
         var notificationMessage: String {

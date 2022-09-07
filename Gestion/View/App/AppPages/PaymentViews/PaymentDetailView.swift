@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PaymentDetailView: View {
-    let payment: Payment
+    @State var payment: Payment
     
     var body: some View {
         Form {
@@ -21,7 +21,7 @@ struct PaymentDetailView: View {
         .navigationTitle("Details")
         .toolbar {
             NavigationLink {
-                
+                PaymentUpdateView(payment: $payment)
             } label: {
                 Image(systemName: "pencil.circle")
             }

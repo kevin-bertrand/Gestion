@@ -16,6 +16,9 @@ final class PaymentController: ObservableObject {
     // Payment listing
     @Published var payments: [Payment] = []
     
+    // Payment update
+    @Published var paymentIsUpdated: Bool = false
+    
     // MARK: Methods
     /// Get all methods
     func gettingAllMethods(by user: User?) {
@@ -26,12 +29,21 @@ final class PaymentController: ObservableObject {
         paymentManager.gettingPaymentList(by: user)
     }
     
+    /// Update payment method
+    func update(method: Payment, by user: User?) {
+        guard let user = user else { return }
+        appController.setLoadingInProgress(withMessage: "Updating in progress...")
+        paymentManager.update(method: method, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
         
         // Configure notifications
         configureNotification(for: Notification.Desyntic.paymentGettingList.notificationName)
+        configureNotification(for: Notification.Desyntic.paymentUpdateError.notificationName)
+        configureNotification(for: Notification.Desyntic.paymentUpdateSuccess.notificationName)
     }
     
     // MARK: Private
@@ -47,13 +59,17 @@ final class PaymentController: ObservableObject {
     /// Initialise all notifications for this controller
     @objc private func processNotification(_ notification: Notification) {
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
-           let _ = notification.userInfo?["message"] as? String {
+           let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {
                 self.appController.resetLoadingInProgress()
                 
                 switch notificationName {
                 case Notification.Desyntic.paymentGettingList.notificationName:
                     self.payments = self.paymentManager.payments
+                case Notification.Desyntic.paymentUpdateSuccess.notificationName:
+                    self.paymentIsUpdated = true
+                case Notification.Desyntic.paymentUpdateError.notificationName:
+                    self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
                 }
             }

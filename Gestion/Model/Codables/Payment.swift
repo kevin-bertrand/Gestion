@@ -9,7 +9,7 @@ import Foundation
 
 struct Payment: Codable {
     let id: UUID
-    let title: String
-    let iban: String
-    let bic: String
+    var title: String
+    var iban: String
+    var bic: String
 }
