@@ -1,0 +1,48 @@
+{
+    "id": "AF05DA80-8CD4-4A0C-BF0F-A6E11FD039A3",
+    "limitValidityDate": 686051820,
+    "grandTotal": 4000,
+    "isArchive": true,
+    "totalDivers": 0,
+    "totalServices": 4000,
+    "total": 4000,
+    "internalReference": "Test",
+    "object": "T’es",
+    "reduction": 0,
+    "products": [
+        {
+            "domain": "automation",
+            "quantity": 10,
+            "id": "2197DDC7-6188-4AC1-A89C-331DC58FACDD",
+            "price": 400,
+            "title": "Prestation à la journée",
+            "unity": "€",
+            "productCategory": "service"
+        }
+    ],
+    "reference": "D-202209-001",
+    "totalMaterials": 0,
+    "status": "accepted",
+    "client": {
+        "phone": "0123456789",
+        "gender": "notDetermined",
+        "address": {
+            "city": "Paris",
+            "country": "France",
+            "id": "451FC61E-5D5F-48BE-8728-F0DE3B4AFB3C",
+            "complement": "",
+            "longitude": 0,
+            "latitude": 0,
+            "roadName": "rest",
+            "streetNumber": "15",
+            "zipCode": "75001",
+            "comment": ""
+        },
+        "id": "4CEE6022-7886-4540-89EA-721F3885CA04",
+        "company": "Test",
+        "siret": "1234",
+        "email": "jon@doe.com ",
+        "personType": "company",
+        "tva": "1234"
+    }
+}

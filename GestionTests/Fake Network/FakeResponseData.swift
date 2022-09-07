@@ -76,6 +76,10 @@ final class FakeResponseData {
         case revenuesAllMonthsThisYear = "RevenuesAll"
         case revenuesThisMonth = "RevenuesMonth"
         case revenuesThisYear = "RevenuesYear"
+        case estimateReference = "EstimatesReference"
+        case estimateThreeLatest = "EstimatesLatest"
+        case estimateAll = "EstimatesAll"
+        case estimateDetails = "EstimatesDetails"
     }
     
     enum SessionStatus {

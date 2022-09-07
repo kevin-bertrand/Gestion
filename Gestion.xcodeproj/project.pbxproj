@@ -33,6 +33,10 @@
 		06180BF528C8F3A200E79AC4 /* RevenuesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BF428C8F3A200E79AC4 /* RevenuesAll.json */; };
 		06180BF728C8F3F300E79AC4 /* RevenuesYear.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BF628C8F3F300E79AC4 /* RevenuesYear.json */; };
 		06180BF928C8F40600E79AC4 /* RevenuesMonth.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BF828C8F40600E79AC4 /* RevenuesMonth.json */; };
+		06180BFB28C8FBFB00E79AC4 /* EstimatesReference.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BFA28C8FBFB00E79AC4 /* EstimatesReference.json */; };
+		06180BFD28C8FD9E00E79AC4 /* EstimatesLatest.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BFC28C8FD9E00E79AC4 /* EstimatesLatest.json */; };
+		06180BFF28C8FE6600E79AC4 /* EstimatesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180BFE28C8FE6600E79AC4 /* EstimatesAll.json */; };
+		06180C0128C8FECE00E79AC4 /* EstimatesDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180C0028C8FECE00E79AC4 /* EstimatesDetails.json */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
@@ -160,6 +164,10 @@
 		06180BF428C8F3A200E79AC4 /* RevenuesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RevenuesAll.json; sourceTree = "<group>"; };
 		06180BF628C8F3F300E79AC4 /* RevenuesYear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RevenuesYear.json; sourceTree = "<group>"; };
 		06180BF828C8F40600E79AC4 /* RevenuesMonth.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RevenuesMonth.json; sourceTree = "<group>"; };
+		06180BFA28C8FBFB00E79AC4 /* EstimatesReference.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EstimatesReference.json; sourceTree = "<group>"; };
+		06180BFC28C8FD9E00E79AC4 /* EstimatesLatest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EstimatesLatest.json; sourceTree = "<group>"; };
+		06180BFE28C8FE6600E79AC4 /* EstimatesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EstimatesAll.json; sourceTree = "<group>"; };
+		06180C0028C8FECE00E79AC4 /* EstimatesDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EstimatesDetails.json; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -309,6 +317,10 @@
 				06180BF428C8F3A200E79AC4 /* RevenuesAll.json */,
 				06180BF628C8F3F300E79AC4 /* RevenuesYear.json */,
 				06180BF828C8F40600E79AC4 /* RevenuesMonth.json */,
+				06180BFA28C8FBFB00E79AC4 /* EstimatesReference.json */,
+				06180BFC28C8FD9E00E79AC4 /* EstimatesLatest.json */,
+				06180BFE28C8FE6600E79AC4 /* EstimatesAll.json */,
+				06180C0028C8FECE00E79AC4 /* EstimatesDetails.json */,
 			);
 			path = FakeResponses;
 			sourceTree = "<group>";
@@ -729,7 +741,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06180BFB28C8FBFB00E79AC4 /* EstimatesReference.json in Resources */,
+				06180C0128C8FECE00E79AC4 /* EstimatesDetails.json in Resources */,
+				06180BFF28C8FE6600E79AC4 /* EstimatesAll.json in Resources */,
 				06180BF528C8F3A200E79AC4 /* RevenuesAll.json in Resources */,
+				06180BFD28C8FD9E00E79AC4 /* EstimatesLatest.json in Resources */,
 				06180BF128C8E89200E79AC4 /* ClientList.json in Resources */,
 				06180BF328C8F10600E79AC4 /* Login.json in Resources */,
 				06180BF928C8F40600E79AC4 /* RevenuesMonth.json in Resources */,
