@@ -14,7 +14,11 @@ struct PaymentListView: View {
     var body: some View {
         List {
             ForEach(paymentController.payments, id: \.id) { payment in
-                PaymentTileView(payment: payment)
+                NavigationLink {
+                    PaymentDetailView(payment: payment)
+                } label: {
+                    PaymentTileView(payment: payment)
+                }
             }
         }
         .navigationTitle("Payments List")
