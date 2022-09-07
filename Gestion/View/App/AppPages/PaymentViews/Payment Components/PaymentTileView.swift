@@ -10,7 +10,7 @@ import SwiftUI
 struct PaymentTileView: View {
     let payment: Payment
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(payment.title)
                 .font(.title2.bold())
             Text("IBAN: \(payment.iban)")

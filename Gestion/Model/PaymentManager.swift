@@ -53,6 +53,27 @@ final class PaymentManager {
         }
     }
     
+    /// Create a new payment method
+    func create(method: Payment, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.paymentAdd.urlParams,
+                               method: NetworkConfigurations.paymentAdd.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: method) { _, response, error in
+            if let statusCode = response?.statusCode {
+                switch statusCode {
+                case 201:
+                    Notification.Desyntic.paymentCreationSuccess.sendNotification()
+                case 401:
+                    Notification.Desyntic.paymentCreationError.sendNotification()
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

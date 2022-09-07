@@ -25,6 +25,14 @@ struct PaymentListView: View {
         .onAppear {
             paymentController.gettingAllMethods(by: userController.connectedUser)
         }
+        .toolbar {
+            NavigationLink {
+                PaymentCreateView()
+            } label: {
+                Image(systemName: "plus.circle")
+            }
+
+        }
     }
 }
 
