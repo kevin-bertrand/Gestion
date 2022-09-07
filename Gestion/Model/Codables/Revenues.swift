@@ -21,7 +21,7 @@ struct Revenues: Codable {
     }
     
     struct Month: Codable, Identifiable {
-        let id: UUID
+        let id: UUID?
         let totalDivers: Double
         let totalServices: Double
         let totalMaterials: Double

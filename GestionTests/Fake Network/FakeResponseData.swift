@@ -43,11 +43,9 @@ final class FakeResponseData {
     enum Response {
         case status200
         case status201
-        case status202
         case status401
         case status404
         case status406
-        case status460
         case status500
         case status0
         
@@ -57,16 +55,12 @@ final class FakeResponseData {
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
             case .status201:
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 201, httpVersion: nil, headerFields: nil)!
-            case .status202:
-                return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 202, httpVersion: nil, headerFields: nil)!
             case .status401:
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 401, httpVersion: nil, headerFields: nil)!
             case .status404:
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 404, httpVersion: nil, headerFields: nil)!
             case .status406:
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 406, httpVersion: nil, headerFields: nil)!
-            case .status460:
-                return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 460, httpVersion: nil, headerFields: nil)!
             case .status500:
                 return HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
             case .status0:
@@ -79,6 +73,9 @@ final class FakeResponseData {
     enum DataFiles: String {
         case clientList = "ClientList"
         case login = "Login"
+        case revenuesAllMonthsThisYear = "RevenuesAll"
+        case revenuesThisMonth = "RevenuesMonth"
+        case revenuesThisYear = "RevenuesYear"
     }
     
     enum SessionStatus {

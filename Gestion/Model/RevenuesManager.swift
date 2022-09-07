@@ -68,8 +68,8 @@ final class RevenuesManager {
                let data = data,
                statusCode == 200,
                let revenues = try? JSONDecoder().decode([Revenues.Month].self, from: data) {
-                    self.allMonthsThisYear = revenues
-                    Notification.Desyntic.revenueAllMonths.sendNotification()
+                self.allMonthsThisYear = revenues
+                Notification.Desyntic.revenueAllMonths.sendNotification()
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }
