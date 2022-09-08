@@ -88,6 +88,8 @@ final class FakeResponseData {
         case invoiceThreeLatest = "InvoicesLatest"
         case invoiceAll = "InvoicesAll"
         case invoiceDetails = "InvoicesDetails"
+        
+        case productsList = "ProductsList"
     }
     
     enum SessionStatus {

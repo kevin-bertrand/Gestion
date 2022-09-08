@@ -1,0 +1,18 @@
+[
+    {
+        "id": "2197DDC7-6188-4AC1-A89C-331DC58FACDD",
+        "title": "Prestation à la journée",
+        "productCategory": "service",
+        "unity": "€",
+        "price": 400,
+        "domain": "automation"
+    },
+    {
+        "id": "656C06E4-E438-446B-92FC-7368C3B123C3",
+        "title": "RO2V 3G1,5",
+        "productCategory": "material",
+        "unity": "€\/m",
+        "price": 2,
+        "domain": "electricity"
+    }
+]
