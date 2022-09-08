@@ -24,6 +24,7 @@ struct UserCellView: View {
                         .font(.title)
                 }
             }
+            
             Spacer()
         }
     }

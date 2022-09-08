@@ -31,6 +31,6 @@ struct PaymentDetailView: View {
 
 struct PaymentDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentDetailView(payment: Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: ""))
+        PaymentDetailView(payment: PaymentController.emptyPayment)
     }
 }

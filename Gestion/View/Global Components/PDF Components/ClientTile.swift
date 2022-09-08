@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ClientTile: View {
+    let client: Client.Informations
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Client")
-                .bold()
-            Text("Siret : 89158565500014")
-            Text("7 Place Fulgence Bienvenue")
-            Text("77600 Bussy-saint-Georges – France")
-            Text("FR12345678901")
+            if let company = client.company {
+                Text("\(company)")
+                    .bold()
+            }
+            if let firstname = client.firstname, let lastname = client.lastname {
+                Text("\(client.gender == .man ? "M." : client.gender == .woman ? "Mme." : "") \(lastname) \(firstname)")
+            }
+            
+            Text("\(client.address.streetNumber) \(client.address.roadName)")
+            Text("\(client.address.zipCode) \(client.address.city) – \(client.address.country)")
+            if let siret = client.siret {
+                Text("Siret : \(siret)")
+            }
+            if let tva = client.tva {
+                Text("\(tva)")
+            }
         }
         .padding()
         .border(.black)
@@ -24,6 +36,6 @@ struct ClientTile: View {
 
 struct ClientTile_Previews: PreviewProvider {
     static var previews: some View {
-        ClientTile()
+        ClientTile(client: ClientController.emptyClientInfo)
     }
 }

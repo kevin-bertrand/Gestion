@@ -56,21 +56,20 @@ final class UserController: ObservableObject {
     }
     
     /// Perfom login
-    func performLogin() {        
-        appController.setLoadingInProgress(withMessage: "Log in... Please wait!")
+    func performLogin() {
         loginErrorMessage = ""
         
         guard loginEmailTextField.isNotEmpty && loginPasswordTextField.isNotEmpty else {
             loginErrorMessage = "A password and an email are needed!"
-            appController.resetLoadingInProgress()
             return
         }
         
         guard loginEmailTextField.isEmail else {
             loginErrorMessage = "A valid email address is required!"
-            appController.resetLoadingInProgress()
             return
         }
+        
+        appController.setLoadingInProgress(withMessage: "Log in... Please wait!")
         
         userManager.login(user: User.Login(email: loginEmailTextField, password: loginPasswordTextField))
     }
@@ -105,6 +104,13 @@ final class UserController: ObservableObject {
         }
     }
     
+    /// Ask biometrics activations
+    func askBiometricsActivation() {
+        if self.savedPassword.isEmpty && self.canUseBiometric {
+            activateBiometric()
+        }
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -133,7 +139,7 @@ final class UserController: ObservableObject {
                 
                 switch notificationName {
                 case Notification.Desyntic.loginSuccess.notificationName:
-                    self.actionWhenLoginSuccess()
+                    self.userIsConnected = true
                 case Notification.Desyntic.loginWrongCredentials.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 default: break
@@ -161,18 +167,6 @@ final class UserController: ObservableObject {
                     }
                 }
             }
-        }
-    }
-    
-    /// Perfom action when login success
-    private func actionWhenLoginSuccess() {
-        DispatchQueue.main.async {
-            if self.savedPassword.isEmpty && self.canUseBiometric {
-                print("ok")
-                self.loginShowBiometricAlert = true
-            }
-
-            self.userIsConnected = true
         }
     }
 }

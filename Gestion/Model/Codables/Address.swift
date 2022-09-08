@@ -19,6 +19,10 @@ struct Address: Codable {
     let longitude: Double
     let comment: String?
     
+    func toNew() -> Address.New {
+        return .init(id: self.id, roadName: self.roadName, streetNumber: self.streetNumber, complement: self.complement ?? "", zipCode: self.zipCode, city: self.city, country: self.country, latitude: self.latitude, longitude: self.longitude, comment: self.comment ?? "")
+    }
+    
     struct Id: Codable {
         let id: String
     }
@@ -34,6 +38,14 @@ struct Address: Codable {
         var latitude: Double
         var longitude: Double
         var comment: String
+        
+        func toAddress() -> Address {
+            return .init(id: self.id, roadName: self.roadName, streetNumber: self.streetNumber, complement: self.complement, zipCode: self.zipCode, city: self.city, country: self.country, latitude: self.latitude, longitude: self.longitude, comment: self.comment)
+        }
+        
+        func toCreate() -> Address.Create {
+            return .init(roadName: self.roadName, streetNumber: self.streetNumber, complement: self.complement, zipCode: self.zipCode, city: self.city, country: self.country, latitude: self.latitude, longitude: self.longitude, comment: self.comment)
+        }
     }
     
     struct Create: Codable {

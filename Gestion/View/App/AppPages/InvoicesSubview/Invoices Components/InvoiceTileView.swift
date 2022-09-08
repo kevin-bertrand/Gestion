@@ -38,6 +38,6 @@ struct InvoiceTileView: View {
 
 struct InvoiceTileView_Previews: PreviewProvider {
     static var previews: some View {
-        InvoiceTileView(invoice: Invoice.Summary(id: nil, client: Client.Summary(firstname: "", lastname: "", company: ""), reference: "", grandTotal: 0, status: .inCreation, limitPayementDate: Date(), isArchive: true))
+        InvoiceTileView(invoice: InvoicesController.emptySummaryInvoice)
     }
 }

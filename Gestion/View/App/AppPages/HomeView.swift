@@ -42,14 +42,8 @@ struct HomeView: View {
                 
                 RoundedRectangleCustom {
                     AnyView(VStack {
-                        Spacer()
-                        PieChartView(values: [revenuesController.thisMonthRevenue.totalMaterials, revenuesController.thisMonthRevenue.totalServices, revenuesController.thisMonthRevenue.totalDivers],
-                                     names: ["Materials", "Services", "Divers"],
-                                     formatter: { number in
-                            return "\(number)"
-                        }, colorScheme: colorScheme)
-                        .padding()
-                        Spacer()
+                        RevenueChartView(totalMaterials: revenuesController.thisMonthRevenue.totalMaterials, totalServices: revenuesController.thisMonthRevenue.totalServices, totalDivers: revenuesController.thisMonthRevenue.totalDivers)
+                            .padding()
                     })
                 }.frame(height: 475)
             }

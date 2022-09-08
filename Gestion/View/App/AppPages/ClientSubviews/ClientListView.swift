@@ -14,22 +14,7 @@ struct ClientListView: View {
     var body: some View {
         List {
             ForEach(clientController.clients, id: \.email) { client in
-                NavigationLink {
-                    List{
-                        ClientDetailsView(selectedClient: .constant(client))
-                    }
-                    .toolbar {
-                        NavigationLink {
-                            UpdateClientView(selectedClient: .constant(client))
-                        } label: {
-                            Image(systemName: "pencil.circle")
-                        }
-
-                    }
-                    .navigationTitle("Client informations")
-                } label: {
-                    ClientTileView(client: client)
-                }
+                ClientTileView(client: client)
             }
         }
         .searchable(text: $clientController.searchingField)

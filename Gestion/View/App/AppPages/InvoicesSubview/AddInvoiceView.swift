@@ -13,19 +13,7 @@ struct AddInvoiceView: View {
     @EnvironmentObject var invoiceController: InvoicesController
     @EnvironmentObject var userController: UserController
 
-    @State private var newInvoice: Invoice.Create = .init(reference: "",
-                                                          internalReference: "",
-                                                          object: "",
-                                                          totalServices: 0,
-                                                          totalMaterials: 0,
-                                                          totalDivers: 0,
-                                                          total: 0,
-                                                          reduction: 0,
-                                                          grandTotal: 0,
-                                                          status: .inCreation,
-                                                          limitPayementDate: "",
-                                                          clientID: UUID(uuid: UUID_NULL),
-                                                          products: [])
+    @State private var newInvoice: Invoice.Create = InvoicesController.emptyCreateInvoice
     @State private var limitDate: Date = Date()
     @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
@@ -58,31 +46,25 @@ struct AddInvoiceView: View {
                 }
             }
             
-            ProductListUpdateView(sectionTitle: "Services",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newInvoice.totalServices,
+                                  sectionTitle: "Services",
                                   category: .service)
-            ProductListUpdateView(sectionTitle: "Materials",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newInvoice.totalMaterials,
+                                  sectionTitle: "Materials",
                                   category: .material)
-            ProductListUpdateView(sectionTitle: "Divers",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newInvoice.totalDivers,
+                                  sectionTitle: "Divers",
                                   category: .divers)
+
+            TotalSectionView(totalService: newInvoice.totalServices, totalMaterials: newInvoice.totalMaterials, totalDivers: newInvoice.totalServices, grandTotal: newInvoice.grandTotal)
             
-            Section {
-                Text("Total services: \(newInvoice.totalServices.twoDigitPrecision) €")
-                Text("Total material: \(newInvoice.totalMaterials.twoDigitPrecision) €")
-                Text("Total Divers: \(newInvoice.totalDivers.twoDigitPrecision) €")
-                Text("Grand total: \(newInvoice.grandTotal.twoDigitPrecision) €")
-                    .font(.title2.bold())
-            } header: {
-                Text("Total")
-            }
         }
         .onChange(of: products, perform: { newValue in
-            newInvoice.totalDivers = calculateTotal(for: .divers)
-            newInvoice.totalServices = calculateTotal(for: .service)
-            newInvoice.totalMaterials = calculateTotal(for: .material)
-            newInvoice.total = calculateTotal(for: nil)
+            newInvoice.total = 0
+            newValue.forEach({ newInvoice.total += ($0.quantity * $0.price) })
             newInvoice.grandTotal = newInvoice.total
             
             newInvoice.products = products.map({
@@ -100,6 +82,7 @@ struct AddInvoiceView: View {
         })
         .onChange(of: invoiceController.successCreatingNewInvoice, perform: { newValue in
             if newValue {
+                invoiceController.successCreatingNewInvoice = false
                 dismiss()
             }
         })
@@ -114,21 +97,6 @@ struct AddInvoiceView: View {
                 Image(systemName: "v.circle")
             }
         }
-    }
-    
-    private func calculateTotal(for category: ProductCategory?) -> Double {
-        var total = 0.0
-        for product in products {
-            if let category = category {
-                if product.productCategory == category {
-                    total += (product.price * product.quantity)
-                }
-            } else {
-                total += (product.price * product.quantity)
-            }
-        }
-        
-        return total
     }
 }
 

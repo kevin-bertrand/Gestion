@@ -14,16 +14,10 @@ struct PaymentUpdateView: View {
     @EnvironmentObject private var userController: UserController
     
     @Binding var payment: Payment
-    @State private var updatedPayment: Payment = Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
+    @State private var updatedPayment: Payment = PaymentController.emptyPayment
     
     var body: some View {
-        Form {
-            Section {
-                TextField("Title", text: $updatedPayment.title)
-                TextField("IBAN", text: $updatedPayment.iban)
-                TextField("BIC", text: $updatedPayment.bic)
-            }
-        }
+        PaymentTextFieldsView(payment: $updatedPayment)
         .navigationTitle("Update")
         .toolbar {
             Button {
@@ -47,7 +41,7 @@ struct PaymentUpdateView: View {
 
 struct PaymentUpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentUpdateView(payment: .constant(Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")))
+        PaymentUpdateView(payment: .constant(PaymentController.emptyPayment))
             .environmentObject(UserController(appController: AppController()))
             .environmentObject(PaymentController(appController: AppController()))
     }

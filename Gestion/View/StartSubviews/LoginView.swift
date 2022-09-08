@@ -46,6 +46,10 @@ struct LoginView: View {
                 }
                 .padding(.top, -30)
                 TextFieldCustom(text: $userController.loginPasswordTextField, icon: "lock.fill", placeholder: "123", isSecure: true)
+                
+                Text(userController.loginErrorMessage)
+                    .foregroundColor(.red)
+                    .bold()
             }
             .padding(.vertical)
             

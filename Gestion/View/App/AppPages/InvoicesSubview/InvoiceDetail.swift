@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InvoiceDetail: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var invoicesController: InvoicesController
     @EnvironmentObject var userController: UserController
     
@@ -58,40 +58,15 @@ struct InvoiceDetail: View {
             }
             
             Section {
-                PieChartView(values: [invoicesController.selectedInvoice.totalMaterials, invoicesController.selectedInvoice.totalServices, invoicesController.selectedInvoice.totalDivers], names: ["Materials", "Services", "Divers"], formatter: { number in
-                    return "\(number)"
-                }, colorScheme: colorScheme)
-                .frame(height: 420)
+                RevenueChartView(totalMaterials: invoicesController.selectedInvoice.totalMaterials, totalServices: invoicesController.selectedInvoice.totalServices, totalDivers: invoicesController.selectedInvoice.totalDivers)
             } header: {
                 Text("Incomes")
             }
             
             Section {
                 NavigationLink("Update") {
-                    UpdateInvoiceView(invoice: Invoice.Update(id: invoicesController.selectedInvoice.id,
-                                                              reference: invoicesController.selectedInvoice.reference,
-                                                              internalReference: invoicesController.selectedInvoice.internalReference,
-                                                              object: invoicesController.selectedInvoice.object,
-                                                              totalServices: invoicesController.selectedInvoice.totalServices,
-                                                              totalMaterials: invoicesController.selectedInvoice.totalMaterials,
-                                                              totalDivers: invoicesController.selectedInvoice.totalDivers,
-                                                              total: invoicesController.selectedInvoice.total,
-                                                              reduction: invoicesController.selectedInvoice.reduction,
-                                                              grandTotal: invoicesController.selectedInvoice.grandTotal,
-                                                              status: invoicesController.selectedInvoice.status,
-                                                              paymentID: invoicesController.selectedInvoice.payment?.id,
-                                                              products: []),
-                                      client: .init(id: invoicesController.selectedInvoice.client.id,
-                                                    firstname: invoicesController.selectedInvoice.client.firstname,
-                                                    lastname: invoicesController.selectedInvoice.client.lastname,
-                                                    company: invoicesController.selectedInvoice.client.company,
-                                                    phone: invoicesController.selectedInvoice.client.phone,
-                                                    email: invoicesController.selectedInvoice.client.email,
-                                                    personType: invoicesController.selectedInvoice.client.personType,
-                                                    gender: invoicesController.selectedInvoice.client.gender,
-                                                    siret: invoicesController.selectedInvoice.client.siret,
-                                                    tva: invoicesController.selectedInvoice.client.tva,
-                                                    address: invoicesController.selectedInvoice.client.address),
+                    UpdateInvoiceView(invoice: invoicesController.selectedInvoice.toUpdate(),
+                                      client: invoicesController.selectedInvoice.client,
                                       products: invoicesController.selectedInvoice.products)
                 }
                 NavigationLink("Show PDF") {
@@ -114,7 +89,7 @@ struct InvoiceDetail: View {
             if let id = selectedInvoice {
                 invoicesController.selectInvoice(id: id, by: userController.connectedUser)
             } else {
-                self.presentationMode.wrappedValue.dismiss()
+               dismiss()
             }
         }
     }

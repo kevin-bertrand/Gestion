@@ -46,32 +46,24 @@ struct UpdateEstimateView: View {
                 }
             }
             
-            ProductListUpdateView(sectionTitle: "Services",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $estimate.totalServices,
+                                  sectionTitle: "Services",
                                   category: .service)
-            ProductListUpdateView(sectionTitle: "Materials",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $estimate.totalMaterials,
+                                  sectionTitle: "Materials",
                                   category: .material)
-            ProductListUpdateView(sectionTitle: "Divers",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $estimate.totalDivers,
+                                  sectionTitle: "Divers",
                                   category: .divers)
             
-            
-            Section {
-                Text("Total services: \(estimate.totalServices.twoDigitPrecision) €")
-                Text("Total material: \(estimate.totalMaterials.twoDigitPrecision) €")
-                Text("Total Divers: \(estimate.totalDivers.twoDigitPrecision) €")
-                Text("Grand total: \(estimate.grandTotal.twoDigitPrecision) €")
-                    .font(.title2.bold())
-            } header: {
-                Text("Total")
-            }
+            TotalSectionView(totalService: estimate.totalServices, totalMaterials: estimate.totalMaterials, totalDivers: estimate.totalDivers, grandTotal: estimate.grandTotal)            
         }
         .onChange(of: products) { newValue in
-            estimate.totalDivers = calculateTotal(for: .divers)
-            estimate.totalServices = calculateTotal(for: .service)
-            estimate.totalMaterials = calculateTotal(for: .material)
-            estimate.total = calculateTotal(for: nil)
+            estimate.total = 0
+            newValue.forEach({ estimate.total += ($0.quantity * $0.price) })
             estimate.grandTotal = estimate.total
             
             estimate.products = products.map({
@@ -83,6 +75,7 @@ struct UpdateEstimateView: View {
         }
         .onChange(of: estimatesController.updateEstimateSuccess) { newValue in
             if newValue {
+                estimatesController.updateEstimateSuccess = false
                 dismiss()
             }
         }
@@ -93,30 +86,14 @@ struct UpdateEstimateView: View {
             } label: {
                 Image(systemName: "v.circle")
             }
-
         }
-    }
-    
-    private func calculateTotal(for category: ProductCategory?) -> Double {
-        var total = 0.0
-        for product in products {
-            if let category = category {
-                if product.productCategory == category {
-                    total += (product.price * product.quantity)
-                }
-            } else {
-                total += (product.price * product.quantity)
-            }
-        }
-        
-        return total
     }
 }
 
 struct UpdateEstimateView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            UpdateEstimateView(estimate: Estimate.Update(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, products: []), client: Client.Informations(id: nil, firstname: nil, lastname: nil, company: nil, phone: "", email: "", personType: .company, gender: nil, siret: nil, tva: nil, address: Address(id: "", roadName: "", streetNumber: "", complement: nil, zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: nil)))
+            UpdateEstimateView(estimate: EstimatesController.emptyUpdateEstimate, client: ClientController.emptyClientInfo)
                 .environmentObject(EstimatesController(appController: AppController()))
                 .environmentObject(UserController(appController: AppController()))
         }

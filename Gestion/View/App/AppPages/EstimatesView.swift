@@ -16,56 +16,11 @@ struct EstimatesView: View {
     
     var body: some View {
         List {
-            Section {
-                ForEach(estimatesController.estimatesList, id: \.reference) { estimate in
-                    if estimate.status == .late {
-                        EstimateListTileView(estimate: estimate)
-                    }
-                }
-            } header: {
-                Text("Late estimates")
-            }
-            
-            Section {
-                ForEach(estimatesController.estimatesList, id: \.reference) { estimate in
-                    if estimate.status == .inCreation {
-                        EstimateListTileView(estimate: estimate)
-                    }
-                }
-            } header: {
-                Text("In creation estimate")
-            }
-
-            Section {
-                ForEach(estimatesController.estimatesList, id: \.reference) { estimate in
-                    if estimate.status == .sent {
-                        EstimateListTileView(estimate: estimate)
-                    }
-                }
-            } header: {
-                Text("Sent estimates")
-            }
-            
-            Section {
-                ForEach(estimatesController.estimatesList, id: \.reference) { estimate in
-                    if estimate.status == .refused {
-                        EstimateListTileView(estimate: estimate)
-                    }
-                }
-            } header: {
-                Text("Refused estimates")
-            }
-            
-            Section {
-                ForEach(estimatesController.estimatesList, id: \.reference) { estimate in
-                    if estimate.status == .accepted {
-                        EstimateListTileView(estimate: estimate)
-                    }
-                }
-            } header: {
-                Text("Accepted estimate")
-            }
-            
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .late, title: "Late estimates")
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .inCreation, title: "In creation estimate")
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .inCreation, title: "Sent estimates")
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .refused, title: "Refused estimates")
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .accepted, title: "Accepted estimate")
         }
         .navigationTitle("Estimates")
         .searchable(text: $searchingText)

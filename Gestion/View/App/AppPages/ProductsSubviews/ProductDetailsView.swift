@@ -32,6 +32,6 @@ struct ProductDetailsView: View {
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView(product: Product(id: UUID(uuid: UUID_NULL), productCategory: .divers, title: "", domain: .automation, unity: "", price: 0))
+        ProductDetailsView(product: ProductsController.emptyProduct)
     }
 }

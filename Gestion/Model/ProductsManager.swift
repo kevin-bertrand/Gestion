@@ -85,7 +85,4 @@ final class ProductManager {
     // MARK: Private
     // MARK: Properties
     private let networkManager: NetworkManager
-    
-    // MARK: Methods
-    
 }

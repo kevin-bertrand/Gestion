@@ -165,6 +165,4 @@ final class EstimatesManager {
     // MARK: Private
     // MARK: Properties
     private let networkManager: NetworkManager
-    
-    // MARK: Methods
 }

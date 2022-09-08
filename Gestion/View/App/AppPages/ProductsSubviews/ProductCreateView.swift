@@ -13,13 +13,13 @@ struct ProductCreateView: View {
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var productsController: ProductsController
     
-    @State private var newProduct: Product.Create = .init(productCategory: .divers, title: "", domain: .automation, unity: "", price: 0)
+    @State private var newProduct: Product.Create = ProductsController.emptyCreateProduct
     @State private var price: String = ""
     
     var body: some View {
         Form {
             Section {
-                ProductInformationTextField(icon: "doc.text", title: "Title", text: $newProduct.title)
+                TextFieldFormWithIcon(text: $newProduct.title, icon: "doc.text", title: "Title")
                 
                 HStack {
                     Image(systemName: "tray.2.fill")
@@ -39,8 +39,8 @@ struct ProductCreateView: View {
                     }
                 }
                 
-                ProductInformationTextField(icon: "eurosign", title: "Price", text: $price, keyboardType: .decimalPad)
-                ProductInformationTextField(icon: nil, title: "Unity", text: $newProduct.unity)
+                TextFieldFormWithIcon(text: $price, icon: "eurosign", title: "Price", keyboardType: .decimalPad)
+                TextFieldFormWithIcon(text: $newProduct.unity, icon: nil, title: "Unity")
             }
         }
         .navigationTitle("Create product")

@@ -20,7 +20,7 @@ struct InvoicePDF: View {
                     
                     Spacer()
                     
-                    ClientTile()
+                    ClientTile(client: invoice.client)
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
@@ -28,62 +28,33 @@ struct InvoicePDF: View {
                     Text("Objet: \(invoice.object)")
                 }
                 
-                VStack(spacing: 0) {
-                    TableColumnTitles()
-                    if invoice.totalServices > 0 {
-                        TableSectionTitle(title: "Services")
-                        ForEach(invoice.products, id: \.title) { product in
-                            if product.productCategory == .service {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Services", total: invoice.totalServices)
-                    }
-                    
-                    if invoice.totalMaterials > 0 {
-                        TableSectionTitle(title: "Matériel")
-                        ForEach(invoice.products, id: \.title) { product in
-                            if product.productCategory == .material {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Matériel", total: invoice.totalMaterials)
-                    }
-                    
-                    if invoice.totalDivers > 0 {
-                        TableSectionTitle(title: "Divers")
-                        ForEach(invoice.products, id: \.title) { product in
-                            if product.productCategory == .divers {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Divers", total: invoice.totalDivers)
-                    }
-                }
+                ProductTable(products: invoice.products, totalServices: invoice.totalServices, totalMaterials: invoice.totalMaterials, totalDivers: invoice.totalDivers)
                 
                 HStack(alignment: .top, spacing: 10) {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Date d'échéance: \(invoice.limitPayementDate.formatted(date: .numeric, time: .omitted))")
                         Text("Mode de règlement: Virement bancaire")
                         
-                        VStack(alignment: .leading) {
-                            Text("Coordonées bancaires :")
-                            Text("Bourorama Banque")
-                                .bold()
-                            
-                            HStack(spacing: 2) {
-                                Text("IBAN :")
-                                Text("FR12 3456 7890 1234 5678 9012 123")
+                        if let payment = invoice.payment {
+                            VStack(alignment: .leading) {
+                                Text("Coordonées bancaires :")
+                                Text("\(payment.title)")
                                     .bold()
+                                
+                                HStack(spacing: 2) {
+                                    Text("IBAN :")
+                                    Text("\(payment.iban)")
+                                        .bold()
+                                }
+                                HStack(spacing: 2) {
+                                    Text("BIC :")
+                                    Text("\(payment.bic)")
+                                        .bold()
+                                }
                             }
-                            HStack(spacing: 2) {
-                                Text("BIC :")
-                                Text("AZER FRDD XXX")
-                                    .bold()
-                            }
+                            .padding(5)
+                            .border(.black)
                         }
-                        .padding(5)
-                        .border(.black)
                     }
                     
                     Spacer()

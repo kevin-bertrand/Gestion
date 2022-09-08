@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClientListSelectingView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var clientController: ClientController
     @EnvironmentObject var userController: UserController
@@ -20,7 +20,7 @@ struct ClientListSelectingView: View {
             ClientTileView(client: clientInformations)
                 .onTapGesture {
                     self.client = clientInformations
-                    self.presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }
         }
         .onAppear {

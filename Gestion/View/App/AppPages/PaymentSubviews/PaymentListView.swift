@@ -1,5 +1,5 @@
 //
-//  SelectPaymentListView.swift
+//  PaymentListView.swift
 //  Gestion
 //
 //  Created by Kevin Bertrand on 07/09/2022.
@@ -7,35 +7,38 @@
 
 import SwiftUI
 
-struct SelectPaymentListView: View {
-    @Environment(\.dismiss) var dismiss
-    
+struct PaymentListView: View {
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var paymentController: PaymentController
-    
-    @Binding var selectedPayment: Payment
     
     var body: some View {
         List {
             ForEach(paymentController.payments, id: \.id) { payment in
-                PaymentTileView(payment: payment)
-                    .onTapGesture {
-                        selectedPayment = payment
-                        dismiss()
-                    }
+                NavigationLink {
+                    PaymentDetailView(payment: payment)
+                } label: {
+                    PaymentTileView(payment: payment)
+                }
             }
         }
-        .navigationTitle("Payments")
+        .navigationTitle("Payments List")
         .onAppear {
             paymentController.gettingAllMethods(by: userController.connectedUser)
+        }
+        .toolbar {
+            NavigationLink {
+                PaymentCreateView()
+            } label: {
+                Image(systemName: "plus.circle")
+            }
         }
     }
 }
 
-struct SelectPaymentListView_Previews: PreviewProvider {
+struct PaymentListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SelectPaymentListView(selectedPayment: .constant(Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")))
+            PaymentListView()
                 .environmentObject(UserController(appController: AppController()))
                 .environmentObject(PaymentController(appController: AppController()))
         }

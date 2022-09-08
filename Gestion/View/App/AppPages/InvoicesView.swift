@@ -14,45 +14,10 @@ struct InvoicesView: View {
     
     var body: some View {
         List {
-            Section {
-                ForEach(invoicesController.invoicesList, id: \.reference) { invoice in
-                    if invoice.status == .overdue {
-                        InvoiceListTileView(invoice: invoice)
-                    }
-                }
-            } header: {
-                Text("Overdue invoices")
-            }
-
-            Section {
-                ForEach(invoicesController.invoicesList, id: \.reference) { invoice in
-                    if invoice.status == .inCreation {
-                        InvoiceListTileView(invoice: invoice)
-                    }
-                }
-            } header: {
-                Text("In creation invoices")
-            }
-            
-            Section {
-                ForEach(invoicesController.invoicesList, id: \.reference) { invoice in
-                    if invoice.status == .sent {
-                        InvoiceListTileView(invoice: invoice)
-                    }
-                }
-            } header: {
-                Text("Sent invoices")
-            }
-            
-            Section {
-                ForEach(invoicesController.invoicesList, id: \.reference) { invoice in
-                    if invoice.status == .payed {
-                        InvoiceListTileView(invoice: invoice)
-                    }
-                }
-            } header: {
-                Text("Payed invoices")
-            }
+            InvoicesListSectionView(list: invoicesController.invoicesList, title: "Overdue invoices", status: .overdue)
+            InvoicesListSectionView(list: invoicesController.invoicesList, title: "In creation invoices", status: .inCreation)
+            InvoicesListSectionView(list: invoicesController.invoicesList, title: "Sent invoices", status: .sent)
+            InvoicesListSectionView(list: invoicesController.invoicesList, title: "Payed invoices", status: .payed)
         }
         .searchable(text: $searchingText)
         .refreshable {

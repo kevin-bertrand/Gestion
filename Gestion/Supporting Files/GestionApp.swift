@@ -64,15 +64,6 @@ struct GestionApp: App {
             .alert(isPresented: $appController.showAlertView) {
                 Alert(title: Text(appController.alertViewTitle), message: Text(appController.alertViewMessage), dismissButton: .default(Text("OK")))
             }
-            .alert(isPresented: $userController.loginShowBiometricAlert) {
-                Alert(title: Text("Would you like to use FaceId for further login?"),
-                      primaryButton: .default(Text("Yes"), action: {
-                    userController.canUseBiometric = true
-                }),
-                      secondaryButton: .cancel(Text("No"), action: {
-                    userController.canUseBiometric = false
-                }))
-            }
         }
     }
 }

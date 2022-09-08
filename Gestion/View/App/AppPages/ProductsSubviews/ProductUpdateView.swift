@@ -14,13 +14,15 @@ struct ProductUpdateView: View {
     @EnvironmentObject var userController: UserController
     
     @Binding var product: Product
-    @State private var productToUpdate: Product = Product(id: UUID(uuid: UUID_NULL), productCategory: .divers, title: "", domain: .automation, unity: "", price: 0)
+    @State private var productToUpdate: Product = ProductsController.emptyProduct
     @State private var price: String = ""
     
     var body: some View {
         Form {
             Section {
-                ProductInformationTextField(icon: "doc.text", title: "Title", text: $productToUpdate.title)
+                TextFieldFormWithIcon(text: $productToUpdate.title,
+                                      icon: "doc.text",
+                                      title: "title")
                 
                 HStack {
                     Image(systemName: "tray.2.fill")
@@ -40,8 +42,13 @@ struct ProductUpdateView: View {
                     }
                 }
                 
-                ProductInformationTextField(icon: "eurosign", title: "Price", text: $price, keyboardType: .decimalPad)
-                ProductInformationTextField(icon: nil, title: "Unity", text: $productToUpdate.unity)
+                TextFieldFormWithIcon(text: $price,
+                                      icon: "eurosign",
+                                      title: "Price",
+                                      keyboardType: .decimalPad)
+                TextFieldFormWithIcon(text: $productToUpdate.unity,
+                                      icon: nil,
+                                      title: "Unity")
             }
         }
         .onAppear {
@@ -71,7 +78,7 @@ struct ProductUpdateView: View {
 struct ProductUpdateView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ProductUpdateView(product: .constant(Product(id: UUID(uuid: UUID_NULL), productCategory: .divers, title: "", domain: .automation, unity: "", price: 0)))
+            ProductUpdateView(product: .constant(ProductsController.emptyProduct))
                 .environmentObject(UserController(appController: AppController()))
                 .environmentObject(ProductsController(appController: AppController()))
         }

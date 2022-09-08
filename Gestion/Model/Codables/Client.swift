@@ -36,6 +36,10 @@ struct Client: Codable {
         let siret: String?
         let tva: String?
         let address: Address
+        
+        func toUpdate() -> Client.Update {
+            return .init(id: self.id ?? UUID(uuid: UUID_NULL), firstname: self.firstname ?? "", lastname: self.lastname ?? "", company: self.company ?? "", phone: self.phone, email: self.email, personType: self.personType, gender: self.gender ?? .notDetermined, siret: self.siret ?? "", tva: self.tva ?? "", address: self.address.toNew())
+        }
     }
     
     struct Summary: Codable {
@@ -56,6 +60,10 @@ struct Client: Codable {
         var siret: String
         var tva: String
         var address: Address.New
+        
+        func toInformation() -> Client.Informations {
+            return .init(id: self.id, firstname: self.firstname, lastname: self.lastname, company: self.company, phone: self.phone, email: self.email, personType: self.personType, gender: self.gender, siret: self.siret, tva: self.tva, address: self.address.toAddress())
+        }
     }
     
     struct Create: Codable {

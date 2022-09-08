@@ -10,6 +10,8 @@ import Foundation
 final class ClientController: ObservableObject {
     // MARK: Static
     static let emptyClientInfo: Client.Informations = .init(id: nil, firstname: nil, lastname: nil, company: nil, phone: "", email: "", personType: .company, gender: .notDetermined, siret: nil, tva: nil, address: Address(id: "", roadName: "", streetNumber: "", complement: nil, zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: nil))
+    static let emptyClientUpdate: Client.Update = .init(id: UUID(uuid: UUID_NULL), firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address.New(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
+    static let emptyClientCreation: Client.Create = .init(firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address.Create(roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     
     // MARK: Public
     // MARK: Properties

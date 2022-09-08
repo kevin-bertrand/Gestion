@@ -53,7 +53,4 @@ final class UserManager {
     // MARK: Private
     // MARK: Properties
     private let networkManager: NetworkManager
-    
-    // MARK: Properties
-    // MARK: Methods
 }

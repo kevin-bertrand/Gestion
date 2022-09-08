@@ -17,7 +17,7 @@ struct UpdateInvoiceView: View {
     @State var client: Client.Informations
     @State private var limitDate: Date = Date()
     @State var products: [Product.Informations] = []
-    @State private var payment: Payment = Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
+    @State private var payment: Payment = PaymentController.emptyPayment
     
     var body: some View {
         Form {
@@ -60,31 +60,24 @@ struct UpdateInvoiceView: View {
                 }
             }
             
-            ProductListUpdateView(sectionTitle: "Services",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $invoice.totalServices,
+                                  sectionTitle: "Services",
                                   category: .service)
-            ProductListUpdateView(sectionTitle: "Materials",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $invoice.totalMaterials,
+                                  sectionTitle: "Materials",
                                   category: .material)
-            ProductListUpdateView(sectionTitle: "Divers",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $invoice.totalDivers,
+                                  sectionTitle: "Divers",
                                   category: .divers)
             
-            Section {
-                Text("Total services: \(invoice.totalServices.twoDigitPrecision) €")
-                Text("Total material: \(invoice.totalMaterials.twoDigitPrecision) €")
-                Text("Total Divers: \(invoice.totalDivers.twoDigitPrecision) €")
-                Text("Grand total: \(invoice.grandTotal.twoDigitPrecision) €")
-                    .font(.title2.bold())
-            } header: {
-                Text("Total")
-            }
+            TotalSectionView(totalService: invoice.totalServices, totalMaterials: invoice.totalMaterials, totalDivers: invoice.totalDivers, grandTotal: invoice.grandTotal)            
         }
         .onChange(of: products, perform: { newValue in
-            invoice.totalDivers = calculateTotal(for: .divers)
-            invoice.totalServices = calculateTotal(for: .service)
-            invoice.totalMaterials = calculateTotal(for: .material)
-            invoice.total = calculateTotal(for: nil)
+            invoice.total = 0
+            newValue.forEach({ invoice.total += ($0.quantity * $0.price) })
             invoice.grandTotal = invoice.total
             
             invoice.products = products.map({
@@ -96,6 +89,7 @@ struct UpdateInvoiceView: View {
         })
         .onChange(of: invoiceController.successUpdateInvoice, perform: { newValue in
             if newValue {
+                invoiceController.successUpdateInvoice = false
                 dismiss()
             }
         })
@@ -117,58 +111,13 @@ struct UpdateInvoiceView: View {
             }
         }
     }
-    
-    private func calculateTotal(for category: ProductCategory?) -> Double {
-        var total = 0.0
-        for product in products {
-            if let category = category {
-                if product.productCategory == category {
-                    total += (product.price * product.quantity)
-                }
-            } else {
-                total += (product.price * product.quantity)
-            }
-        }
-        
-        return total
-    }
 }
 
 struct UpdateInvoiceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            UpdateInvoiceView(invoice: Invoice.Update(id: UUID(uuid: UUID_NULL),
-                                                      reference: "",
-                                                      internalReference: "",
-                                                      object: "",
-                                                      totalServices: 0,
-                                                      totalMaterials: 0,
-                                                      totalDivers: 0,
-                                                      total: 0,
-                                                      reduction: 0,
-                                                      grandTotal: 0,
-                                                      status: .inCreation,
-                                                      products: []),
-                              client: Client.Informations(id: nil,
-                                                          firstname: nil,
-                                                          lastname: nil,
-                                                          company: nil,
-                                                          phone: "",
-                                                          email: "",
-                                                          personType: .company,
-                                                          gender: nil,
-                                                          siret: nil,
-                                                          tva: nil,
-                                                          address: Address(id: "",
-                                                                           roadName: "",
-                                                                           streetNumber: "",
-                                                                           complement: nil,
-                                                                           zipCode: "",
-                                                                           city: "",
-                                                                           country: "",
-                                                                           latitude: 0,
-                                                                           longitude: 0,
-                                                                           comment: nil)))
+            UpdateInvoiceView(invoice: InvoicesController.emptyUpdateInvoice,
+                              client: ClientController.emptyClientInfo)
         }
     }
 }

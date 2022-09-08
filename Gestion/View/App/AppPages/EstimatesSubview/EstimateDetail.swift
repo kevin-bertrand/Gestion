@@ -28,39 +28,15 @@ struct EstimateDetail: View {
             }
             
             Section {
-                PieChartView(values: [estimateController.selectedEstimate.totalMaterials, estimateController.selectedEstimate.totalServices, estimateController.selectedEstimate.totalDivers], names: ["Materials", "Services", "Divers"], formatter: { number in
-                    return "\(number)"
-                }, colorScheme: colorScheme)
-                .frame(height: 420)
+                RevenueChartView(totalMaterials: estimateController.selectedEstimate.totalMaterials, totalServices: estimateController.selectedEstimate.totalServices, totalDivers: estimateController.selectedEstimate.totalDivers)
             } header: {
                 Text("Incomes")
             }
             
             Section {
                 NavigationLink("Update") {
-                    UpdateEstimateView(estimate: Estimate.Update(id: estimateController.selectedEstimate.id,
-                                                                 reference: estimateController.selectedEstimate.reference,
-                                                                 internalReference: estimateController.selectedEstimate.internalReference,
-                                                                 object: estimateController.selectedEstimate.object,
-                                                                 totalServices: estimateController.selectedEstimate.totalServices,
-                                                                 totalMaterials: estimateController.selectedEstimate.totalMaterials,
-                                                                 totalDivers: estimateController.selectedEstimate.totalDivers,
-                                                                 total: estimateController.selectedEstimate.total,
-                                                                 reduction: estimateController.selectedEstimate.reduction,
-                                                                 grandTotal: estimateController.selectedEstimate.grandTotal,
-                                                                 status: estimateController.selectedEstimate.status,
-                                                                 products: []),
-                                       client: Client.Informations(id: estimateController.selectedEstimate.client.id,
-                                                                   firstname: estimateController.selectedEstimate.client.firstname,
-                                                                   lastname: estimateController.selectedEstimate.client.lastname,
-                                                                   company: estimateController.selectedEstimate.client.company,
-                                                                   phone: estimateController.selectedEstimate.client.phone,
-                                                                   email: estimateController.selectedEstimate.client.email,
-                                                                   personType: estimateController.selectedEstimate.client.personType,
-                                                                   gender: estimateController.selectedEstimate.client.gender,
-                                                                   siret: estimateController.selectedEstimate.client.siret,
-                                                                   tva: estimateController.selectedEstimate.client.tva,
-                                                                   address: estimateController.selectedEstimate.client.address),
+                    UpdateEstimateView(estimate: estimateController.selectedEstimate.toUpdate(),
+                                       client: estimateController.selectedEstimate.client,
                                        products: estimateController.selectedEstimate.products)
                 }
                 NavigationLink("Show PDF") {
@@ -93,6 +69,7 @@ struct EstimateDetail: View {
         }
         .onChange(of: estimateController.estimateIsExportedToInvoice) { newValue in
             if newValue {
+                estimateController.estimateIsExportedToInvoice = false
                 dismiss()
             }
         }

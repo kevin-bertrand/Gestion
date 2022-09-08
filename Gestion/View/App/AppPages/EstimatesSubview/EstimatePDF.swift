@@ -20,7 +20,7 @@ struct EstimatePDF: View {
                     
                     Spacer()
                     
-                    ClientTile()
+                    ClientTile(client: estimate.client)
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
@@ -28,38 +28,7 @@ struct EstimatePDF: View {
                     Text("Objet: \(estimate.object)")
                 }
                 
-                VStack(spacing: 0) {
-                    TableColumnTitles()
-                    if estimate.totalServices > 0 {
-                        TableSectionTitle(title: "Services")
-                        ForEach(estimate.products, id: \.title) { product in
-                            if product.productCategory == .service {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Services", total: estimate.totalServices)
-                    }
-                    
-                    if estimate.totalMaterials > 0 {
-                        TableSectionTitle(title: "Matériels")
-                        ForEach(estimate.products, id: \.title) { product in
-                            if product.productCategory == .material {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Matériels", total: estimate.totalMaterials)
-                    }
-                    
-                    if estimate.totalDivers > 0 {
-                        TableSectionTitle(title: "Divers")
-                        ForEach(estimate.products, id: \.title) { product in
-                            if product.productCategory == .divers {
-                                TableRow(title: product.title, quantity: product.quantity, unity: product.unity ?? "", unitaryPrice: product.price)
-                            }
-                        }
-                        TotalSectionLine(section: "Divers", total: estimate.totalDivers)
-                    }
-                }
+                ProductTable(products: estimate.products, totalServices: estimate.totalServices, totalMaterials: estimate.totalMaterials, totalDivers: estimate.totalDivers)
                 
                 HStack(spacing: 10) {
                     VStack(alignment: .leading) {

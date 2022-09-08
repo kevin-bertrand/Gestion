@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PaymentTileView: View {
     let payment: Payment
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(payment.title)
@@ -20,6 +21,6 @@ struct PaymentTileView: View {
 
 struct PaymentTileView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentTileView(payment: Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: ""))
+        PaymentTileView(payment: PaymentController.emptyPayment)
     }
 }

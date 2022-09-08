@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClientDetailsView: View {
     @Binding var selectedClient: Client.Informations
+    
     var canSelectUser: Bool = false
     
     var body: some View {

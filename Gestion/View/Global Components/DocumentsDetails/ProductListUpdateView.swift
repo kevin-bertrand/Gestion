@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ProductListUpdateView: View {
-    let sectionTitle: String
-    @State private var numberOfProducts: [Int] = []
     @Binding var products: [Product.Informations]
+    @Binding var total: Double
+    
+    let sectionTitle: String
     let category: ProductCategory
     
     var body: some View {
@@ -31,11 +32,26 @@ struct ProductListUpdateView: View {
                 }
             }
         }
+        .onChange(of: products) { newValue in
+            total = calculateTotal(for: category)
+        }
     }
+    
+    private func calculateTotal(for category: ProductCategory) -> Double {
+        var total = 0.0
+        for product in products {
+            if product.productCategory == category {
+                total += (product.price * product.quantity)
+            }
+        }
+        
+        return total
+    }
+    
 }
 
 struct ProductListUpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListUpdateView(sectionTitle: "", products: .constant([]), category: .divers)
+        ProductListUpdateView(products: .constant([]), total: .constant(0), sectionTitle: "test", category: .material)
     }
 }

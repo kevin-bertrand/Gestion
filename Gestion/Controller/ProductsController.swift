@@ -8,6 +8,10 @@
 import Foundation
 
 final class ProductsController: ObservableObject {
+    // MARK: Static
+    static let emptyCreateProduct: Product.Create = .init(productCategory: .material, title: "", domain: .automation, unity: "", price: 0)
+    static let emptyProduct: Product = .init(id: UUID(uuid: UUID_NULL), productCategory: .material, title: "", domain: .automation, unity: "", price: 0)
+    
     // MARK: Public
     // MARK: Properties
     // General properties
@@ -26,25 +30,20 @@ final class ProductsController: ObservableObject {
     /// Getting all products
     func gettingProductList(for user: User?) {
         guard let user = user else { return }
-        
         productManager.gettingProductList(for: user)
     }
     
     /// Update product
     func updateProduct(_ product: Product, by user: User?) {
         guard let user = user else { return }
-        
         appController.setLoadingInProgress(withMessage: "Update in progress...")
-        
         productManager.updateProduct(product, by: user)
     }
     
     /// Create product
     func createProduct(_ product: Product.Create, by user: User?) {
         guard let user = user else { return }
-        
         appController.setLoadingInProgress(withMessage: "Creating in progress...")
-        
         productManager.create(product, by: user)
     }
  

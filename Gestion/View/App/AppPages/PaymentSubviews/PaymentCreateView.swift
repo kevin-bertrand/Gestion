@@ -13,16 +13,16 @@ struct PaymentCreateView: View {
     @EnvironmentObject private var paymentController: PaymentController
     @EnvironmentObject private var userController: UserController
     
-    @State private var newPayment: Payment.Create = Payment.Create(title: "", iban: "", bic: "")
+    @State private var newPayment: Payment.Create = PaymentController.emptyCreatePayment
     
     var body: some View {
-        Form {
-            Section {
-                TextField("Title", text: $newPayment.title)
-                TextField("IBAN", text: $newPayment.iban)
-                TextField("BIC", text: $newPayment.bic)
-            }
-        }
+        PaymentTextFieldsView(payment: .init(get: {
+            .init(id: UUID(uuid: UUID_NULL), title: newPayment.title, iban: newPayment.iban, bic: newPayment.bic)
+        }, set: {
+            newPayment.title = $0.title
+            newPayment.bic = $0.bic
+            newPayment.iban = $0.iban
+        }))
         .navigationTitle("Update")
         .toolbar {
             Button {

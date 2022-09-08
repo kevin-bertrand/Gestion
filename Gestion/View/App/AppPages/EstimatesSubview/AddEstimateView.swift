@@ -13,19 +13,7 @@ struct AddEstimateView: View {
     @EnvironmentObject var estimatesController: EstimatesController
     @EnvironmentObject var userController: UserController
     
-    @State private var newEstimate: Estimate.Create = .init(reference: "",
-                                                            internalReference: "",
-                                                            object: "",
-                                                            totalServices: 0,
-                                                            totalMaterials: 0,
-                                                            totalDivers: 0,
-                                                            total: 0,
-                                                            reduction: 0,
-                                                            grandTotal: 0,
-                                                            status: .inCreation,
-                                                            limitValidifyDate: "",
-                                                            clientID: UUID(uuid: UUID_NULL),
-                                                            products: [])
+    @State private var newEstimate: Estimate.Create = EstimatesController.emptyCreateEstimate
     @State private var limitDate: Date = Date()
     @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
@@ -58,31 +46,24 @@ struct AddEstimateView: View {
                 }
             }
             
-            ProductListUpdateView(sectionTitle: "Services",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newEstimate.totalServices,
+                                  sectionTitle: "Services",
                                   category: .service)
-            ProductListUpdateView(sectionTitle: "Materials",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newEstimate.totalMaterials,
+                                  sectionTitle: "Materials",
                                   category: .material)
-            ProductListUpdateView(sectionTitle: "Divers",
-                                  products: $products,
+            ProductListUpdateView(products: $products,
+                                  total: $newEstimate.totalDivers,
+                                  sectionTitle: "Divers",
                                   category: .divers)
             
-            Section {
-                Text("Total services: \(newEstimate.totalServices.twoDigitPrecision) €")
-                Text("Total material: \(newEstimate.totalMaterials.twoDigitPrecision) €")
-                Text("Total Divers: \(newEstimate.totalDivers.twoDigitPrecision) €")
-                Text("Grand total: \(newEstimate.grandTotal.twoDigitPrecision) €")
-                    .font(.title2.bold())
-            } header: {
-                Text("Total")
-            }
+            TotalSectionView(totalService: newEstimate.totalServices, totalMaterials: newEstimate.totalMaterials, totalDivers: newEstimate.totalDivers, grandTotal: newEstimate.grandTotal)
         }
         .onChange(of: products) { newValue in
-            newEstimate.totalDivers = calculateTotal(for: .divers)
-            newEstimate.totalServices = calculateTotal(for: .service)
-            newEstimate.totalMaterials = calculateTotal(for: .material)
-            newEstimate.total = calculateTotal(for: nil)
+            newEstimate.total = 0
+            newValue.forEach({ newEstimate.total += ($0.quantity * $0.price) })
             newEstimate.grandTotal = newEstimate.total
             
             newEstimate.products = products.map({
@@ -100,6 +81,7 @@ struct AddEstimateView: View {
         }
         .onChange(of: estimatesController.newEstimateCreateSuccess) { newValue in
             if newValue {
+                estimatesController.newEstimateCreateSuccess = false
                 dismiss()
             }
         }
@@ -113,23 +95,7 @@ struct AddEstimateView: View {
             } label: {
                 Image(systemName: "v.circle")
             }
-
         }
-    }
-    
-    private func calculateTotal(for category: ProductCategory?) -> Double {
-        var total = 0.0
-        for product in products {
-            if let category = category {
-                if product.productCategory == category {
-                    total += (product.price * product.quantity)
-                }
-            } else {
-                total += (product.price * product.quantity)
-            }
-        }
-        
-        return total
     }
 }
 

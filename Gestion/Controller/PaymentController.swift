@@ -8,6 +8,10 @@
 import Foundation
 
 final class PaymentController: ObservableObject {
+    // MARK: Static
+    static let emptyCreatePayment: Payment.Create = .init(title: "", iban: "", bic: "")
+    static let emptyPayment: Payment = .init(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
+    
     // MARK: Public
     // MARK: Properties
     // General properties

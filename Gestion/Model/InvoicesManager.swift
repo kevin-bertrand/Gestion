@@ -151,6 +151,4 @@ final class InvoicesManager {
     // MARK: Private
     // MARK: Properties
     private let networkManager: NetworkManager
-    
-    // MARK: Methods
 }
