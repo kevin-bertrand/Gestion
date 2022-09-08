@@ -38,7 +38,7 @@ final class PaymentController: ObservableObject {
     }
     
     /// Create payment
-    func create(method: Payment, by user: User?) {
+    func create(method: Payment.Create, by user: User?) {
         guard let user = user else { return }
         appController.setLoadingInProgress(withMessage: "Creation in progress...")
         paymentManager.create(method: method, by: user)

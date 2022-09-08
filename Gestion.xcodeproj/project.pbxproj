@@ -42,6 +42,7 @@
 		06180C0728C9053300E79AC4 /* InvoicesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180C0628C9053300E79AC4 /* InvoicesAll.json */; };
 		06180C0928C9068400E79AC4 /* InvoicesDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180C0828C9068400E79AC4 /* InvoicesDetails.json */; };
 		06180C0B28C9C6D100E79AC4 /* ProductsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180C0A28C9C6D100E79AC4 /* ProductsList.json */; };
+		06180C0D28C9CA2400E79AC4 /* PaymentsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 06180C0C28C9CA2400E79AC4 /* PaymentsList.json */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
@@ -178,6 +179,7 @@
 		06180C0628C9053300E79AC4 /* InvoicesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InvoicesAll.json; sourceTree = "<group>"; };
 		06180C0828C9068400E79AC4 /* InvoicesDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InvoicesDetails.json; sourceTree = "<group>"; };
 		06180C0A28C9C6D100E79AC4 /* ProductsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductsList.json; sourceTree = "<group>"; };
+		06180C0C28C9CA2400E79AC4 /* PaymentsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PaymentsList.json; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				06180C0628C9053300E79AC4 /* InvoicesAll.json */,
 				06180C0828C9068400E79AC4 /* InvoicesDetails.json */,
 				06180C0A28C9C6D100E79AC4 /* ProductsList.json */,
+				06180C0C28C9CA2400E79AC4 /* PaymentsList.json */,
 			);
 			path = FakeResponses;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				06180C0B28C9C6D100E79AC4 /* ProductsList.json in Resources */,
 				06180C0328C9030E00E79AC4 /* InvoicesReference.json in Resources */,
 				06180BF928C8F40600E79AC4 /* RevenuesMonth.json in Resources */,
+				06180C0D28C9CA2400E79AC4 /* PaymentsList.json in Resources */,
 				06180BF728C8F3F300E79AC4 /* RevenuesYear.json in Resources */,
 				06180C0528C904AE00E79AC4 /* InvoicesLatest.json in Resources */,
 			);

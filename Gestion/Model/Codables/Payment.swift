@@ -12,4 +12,10 @@ struct Payment: Codable {
     var title: String
     var iban: String
     var bic: String
+    
+    struct Create: Codable {
+        var title: String
+        var iban: String
+        var bic: String
+    }
 }

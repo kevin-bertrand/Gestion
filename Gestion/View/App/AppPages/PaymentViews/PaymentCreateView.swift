@@ -13,7 +13,7 @@ struct PaymentCreateView: View {
     @EnvironmentObject private var paymentController: PaymentController
     @EnvironmentObject private var userController: UserController
     
-    @State private var newPayment: Payment = Payment(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
+    @State private var newPayment: Payment.Create = Payment.Create(title: "", iban: "", bic: "")
     
     var body: some View {
         Form {

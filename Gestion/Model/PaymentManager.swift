@@ -54,7 +54,7 @@ final class PaymentManager {
     }
     
     /// Create a new payment method
-    func create(method: Payment, by user: User) {
+    func create(method: Payment.Create, by user: User) {
         networkManager.request(urlParams: NetworkConfigurations.paymentAdd.urlParams,
                                method: NetworkConfigurations.paymentAdd.method,
                                authorization: .authorization(bearerToken: user.token),

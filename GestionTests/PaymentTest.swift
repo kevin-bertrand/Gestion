@@ -6,30 +6,185 @@
 //
 
 import XCTest
+@testable import Gestion
 
 final class PaymentTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var fakeNetworkManager: FakeNetworkManager!
+    var paymentManager: PaymentManager!
+    
+    override func setUp() {
+        super.setUp()
+        fakeNetworkManager = FakeNetworkManager()
+        paymentManager = PaymentManager(networkManager: fakeNetworkManager)
+    }
+    
+    // MARK: Getting payment listing
+    /// Download success
+    func testGivenSuccessDownload_WhenGettingPaymentList_ThenArrayShouldBeFilled() {
+        // Given
+        configureManager(correctData: .paymentsList, response: .status200, status: .correctData)
+        
+        // When
+        paymentManager.gettingPaymentList(by: getConnectedUser())
+        
+        // Then
+        XCTAssertNotEqual(paymentManager.payments.count, 0)
+    }
+    
+    /// Server error
+    func testGivenServerError_WhenGettingPaymentList_ThenArrayShouldNotBeFilled() {
+        // Given
+        configureManager(correctData: .paymentsList, response: .status200, status: .error)
+        
+        // When
+        paymentManager.gettingPaymentList(by: getConnectedUser())
+        
+        // Then
+        XCTAssertEqual(paymentManager.payments.count, 0)
+    }
+    
+    // MARK: Update payment
+    /// Success update
+    func testGivenSuccessUpdate_WhenUpdatingPayment_ThenSuccessNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.paymentUpdateSuccess.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status200, status: .correctData)
+        
+        // When
+        paymentManager.update(method: getUpdatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Unauthorized update
+    func testGivenUnauthorizedUpdate_WhenUpdatingPayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.paymentUpdateError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status401, status: .correctData)
+        
+        // When
+        paymentManager.update(method: getUpdatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Unknown status
+    func testGivenUnknownUpdate_WhenUpdatingPayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.unknownError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status0, status: .correctData)
+        
+        // When
+        paymentManager.update(method: getUpdatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Server errror
+    func testGivenServerError_WhenUpdatingPayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.unknownError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status0, status: .error)
+        
+        // When
+        paymentManager.update(method: getUpdatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    // MARK: Create payment
+    /// Success creation
+    func testGivenSuccessCreation_WhenCreatePayment_ThenSuccessNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.paymentCreationSuccess.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status201, status: .correctData)
+        
+        // When
+        paymentManager.create(method: getCreatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Unauthorized creation
+    func testGivenUnauthorizedCreation_WhenCreatePayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.paymentCreationError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status401, status: .correctData)
+        
+        // When
+        paymentManager.create(method: getCreatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Unknown status
+    func testGivenUnknownStatus_WhenCreatePayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.unknownError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status0, status: .correctData)
+        
+        // When
+        paymentManager.create(method: getCreatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    /// Server errror
+    func testGivenServerError_WhenCreatePayment_ThenErrorNotificationShouldBeTriggered() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.unknownError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status0, status: .error)
+        
+        // When
+        paymentManager.create(method: getCreatePayment(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    // MARK: Private
+    /// Configure the fake network manager
+    private func configureManager(correctData: FakeResponseData.DataFiles?, response: FakeResponseData.Response, status: FakeResponseData.SessionStatus) {
+        fakeNetworkManager.correctData = correctData
+        fakeNetworkManager.status = status
+        fakeNetworkManager.response = response
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    /// Connect a user
+    private func getConnectedUser() -> User {
+        return User(phone: "", gender: "", position: "", lastname: "", role: "", firstname: "", email: "", token: "", permissions: "")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    /// Getting a payment to update
+    private func getUpdatePayment() -> Payment {
+        return .init(id: UUID(uuid: UUID_NULL), title: "", iban: "", bic: "")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    /// Getting a payment to create
+    private func getCreatePayment() -> Payment.Create {
+        return .init(title: "", iban: "", bic: "")
     }
-
 }
