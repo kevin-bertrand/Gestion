@@ -28,6 +28,7 @@ final class EstimatesController: ObservableObject {
     // Detail page
     @Published var selectedEstimate: Estimate.Informations = EstimatesManager.emptyDetail
     @Published var estimateIsExportedToInvoice: Bool = false
+    @Published var estimatePdf: Data = Data()
     
     // New estimate page
     @Published var newEstimateReference: String = ""
@@ -188,6 +189,7 @@ final class EstimatesController: ObservableObject {
                     self.estimatesList = self.estimatesManager.estimatesList
                 case Notification.Desyntic.estimateGettingOne.notificationName:
                     self.selectedEstimate = self.estimatesManager.estimateDetail
+                    self.estimatePdf = self.estimatesManager.estimatePdf
                 case Notification.Desyntic.estimateGettingReference.notificationName:
                     self.newEstimateReference = notificationMessage
                 case Notification.Desyntic.estimateCreated.notificationName:

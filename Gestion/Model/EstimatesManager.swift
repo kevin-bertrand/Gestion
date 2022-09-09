@@ -16,6 +16,7 @@ final class EstimatesManager {
     var estimatesSummary: [Estimate.Summary] = []
     var estimatesList: [Estimate.Summary] = []
     var estimateDetail: Estimate.Informations = EstimatesManager.emptyDetail
+    var estimatePdf: Data = Data()
     
     // MARK: Methods
     /// Getting new estimate reference
@@ -105,7 +106,7 @@ final class EstimatesManager {
                status == 200,
                let estimate = try? JSONDecoder().decode(Estimate.Informations.self, from: data) {
                 self.estimateDetail = estimate
-                Notification.Desyntic.estimateGettingOne.sendNotification()
+                self.downloadPDF(of: id, by: user)
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }
@@ -151,6 +152,26 @@ final class EstimatesManager {
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
+    /// Download PDF
+    func downloadPDF(of id: UUID, by user: User) {
+        var params = NetworkConfigurations.estimatePDF.urlParams
+        params.append("\(id)")
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.estimatePDF.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { [weak self] data, response, Error in
+            if let self = self,
+               let statusCode = response?.statusCode,
+               statusCode == 200,
+               let data = data {
+                self.estimatePdf = data
+                Notification.Desyntic.estimateGettingOne.sendNotification()
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }

@@ -18,7 +18,7 @@ struct EstimatesView: View {
         List {
             EstimatesListSectionView(list: estimatesController.estimatesList, status: .late, title: "Late estimates")
             EstimatesListSectionView(list: estimatesController.estimatesList, status: .inCreation, title: "In creation estimate")
-            EstimatesListSectionView(list: estimatesController.estimatesList, status: .inCreation, title: "Sent estimates")
+            EstimatesListSectionView(list: estimatesController.estimatesList, status: .sent, title: "Sent estimates")
             EstimatesListSectionView(list: estimatesController.estimatesList, status: .refused, title: "Refused estimates")
             EstimatesListSectionView(list: estimatesController.estimatesList, status: .accepted, title: "Accepted estimate")
         }

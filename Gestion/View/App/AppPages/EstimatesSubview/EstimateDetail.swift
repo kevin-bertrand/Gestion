@@ -40,15 +40,7 @@ struct EstimateDetail: View {
                                        products: estimateController.selectedEstimate.products)
                 }
                 NavigationLink("Show PDF") {
-                    EstimatePDF(estimate: estimateController.selectedEstimate)
-                        .toolbar {
-                            Button {
-                                estimateController.exportToPDF()
-                            } label: {
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                        .navigationBarTitleDisplayMode(.inline)
+                    PDFUIView(pdf: estimateController.estimatePdf)
                 }
                 Button {
                     estimateController.exportToInvoice(by: userController.connectedUser)
