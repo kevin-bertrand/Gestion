@@ -16,6 +16,7 @@ final class InvoicesManager {
     var invoicesSummary: [Invoice.Summary] = []
     var invoiceDetail: Invoice.Informations = InvoicesManager.emptyInvoiceDetail
     var invoicesList: [Invoice.Summary] = []
+    var invoicePDF: Data = Data()
     
     // MARK: Methods
     /// Getting new invoice reference
@@ -86,7 +87,7 @@ final class InvoicesManager {
                     if let data = data,
                        let invoice = try? JSONDecoder().decode(Invoice.Informations.self, from: data) {
                         self.invoiceDetail = invoice
-                        Notification.Desyntic.invoicesGettingOne.sendNotification()
+                        self.downloadPDF(of: id, by: user)
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
                     }
@@ -137,6 +138,26 @@ final class InvoicesManager {
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
+    /// Download PDF
+    func downloadPDF(of id: UUID, by user: User) {
+        var params = NetworkConfigurations.invoicePDF.urlParams
+        params.append("\(id)")
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.invoicePDF.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { [weak self] data, response, Error in
+            if let self = self,
+               let status = response?.statusCode,
+               status == 200,
+               let data = data {
+                self.invoicePDF = data
+                Notification.Desyntic.invoicesGettingOne.sendNotification()
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }

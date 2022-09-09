@@ -60,6 +60,11 @@ class NetworkManager: NetworkProtocol {
                 completionHandler((data.data, data.response, data.error))
         }.resume()
     }
+    
+    /// Get invoice pdf url
+    func getInvoicePdfUrl(for id: UUID) -> String {
+        return "\(url):\(apiPort)/\(NetworkConfigurations.invoicePDF.urlParams.joined(separator: "/"))/\(id)"
+    }
         
     // MARK: Private
     // MARK: Properties

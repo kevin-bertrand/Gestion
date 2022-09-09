@@ -34,7 +34,7 @@ struct InvoiceDetail: View {
                 if let tva = invoicesController.selectedInvoice.client.tva {
                     Label("TVA: \(tva)", systemImage: "eurosign")
                 }
-
+                
                 if let siret = invoicesController.selectedInvoice.client.siret {
                     Label("SIRET: \(siret)", systemImage: "person.badge.shield.checkmark.fill")
                 }
@@ -70,15 +70,7 @@ struct InvoiceDetail: View {
                                       products: invoicesController.selectedInvoice.products)
                 }
                 NavigationLink("Show PDF") {
-                    InvoicePDF(invoice: invoicesController.selectedInvoice)
-                        .toolbar {
-                            Button {
-                                invoicesController.exportToPDF()
-                            } label: {
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                        .navigationBarTitleDisplayMode(.inline)
+                    PDFUIView(pdf: invoicesController.invoicePDF)
                 }
             } header: {
                 Text("Actions")
@@ -89,7 +81,7 @@ struct InvoiceDetail: View {
             if let id = selectedInvoice {
                 invoicesController.selectInvoice(id: id, by: userController.connectedUser)
             } else {
-               dismiss()
+                dismiss()
             }
         }
     }

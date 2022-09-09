@@ -53,6 +53,9 @@
 		06180C2528C9ED9B00E79AC4 /* EstimatesListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C2428C9ED9B00E79AC4 /* EstimatesListSectionView.swift */; };
 		06180C2728C9EE7B00E79AC4 /* InvoicesListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C2628C9EE7B00E79AC4 /* InvoicesListSectionView.swift */; };
 		06180C2928C9F08200E79AC4 /* SelectProductSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C2828C9F08200E79AC4 /* SelectProductSection.swift */; };
+		062DC58828CB549100A8968B /* PDFKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58728CB549100A8968B /* PDFKitView.swift */; };
+		062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58928CB54F300A8968B /* PDFUIView.swift */; };
+		062DC58D28CB62AA00A8968B /* PDFViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 062DC58C28CB62AA00A8968B /* PDFViewer */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
@@ -199,6 +202,8 @@
 		06180C2428C9ED9B00E79AC4 /* EstimatesListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesListSectionView.swift; sourceTree = "<group>"; };
 		06180C2628C9EE7B00E79AC4 /* InvoicesListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesListSectionView.swift; sourceTree = "<group>"; };
 		06180C2828C9F08200E79AC4 /* SelectProductSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductSection.swift; sourceTree = "<group>"; };
+		062DC58728CB549100A8968B /* PDFKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
+		062DC58928CB54F300A8968B /* PDFUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFUIView.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -296,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06F5C18B28C23C6800B3F37A /* Alamofire in Frameworks */,
+				062DC58D28CB62AA00A8968B /* PDFViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +636,8 @@
 				06ACC36B28BF52640012166D /* DesynticTile.swift */,
 				06ACC36D28BF52800012166D /* TableColumnTitles.swift */,
 				06180C1B28C9E30600E79AC4 /* ProductTable.swift */,
+				062DC58728CB549100A8968B /* PDFKitView.swift */,
+				062DC58928CB54F300A8968B /* PDFUIView.swift */,
 			);
 			path = "PDF Components";
 			sourceTree = "<group>";
@@ -740,6 +748,7 @@
 			name = Gestion;
 			packageProductDependencies = (
 				06F5C18A28C23C6800B3F37A /* Alamofire */,
+				062DC58C28CB62AA00A8968B /* PDFViewer */,
 			);
 			productName = Gestion;
 			productReference = 0661ABD128BD50CC00E88116 /* Gestion.app */;
@@ -793,6 +802,7 @@
 			mainGroup = 0661ABC828BD50CC00E88116;
 			packageReferences = (
 				06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				062DC58B28CB62AA00A8968B /* XCRemoteSwiftPackageReference "PDFViewer" */,
 			);
 			productRefGroup = 0661ABD228BD50CC00E88116 /* Products */;
 			projectDirPath = "";
@@ -868,6 +878,7 @@
 				06180BDB28C8D02A00E79AC4 /* PaymentCreateView.swift in Sources */,
 				06ACC36828BF52110012166D /* ClientTile.swift in Sources */,
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
+				062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */,
 				06D3580028C741D80093C564 /* ProductTileView.swift in Sources */,
 				06D357F228C71B4E0093C564 /* ClientController.swift in Sources */,
 				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
@@ -892,6 +903,7 @@
 				06D1A14D28BFAA96002533F5 /* Network.swift in Sources */,
 				06AA687C28C0ACCD0075B635 /* Permissions.swift in Sources */,
 				06AA687A28C0AC620075B635 /* Position.swift in Sources */,
+				062DC58828CB549100A8968B /* PDFKitView.swift in Sources */,
 				06AA687428C09E5D0075B635 /* AppController.swift in Sources */,
 				06180C1128C9D2A200E79AC4 /* ProductsListSectionView.swift in Sources */,
 				06D1A16528BFB50A002533F5 /* ProductCategory.swift in Sources */,
@@ -1236,6 +1248,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		062DC58B28CB62AA00A8968B /* XCRemoteSwiftPackageReference "PDFViewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rajubd49/PDFViewer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1247,6 +1267,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		062DC58C28CB62AA00A8968B /* PDFViewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 062DC58B28CB62AA00A8968B /* XCRemoteSwiftPackageReference "PDFViewer" */;
+			productName = PDFViewer;
+		};
 		06F5C18A28C23C6800B3F37A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */;

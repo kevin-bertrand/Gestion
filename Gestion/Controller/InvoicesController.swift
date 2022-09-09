@@ -25,6 +25,7 @@ final class InvoicesController: ObservableObject {
     
     // Detail page
     @Published var selectedInvoice: Invoice.Informations
+    @Published var invoicePDF: Data = Data()
     
     // Invoices list
     @Published var invoicesList: [Invoice.Summary] = []
@@ -180,6 +181,7 @@ final class InvoicesController: ObservableObject {
                     self.invoicesSummary = self.invoicesManager.invoicesSummary
                 case Notification.Desyntic.invoicesGettingOne.notificationName:
                     self.selectedInvoice = self.invoicesManager.invoiceDetail
+                    self.invoicePDF = self.invoicesManager.invoicePDF
                 case Notification.Desyntic.invoicesListDownloaded.notificationName:
                     self.invoicesList = self.invoicesManager.invoicesList
                 case Notification.Desyntic.invoicesGettingReference.notificationName:
