@@ -20,7 +20,7 @@ struct UpdateClientView: View {
         Form {
             ClientInformationsSection(firstname: $client.firstname, lastname: $client.lastname, company: $client.company, tva: $client.tva, siret: $client.siret, phone: $client.phone, email: $client.email, gender: $client.gender, type: $client.personType)
             
-            ClientAddressModificationSection(address: .init(get: {
+            AddressModificationSection(address: .init(get: {
                 client.address.toCreate()
             }, set: {
                 client.address.roadName = $0.roadName

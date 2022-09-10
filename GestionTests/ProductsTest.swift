@@ -62,7 +62,7 @@ final class ProductsTest: XCTestCase {
     /// Unauthorized
     func testGivenUnauthorizedUpdate_WhenUpdatingProduct_ThenErrorNotificationShouldPop() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.productsUpdateError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -123,7 +123,7 @@ final class ProductsTest: XCTestCase {
     /// Unauthorized
     func testGivenUnautgorizedCreation_WhenCreateProduct_ThenErrorNotificationShouldBeTriggered() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.productsCreateError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -175,7 +175,7 @@ final class ProductsTest: XCTestCase {
 
     /// Connect a user
     private func getConnectedUser() -> User {
-        return User(phone: "", gender: "", position: "", lastname: "", role: "", firstname: "", email: "", token: "", permissions: "")
+        return User(phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     }
     
     /// Getting product to update

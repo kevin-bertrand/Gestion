@@ -36,6 +36,9 @@ final class UserController: ObservableObject {
     @Published var loginPasswordTextField: String = ""
     @Published var loginErrorMessage: String = ""
     
+    // Update user
+    @Published var userIsUpdated: Bool = false
+    
     // MARK: Methods
     /// Check if the email must be saved
     func checkSaveEmail() {
@@ -111,6 +114,13 @@ final class UserController: ObservableObject {
         }
     }
     
+    /// Update user
+    func updateUser(_ userToUpdate: User.Update) {
+        guard let user = connectedUser else { return }
+        appController.setLoadingInProgress(withMessage: "Updating informations...")
+        userManager.update(user: userToUpdate, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -118,6 +128,9 @@ final class UserController: ObservableObject {
         // Configure login notification
         configureNotification(for: Notification.Desyntic.loginSuccess.notificationName)
         configureNotification(for: Notification.Desyntic.loginWrongCredentials.notificationName)
+        
+        // Configure update notifications
+        configureNotification(for: Notification.Desyntic.userUpdateSuccess.notificationName)
     }
     
     // MARK: Private
@@ -142,6 +155,8 @@ final class UserController: ObservableObject {
                     self.userIsConnected = true
                 case Notification.Desyntic.loginWrongCredentials.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.userUpdateSuccess.notificationName:
+                    self.userIsUpdated = true
                 default: break
                 }
             }

@@ -292,7 +292,7 @@ final class InvoicesTest: XCTestCase {
 
     /// Connect a user
     private func getConnectedUser() -> User {
-        return User(phone: "", gender: "", position: "", lastname: "", role: "", firstname: "", email: "", token: "", permissions: "")
+        return User(phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: .init(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     }
     
     /// Getting invoice to create

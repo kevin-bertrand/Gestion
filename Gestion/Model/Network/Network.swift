@@ -52,6 +52,7 @@ enum NetworkConfigurations {
     // MARK: Staff
     case staffLogin
     case staffAdd
+    case staffUpdate
     case staffDelete
     case staffGetList
     case staffGetOne
@@ -71,7 +72,8 @@ enum NetworkConfigurations {
                 .estimateUpdate,
                 .invoiceUpdate,
                 .paymentUpdate,
-                .productUpdate:
+                .productUpdate,
+                .staffUpdate:
             method = .patch
         case .clientGetList,
                 .estimateGetReference, .estimateGetList, .estimateGetDetails, .estimatePDF,
@@ -125,7 +127,7 @@ enum NetworkConfigurations {
             params = ["revenues", "year"]
         case .revenueGetMonth:
             params = ["revenues", "month"]
-        case .staffDelete, .staffGetList, .staffGetOne:
+        case .staffDelete, .staffGetList, .staffGetOne, .staffUpdate:
             params = ["staff"]
         case .staffAdd:
             params = ["staff", "add"]

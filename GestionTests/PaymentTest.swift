@@ -62,7 +62,7 @@ final class PaymentTest: XCTestCase {
     /// Unauthorized update
     func testGivenUnauthorizedUpdate_WhenUpdatingPayment_ThenErrorNotificationShouldBeTriggered() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.paymentUpdateError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -123,7 +123,7 @@ final class PaymentTest: XCTestCase {
     /// Unauthorized creation
     func testGivenUnauthorizedCreation_WhenCreatePayment_ThenErrorNotificationShouldBeTriggered() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.paymentCreationError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -175,7 +175,7 @@ final class PaymentTest: XCTestCase {
 
     /// Connect a user
     private func getConnectedUser() -> User {
-        return User(phone: "", gender: "", position: "", lastname: "", role: "", firstname: "", email: "", token: "", permissions: "")
+        return User(phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     }
     
     /// Getting a payment to update

@@ -77,7 +77,7 @@ final class ClientTest: XCTestCase {
     /// Unauthorized status
     func testGivenUnauthorizedUser_WhenTryingToUpdate_ThenGettingError() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.clientUpdateError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -138,7 +138,7 @@ final class ClientTest: XCTestCase {
     /// Unauthorized user
     func testGivenUnauthorizedUser_WhenTryingToCreateClient_ThenGettingError() {
         // Prepare expectation
-        _ = expectation(forNotification: Notification.Desyntic.clientCreateError.notificationName, object: nil, handler: nil)
+        _ = expectation(forNotification: Notification.Desyntic.notAuthorized.notificationName, object: nil, handler: nil)
         
         // Given
         configureManager(correctData: nil, response: .status401, status: .correctData)
@@ -190,7 +190,7 @@ final class ClientTest: XCTestCase {
     
     /// Connect a user
     private func getConnectedUser() -> User {
-        return User(phone: "", gender: "", position: "", lastname: "", role: "", firstname: "", email: "", token: "", permissions: "")
+        return User(phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     }
                              
     /// Get client to update

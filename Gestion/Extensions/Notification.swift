@@ -14,9 +14,10 @@ extension Notification {
         case notAuthorized = "You are not authorized to perform this action. Ask to an administrator!"
         case notFound = "The component was not found!"
         
-        // Login
+        // User
         case loginSuccess = "Successfull login!"
         case loginWrongCredentials = "Your credentials are not correct!"
+        case userUpdateSuccess = "The user is successfully updated!"
         
         // Revenues
         case revenuesSuccess = "The summary of revenues is downloaded!"

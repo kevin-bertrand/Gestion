@@ -26,7 +26,7 @@ struct SettingsView: View {
                 
                 Section {
                     NavigationLink {
-                        Text("Update personnal informations")
+                        UserUpdateView()
                     } label: {
                         Label("Update personnal informations", systemImage: "person.fill")
                     }

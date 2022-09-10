@@ -1,5 +1,5 @@
 //
-//  ClientAddressModificationSection.swift
+//  AddressModificationSection.swift
 //  Gestion
 //
 //  Created by Kevin Bertrand on 08/09/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ClientAddressModificationSection: View {
+struct AddressModificationSection: View {
     @Binding var address: Address.Create
     
     var body: some View {
@@ -25,8 +25,8 @@ struct ClientAddressModificationSection: View {
     }
 }
 
-struct ClientAddressModificationSection_Previews: PreviewProvider {
+struct AddressModificationSection_Previews: PreviewProvider {
     static var previews: some View {
-        ClientAddressModificationSection(address: .constant(Address.Create(roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")))
+        AddressModificationSection(address: .constant(Address.Create(roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")))
     }
 }

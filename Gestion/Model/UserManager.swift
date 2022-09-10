@@ -8,6 +8,9 @@
 import Foundation
 
 final class UserManager {
+    // MARK: Static
+    static let userUpdate: User.Update = .init(id: UUID(uuid: UUID_NULL), firstname: "", lastname: "", phone: "", email: "", gender: .man, position: .employee, role: "", address: Address.Create(roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
+    
     // MARK: Public
     // MARK: Properties
     var connectedUser: User?
@@ -43,6 +46,33 @@ final class UserManager {
     /// Disconnect the user
     func disconnectUser() {
         connectedUser = nil
+    }
+    
+    /// Update user
+    func update(user userToUpdate: User.Update, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.staffUpdate.urlParams,
+                               method: NetworkConfigurations.staffUpdate.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: userToUpdate) { [weak self] data, response, error in
+            print(response)
+            if let self = self,
+               let statusCode = response?.statusCode,
+               let data = data {
+                switch statusCode {
+                case 200:
+                    if let user = try? JSONDecoder().decode(User.self, from: data) {
+                        self.connectedUser = user
+                        Notification.Desyntic.userUpdateSuccess.sendNotification()
+                    } else {
+                        Notification.Desyntic.unknownError.sendNotification()
+                    }
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
     }
     
     // MARK: Initialization

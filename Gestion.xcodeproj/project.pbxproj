@@ -45,7 +45,7 @@
 		06180C0F28C9D16600E79AC4 /* PaymentTextFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C0E28C9D16600E79AC4 /* PaymentTextFieldsView.swift */; };
 		06180C1128C9D2A200E79AC4 /* ProductsListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1028C9D2A200E79AC4 /* ProductsListSectionView.swift */; };
 		06180C1328C9D39600E79AC4 /* TextFieldFormWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1228C9D39600E79AC4 /* TextFieldFormWithIcon.swift */; };
-		06180C1728C9D8FF00E79AC4 /* ClientAddressModificationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1628C9D8FF00E79AC4 /* ClientAddressModificationSection.swift */; };
+		06180C1728C9D8FF00E79AC4 /* AddressModificationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1628C9D8FF00E79AC4 /* AddressModificationSection.swift */; };
 		06180C1A28C9DF1900E79AC4 /* ClientInformationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1928C9DF1900E79AC4 /* ClientInformationsSection.swift */; };
 		06180C1C28C9E30600E79AC4 /* ProductTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1B28C9E30600E79AC4 /* ProductTable.swift */; };
 		06180C1F28C9E56E00E79AC4 /* TotalSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1E28C9E56E00E79AC4 /* TotalSectionView.swift */; };
@@ -56,6 +56,8 @@
 		062DC58828CB549100A8968B /* PDFKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58728CB549100A8968B /* PDFKitView.swift */; };
 		062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58928CB54F300A8968B /* PDFUIView.swift */; };
 		062DC58D28CB62AA00A8968B /* PDFViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 062DC58C28CB62AA00A8968B /* PDFViewer */; };
+		062DC58F28CCC16C00A8968B /* UserUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58E28CCC16C00A8968B /* UserUpdateView.swift */; };
+		062DC59228CCC1B000A8968B /* UserDetailsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC59128CCC1B000A8968B /* UserDetailsViews.swift */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
@@ -192,7 +194,7 @@
 		06180C0E28C9D16600E79AC4 /* PaymentTextFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTextFieldsView.swift; sourceTree = "<group>"; };
 		06180C1028C9D2A200E79AC4 /* ProductsListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListSectionView.swift; sourceTree = "<group>"; };
 		06180C1228C9D39600E79AC4 /* TextFieldFormWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormWithIcon.swift; sourceTree = "<group>"; };
-		06180C1628C9D8FF00E79AC4 /* ClientAddressModificationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAddressModificationSection.swift; sourceTree = "<group>"; };
+		06180C1628C9D8FF00E79AC4 /* AddressModificationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModificationSection.swift; sourceTree = "<group>"; };
 		06180C1928C9DF1900E79AC4 /* ClientInformationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInformationsSection.swift; sourceTree = "<group>"; };
 		06180C1B28C9E30600E79AC4 /* ProductTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTable.swift; sourceTree = "<group>"; };
 		06180C1E28C9E56E00E79AC4 /* TotalSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSectionView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,8 @@
 		06180C2828C9F08200E79AC4 /* SelectProductSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductSection.swift; sourceTree = "<group>"; };
 		062DC58728CB549100A8968B /* PDFKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
 		062DC58928CB54F300A8968B /* PDFUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFUIView.swift; sourceTree = "<group>"; };
+		062DC58E28CCC16C00A8968B /* UserUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateView.swift; sourceTree = "<group>"; };
+		062DC59128CCC1B000A8968B /* UserDetailsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViews.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -401,6 +405,15 @@
 			path = PieChart;
 			sourceTree = "<group>";
 		};
+		062DC59028CCC17C00A8968B /* UserSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				062DC58E28CCC16C00A8968B /* UserUpdateView.swift */,
+				062DC59128CCC1B000A8968B /* UserDetailsViews.swift */,
+			);
+			path = UserSubviews;
+			sourceTree = "<group>";
+		};
 		0661ABC828BD50CC00E88116 = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +584,7 @@
 				06C349B428BDE974004D0960 /* ButtonCustom.swift */,
 				06C349B828BDEF28004D0960 /* TextFieldCustom.swift */,
 				066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */,
+				06180C1628C9D8FF00E79AC4 /* AddressModificationSection.swift */,
 				066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */,
 				066F406D28BE7ECA000718D7 /* InfoTile.swift */,
 				066F406F28BEA1C3000718D7 /* TileView.swift */,
@@ -641,7 +655,6 @@
 			children = (
 				06D357F328C720980093C564 /* ClientTileView.swift */,
 				06D357F728C7260C0093C564 /* ClientDetailsView.swift */,
-				06180C1628C9D8FF00E79AC4 /* ClientAddressModificationSection.swift */,
 				06180C1928C9DF1900E79AC4 /* ClientInformationsSection.swift */,
 			);
 			path = "Client Components";
@@ -680,6 +693,7 @@
 		06EFE67528BE2C4B0052BEA0 /* AppPages */ = {
 			isa = PBXGroup;
 			children = (
+				062DC59028CCC17C00A8968B /* UserSubviews */,
 				06180BC928C8BB0600E79AC4 /* PaymentSubviews */,
 				06FAE27C28C87AC80058DCE5 /* ProductsSubviews */,
 				06D3580B28C792640093C564 /* ClientSubviews */,
@@ -847,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				062DC59228CCC1B000A8968B /* UserDetailsViews.swift in Sources */,
 				06180BD328C8C1CC00E79AC4 /* PaymentManager.swift in Sources */,
 				06AA687828C0A9DA0075B635 /* User.swift in Sources */,
 				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,
@@ -901,7 +916,7 @@
 				06AA687428C09E5D0075B635 /* AppController.swift in Sources */,
 				06180C1128C9D2A200E79AC4 /* ProductsListSectionView.swift in Sources */,
 				06D1A16528BFB50A002533F5 /* ProductCategory.swift in Sources */,
-				06180C1728C9D8FF00E79AC4 /* ClientAddressModificationSection.swift in Sources */,
+				06180C1728C9D8FF00E79AC4 /* AddressModificationSection.swift in Sources */,
 				06180BCD28C8BB7300E79AC4 /* PaymentController.swift in Sources */,
 				06180C1A28C9DF1900E79AC4 /* ClientInformationsSection.swift in Sources */,
 				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
@@ -913,6 +928,7 @@
 				06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */,
 				06D1A15928BFB31D002533F5 /* Estimate.swift in Sources */,
 				06D1A14B28BFAA51002533F5 /* NetworkManager.swift in Sources */,
+				062DC58F28CCC16C00A8968B /* UserUpdateView.swift in Sources */,
 				06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */,
 				06D1A15028BFB19B002533F5 /* Address.swift in Sources */,
 				06D357F028C719EC0093C564 /* ClientManager.swift in Sources */,

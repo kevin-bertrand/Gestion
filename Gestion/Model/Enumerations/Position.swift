@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Position: String, Codable {
+enum Position: String, Codable, CaseIterable {
     case employee, leadingBoard
 }
