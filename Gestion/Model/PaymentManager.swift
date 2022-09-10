@@ -42,7 +42,9 @@ final class PaymentManager {
                 switch statusCode {
                 case 200:
                     Notification.Desyntic.paymentUpdateSuccess.sendNotification()
-                case 401, 406:
+                case 401:
+                    Notification.Desyntic.notAuthorized.sendNotification()
+                case 406:
                     Notification.Desyntic.paymentUpdateError.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
@@ -64,7 +66,7 @@ final class PaymentManager {
                 case 201:
                     Notification.Desyntic.paymentCreationSuccess.sendNotification()
                 case 401:
-                    Notification.Desyntic.paymentCreationError.sendNotification()
+                    Notification.Desyntic.notAuthorized.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }

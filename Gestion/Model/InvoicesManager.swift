@@ -92,7 +92,7 @@ final class InvoicesManager {
                         Notification.Desyntic.unknownError.sendNotification()
                     }
                 case 404:
-                    Notification.Desyntic.unknownError.sendNotification()
+                    Notification.Desyntic.notFound.sendNotification(customMessage: "The invoice was not found")
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }

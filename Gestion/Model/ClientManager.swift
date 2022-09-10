@@ -48,7 +48,9 @@ final class ClientManager {
                 switch statusCode{
                 case 200:
                     Notification.Desyntic.clientUpdated.sendNotification()
-                case 401, 406:
+                case 401:
+                    Notification.Desyntic.notAuthorized.sendNotification()
+                case 406:
                     Notification.Desyntic.clientUpdateError.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
@@ -70,7 +72,7 @@ final class ClientManager {
                 case 201:
                     Notification.Desyntic.clientCreateSuccess.sendNotification()
                 case 401:
-                    Notification.Desyntic.clientCreateError.sendNotification()
+                    Notification.Desyntic.notAuthorized.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }

@@ -62,7 +62,6 @@
 		066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */; };
 		066F406E28BE7ECA000718D7 /* InfoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406D28BE7ECA000718D7 /* InfoTile.swift */; };
 		066F407028BEA1C3000718D7 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406F28BEA1C3000718D7 /* TileView.swift */; };
-		066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F407228BF3C92000718D7 /* EstimatePDF.swift */; };
 		06A63AEC28BD51EC009805CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A63AEB28BD51EC009805CB /* Assets.xcassets */; };
 		06A63AF028BD53C0009805CB /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AEF28BD53C0009805CB /* StartView.swift */; };
 		06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AF228BD55CB009805CB /* AnyTransition.swift */; };
@@ -80,7 +79,6 @@
 		06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36928BF523E0012166D /* PdfHeader.swift */; };
 		06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36B28BF52640012166D /* DesynticTile.swift */; };
 		06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36D28BF52800012166D /* TableColumnTitles.swift */; };
-		06ACC37128BF56B60012166D /* InvoicePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC37028BF56B60012166D /* InvoicePDF.swift */; };
 		06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC37228BF597F0012166D /* InvoiceDetail.swift */; };
 		06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B128BDE4E2004D0960 /* StartSubview.swift */; };
 		06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B428BDE974004D0960 /* ButtonCustom.swift */; };
@@ -212,7 +210,6 @@
 		066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleCustom.swift; sourceTree = "<group>"; };
 		066F406D28BE7ECA000718D7 /* InfoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTile.swift; sourceTree = "<group>"; };
 		066F406F28BEA1C3000718D7 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
-		066F407228BF3C92000718D7 /* EstimatePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatePDF.swift; sourceTree = "<group>"; };
 		06A63AEB28BD51EC009805CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06A63AEF28BD53C0009805CB /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		06A63AF228BD55CB009805CB /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
@@ -231,7 +228,6 @@
 		06ACC36928BF523E0012166D /* PdfHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfHeader.swift; sourceTree = "<group>"; };
 		06ACC36B28BF52640012166D /* DesynticTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesynticTile.swift; sourceTree = "<group>"; };
 		06ACC36D28BF52800012166D /* TableColumnTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumnTitles.swift; sourceTree = "<group>"; };
-		06ACC37028BF56B60012166D /* InvoicePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicePDF.swift; sourceTree = "<group>"; };
 		06ACC37228BF597F0012166D /* InvoiceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetail.swift; sourceTree = "<group>"; };
 		06C349B128BDE4E2004D0960 /* StartSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSubview.swift; sourceTree = "<group>"; };
 		06C349B428BDE974004D0960 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
@@ -526,7 +522,6 @@
 			isa = PBXGroup;
 			children = (
 				06180C2028C9E99000E79AC4 /* Estimates Components */,
-				066F407228BF3C92000718D7 /* EstimatePDF.swift */,
 				06F5C18728C23A6600B3F37A /* EstimateDetail.swift */,
 				06D3580628C777990093C564 /* AddEstimateView.swift */,
 				06D3580828C782A60093C564 /* UpdateEstimateView.swift */,
@@ -549,7 +544,6 @@
 			isa = PBXGroup;
 			children = (
 				06180C1828C9DAC200E79AC4 /* Invoices Components */,
-				06ACC37028BF56B60012166D /* InvoicePDF.swift */,
 				06ACC37228BF597F0012166D /* InvoiceDetail.swift */,
 				06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */,
 				06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */,
@@ -916,12 +910,10 @@
 				06D1A15228BFB27C002533F5 /* Client.swift in Sources */,
 				06180BD728C8C96B00E79AC4 /* PaymentDetailView.swift in Sources */,
 				06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */,
-				06ACC37128BF56B60012166D /* InvoicePDF.swift in Sources */,
 				06F5C18828C23A6600B3F37A /* EstimateDetail.swift in Sources */,
 				06D1A15928BFB31D002533F5 /* Estimate.swift in Sources */,
 				06D1A14B28BFAA51002533F5 /* NetworkManager.swift in Sources */,
 				06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */,
-				066F407328BF3C92000718D7 /* EstimatePDF.swift in Sources */,
 				06D1A15028BFB19B002533F5 /* Address.swift in Sources */,
 				06D357F028C719EC0093C564 /* ClientManager.swift in Sources */,
 				066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */,

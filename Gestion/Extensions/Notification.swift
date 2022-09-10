@@ -11,6 +11,8 @@ extension Notification {
     enum Desyntic: String {
         // General
         case unknownError = "An unknown error occurs... Try later!"
+        case notAuthorized = "You are not authorized to perform this action. Ask to an administrator!"
+        case notFound = "The component was not found!"
         
         // Login
         case loginSuccess = "Successfull login!"
@@ -48,7 +50,6 @@ extension Notification {
         case clientUpdated = "The client is updated"
         case clientUpdateError = "An error occurs during the client update"
         case clientCreateSuccess = "The client is created"
-        case clientCreateError = "The client could not be created"
         
         // Products notifications
         case productsGettingList = "Product list is downloaded!"

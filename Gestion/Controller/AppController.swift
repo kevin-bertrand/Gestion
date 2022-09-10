@@ -58,6 +58,7 @@ final class AppController: ObservableObject {
     init() {
         // Configure general notifications
         configureNotification(for: Notification.Desyntic.unknownError.notificationName)
+        configureNotification(for: Notification.Desyntic.notAuthorized.notificationName)
     }
     
     // MARK: Private
@@ -76,7 +77,8 @@ final class AppController: ObservableObject {
             self.resetLoadingInProgress()
             
             switch notificationName {
-            case Notification.Desyntic.unknownError.notificationName:
+            case Notification.Desyntic.unknownError.notificationName,
+                Notification.Desyntic.notAuthorized.notificationName:
                 self.showAlertView(withMessage: notificationMessage, andTitle: "Error")
             default: break
             }

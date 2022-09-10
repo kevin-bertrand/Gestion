@@ -59,7 +59,6 @@ final class ClientController: ObservableObject {
         configureNotification(for: Notification.Desyntic.clientUpdated.notificationName)
         configureNotification(for: Notification.Desyntic.clientUpdateError.notificationName)
         configureNotification(for: Notification.Desyntic.clientCreateSuccess.notificationName)
-        configureNotification(for: Notification.Desyntic.clientCreateError.notificationName)
     }
     
     // MARK: Private
@@ -84,8 +83,7 @@ final class ClientController: ObservableObject {
                     self.clients =  self.clientManager.clients
                 case Notification.Desyntic.clientUpdated.notificationName:
                     self.updateSuccess = true
-                case Notification.Desyntic.clientUpdateError.notificationName,
-                    Notification.Desyntic.clientCreateError.notificationName:
+                case Notification.Desyntic.clientUpdateError.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 case Notification.Desyntic.clientCreateSuccess.notificationName:
                     self.createSuccess = true

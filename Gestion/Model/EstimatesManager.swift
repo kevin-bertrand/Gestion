@@ -102,11 +102,20 @@ final class EstimatesManager {
                                body: nil) { [weak self] data, response, error in
             if let self = self,
                let status = response?.statusCode,
-               let data = data,
-               status == 200,
-               let estimate = try? JSONDecoder().decode(Estimate.Informations.self, from: data) {
-                self.estimateDetail = estimate
-                self.downloadPDF(of: id, by: user)
+               let data = data {
+                switch status {
+                case 200:
+                    if let estimate = try? JSONDecoder().decode(Estimate.Informations.self, from: data) {
+                        self.estimateDetail = estimate
+                        self.downloadPDF(of: id, by: user)
+                    } else {
+                        Notification.Desyntic.unknownError.sendNotification()
+                    }
+                case 404:
+                    Notification.Desyntic.notFound.sendNotification(customMessage: "The estimate was not found!")
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }
@@ -147,7 +156,9 @@ final class EstimatesManager {
                 switch statusCode {
                 case 201:
                     Notification.Desyntic.estimateExportToInvoiceSuccess.sendNotification()
-                case 404, 500:
+                case 404:
+                    Notification.Desyntic.notFound.sendNotification(customMessage: "The estimate was not found")
+                case 500:
                     Notification.Desyntic.estimateExportToInvoiceFailed.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()

@@ -46,7 +46,7 @@ final class ProductManager {
                 case 200:
                     Notification.Desyntic.productsUpdateSuccess.sendNotification()
                 case 401:
-                    Notification.Desyntic.productsUpdateError.sendNotification()
+                    Notification.Desyntic.notAuthorized.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }
@@ -67,7 +67,7 @@ final class ProductManager {
                 case 201:
                     Notification.Desyntic.productsCreateSuccess.sendNotification()
                 case 401:
-                    Notification.Desyntic.productsCreateError.sendNotification()
+                    Notification.Desyntic.notAuthorized.sendNotification()
                 default:
                     Notification.Desyntic.unknownError.sendNotification()
                 }
