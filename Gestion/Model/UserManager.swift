@@ -54,7 +54,6 @@ final class UserManager {
                                method: NetworkConfigurations.staffUpdate.method,
                                authorization: .authorization(bearerToken: user.token),
                                body: userToUpdate) { [weak self] data, response, error in
-            print(response)
             if let self = self,
                let statusCode = response?.statusCode,
                let data = data {

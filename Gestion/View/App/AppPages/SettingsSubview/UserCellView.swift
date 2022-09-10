@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct UserCellView: View {
+    @EnvironmentObject var userController: UserController
+    
+    @State private var userName: String = ""
+    
     var body: some View {
         HStack {
             Spacer()
@@ -19,13 +23,22 @@ struct UserCellView: View {
                     .padding(5)
                 
                 Group {
-                    Text("Unknown user")
+                    Text(userName)
                         .bold()
                         .font(.title)
+                        .multilineTextAlignment(.center)
                 }
             }
             
             Spacer()
+        }
+        .onAppear {
+            if let firstname = userController.connectedUser?.firstname,
+               let lastname = userController.connectedUser?.lastname {
+                userName = "\(firstname) \(lastname)"
+            } else {
+                userName = "Unknown user"
+            }
         }
     }
 }
@@ -33,5 +46,6 @@ struct UserCellView: View {
 struct UserCellView_Previews: PreviewProvider {
     static var previews: some View {
         UserCellView()
+            .environmentObject(UserController(appController: AppController()))
     }
 }
