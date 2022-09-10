@@ -93,11 +93,9 @@ enum NetworkConfigurations {
         var params: [String]
         
         switch self {
-        case .clientUpdate, .clientGetList:
+        case .clientUpdate, .clientGetList, .clientAdd:
             params = ["client"]
-        case .clientAdd:
-            params = ["client", "add"]
-        case .estimateGetDetails, .estimateUpdate:
+        case .estimateGetDetails, .estimateUpdate, .estimateAdd:
             params = ["estimate"]
         case .estimatePDF:
             params = ["estimate", "pdf"]
@@ -105,8 +103,6 @@ enum NetworkConfigurations {
             params = ["estimate", "reference"]
         case .estimateGetList:
             params = ["estimate", "list"]
-        case .estimateAdd:
-            params = ["estimate", "add"]
         case .estimateExportToInvoice:
             params = ["estimate", "toInvoice"]
         case .invoiceAdd, .invoiceUpdate, .invoiceGetList, .invoiceGetOne:
@@ -115,14 +111,10 @@ enum NetworkConfigurations {
             params = ["invoice", "reference"]
         case .invoicePDF:
             params = ["invoice", "pdf"]
-        case .paymentGetList, .paymentDelete, .paymentUpdate:
+        case .paymentGetList, .paymentDelete, .paymentUpdate, .paymentAdd:
             params = ["payment"]
-        case .paymentAdd:
-            params = ["payment", "add"]
-        case .productUpdate, .productGetList:
+        case .productUpdate, .productGetList, .productAdd:
             params = ["product"]
-        case .productAdd:
-            params = ["product", "add"]
         case .productGetCategories:
             params = ["product", "categories"]
         case .productGetDomains:
