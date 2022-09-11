@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06075A5628CE0DA60060EB22 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06075A5528CE0DA60060EB22 /* ImagePicker.swift */; };
+		06075A5828CE0DC90060EB22 /* UpdateUserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06075A5728CE0DC90060EB22 /* UpdateUserImageView.swift */; };
 		06180BC228C8834B00E79AC4 /* ProductUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */; };
 		06180BC628C8919B00E79AC4 /* ProductCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC528C8919B00E79AC4 /* ProductCreateView.swift */; };
 		06180BC828C89FCA00E79AC4 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180BC728C89FCA00E79AC4 /* Payment.swift */; };
@@ -156,6 +158,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06075A5528CE0DA60060EB22 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		06075A5728CE0DC90060EB22 /* UpdateUserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserImageView.swift; sourceTree = "<group>"; };
 		06180BC128C8834B00E79AC4 /* ProductUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUpdateView.swift; sourceTree = "<group>"; };
 		06180BC528C8919B00E79AC4 /* ProductCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCreateView.swift; sourceTree = "<group>"; };
 		06180BC728C89FCA00E79AC4 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -408,8 +412,10 @@
 		062DC59028CCC17C00A8968B /* UserSubviews */ = {
 			isa = PBXGroup;
 			children = (
+				06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */,
 				062DC58E28CCC16C00A8968B /* UserUpdateView.swift */,
 				062DC59128CCC1B000A8968B /* UserUpdatePasswordView.swift */,
+				06075A5728CE0DC90060EB22 /* UpdateUserImageView.swift */,
 			);
 			path = UserSubviews;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				066F406F28BEA1C3000718D7 /* TileView.swift */,
 				06F5C17128C0B75E00B3F37A /* CircularSpinnerView.swift */,
 				06180C1228C9D39600E79AC4 /* TextFieldFormWithIcon.swift */,
+				06075A5528CE0DA60060EB22 /* ImagePicker.swift */,
 			);
 			path = "Global Components";
 			sourceTree = "<group>";
@@ -693,7 +700,6 @@
 		06EFE67528BE2C4B0052BEA0 /* AppPages */ = {
 			isa = PBXGroup;
 			children = (
-				062DC59028CCC17C00A8968B /* UserSubviews */,
 				06180BC928C8BB0600E79AC4 /* PaymentSubviews */,
 				06FAE27C28C87AC80058DCE5 /* ProductsSubviews */,
 				06D3580B28C792640093C564 /* ClientSubviews */,
@@ -711,7 +717,7 @@
 		06EFE67828BE4CFB0052BEA0 /* SettingsSubview */ = {
 			isa = PBXGroup;
 			children = (
-				06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */,
+				062DC59028CCC17C00A8968B /* UserSubviews */,
 			);
 			path = SettingsSubview;
 			sourceTree = "<group>";
@@ -917,6 +923,7 @@
 				06180C1128C9D2A200E79AC4 /* ProductsListSectionView.swift in Sources */,
 				06D1A16528BFB50A002533F5 /* ProductCategory.swift in Sources */,
 				06180C1728C9D8FF00E79AC4 /* AddressModificationSection.swift in Sources */,
+				06075A5828CE0DC90060EB22 /* UpdateUserImageView.swift in Sources */,
 				06180BCD28C8BB7300E79AC4 /* PaymentController.swift in Sources */,
 				06180C1A28C9DF1900E79AC4 /* ClientInformationsSection.swift in Sources */,
 				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
@@ -969,6 +976,7 @@
 				06180C1F28C9E56E00E79AC4 /* TotalSectionView.swift in Sources */,
 				066F406E28BE7ECA000718D7 /* InfoTile.swift in Sources */,
 				06D1A15B28BFB392002533F5 /* EstimateStatus.swift in Sources */,
+				06075A5628CE0DA60060EB22 /* ImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

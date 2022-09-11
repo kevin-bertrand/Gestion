@@ -20,6 +20,8 @@ extension Notification {
         case userUpdateSuccess = "The user is successfully updated!"
         case userUpdatePasswordError = "The update failed"
         case userUpdatePasswordSuccess = "The password is successfully updated"
+        case userUpdatePictureSuccess = "The picture is successfully updated"
+        case userUpdatePictureError = "The picture cannot be updated!"
         
         // Revenues
         case revenuesSuccess = "The summary of revenues is downloaded!"

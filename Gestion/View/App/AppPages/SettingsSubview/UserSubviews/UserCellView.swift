@@ -11,14 +11,22 @@ struct UserCellView: View {
     @EnvironmentObject var userController: UserController
     
     @State private var userName: String = ""
+    @State private var profileUrl: URL?
     
     var body: some View {
         HStack {
             Spacer()
             
             VStack {
-                Image(systemName: "person.circle")
-                    .resizable()
+                AsyncImage(url: profileUrl) { image in
+                    image
+                        .resizable()
+                        .clipShape(Circle())
+                        .scaledToFit()
+                        .overlay(Circle().stroke(style: .init(lineWidth: 1)))
+                } placeholder: {
+                    Image(systemName: "person.circle").resizable()
+                }
                     .frame(width: 150, height: 150)
                     .padding(5)
                 
@@ -38,6 +46,11 @@ struct UserCellView: View {
                 userName = "\(firstname) \(lastname)"
             } else {
                 userName = "Unknown user"
+            }
+            
+            if let urlString = userController.connectedUser?.profilePicture,
+               let url = URL(string: urlString) {
+                profileUrl = url
             }
         }
     }

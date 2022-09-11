@@ -43,6 +43,9 @@ final class UserController: ObservableObject {
     @Published var updateErrorMessage: String = ""
     @Published var updatePasswordSucces: Bool = false
     
+    // Update image view
+    @Published var updateImageSuccess: Bool = false
+    
     // MARK: Methods
     /// Check if the email must be saved
     func checkSaveEmail() {
@@ -146,6 +149,17 @@ final class UserController: ObservableObject {
         userManager.updatePassword(passwords: update, by: user)
     }
     
+    /// Update profilte picture
+    func updateProfilePicture(_ image: UIImage) {
+        guard let user = connectedUser else {
+            return
+        }
+        
+        appController.setLoadingInProgress(withMessage: "Updating profile picture...")
+        
+        userManager.updateProfilePicture(image, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -158,6 +172,8 @@ final class UserController: ObservableObject {
         configureNotification(for: Notification.Desyntic.userUpdateSuccess.notificationName)
         configureNotification(for: Notification.Desyntic.userUpdatePasswordSuccess.notificationName)
         configureNotification(for: Notification.Desyntic.userUpdatePasswordError.notificationName)
+        configureNotification(for: Notification.Desyntic.userUpdatePictureSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.userUpdatePictureError.notificationName)
     }
     
     // MARK: Private
@@ -180,7 +196,8 @@ final class UserController: ObservableObject {
                 switch notificationName {
                 case Notification.Desyntic.loginSuccess.notificationName:
                     self.userIsConnected = true
-                case Notification.Desyntic.loginWrongCredentials.notificationName:
+                case Notification.Desyntic.loginWrongCredentials.notificationName,
+                    Notification.Desyntic.userUpdatePictureError.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 case Notification.Desyntic.userUpdateSuccess.notificationName:
                     self.userIsUpdated = true
@@ -189,6 +206,8 @@ final class UserController: ObservableObject {
                     self.saveNewPassword(with: notificationMessage)
                 case Notification.Desyntic.userUpdatePasswordError.notificationName:
                     self.updateErrorMessage = notificationMessage
+                case Notification.Desyntic.userUpdatePictureSuccess.notificationName:
+                    self.updateImageSuccess = true
                 default: break
                 }
             }

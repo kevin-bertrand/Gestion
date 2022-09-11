@@ -31,7 +31,7 @@ struct SettingsView: View {
                         Label("Update personnal informations", systemImage: "person.fill")
                     }
                     NavigationLink {
-                        Text("Update picture")
+                        UpdateUserImageView()
                     } label: {
                         Label("Update picture", systemImage: "camera.fill")
                     }

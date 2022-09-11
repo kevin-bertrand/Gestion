@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class UserManager {
     // MARK: Static
@@ -27,7 +28,7 @@ final class UserManager {
                 switch statusCode {
                 case 200:
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
-                        self.connectedUser = user
+                        self.connectedUser = self.checkProfilePictureUrl(for: user)
                         Notification.Desyntic.loginSuccess.sendNotification()
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
@@ -60,7 +61,7 @@ final class UserManager {
                 switch statusCode {
                 case 200:
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
-                        self.connectedUser = user
+                        self.connectedUser = self.checkProfilePictureUrl(for: user)
                         Notification.Desyntic.userUpdateSuccess.sendNotification()
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
@@ -99,6 +100,40 @@ final class UserManager {
         }
     }
     
+    /// update profile picture
+    func updateProfilePicture(_ image: UIImage, by user: User) {
+        guard let imageData = image.jpegData(compressionQuality: 0.9) else {
+            return
+        }
+        
+        networkManager.uploadFiles(urlParams: NetworkConfigurations.staffUpdateProfilePicture.urlParams,
+                                   method: NetworkConfigurations.staffUpdateProfilePicture.method,
+                                   by: user,
+                                   file: imageData) { [weak self] data, response, error in
+            if let self = self,
+               let statusCode = response?.statusCode,
+               let data = data {
+                switch statusCode {
+                case 200:
+                    if let user = try? JSONDecoder().decode(User.self, from: data) {
+                        self.connectedUser = self.checkProfilePictureUrl(for: user)
+                        Notification.Desyntic.userUpdatePictureSuccess.sendNotification()
+                    } else {
+                        Notification.Desyntic.unknownError.sendNotification()
+                    }
+                case 400:
+                    Notification.Desyntic.userUpdatePictureError.sendNotification()
+                case 401:
+                    Notification.Desyntic.notAuthorized.sendNotification(customMessage: "You are not authorized to update the picture.")
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager
@@ -107,4 +142,15 @@ final class UserManager {
     // MARK: Private
     // MARK: Properties
     private let networkManager: NetworkManager
+    
+    // MARK: Method
+    /// Format profile pircture URL
+    private func checkProfilePictureUrl(for user: User) -> User {
+        var updateUser = user
+        
+        if let profilePicturePath = updateUser.profilePicture {
+            updateUser.profilePicture = networkManager.getProfilePictureUrl(profilePicturePath)
+        }
+        return updateUser
+    }
 }

@@ -54,6 +54,7 @@ enum NetworkConfigurations {
     case staffAdd
     case staffUpdate
     case staffUpdatePassword
+    case staffUpdateProfilePicture
     case staffDelete
     case staffGetList
     case staffGetOne
@@ -74,7 +75,7 @@ enum NetworkConfigurations {
                 .invoiceUpdate,
                 .paymentUpdate,
                 .productUpdate,
-                .staffUpdate, .staffUpdatePassword:
+                .staffUpdate, .staffUpdatePassword, .staffUpdateProfilePicture:
             method = .patch
         case .clientGetList,
                 .estimateGetReference, .estimateGetList, .estimateGetDetails, .estimatePDF,
@@ -132,6 +133,8 @@ enum NetworkConfigurations {
             params = ["staff"]
         case .staffUpdatePassword:
             params = ["staff", "password"]
+        case .staffUpdateProfilePicture:
+            params = ["staff", "picture"]
         case .staffAdd:
             params = ["staff", "add"]
         case .staffLogin:

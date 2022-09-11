@@ -41,13 +41,13 @@ class NetworkManager: NetworkProtocol {
     }
     
     /// Upload File
-    func uploadFiles(urlParams: [String], method: HTTPMethod, token: String, file: Data, completionHandler: @escaping ((Data?, HTTPURLResponse?, Error?)) -> Void) {
+    func uploadFiles(urlParams: [String], method: HTTPMethod, by user: User, file: Data, completionHandler: @escaping ((Data?, HTTPURLResponse?, Error?)) -> Void) {
         guard let formattedUrl = URL(string: "\(url):\(apiPort)/\(urlParams.joined(separator: "/"))") else {
             completionHandler((nil, nil, nil))
             return
         }
         var headers: HTTPHeaders?
-        headers = ["Authorization" : "Bearer \(token)"]
+        headers = ["Authorization" : "Bearer \(user.token)"]
         
         
         let multiPart: MultipartFormData = MultipartFormData()
@@ -61,20 +61,22 @@ class NetworkManager: NetworkProtocol {
         }.resume()
     }
     
-    /// Get invoice pdf url
-    func getInvoicePdfUrl(for id: UUID) -> String {
-        return "\(url):\(apiPort)/\(NetworkConfigurations.invoicePDF.urlParams.joined(separator: "/"))/\(id)"
+    /// Getting profile picture url
+    func getProfilePictureUrl(_ path: String) -> String {
+        let path = path.replacingOccurrences(of: "/var/www/html", with: "")
+        return url + ":\(imagePort)" + path
     }
-        
+
     // MARK: Private
     // MARK: Properties
-    private let url = "http://192.168.1.169"
+    private let url = "http://gestion.desyntic.com"
     private let apiPort = 2574
+    private let imagePort = 80
 }
 
 protocol NetworkProtocol {
     func request(urlParams: [String], method: HTTPMethod, authorization: HTTPHeader?, body: Encodable?, completionHandler: @escaping ((Data?, HTTPURLResponse?, Error?)) -> Void)
     
-    func uploadFiles(urlParams: [String], method: HTTPMethod, token: String, file: Data, completionHandler: @escaping ((Data?, HTTPURLResponse?, Error?)) -> Void)
+    func uploadFiles(urlParams: [String], method: HTTPMethod, by user: User, file: Data, completionHandler: @escaping ((Data?, HTTPURLResponse?, Error?)) -> Void)
 }
 
