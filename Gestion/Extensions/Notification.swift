@@ -18,6 +18,8 @@ extension Notification {
         case loginSuccess = "Successfull login!"
         case loginWrongCredentials = "Your credentials are not correct!"
         case userUpdateSuccess = "The user is successfully updated!"
+        case userUpdatePasswordError = "The update failed"
+        case userUpdatePasswordSuccess = "The password is successfully updated"
         
         // Revenues
         case revenuesSuccess = "The summary of revenues is downloaded!"

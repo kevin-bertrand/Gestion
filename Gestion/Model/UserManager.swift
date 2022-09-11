@@ -74,6 +74,31 @@ final class UserManager {
         }
     }
     
+    /// Update password
+    func updatePassword(passwords: User.UpdatePassword, by user: User) {
+        networkManager.request(urlParams: NetworkConfigurations.staffUpdatePassword.urlParams,
+                               method: NetworkConfigurations.staffUpdatePassword.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: passwords) { _, response, error in
+            if let status = response?.statusCode {
+                switch status {
+                case 200:
+                    Notification.Desyntic.userUpdatePasswordSuccess.sendNotification(customMessage: passwords.newPassword)
+                case 401:
+                    Notification.Desyntic.notAuthorized.sendNotification(customMessage: "You are not authorized to update the password")
+                case 406:
+                    Notification.Desyntic.userUpdatePasswordError.sendNotification(customMessage: "Both new password don't match!")
+                case 460:
+                    Notification.Desyntic.userUpdatePasswordError.sendNotification(customMessage: "The old password is not correct!")
+                default:
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

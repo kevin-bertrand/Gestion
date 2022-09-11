@@ -36,7 +36,7 @@ struct SettingsView: View {
                         Label("Update picture", systemImage: "camera.fill")
                     }
                     NavigationLink {
-                        Text("Password update")
+                        UserUpdatePasswordView()
                     } label: {
                         Label("Update password", systemImage: "lock.fill")
                     }

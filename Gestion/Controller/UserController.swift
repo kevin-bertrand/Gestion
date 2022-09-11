@@ -39,6 +39,10 @@ final class UserController: ObservableObject {
     // Update user
     @Published var userIsUpdated: Bool = false
     
+    // Update password view
+    @Published var updateErrorMessage: String = ""
+    @Published var updatePasswordSucces: Bool = false
+    
     // MARK: Methods
     /// Check if the email must be saved
     func checkSaveEmail() {
@@ -121,6 +125,27 @@ final class UserController: ObservableObject {
         userManager.update(user: userToUpdate, by: user)
     }
     
+    /// Update password
+    func updatePassword(_ update: User.UpdatePassword) {
+        guard update.newPassword.isValidPassword || update.newPasswordVerification.isValidPassword else {
+            updateErrorMessage = "The new passwords don't meet the required standards!"
+            return
+        }
+        
+        guard update.newPassword == update.newPasswordVerification else {
+            updateErrorMessage = "Both passwords must match!"
+            return
+        }
+        
+        guard let user = connectedUser else {
+            return
+        }
+        
+        appController.setLoadingInProgress(withMessage: "Updating passwords...")
+        
+        userManager.updatePassword(passwords: update, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -131,6 +156,8 @@ final class UserController: ObservableObject {
         
         // Configure update notifications
         configureNotification(for: Notification.Desyntic.userUpdateSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.userUpdatePasswordSuccess.notificationName)
+        configureNotification(for: Notification.Desyntic.userUpdatePasswordError.notificationName)
     }
     
     // MARK: Private
@@ -157,6 +184,11 @@ final class UserController: ObservableObject {
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 case Notification.Desyntic.userUpdateSuccess.notificationName:
                     self.userIsUpdated = true
+                case Notification.Desyntic.userUpdatePasswordSuccess.notificationName:
+                    self.updatePasswordSucces = true
+                    self.saveNewPassword(with: notificationMessage)
+                case Notification.Desyntic.userUpdatePasswordError.notificationName:
+                    self.updateErrorMessage = notificationMessage
                 default: break
                 }
             }
@@ -182,6 +214,13 @@ final class UserController: ObservableObject {
                     }
                 }
             }
+        }
+    }
+    
+    /// Saved the new pass
+    private func saveNewPassword(with newPassword: String) {
+        if canUseBiometric {
+            savedPassword = newPassword
         }
     }
 }

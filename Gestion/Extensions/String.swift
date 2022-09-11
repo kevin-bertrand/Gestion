@@ -26,4 +26,9 @@ extension String {
     var isNotEmpty: Bool {
         !self.isEmpty
     }
+    
+    /// Check if the password require the standards
+    var isValidPassword: Bool {
+        self.count > 5
+    }
 }

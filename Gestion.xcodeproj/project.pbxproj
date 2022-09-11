@@ -57,7 +57,7 @@
 		062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58928CB54F300A8968B /* PDFUIView.swift */; };
 		062DC58D28CB62AA00A8968B /* PDFViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 062DC58C28CB62AA00A8968B /* PDFViewer */; };
 		062DC58F28CCC16C00A8968B /* UserUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC58E28CCC16C00A8968B /* UserUpdateView.swift */; };
-		062DC59228CCC1B000A8968B /* UserDetailsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC59128CCC1B000A8968B /* UserDetailsViews.swift */; };
+		062DC59228CCC1B000A8968B /* UserUpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062DC59128CCC1B000A8968B /* UserUpdatePasswordView.swift */; };
 		0661ABD528BD50CC00E88116 /* GestionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661ABD428BD50CC00E88116 /* GestionApp.swift */; };
 		0661ABDC28BD50CD00E88116 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */; };
 		066F406A28BE7A6E000718D7 /* SectionTitleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406928BE7A6E000718D7 /* SectionTitleCustom.swift */; };
@@ -205,7 +205,7 @@
 		062DC58728CB549100A8968B /* PDFKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
 		062DC58928CB54F300A8968B /* PDFUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFUIView.swift; sourceTree = "<group>"; };
 		062DC58E28CCC16C00A8968B /* UserUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateView.swift; sourceTree = "<group>"; };
-		062DC59128CCC1B000A8968B /* UserDetailsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViews.swift; sourceTree = "<group>"; };
+		062DC59128CCC1B000A8968B /* UserUpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdatePasswordView.swift; sourceTree = "<group>"; };
 		0661ABD128BD50CC00E88116 /* Gestion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gestion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0661ABD428BD50CC00E88116 /* GestionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestionApp.swift; sourceTree = "<group>"; };
 		0661ABDB28BD50CD00E88116 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				062DC58E28CCC16C00A8968B /* UserUpdateView.swift */,
-				062DC59128CCC1B000A8968B /* UserDetailsViews.swift */,
+				062DC59128CCC1B000A8968B /* UserUpdatePasswordView.swift */,
 			);
 			path = UserSubviews;
 			sourceTree = "<group>";
@@ -861,7 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062DC59228CCC1B000A8968B /* UserDetailsViews.swift in Sources */,
+				062DC59228CCC1B000A8968B /* UserUpdatePasswordView.swift in Sources */,
 				06180BD328C8C1CC00E79AC4 /* PaymentManager.swift in Sources */,
 				06AA687828C0A9DA0075B635 /* User.swift in Sources */,
 				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,

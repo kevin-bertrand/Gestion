@@ -40,4 +40,11 @@ struct User: Codable {
     func toUpdate() -> User.Update {
         return .init(id: self.id, firstname: self.firstname, lastname: self.lastname, phone: self.phone, email: self.email, gender: self.gender, position: self.position, role: self.role, address: self.address.toCreate())
     }
+    
+    struct UpdatePassword: Codable {
+        var id: UUID
+        var oldPassword: String
+        var newPassword: String
+        var newPasswordVerification: String
+    }
 }
