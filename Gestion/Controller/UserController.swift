@@ -219,6 +219,7 @@ final class UserController: ObservableObject {
     
     /// Saved the new pass
     private func saveNewPassword(with newPassword: String) {
+        updateErrorMessage = ""
         if canUseBiometric {
             savedPassword = newPassword
         }
