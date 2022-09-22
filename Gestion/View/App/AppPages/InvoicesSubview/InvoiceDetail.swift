@@ -13,6 +13,8 @@ struct InvoiceDetail: View {
     @EnvironmentObject var invoicesController: InvoicesController
     @EnvironmentObject var userController: UserController
     
+    @State private var showAlert: Bool = false
+    
     let selectedInvoice: UUID?
     
     var body: some View {
@@ -72,6 +74,14 @@ struct InvoiceDetail: View {
                 NavigationLink("Show PDF") {
                     PDFUIView(pdf: invoicesController.invoicePDF)
                 }
+                
+                if invoicesController.selectedInvoice.status != .payed {
+                    Button {
+                        showAlert = true
+                    } label: {
+                        Text("Set to payed")
+                    }
+                }
             } header: {
                 Text("Actions")
             }
@@ -83,6 +93,17 @@ struct InvoiceDetail: View {
             } else {
                 dismiss()
             }
+        }
+        .onChange(of: invoicesController.isPayed) { newValue in
+            if newValue {
+                invoicesController.isPayed = false
+                dismiss()
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("This invoice is paied?"), message: nil, primaryButton: .default(Text("Yes"), action:{
+                invoicesController.invoiceIsPaied(by: userController.connectedUser)
+            }), secondaryButton: .cancel())
         }
     }
 }

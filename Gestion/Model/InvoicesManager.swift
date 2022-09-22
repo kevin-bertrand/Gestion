@@ -164,6 +164,23 @@ final class InvoicesManager {
         }
     }
     
+    /// Invoice is paied
+    func isPaied(invoice: UUID, by user: User) {
+        var params = NetworkConfigurations.invoicePaied.urlParams
+        params.append("\(invoice)")
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.invoicePaied.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { _, response, _ in
+            if let status = response?.statusCode,
+               status == 200 {
+                Notification.Desyntic.invoiceIsPaied.sendNotification()
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     // MARK: Initialization
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager

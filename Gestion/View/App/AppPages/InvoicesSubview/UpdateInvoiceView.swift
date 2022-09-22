@@ -31,7 +31,9 @@ struct UpdateInvoiceView: View {
                 }
                 Picker("Statut", selection: $invoice.status) {
                     ForEach(InvoiceStatus.allCases, id: \.self) { status in
-                        Text(status.rawValue)
+                        if status != .payed {
+                            Text(status.rawValue)
+                        }
                     }
                 }
             } header: {

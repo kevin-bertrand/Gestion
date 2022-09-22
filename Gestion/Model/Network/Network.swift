@@ -30,6 +30,7 @@ enum NetworkConfigurations {
     case invoiceUpdate
     case invoiceGetList
     case invoicePDF
+    case invoicePaied
     
     // MARK: Payment
     case paymentAdd
@@ -58,6 +59,7 @@ enum NetworkConfigurations {
     case staffDelete
     case staffGetList
     case staffGetOne
+    case staffProfilePicture
     
     var method: HTTPMethod {
         var method: HTTPMethod
@@ -72,7 +74,7 @@ enum NetworkConfigurations {
             method = .post
         case .clientUpdate,
                 .estimateUpdate,
-                .invoiceUpdate,
+                .invoiceUpdate, .invoicePaied,
                 .paymentUpdate,
                 .productUpdate,
                 .staffUpdate, .staffUpdatePassword, .staffUpdateProfilePicture:
@@ -83,7 +85,7 @@ enum NetworkConfigurations {
                 .productGetList, .productGetCategories, .productGetDomains,
                 .paymentGetList,
                 .revenueGetYear, .revenueGetMonth, .revenueAllMonths,
-                .staffGetList, .staffGetOne:
+                .staffGetList, .staffGetOne, .staffProfilePicture:
             method = .get
         case .paymentDelete,
                 .staffDelete:
@@ -111,6 +113,8 @@ enum NetworkConfigurations {
             params = ["estimate", "toInvoice"]
         case .invoiceAdd, .invoiceUpdate, .invoiceGetList, .invoiceGetOne:
             params = ["invoice"]
+        case .invoicePaied:
+            params = ["invoice", "paied"]
         case .invoiceGetReference:
             params = ["invoice", "reference"]
         case .invoicePDF:
@@ -133,7 +137,7 @@ enum NetworkConfigurations {
             params = ["staff"]
         case .staffUpdatePassword:
             params = ["staff", "password"]
-        case .staffUpdateProfilePicture:
+        case .staffUpdateProfilePicture, .staffProfilePicture:
             params = ["staff", "picture"]
         case .staffAdd:
             params = ["staff", "add"]

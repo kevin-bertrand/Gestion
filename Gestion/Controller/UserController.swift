@@ -14,6 +14,7 @@ final class UserController: ObservableObject {
     // MARK: Properties
     // General properties
     @Published var userIsConnected: Bool = false
+    @Published var userProfilePicture: UIImage?
     var appController: AppController
     var connectedUser: User? { userManager.connectedUser }
     
@@ -167,6 +168,7 @@ final class UserController: ObservableObject {
         // Configure login notification
         configureNotification(for: Notification.Desyntic.loginSuccess.notificationName)
         configureNotification(for: Notification.Desyntic.loginWrongCredentials.notificationName)
+        configureNotification(for: Notification.Desyntic.userGettingPicture.notificationName)
         
         // Configure update notifications
         configureNotification(for: Notification.Desyntic.userUpdateSuccess.notificationName)
@@ -208,6 +210,8 @@ final class UserController: ObservableObject {
                     self.updateErrorMessage = notificationMessage
                 case Notification.Desyntic.userUpdatePictureSuccess.notificationName:
                     self.updateImageSuccess = true
+                case Notification.Desyntic.userGettingPicture.notificationName:
+                    self.userProfilePicture = self.userManager.profilePicutre
                 default: break
                 }
             }

@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import SwiftUI
 
 class NetworkManager: NetworkProtocol {
     // MARK: Public
@@ -61,17 +62,34 @@ class NetworkManager: NetworkProtocol {
         }.resume()
     }
     
-    /// Getting profile picture url
-    func getProfilePictureUrl(_ path: String) -> String {
-        let path = path.replacingOccurrences(of: "/var/www/html", with: "")
-        return url + ":\(imagePort)" + path
+    /// Download profile picture
+    func downloadProfilePicture(from path: String?, by user: User?, completionHandler: @escaping ((UIImage?) -> Void)) {
+        if let imagePath = path,
+           let userToken = user?.token {
+            var params = NetworkConfigurations.staffProfilePicture.urlParams
+            params.append(imagePath)
+            request(urlParams: params,
+                    method: NetworkConfigurations.staffProfilePicture.method,
+                    authorization: .authorization(bearerToken: userToken),
+                    body: nil) { data, response, _ in
+                if let status = response?.statusCode,
+                   status == 200,
+                   let data = data,
+                   let image = UIImage(data: data) {
+                    completionHandler(image)
+                } else {
+                    completionHandler(nil)
+                }
+            }
+        } else {
+            completionHandler(nil)
+        }
     }
 
     // MARK: Private
     // MARK: Properties
     private let url = "http://gestion.desyntic.com"
     private let apiPort = 2574
-    private let imagePort = 80
 }
 
 protocol NetworkProtocol {

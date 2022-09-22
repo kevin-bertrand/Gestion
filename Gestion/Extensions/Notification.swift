@@ -22,6 +22,7 @@ extension Notification {
         case userUpdatePasswordSuccess = "The password is successfully updated"
         case userUpdatePictureSuccess = "The picture is successfully updated"
         case userUpdatePictureError = "The picture cannot be updated!"
+        case userGettingPicture = "The picture is changed"
         
         // Revenues
         case revenuesSuccess = "The summary of revenues is downloaded!"
@@ -49,6 +50,7 @@ extension Notification {
         case invoicesFailedCreated = "Cannot create the invoice"
         case invoicesUpdateSuccess = "The invoice is updated"
         case invoicesUpdateFailed = "The invoice update failed"
+        case invoiceIsPaied = "The invoice is paied"
         
         // Client notifications
         case clientGettingList = "The list of clients is downloaded!"

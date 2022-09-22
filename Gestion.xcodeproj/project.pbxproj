@@ -49,7 +49,6 @@
 		06180C1328C9D39600E79AC4 /* TextFieldFormWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1228C9D39600E79AC4 /* TextFieldFormWithIcon.swift */; };
 		06180C1728C9D8FF00E79AC4 /* AddressModificationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1628C9D8FF00E79AC4 /* AddressModificationSection.swift */; };
 		06180C1A28C9DF1900E79AC4 /* ClientInformationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1928C9DF1900E79AC4 /* ClientInformationsSection.swift */; };
-		06180C1C28C9E30600E79AC4 /* ProductTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1B28C9E30600E79AC4 /* ProductTable.swift */; };
 		06180C1F28C9E56E00E79AC4 /* TotalSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C1E28C9E56E00E79AC4 /* TotalSectionView.swift */; };
 		06180C2328C9EAD600E79AC4 /* RevenueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C2228C9EAD600E79AC4 /* RevenueChartView.swift */; };
 		06180C2528C9ED9B00E79AC4 /* EstimatesListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180C2428C9ED9B00E79AC4 /* EstimatesListSectionView.swift */; };
@@ -78,11 +77,6 @@
 		06AA687C28C0ACCD0075B635 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687B28C0ACCD0075B635 /* Permissions.swift */; };
 		06AA687E28C0AE3C0075B635 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687D28C0AE3C0075B635 /* Notification.swift */; };
 		06ACC36428BF4DCC0012166D /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36328BF4DCC0012166D /* Double.swift */; };
-		06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36528BF51510012166D /* TotalSectionLine.swift */; };
-		06ACC36828BF52110012166D /* ClientTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36728BF52110012166D /* ClientTile.swift */; };
-		06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36928BF523E0012166D /* PdfHeader.swift */; };
-		06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36B28BF52640012166D /* DesynticTile.swift */; };
-		06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC36D28BF52800012166D /* TableColumnTitles.swift */; };
 		06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ACC37228BF597F0012166D /* InvoiceDetail.swift */; };
 		06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B128BDE4E2004D0960 /* StartSubview.swift */; };
 		06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B428BDE974004D0960 /* ButtonCustom.swift */; };
@@ -116,8 +110,6 @@
 		06D3580928C782A60093C564 /* UpdateEstimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3580828C782A60093C564 /* UpdateEstimateView.swift */; };
 		06D3580D28C792E10093C564 /* UpdateClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3580C28C792E10093C564 /* UpdateClientView.swift */; };
 		06D3581128C7B14C0093C564 /* CreateClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3581028C7B14C0093C564 /* CreateClient.swift */; };
-		06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */; };
-		06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DABF1328BF4BE800BF1ACF /* TableRow.swift */; };
 		06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */; };
 		06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */; };
 		06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */; };
@@ -200,7 +192,6 @@
 		06180C1228C9D39600E79AC4 /* TextFieldFormWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormWithIcon.swift; sourceTree = "<group>"; };
 		06180C1628C9D8FF00E79AC4 /* AddressModificationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModificationSection.swift; sourceTree = "<group>"; };
 		06180C1928C9DF1900E79AC4 /* ClientInformationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInformationsSection.swift; sourceTree = "<group>"; };
-		06180C1B28C9E30600E79AC4 /* ProductTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTable.swift; sourceTree = "<group>"; };
 		06180C1E28C9E56E00E79AC4 /* TotalSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSectionView.swift; sourceTree = "<group>"; };
 		06180C2228C9EAD600E79AC4 /* RevenueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueChartView.swift; sourceTree = "<group>"; };
 		06180C2428C9ED9B00E79AC4 /* EstimatesListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatesListSectionView.swift; sourceTree = "<group>"; };
@@ -231,11 +222,6 @@
 		06AA687D28C0AE3C0075B635 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		06AA687F28C0B4C40075B635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06ACC36328BF4DCC0012166D /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		06ACC36528BF51510012166D /* TotalSectionLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSectionLine.swift; sourceTree = "<group>"; };
-		06ACC36728BF52110012166D /* ClientTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTile.swift; sourceTree = "<group>"; };
-		06ACC36928BF523E0012166D /* PdfHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfHeader.swift; sourceTree = "<group>"; };
-		06ACC36B28BF52640012166D /* DesynticTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesynticTile.swift; sourceTree = "<group>"; };
-		06ACC36D28BF52800012166D /* TableColumnTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableColumnTitles.swift; sourceTree = "<group>"; };
 		06ACC37228BF597F0012166D /* InvoiceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetail.swift; sourceTree = "<group>"; };
 		06C349B128BDE4E2004D0960 /* StartSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSubview.swift; sourceTree = "<group>"; };
 		06C349B428BDE974004D0960 /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
@@ -269,8 +255,6 @@
 		06D3580828C782A60093C564 /* UpdateEstimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEstimateView.swift; sourceTree = "<group>"; };
 		06D3580C28C792E10093C564 /* UpdateClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClientView.swift; sourceTree = "<group>"; };
 		06D3581028C7B14C0093C564 /* CreateClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClient.swift; sourceTree = "<group>"; };
-		06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionTitle.swift; sourceTree = "<group>"; };
-		06DABF1328BF4BE800BF1ACF /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 		06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvoiceView.swift; sourceTree = "<group>"; };
 		06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListUpdateView.swift; sourceTree = "<group>"; };
 		06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceView.swift; sourceTree = "<group>"; };
@@ -643,14 +627,6 @@
 		06D3580328C75B700093C564 /* PDF Components */ = {
 			isa = PBXGroup;
 			children = (
-				06DABF1128BF4A8500BF1ACF /* TableSectionTitle.swift */,
-				06DABF1328BF4BE800BF1ACF /* TableRow.swift */,
-				06ACC36528BF51510012166D /* TotalSectionLine.swift */,
-				06ACC36728BF52110012166D /* ClientTile.swift */,
-				06ACC36928BF523E0012166D /* PdfHeader.swift */,
-				06ACC36B28BF52640012166D /* DesynticTile.swift */,
-				06ACC36D28BF52800012166D /* TableColumnTitles.swift */,
-				06180C1B28C9E30600E79AC4 /* ProductTable.swift */,
 				062DC58728CB549100A8968B /* PDFKitView.swift */,
 				062DC58928CB54F300A8968B /* PDFUIView.swift */,
 			);
@@ -870,8 +846,6 @@
 				062DC59228CCC1B000A8968B /* UserUpdatePasswordView.swift in Sources */,
 				06180BD328C8C1CC00E79AC4 /* PaymentManager.swift in Sources */,
 				06AA687828C0A9DA0075B635 /* User.swift in Sources */,
-				06DABF1428BF4BE800BF1ACF /* TableRow.swift in Sources */,
-				06ACC36E28BF52800012166D /* TableColumnTitles.swift in Sources */,
 				06C349B528BDE974004D0960 /* ButtonCustom.swift in Sources */,
 				06F5C17428C0CE6F00B3F37A /* RevenuesController.swift in Sources */,
 				06D1A15D28BFB49E002533F5 /* Invoice.swift in Sources */,
@@ -885,27 +859,23 @@
 				06C349B228BDE4E2004D0960 /* StartSubview.swift in Sources */,
 				06F5C18228C1177300B3F37A /* InvoiceTileView.swift in Sources */,
 				06D357FC28C73B620093C564 /* ProductsController.swift in Sources */,
-				06DABF1228BF4A8500BF1ACF /* TableSectionTitle.swift in Sources */,
 				06F5C17C28C0EFA900B3F37A /* EstimatesController.swift in Sources */,
 				06F5C17A28C0EA9900B3F37A /* EstimatesManager.swift in Sources */,
 				06180BD128C8BE9200E79AC4 /* PaymentTileView.swift in Sources */,
 				06EFE67C28BE4D8E0052BEA0 /* EstimatesView.swift in Sources */,
 				06180BDB28C8D02A00E79AC4 /* PaymentCreateView.swift in Sources */,
-				06ACC36828BF52110012166D /* ClientTile.swift in Sources */,
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
 				062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */,
 				06D3580028C741D80093C564 /* ProductTileView.swift in Sources */,
 				06D357F228C71B4E0093C564 /* ClientController.swift in Sources */,
 				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
 				06180C2528C9ED9B00E79AC4 /* EstimatesListSectionView.swift in Sources */,
-				06ACC36C28BF52640012166D /* DesynticTile.swift in Sources */,
 				06D3581128C7B14C0093C564 /* CreateClient.swift in Sources */,
 				06F5C18628C2274A00B3F37A /* EstimateListTileView.swift in Sources */,
 				06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */,
 				06F5C17228C0B75E00B3F37A /* CircularSpinnerView.swift in Sources */,
 				06180C0F28C9D16600E79AC4 /* PaymentTextFieldsView.swift in Sources */,
 				06D357F628C722DA0093C564 /* ClientListSelectingView.swift in Sources */,
-				06ACC36628BF51510012166D /* TotalSectionLine.swift in Sources */,
 				06D3580228C744540093C564 /* ProductsManager.swift in Sources */,
 				06F5C17028C0B73300B3F37A /* LoadingInProgressView.swift in Sources */,
 				06180C2928C9F08200E79AC4 /* SelectProductSection.swift in Sources */,
@@ -928,7 +898,6 @@
 				06180C1A28C9DF1900E79AC4 /* ClientInformationsSection.swift in Sources */,
 				06ACC36428BF4DCC0012166D /* Double.swift in Sources */,
 				06FAE28028C880520058DCE5 /* ProductDetailsView.swift in Sources */,
-				06180C1C28C9E30600E79AC4 /* ProductTable.swift in Sources */,
 				06D1A15228BFB27C002533F5 /* Client.swift in Sources */,
 				06180BD728C8C96B00E79AC4 /* PaymentDetailView.swift in Sources */,
 				06EFE67E28BE4ED80052BEA0 /* InvoicesView.swift in Sources */,
@@ -948,7 +917,6 @@
 				06180BD528C8C80000E79AC4 /* PaymentListView.swift in Sources */,
 				06180C1328C9D39600E79AC4 /* TextFieldFormWithIcon.swift in Sources */,
 				06EFE68228BE581B0052BEA0 /* PieChart.swift in Sources */,
-				06ACC36A28BF523E0012166D /* PdfHeader.swift in Sources */,
 				06ACC37328BF597F0012166D /* InvoiceDetail.swift in Sources */,
 				06C349B928BDEF28004D0960 /* TextFieldCustom.swift in Sources */,
 				06D3580728C777990093C564 /* AddEstimateView.swift in Sources */,

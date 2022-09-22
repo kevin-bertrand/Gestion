@@ -36,6 +36,9 @@ final class InvoicesController: ObservableObject {
     // Update invoice
     @Published var successUpdateInvoice: Bool = false
     
+    // Is paied invoice
+    @Published var isPayed: Bool = false
+    
     // MARK: Methods
     /// Getting new invoice reference
     func gettingNewReference(for user: User?) {
@@ -90,6 +93,13 @@ final class InvoicesController: ObservableObject {
         selectedInvoice = InvoicesManager.emptyInvoiceDetail
     }
     
+    /// Invoice is paied
+    func invoiceIsPaied(by user: User?) {
+        guard let user = user else { return }
+        
+        invoicesManager.isPaied(invoice: selectedInvoice.id, by: user)
+    }
+    
     // MARK: Initialization
     init(appController: AppController) {
         self.appController = appController
@@ -103,6 +113,7 @@ final class InvoicesController: ObservableObject {
         
         // Confifure invoice list notificaitons
         configureNotification(for: Notification.Desyntic.invoicesListDownloaded.notificationName)
+        configureNotification(for: Notification.Desyntic.invoiceIsPaied.notificationName)
         
         // Configure new invoice notification
         configureNotification(for: Notification.Desyntic.invoicesGettingReference.notificationName)
@@ -149,6 +160,8 @@ final class InvoicesController: ObservableObject {
                     self.successUpdateInvoice = true
                 case Notification.Desyntic.invoicesUpdateFailed.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
+                case Notification.Desyntic.invoiceIsPaied.notificationName:
+                    self.isPayed = true
                 default: break
                 }
             }

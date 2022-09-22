@@ -10,11 +10,28 @@ import SwiftUI
 
 final class UserManager {
     // MARK: Static
-    static let userUpdate: User.Update = .init(id: UUID(uuid: UUID_NULL), firstname: "", lastname: "", phone: "", email: "", gender: .man, position: .employee, role: "", address: Address.Create(roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
+    static let userUpdate: User.Update = .init(id: UUID(uuid: UUID_NULL),
+                                               firstname: "",
+                                               lastname: "",
+                                               phone: "",
+                                               email: "",
+                                               gender: .man,
+                                               position: .employee,
+                                               role: "",
+                                               address: Address.Create(roadName: "",
+                                                                       streetNumber: "",
+                                                                       complement: "",
+                                                                       zipCode: "",
+                                                                       city: "",
+                                                                       country: "",
+                                                                       latitude: 0,
+                                                                       longitude: 0,
+                                                                       comment: ""))
     
     // MARK: Public
     // MARK: Properties
     var connectedUser: User?
+    var profilePicutre: UIImage?
     
     // MARK: Methods
     func login(user: User.Login) {
@@ -28,7 +45,8 @@ final class UserManager {
                 switch statusCode {
                 case 200:
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
-                        self.connectedUser = self.checkProfilePictureUrl(for: user)
+                        self.connectedUser = user
+                        self.downloadProfilePicture()
                         Notification.Desyntic.loginSuccess.sendNotification()
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
@@ -61,7 +79,7 @@ final class UserManager {
                 switch statusCode {
                 case 200:
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
-                        self.connectedUser = self.checkProfilePictureUrl(for: user)
+                        self.connectedUser = user
                         Notification.Desyntic.userUpdateSuccess.sendNotification()
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
@@ -116,7 +134,8 @@ final class UserManager {
                 switch statusCode {
                 case 200:
                     if let user = try? JSONDecoder().decode(User.self, from: data) {
-                        self.connectedUser = self.checkProfilePictureUrl(for: user)
+                        self.connectedUser = user
+                        self.downloadProfilePicture()
                         Notification.Desyntic.userUpdatePictureSuccess.sendNotification()
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
@@ -144,13 +163,14 @@ final class UserManager {
     private let networkManager: NetworkManager
     
     // MARK: Method
-    /// Format profile pircture URL
-    private func checkProfilePictureUrl(for user: User) -> User {
-        var updateUser = user
-        
-        if let profilePicturePath = updateUser.profilePicture {
-            updateUser.profilePicture = networkManager.getProfilePictureUrl(profilePicturePath)
+    /// Get profile picture
+    private func downloadProfilePicture() {
+        if let profilePicturePath = connectedUser?.profilePicture {
+            networkManager.downloadProfilePicture(from: profilePicturePath, by: connectedUser, completionHandler: { [weak self] image in
+                guard let self = self else { return }
+                self.profilePicutre = image
+                Notification.Desyntic.userGettingPicture.sendNotification()
+            })
         }
-        return updateUser
     }
 }
