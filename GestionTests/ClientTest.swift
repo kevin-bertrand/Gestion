@@ -89,6 +89,21 @@ final class ClientTest: XCTestCase {
         waitForExpectations(timeout: 2, handler: nil)
     }
     
+    /// Not acceptable
+    func testGivenNotAcceptable_WhenTryingToUpdate_ThenGettingError() {
+        // Prepare expectation
+        _ = expectation(forNotification: Notification.Desyntic.clientUpdateError.notificationName, object: nil, handler: nil)
+        
+        // Given
+        configureManager(correctData: nil, response: .status406, status: .correctData)
+        
+        // When
+        clientManager.update(client: getClientToUpdate(), by: getConnectedUser())
+        
+        // Then
+        waitForExpectations(timeout: 2, handler: nil)
+    }
+    
     /// Unknown status
     func testGivenUnknownReceivedStatus_WhenTryingToUpdate_ThenGettingError() {
         // Prepare expectation
@@ -190,7 +205,7 @@ final class ClientTest: XCTestCase {
     
     /// Connect a user
     private func getConnectedUser() -> User {
-        return User(phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
+        return User(id: UUID(), phone: "", gender: .man, position: .leadingBoard, lastname: "", role: "", firstname: "", email: "", token: "", permissions: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: ""))
     }
                              
     /// Get client to update
