@@ -13,6 +13,7 @@ struct SelectProductView: View {
     
     @Binding var selectedProducts: [Product.Informations]
     @State private var quantity: String = ""
+    @State private var reduction: String = ""
     @State private var quantityNotEntered: Bool = false
     
     var body: some View {
@@ -26,12 +27,37 @@ struct SelectProductView: View {
                     Text("Enter a quanity")
                         .foregroundColor(.red)
                 }
+                HStack {
+                    TextField("Reduction", text: $reduction)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                    Text("%")
+                        .padding(.leading)
+                }
             }.padding()
             
             List {
-                SelectProductSection(quantity: $quantity, quantityNotEntered: $quantityNotEntered, selectedProducts: $selectedProducts, title: "Materials", list: productsController.products, category: .material)
-                SelectProductSection(quantity: $quantity, quantityNotEntered: $quantityNotEntered, selectedProducts: $selectedProducts, title: "Services", list: productsController.products, category: .service)
-                SelectProductSection(quantity: $quantity, quantityNotEntered: $quantityNotEntered, selectedProducts: $selectedProducts, title: "Divers", list: productsController.products, category: .divers)
+                SelectProductSection(quantity: $quantity,
+                                     reduction: $reduction,
+                                     quantityNotEntered: $quantityNotEntered,
+                                     selectedProducts: $selectedProducts,
+                                     title: "Materials",
+                                     list: productsController.products,
+                                     category: .material)
+                SelectProductSection(quantity: $quantity,
+                                     reduction: $reduction,
+                                     quantityNotEntered: $quantityNotEntered,
+                                     selectedProducts: $selectedProducts,
+                                     title: "Services",
+                                     list: productsController.products,
+                                     category: .service)
+                SelectProductSection(quantity: $quantity,
+                                     reduction: $reduction,
+                                     quantityNotEntered: $quantityNotEntered,
+                                     selectedProducts: $selectedProducts,
+                                     title: "Divers",
+                                     list: productsController.products,
+                                     category: .divers)
             }
         }
         .navigationTitle("Select product")
@@ -44,7 +70,7 @@ struct SelectProductView: View {
 struct SelectProductView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SelectProductView(selectedProducts: .constant([.init(id: UUID(uuid: UUID_NULL), quantity: 0, title: "", unity: "", domain: .automation, productCategory: .material, price: 0)]))
+            SelectProductView(selectedProducts: .constant([.init(id: UUID(uuid: UUID_NULL), quantity: 0, reduction: 0, title: "", unity: "", domain: .automation, productCategory: .material, price: 0)]))
                 .environmentObject(ProductsController(appController: AppController()))
                 .environmentObject(UserController(appController: AppController()))
         }

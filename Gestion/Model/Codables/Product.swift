@@ -15,23 +15,28 @@ struct Product: Codable {
     var unity: String
     var price: Double
     
-    func toInformation(with quantity: Double) -> Product.Informations {
-        return .init(id: self.id, quantity: quantity, title: self.title, unity: self.unity, domain: self.domain, productCategory: self.productCategory, price: self.price)
+    func toInformation(with quantity: Double, and reduction: Double) -> Product.Informations {
+        return .init(id: self.id, quantity: quantity,
+                     reduction: reduction,
+                     title: self.title, unity: self.unity, domain: self.domain, productCategory: self.productCategory, price: self.price)
     }
     
     struct CreateDocument: Codable {
         let productID: UUID
         let quantity: Double
+        let reduction: Double
     }
     
     struct UpdateDocument: Codable {
         let productID: UUID
         let quantity: Double
+        let reduction: Double
     }
     
     struct Informations: Codable, Equatable {
         let id: UUID
         let quantity: Double
+        let reduction: Double
         let title: String
         let unity: String?
         let domain: Domain
@@ -39,7 +44,7 @@ struct Product: Codable {
         let price: Double
         
         func toUpdateDocuments() -> Product.UpdateDocument {
-            return .init(productID: self.id, quantity: self.quantity)
+            return .init(productID: self.id, quantity: self.quantity, reduction: self.reduction)
         }
     }
     

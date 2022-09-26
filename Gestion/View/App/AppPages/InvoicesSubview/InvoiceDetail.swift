@@ -55,12 +55,19 @@ struct InvoiceDetail: View {
             Section {
                 Label("Limit: \(invoicesController.selectedInvoice.limitPayementDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(invoicesController.selectedInvoice.status.rawValue)", systemImage: "list.triangle")
+                
+                if invoicesController.selectedInvoice.delayDays > 0 {
+                    Label("Number of days delayed: \(invoicesController.selectedInvoice.delayDays)", systemImage: "hourglass")
+                    Label("Total interests: \(invoicesController.selectedInvoice.totalDelay.twoDigitPrecision) €", systemImage: "eurosign")
+                }
             } header: {
                 Text("Invoice details")
             }
             
             Section {
-                RevenueChartView(totalMaterials: invoicesController.selectedInvoice.totalMaterials, totalServices: invoicesController.selectedInvoice.totalServices, totalDivers: invoicesController.selectedInvoice.totalDivers)
+                RevenueChartView(totalMaterials: invoicesController.selectedInvoice.totalMaterials,
+                                 totalServices: invoicesController.selectedInvoice.totalServices,
+                                 totalDivers: invoicesController.selectedInvoice.totalDivers)
             } header: {
                 Text("Incomes")
             }

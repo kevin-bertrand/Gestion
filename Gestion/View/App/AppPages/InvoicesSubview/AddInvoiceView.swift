@@ -59,7 +59,10 @@ struct AddInvoiceView: View {
                                   sectionTitle: "Divers",
                                   category: .divers)
 
-            TotalSectionView(totalService: newInvoice.totalServices, totalMaterials: newInvoice.totalMaterials, totalDivers: newInvoice.totalServices, grandTotal: newInvoice.grandTotal)
+            TotalSectionView(totalService: newInvoice.totalServices,
+                             totalMaterials: newInvoice.totalMaterials,
+                             totalDivers: newInvoice.totalDivers,
+                             total: newInvoice.total)
             
         }
         .onChange(of: products, perform: { newValue in
@@ -68,7 +71,7 @@ struct AddInvoiceView: View {
             newInvoice.grandTotal = newInvoice.total
             
             newInvoice.products = products.map({
-                .init(productID: $0.id, quantity: $0.quantity)
+                .init(productID: $0.id, quantity: $0.quantity, reduction: $0.reduction)
             })
         })
         .onChange(of: invoiceController.newInvoiceReference, perform: { newValue in

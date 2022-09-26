@@ -75,15 +75,17 @@ struct UpdateInvoiceView: View {
                                   sectionTitle: "Divers",
                                   category: .divers)
             
-            TotalSectionView(totalService: invoice.totalServices, totalMaterials: invoice.totalMaterials, totalDivers: invoice.totalDivers, grandTotal: invoice.grandTotal)            
+            TotalSectionView(totalService: invoice.totalServices,
+                             totalMaterials: invoice.totalMaterials,
+                             totalDivers: invoice.totalDivers,
+                             total: invoice.total)            
         }
         .onChange(of: products, perform: { newValue in
             invoice.total = 0
             newValue.forEach({ invoice.total += ($0.quantity * $0.price) })
-            invoice.grandTotal = invoice.total
             
             invoice.products = products.map({
-                .init(productID: $0.id, quantity: $0.quantity)
+                .init(productID: $0.id, quantity: $0.quantity, reduction: $0.reduction)
             })
         })
         .onChange(of: limitDate, perform: { newValue in

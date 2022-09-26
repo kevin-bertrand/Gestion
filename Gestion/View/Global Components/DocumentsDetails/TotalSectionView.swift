@@ -11,14 +11,14 @@ struct TotalSectionView: View {
     let totalService: Double
     let totalMaterials: Double
     let totalDivers: Double
-    let grandTotal: Double
+    let total: Double
     
     var body: some View {
         Section {
             Text("Total services: \(totalService.twoDigitPrecision) €")
             Text("Total material: \(totalMaterials.twoDigitPrecision) €")
             Text("Total Divers: \(totalDivers.twoDigitPrecision) €")
-            Text("Grand total: \(grandTotal.twoDigitPrecision) €")
+            Text("Total: \(total.twoDigitPrecision) €")
                 .font(.title2.bold())
         } header: {
             Text("Total")
@@ -28,6 +28,6 @@ struct TotalSectionView: View {
 
 struct TotalSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalSectionView(totalService: 0, totalMaterials: 0, totalDivers: 0, grandTotal: 0)
+        TotalSectionView(totalService: 0, totalMaterials: 0, totalDivers: 0, total: 0)
     }
 }

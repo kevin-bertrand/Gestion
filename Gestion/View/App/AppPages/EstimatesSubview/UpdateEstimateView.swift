@@ -59,7 +59,7 @@ struct UpdateEstimateView: View {
                                   sectionTitle: "Divers",
                                   category: .divers)
             
-            TotalSectionView(totalService: estimate.totalServices, totalMaterials: estimate.totalMaterials, totalDivers: estimate.totalDivers, grandTotal: estimate.grandTotal)            
+            TotalSectionView(totalService: estimate.totalServices, totalMaterials: estimate.totalMaterials, totalDivers: estimate.totalDivers, total: estimate.grandTotal)            
         }
         .onChange(of: products) { newValue in
             estimate.total = 0
@@ -67,7 +67,7 @@ struct UpdateEstimateView: View {
             estimate.grandTotal = estimate.total
             
             estimate.products = products.map({
-                .init(productID: $0.id, quantity: $0.quantity)
+                .init(productID: $0.id, quantity: $0.quantity, reduction: $0.reduction)
             })
         }
         .onChange(of: limitDate) { newValue in

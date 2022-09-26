@@ -16,7 +16,6 @@ struct Invoice {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var reduction: Double
         var grandTotal: Double
         var status: InvoiceStatus
         var limitPayementDate: String
@@ -33,7 +32,6 @@ struct Invoice {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var reduction: Double
         var grandTotal: Double
         var status: InvoiceStatus
         var limitPayementDate: String?
@@ -60,17 +58,18 @@ struct Invoice {
         let totalMaterials: Double
         let totalDivers: Double
         let total: Double
-        let reduction: Double
         let grandTotal: Double
         let status: InvoiceStatus
         let limitPayementDate: Date
+        let delayDays: Int
+        let totalDelay: Double
         let client: Client.Informations
         let products: [Product.Informations]
         let isArchive: Bool
         let payment: Payment?
         
         func toUpdate() -> Invoice.Update {
-            return .init(id: self.id, reference: self.reference, internalReference: self.internalReference, object: self.object, totalServices: self.totalServices, totalMaterials: self.totalMaterials, totalDivers: self.totalDivers, total: self.total, reduction: self.reduction, grandTotal: self.grandTotal, status: self.status, products: self.products.map({$0.toUpdateDocuments()}))
+            return .init(id: self.id, reference: self.reference, internalReference: self.internalReference, object: self.object, totalServices: self.totalServices, totalMaterials: self.totalMaterials, totalDivers: self.totalDivers, total: self.total, grandTotal: self.grandTotal, status: self.status, products: self.products.map({$0.toUpdateDocuments()}))
         }
     }
 }

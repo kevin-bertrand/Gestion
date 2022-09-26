@@ -24,7 +24,8 @@ struct ProductListUpdateView: View {
                                 .font(.title2.bold())
                             Text("Quantity: \(product.quantity.twoDigitPrecision)")
                             Text("Price: \(product.price.twoDigitPrecision) \(product.unity ?? "")")
-                            Text("Total product: \((product.quantity * product.price).twoDigitPrecision) €")
+                            Text("Reduction: \(product.reduction.twoDigitPrecision) %")
+                            Text("Total product: \((product.quantity * product.price * ((100-product.reduction)/100)).twoDigitPrecision) €")
                         }
                     }
                 }.onDelete { index in
@@ -41,7 +42,7 @@ struct ProductListUpdateView: View {
         var total = 0.0
         for product in products {
             if product.productCategory == category {
-                total += (product.price * product.quantity)
+                total += (product.price * product.quantity * ((100 - product.reduction)/100))
             }
         }
         

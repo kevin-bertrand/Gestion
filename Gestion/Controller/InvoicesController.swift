@@ -11,8 +11,8 @@ import SwiftUI
 final class InvoicesController: ObservableObject {
     // MARK: Static
     static let emptySummaryInvoice: Invoice.Summary = .init(id: nil, client: .init(firstname: nil, lastname: nil, company: nil), reference: "", grandTotal: 0, status: .inCreation, limitPayementDate: Date(), isArchive: true)
-    static let emptyUpdateInvoice: Invoice.Update = .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, products: [])
-    static let emptyCreateInvoice: Invoice.Create = .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, limitPayementDate: "\(Date())", clientID: UUID(uuid: UUID_NULL), products: [])
+    static let emptyUpdateInvoice: Invoice.Update = .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0,  grandTotal: 0, status: .inCreation, products: [])
+    static let emptyCreateInvoice: Invoice.Create = .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .inCreation, limitPayementDate: "\(Date())", clientID: UUID(uuid: UUID_NULL), products: [])
     
     // MARK: Public
     // MARK: Properties

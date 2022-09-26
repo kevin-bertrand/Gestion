@@ -198,6 +198,7 @@ final class UserController: ObservableObject {
                 switch notificationName {
                 case Notification.Desyntic.loginSuccess.notificationName:
                     self.userIsConnected = true
+                    self.saveNewPassword(with: self.loginPasswordTextField)
                 case Notification.Desyntic.loginWrongCredentials.notificationName,
                     Notification.Desyntic.userUpdatePictureError.notificationName:
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
