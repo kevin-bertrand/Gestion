@@ -86,7 +86,7 @@ struct HomeView: View {
                             } label: {
                                 TileView(icon: "pencil.and.ruler.fill",
                                          title: estimate.reference,
-                                         value: "\(estimate.grandTotal.twoDigitPrecision) €", limit: "Limit: \(estimate.limitValidifyDate.formatted(date: .numeric, time: .omitted))",
+                                         value: "\(estimate.total.twoDigitPrecision) €", limit: "Limit: \(estimate.limitValidifyDate.formatted(date: .numeric, time: .omitted))",
                                          iconColor: getEstimateColor(status: estimate.status))
                             }
                         }

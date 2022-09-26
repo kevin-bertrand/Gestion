@@ -9,7 +9,7 @@ import Foundation
 
 final class EstimatesManager {
     // MARK: Static
-    static let emptyDetail = Estimate.Informations(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .accepted, limitValidityDate: Date(), isArchive: true, client: Client.Informations(id: nil, firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")), products: [])
+    static let emptyDetail = Estimate.Informations(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .accepted, limitValidityDate: Date(), isArchive: true, client: Client.Informations(id: nil, firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")), products: [])
     
     // MARK: Public
     // MARK: Properties
@@ -82,10 +82,13 @@ final class EstimatesManager {
             if let self = self,
                let status = response?.statusCode,
                let data = data,
-               status == 200,
-               let estimates = try? JSONDecoder().decode([Estimate.Summary].self, from: data) {
-                self.estimatesList = estimates
-                Notification.Desyntic.estimatesListDownload.sendNotification()
+               status == 200{
+                if let estimates = try? JSONDecoder().decode([Estimate.Summary].self, from: data) {
+                    self.estimatesList = estimates
+                    Notification.Desyntic.estimatesListDownload.sendNotification()
+                } else {
+                    Notification.Desyntic.unknownError.sendNotification()
+                }
             } else {
                 Notification.Desyntic.unknownError.sendNotification()
             }

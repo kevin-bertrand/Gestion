@@ -16,7 +16,7 @@ struct EstimateListTileView: View {
         } label: {
             VStack(alignment: .leading, spacing: 10) {
                 Text(estimate.reference)
-                Text("\(estimate.grandTotal.twoDigitPrecision) €")
+                Text("\(estimate.total.twoDigitPrecision) €")
                     .foregroundColor(.gray)
                     .font(.callout)
                 Text(estimate.limitValidifyDate.formatted(date: .numeric, time: .omitted))
@@ -29,6 +29,6 @@ struct EstimateListTileView: View {
 
 struct EstimateListTileView_Previews: PreviewProvider {
     static var previews: some View {
-        EstimateListTileView(estimate: Estimate.Summary(id: nil, client: Client.Summary(firstname: "", lastname: "", company: ""), reference: "", grandTotal: 0, status: .inCreation, limitValidifyDate: Date(), isArchive: true))
+        EstimateListTileView(estimate: Estimate.Summary(id: nil, client: Client.Summary(firstname: "", lastname: "", company: ""), reference: "", total: 0, status: .inCreation, limitValidifyDate: Date(), isArchive: true))
     }
 }

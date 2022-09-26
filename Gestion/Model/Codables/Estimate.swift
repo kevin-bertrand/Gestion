@@ -16,7 +16,6 @@ struct Estimate {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var reduction: Double
         var grandTotal: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
@@ -33,7 +32,6 @@ struct Estimate {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var reduction: Double
         var grandTotal: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
@@ -44,7 +42,7 @@ struct Estimate {
         let id: UUID?
         let client: Client.Summary
         let reference: String
-        let grandTotal: Double
+        let total: Double
         let status: EstimateStatus
         let limitValidifyDate: Date
         let isArchive: Bool
@@ -59,7 +57,6 @@ struct Estimate {
         let totalMaterials: Double
         let totalDivers: Double
         let total: Double
-        let reduction: Double
         let grandTotal: Double
         let status: EstimateStatus
         let limitValidityDate: Date
@@ -68,7 +65,17 @@ struct Estimate {
         let products: [Product.Informations]
         
         func toUpdate() -> Estimate.Update {
-            return .init(id: self.id, reference: self.reference, internalReference: self.internalReference, object: self.object, totalServices: self.totalServices, totalMaterials: self.totalMaterials, totalDivers: self.totalDivers, total: self.total, reduction: self.reduction, grandTotal: self.grandTotal, status: self.status, products: self.products.map({$0.toUpdateDocuments()}))
+            return .init(id: self.id,
+                         reference: self.reference,
+                         internalReference: self.internalReference,
+                         object: self.object,
+                         totalServices: self.totalServices,
+                         totalMaterials: self.totalMaterials,
+                         totalDivers: self.totalDivers,
+                         total: self.total,
+                         grandTotal: self.grandTotal,
+                         status: self.status,
+                         products: self.products.map({$0.toUpdateDocuments()}))
         }
     }
 }
