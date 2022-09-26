@@ -35,6 +35,7 @@ struct Invoice {
         var grandTotal: Double
         var status: InvoiceStatus
         var limitPayementDate: String?
+        var facturationDate: String
         var paymentID: UUID?
         var products: [Product.UpdateDocument]
     }
@@ -61,6 +62,7 @@ struct Invoice {
         let grandTotal: Double
         let status: InvoiceStatus
         let limitPayementDate: Date
+        let facturationDate: Date
         let delayDays: Int
         let totalDelay: Double
         let client: Client.Informations
@@ -69,7 +71,20 @@ struct Invoice {
         let payment: Payment?
         
         func toUpdate() -> Invoice.Update {
-            return .init(id: self.id, reference: self.reference, internalReference: self.internalReference, object: self.object, totalServices: self.totalServices, totalMaterials: self.totalMaterials, totalDivers: self.totalDivers, total: self.total, grandTotal: self.grandTotal, status: self.status, products: self.products.map({$0.toUpdateDocuments()}))
+            return .init(id: self.id, reference:
+                            self.reference,
+                         internalReference: self.internalReference,
+                         object: self.object,
+                         totalServices: self.totalServices,
+                         totalMaterials: self.totalMaterials,
+                         totalDivers: self.totalDivers,
+                         total: self.total,
+                         grandTotal: self.grandTotal,
+                         status: self.status,
+                         limitPayementDate: ISO8601DateFormatter().string(from: limitPayementDate),
+                         facturationDate: ISO8601DateFormatter().string(from: facturationDate),
+                         paymentID: payment?.id,
+                         products: self.products.map({$0.toUpdateDocuments()}))
         }
     }
 }

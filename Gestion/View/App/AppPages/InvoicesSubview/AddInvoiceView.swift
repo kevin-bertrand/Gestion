@@ -78,7 +78,7 @@ struct AddInvoiceView: View {
             newInvoice.reference = newValue
         })
         .onChange(of: limitDate, perform: { newValue in
-            newInvoice.limitPayementDate = newValue.ISO8601Format()
+            newInvoice.limitPayementDate = ISO8601DateFormatter().string(from: newValue)
         })
         .onChange(of: client, perform: { newValue in
             newInvoice.clientID = newValue.id ?? UUID(uuid: UUID_NULL)

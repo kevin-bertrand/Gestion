@@ -16,6 +16,7 @@ struct UpdateInvoiceView: View {
     @State var invoice: Invoice.Update
     @State var client: Client.Informations
     @State private var limitDate: Date = Date()
+    @State private var facturationDate: Date = Date()
     @State var products: [Product.Informations] = []
     @State private var payment: Payment = PaymentController.emptyPayment
     
@@ -26,6 +27,9 @@ struct UpdateInvoiceView: View {
             Section {
                 TextField("Référence interne", text: $invoice.internalReference)
                 TextField("Object", text: $invoice.object)
+                DatePicker(selection: $facturationDate, displayedComponents: .date) {
+                    Text("Date de facturation")
+                }
                 DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
                 }
@@ -91,6 +95,9 @@ struct UpdateInvoiceView: View {
         .onChange(of: limitDate, perform: { newValue in
             invoice.limitPayementDate = newValue.ISO8601Format()
         })
+        .onChange(of: facturationDate, perform: { newValue in
+            invoice.facturationDate = newValue.ISO8601Format()
+        })
         .onChange(of: invoiceController.successUpdateInvoice, perform: { newValue in
             if newValue {
                 invoiceController.successUpdateInvoice = false
@@ -112,6 +119,15 @@ struct UpdateInvoiceView: View {
         .onAppear {
             if let oldPayment = invoiceController.selectedInvoice.payment {
                 payment = oldPayment
+            }
+            
+            if let limitPaymentDate = invoice.limitPayementDate,
+               let date = limitPaymentDate.toDate{
+                limitDate = date
+            }
+            
+            if let date = invoice.facturationDate.toDate {
+                facturationDate = date
             }
         }
     }

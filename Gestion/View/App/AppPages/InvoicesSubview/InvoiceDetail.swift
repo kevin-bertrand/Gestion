@@ -53,6 +53,9 @@ struct InvoiceDetail: View {
             }
             
             Section {
+                Label("Internal ref: \(invoicesController.selectedInvoice.internalReference)", systemImage: "doc.text")
+                Label("Internal ref: \(invoicesController.selectedInvoice.object)", systemImage: "doc.text")
+                Label("Facturation: \(invoicesController.selectedInvoice.facturationDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Limit: \(invoicesController.selectedInvoice.limitPayementDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(invoicesController.selectedInvoice.status.rawValue)", systemImage: "list.triangle")
                 
