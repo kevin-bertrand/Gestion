@@ -35,14 +35,18 @@ struct EstimateDetail: View {
             }
             
             Section {
-                NavigationLink("Update") {
-                    UpdateEstimateView(estimate: estimateController.selectedEstimate.toUpdate(),
-                                       client: estimateController.selectedEstimate.client,
-                                       products: estimateController.selectedEstimate.products)
+                if estimateController.selectedEstimate.status != .accepted || estimateController.selectedEstimate.status != .refused {
+                    NavigationLink("Update") {
+                        UpdateEstimateView(estimate: estimateController.selectedEstimate.toUpdate(),
+                                           client: estimateController.selectedEstimate.client,
+                                           products: estimateController.selectedEstimate.products)
+                    }
                 }
+                
                 NavigationLink("Show PDF") {
                     PDFUIView(pdf: estimateController.estimatePdf)
                 }
+                
                 Button {
                     estimateController.exportToInvoice(by: userController.connectedUser)
                 } label: {

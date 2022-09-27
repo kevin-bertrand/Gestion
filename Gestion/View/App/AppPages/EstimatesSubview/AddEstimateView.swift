@@ -91,6 +91,9 @@ struct AddEstimateView: View {
         .onAppear {
             estimatesController.gettingNewReference(by: userController.connectedUser)
         }
+        .onDisappear {
+            estimatesController.newEstimateReference = ""
+        }
         .toolbar {
             Button {
                 estimatesController.create(estimate: newEstimate, by: userController.connectedUser)

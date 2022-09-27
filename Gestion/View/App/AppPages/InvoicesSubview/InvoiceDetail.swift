@@ -76,11 +76,14 @@ struct InvoiceDetail: View {
             }
             
             Section {
-                NavigationLink("Update") {
-                    UpdateInvoiceView(invoice: invoicesController.selectedInvoice.toUpdate(),
-                                      client: invoicesController.selectedInvoice.client,
-                                      products: invoicesController.selectedInvoice.products)
+                if invoicesController.selectedInvoice.status != .payed {
+                    NavigationLink("Update") {
+                        UpdateInvoiceView(invoice: invoicesController.selectedInvoice.toUpdate(),
+                                          client: invoicesController.selectedInvoice.client,
+                                          products: invoicesController.selectedInvoice.products)
+                    }
                 }
+                
                 NavigationLink("Show PDF") {
                     PDFUIView(pdf: invoicesController.invoicePDF)
                 }

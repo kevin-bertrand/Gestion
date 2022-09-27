@@ -93,6 +93,9 @@ struct AddInvoiceView: View {
         .onAppear {
             invoiceController.gettingNewReference(for: userController.connectedUser)
         }
+        .onDisappear {
+            invoiceController.newInvoiceReference = ""
+        }
         .toolbar {
             Button {
                 invoiceController.create(invoice: newInvoice, by: userController.connectedUser)
