@@ -19,6 +19,7 @@ struct UpdateInvoiceView: View {
     @State private var facturationDate: Date = Date()
     @State var products: [Product.Informations] = []
     @State private var payment: Payment = PaymentController.emptyPayment
+    @State private var comment: String = ""
     
     var body: some View {
         Form {
@@ -55,6 +56,12 @@ struct UpdateInvoiceView: View {
                 Text("Title: \(payment.title)")
                 Text("BIC: \(payment.bic)")
                 Text("IBAN: \(payment.iban)")
+            }
+            
+            Section {
+                TextEditor(text: $comment)
+            } header: {
+                Text("Comments")
             }
             
             Section {
@@ -104,6 +111,13 @@ struct UpdateInvoiceView: View {
                 dismiss()
             }
         })
+        .onChange(of: comment, perform: { newValue in
+            if newValue.isEmpty {
+                invoice.comment = nil
+            } else {
+                invoice.comment = newValue
+            }
+        })
         .navigationTitle(invoice.reference)
         .toolbar {
             Button {
@@ -129,6 +143,10 @@ struct UpdateInvoiceView: View {
             if let date = invoice.facturationDate.toDate {
                 facturationDate = date
             }
+            
+            if let comments = invoice.comment {
+                comment = comments
+            }
         }
     }
 }
@@ -138,6 +156,8 @@ struct UpdateInvoiceView_Previews: PreviewProvider {
         NavigationView {
             UpdateInvoiceView(invoice: InvoicesController.emptyUpdateInvoice,
                               client: ClientController.emptyClientInfo)
+            .environmentObject(InvoicesController(appController: AppController()))
+            .environmentObject(UserController(appController: AppController()))
         }
     }
 }

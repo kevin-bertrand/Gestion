@@ -44,6 +44,14 @@ struct InvoiceDetail: View {
                 Text("Invoice details")
             }
             
+            if let comments = invoicesController.selectedInvoice.comment {
+                Section {
+                    Text(comments)
+                } header: {
+                    Text("Comments")
+                }
+            }
+            
             Section {
                 RevenueChartView(totalMaterials: invoicesController.selectedInvoice.totalMaterials,
                                  totalServices: invoicesController.selectedInvoice.totalServices,

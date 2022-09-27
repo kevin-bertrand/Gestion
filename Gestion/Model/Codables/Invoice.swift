@@ -20,6 +20,7 @@ struct Invoice {
         var status: InvoiceStatus
         var limitPayementDate: String
         var clientID: UUID
+        var comment: String?
         var products: [Product.CreateDocument]
     }
     
@@ -37,6 +38,7 @@ struct Invoice {
         var limitPayementDate: String?
         var facturationDate: String
         var paymentID: UUID?
+        var comment: String?
         var products: [Product.UpdateDocument]
     }
     
@@ -68,6 +70,7 @@ struct Invoice {
         let client: Client.Informations
         let products: [Product.Informations]
         let isArchive: Bool
+        let comment: String?
         let payment: Payment?
         
         func toUpdate() -> Invoice.Update {
@@ -84,6 +87,7 @@ struct Invoice {
                          limitPayementDate: ISO8601DateFormatter().string(from: limitPayementDate),
                          facturationDate: ISO8601DateFormatter().string(from: facturationDate),
                          paymentID: payment?.id,
+                         comment: comment,
                          products: self.products.map({$0.toUpdateDocuments()}))
         }
     }

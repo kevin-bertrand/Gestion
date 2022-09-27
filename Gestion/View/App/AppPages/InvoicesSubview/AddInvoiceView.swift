@@ -17,6 +17,7 @@ struct AddInvoiceView: View {
     @State private var limitDate: Date = Date()
     @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
+    @State private var comment: String = ""
     
     var body: some View {
         Form {
@@ -35,6 +36,12 @@ struct AddInvoiceView: View {
                 }
             } header: {
                 Text("Informations")
+            }
+            
+            Section {
+                TextEditor(text: $comment)
+            } header: {
+                Text("Comments")
             }
             
             Section {
@@ -87,6 +94,13 @@ struct AddInvoiceView: View {
             if newValue {
                 invoiceController.successCreatingNewInvoice = false
                 dismiss()
+            }
+        })
+        .onChange(of: comment, perform: { newValue in
+            if comment.isEmpty {
+                newInvoice.comment = nil
+            } else {
+                newInvoice.comment = newValue
             }
         })
         .navigationTitle(newInvoice.reference)

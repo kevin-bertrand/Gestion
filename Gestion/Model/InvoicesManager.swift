@@ -9,7 +9,7 @@ import Foundation
 
 final class InvoicesManager {
     // MARK: Static
-    static let emptyInvoiceDetail = Invoice.Informations(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .inCreation, limitPayementDate: Date(), facturationDate: Date(), delayDays: 0, totalDelay: 0.0, client: .init(id: nil, firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")), products: [], isArchive: true, payment: nil)
+    static let emptyInvoiceDetail = Invoice.Informations(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .inCreation, limitPayementDate: Date(), facturationDate: Date(), delayDays: 0, totalDelay: 0.0, client: .init(id: nil, firstname: "", lastname: "", company: "", phone: "", email: "", personType: .company, gender: .man, siret: "", tva: "", address: Address(id: "", roadName: "", streetNumber: "", complement: "", zipCode: "", city: "", country: "", latitude: 0, longitude: 0, comment: "")), products: [], isArchive: true, comment: nil, payment: nil)
     
     // MARK: Public
     // MARK: Properties
