@@ -16,7 +16,6 @@ struct Estimate {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var grandTotal: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
         var clientID: UUID
@@ -32,7 +31,6 @@ struct Estimate {
         var totalMaterials: Double
         var totalDivers: Double
         var total: Double
-        var grandTotal: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
         var products: [Product.UpdateDocument]
@@ -57,7 +55,6 @@ struct Estimate {
         let totalMaterials: Double
         let totalDivers: Double
         let total: Double
-        let grandTotal: Double
         let status: EstimateStatus
         let limitValidityDate: Date
         let isArchive: Bool
@@ -73,7 +70,6 @@ struct Estimate {
                          totalMaterials: self.totalMaterials,
                          totalDivers: self.totalDivers,
                          total: self.total,
-                         grandTotal: self.grandTotal,
                          status: self.status,
                          products: self.products.map({$0.toUpdateDocuments()}))
         }

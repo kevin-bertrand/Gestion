@@ -59,12 +59,14 @@ struct AddEstimateView: View {
                                   sectionTitle: "Divers",
                                   category: .divers)
             
-            TotalSectionView(totalService: newEstimate.totalServices, totalMaterials: newEstimate.totalMaterials, totalDivers: newEstimate.totalDivers, total: newEstimate.grandTotal)
+            TotalSectionView(totalService: newEstimate.totalServices,
+                             totalMaterials: newEstimate.totalMaterials,
+                             totalDivers: newEstimate.totalDivers,
+                             total: newEstimate.total)
         }
         .onChange(of: products) { newValue in
             newEstimate.total = 0
             newValue.forEach({ newEstimate.total += ($0.quantity * $0.price) })
-            newEstimate.grandTotal = newEstimate.total
             
             newEstimate.products = products.map({
                 .init(productID: $0.id, quantity: $0.quantity, reduction: $0.reduction)
