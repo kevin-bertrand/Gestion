@@ -33,6 +33,7 @@ struct Estimate {
         var total: Double
         var status: EstimateStatus
         var limitValidifyDate: String?
+        var sendingDate: String
         var products: [Product.UpdateDocument]
     }
     
@@ -57,6 +58,7 @@ struct Estimate {
         let total: Double
         let status: EstimateStatus
         let limitValidityDate: Date
+        let sendingDate: Date
         let isArchive: Bool
         let client: Client.Informations
         let products: [Product.Informations]
@@ -71,6 +73,8 @@ struct Estimate {
                          totalDivers: self.totalDivers,
                          total: self.total,
                          status: self.status,
+                         limitValidifyDate: ISO8601DateFormatter().string(from: limitValidityDate),
+                         sendingDate: ISO8601DateFormatter().string(from: sendingDate),
                          products: self.products.map({$0.toUpdateDocuments()}))
         }
     }

@@ -11,7 +11,7 @@ import SwiftUI
 final class EstimatesController: ObservableObject {
     // MARK: Static
     static let emptyCreateEstimate: Estimate.Create = .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, status: .inCreation, clientID: UUID(uuid: UUID_NULL), products: [])
-    static let emptyUpdateEstimate: Estimate.Update = .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, status: .inCreation, products: [])
+    static let emptyUpdateEstimate: Estimate.Update = .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, status: .inCreation, sendingDate: ISO8601DateFormatter().string(from: Date()), products: [])
     
     // MARK: Public
     // MARK: Properties

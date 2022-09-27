@@ -21,6 +21,7 @@ struct EstimateDetail: View {
             ClientDetailsView(selectedClient: .constant(estimateController.selectedEstimate.client))
             
             Section {
+                Label("Sending date: \(estimateController.selectedEstimate.sendingDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Limit: \(estimateController.selectedEstimate.limitValidityDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(estimateController.selectedEstimate.status.rawValue)", systemImage: "list.triangle")
             } header: {

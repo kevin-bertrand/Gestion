@@ -22,7 +22,7 @@ struct UpdateInvoiceView: View {
     
     var body: some View {
         Form {
-            ClientDetailsView(selectedClient: $client)
+            ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
                 TextField("Référence interne", text: $invoice.internalReference)

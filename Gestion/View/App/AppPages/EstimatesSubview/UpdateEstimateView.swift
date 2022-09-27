@@ -17,14 +17,18 @@ struct UpdateEstimateView: View {
     @State var client: Client.Informations
     @State var products: [Product.Informations] = []
     @State private var limitDate: Date = Date()
+    @State private var sendingDate: Date = Date()
     
     var body: some View {
         Form {
-            ClientDetailsView(selectedClient: $client)
+            ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
                 TextField("Référence interne", text: $estimate.internalReference)
                 TextField("Object", text: $estimate.object)
+                DatePicker(selection: $sendingDate, displayedComponents: .date) {
+                    Text("Date d'envoi")
+                }
                 DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
                 }
@@ -81,12 +85,24 @@ struct UpdateEstimateView: View {
                 dismiss()
             }
         }
+        .onChange(of: sendingDate, perform: { newValue in
+            estimate.sendingDate = newValue.ISO8601Format()
+        })
         .navigationTitle(estimate.reference)
         .toolbar {
             Button {
                 estimatesController.update(estimate: estimate, by: userController.connectedUser)
             } label: {
                 Image(systemName: "v.circle")
+            }
+        }
+        .onAppear {
+            if let date = estimate.limitValidifyDate?.toDate {
+                limitDate = date
+            }
+            
+            if let date = estimate.sendingDate.toDate {
+                sendingDate = date
             }
         }
     }
