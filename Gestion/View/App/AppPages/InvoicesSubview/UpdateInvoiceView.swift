@@ -20,6 +20,9 @@ struct UpdateInvoiceView: View {
     @State var products: [Product.Informations] = []
     @State private var payment: Payment = PaymentController.emptyPayment
     @State private var comment: String = ""
+    @State private var hasAnInterestsCeiling: Bool = false
+    @State private var maxInterests: String = ""
+    @State private var maxLimitInterets: Date = Date()
     
     var body: some View {
         Form {
@@ -56,6 +59,32 @@ struct UpdateInvoiceView: View {
                 Text("Title: \(payment.title)")
                 Text("BIC: \(payment.bic)")
                 Text("IBAN: \(payment.iban)")
+            }
+            
+            
+            Section {
+                if hasAnInterestsCeiling {
+                    Button {
+                        hasAnInterestsCeiling = false
+                        invoice.maxInterests = nil
+                        invoice.limitMaximumInterests = nil
+                    } label: {
+                        Text("Remove interest limit")
+                    }
+                    TextField("Maximum interests", text: $maxInterests)
+                        .keyboardType(.decimalPad)
+                    DatePicker("Limit maximum", selection: $maxLimitInterets,displayedComponents: .date)
+                } else {
+                    Button {
+                        hasAnInterestsCeiling = true
+                        invoice.maxInterests = 0
+                        invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: Date())
+                    } label: {
+                        Text("Add interest limit")
+                    }
+                }
+            } header: {
+                Text("Interests")
             }
             
             Section {
@@ -118,6 +147,14 @@ struct UpdateInvoiceView: View {
                 invoice.comment = newValue
             }
         })
+        .onChange(of: maxInterests, perform: { newValue in
+            if let maxDouble = Double(maxInterests) {
+                invoice.maxInterests = maxDouble
+            }
+        })
+        .onChange(of: maxLimitInterets, perform: { newValue in
+            invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: newValue)
+        })
         .navigationTitle(invoice.reference)
         .toolbar {
             Button {
@@ -146,6 +183,15 @@ struct UpdateInvoiceView: View {
             
             if let comments = invoice.comment {
                 comment = comments
+            }
+            
+            if let interestsCeilingDate = invoiceController.selectedInvoice.limitMaximumInterests,
+               let maxInterests = invoiceController.selectedInvoice.maxInterests {
+                hasAnInterestsCeiling = true
+                invoice.maxInterests = maxInterests
+                self.maxInterests = "\(maxInterests)"
+                invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: interestsCeilingDate)
+                self.maxLimitInterets = interestsCeilingDate
             }
         }
     }

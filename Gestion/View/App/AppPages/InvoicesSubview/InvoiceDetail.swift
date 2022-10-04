@@ -35,13 +35,24 @@ struct InvoiceDetail: View {
                 Label("Facturation: \(invoicesController.selectedInvoice.facturationDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Limit: \(invoicesController.selectedInvoice.limitPayementDate.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
                 Label("Status \(invoicesController.selectedInvoice.status.rawValue)", systemImage: "list.triangle")
-                
-                if invoicesController.selectedInvoice.delayDays > 0 {
-                    Label("Number of days delayed: \(invoicesController.selectedInvoice.delayDays)", systemImage: "hourglass")
-                    Label("Total interests: \(invoicesController.selectedInvoice.totalDelay.twoDigitPrecision) €", systemImage: "eurosign")
-                }
             } header: {
                 Text("Invoice details")
+            }
+            
+            
+            if invoicesController.selectedInvoice.delayDays > 0 {
+                Section {
+                    Label("Number of days delayed: \(invoicesController.selectedInvoice.delayDays)", systemImage: "hourglass")
+                    Label("Total interests: \(invoicesController.selectedInvoice.totalDelay.twoDigitPrecision) €", systemImage: "eurosign")
+                    
+                    if let maxInterests = invoicesController.selectedInvoice.maxInterests,
+                       let maxInterestsLimit = invoicesController.selectedInvoice.limitMaximumInterests {
+                        Label("Maximum interests: \(maxInterests.twoDigitPrecision) €", systemImage: "eurosign")
+                        Label("Limit max interests: \(maxInterestsLimit.formatted(date: .numeric, time: .omitted))", systemImage: "hourglass")
+                    }
+                } header: {
+                    Text("Interests")
+                }
             }
             
             if let comments = invoicesController.selectedInvoice.comment {
