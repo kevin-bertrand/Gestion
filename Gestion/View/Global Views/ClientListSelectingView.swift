@@ -20,13 +20,15 @@ struct ClientListSelectingView: View {
             ClientTileView(client: clientInformations)
                 .onTapGesture {
                     self.client = clientInformations
-                    dismiss()
                 }
         }
         .onAppear {
             clientController.gettingList(for: userController.connectedUser)
         }
         .searchable(text: $clientController.searchingField)
+        .onChange(of: client) { newValue in
+            dismiss()
+        }
     }
 }
 

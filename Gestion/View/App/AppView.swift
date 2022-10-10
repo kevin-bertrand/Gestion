@@ -14,7 +14,7 @@ struct AppView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            NavigationView {
+            NavigationStack {
                 HomeView(selectedTab: $selectedTab)
             }
             .tabItem {
@@ -22,7 +22,7 @@ struct AppView: View {
             }
             .tag(1)
             
-            NavigationView {
+            NavigationStack {
                 EstimatesView()
             }
             .tabItem {
@@ -30,7 +30,7 @@ struct AppView: View {
             }
             .tag(2)
             
-            NavigationView {
+            NavigationStack {
                 InvoicesView()
             }
             .tabItem {
@@ -38,7 +38,7 @@ struct AppView: View {
             }
             .tag(3)
             
-            NavigationView {
+            NavigationStack {
                 SettingsView()
             }
             .tabItem {

@@ -37,9 +37,7 @@ final class RevenuesManager {
     }
     
     /// Download this month revenues
-    func gettingThisMonthRevenues(for user: User) {
-        let components = Calendar.current.dateComponents([.year, .month], from: Date())
-        guard let year = components.year, let month = components.month else { return }
+    func gettingThisMonthRevenues(forMonth month: Int, andYear year: Int, by user: User) {
         var params = NetworkConfigurations.revenueGetMonth.urlParams
         params.append("\(month)")
         params.append("\(year)")

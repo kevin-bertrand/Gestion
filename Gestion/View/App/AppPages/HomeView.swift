@@ -16,7 +16,10 @@ struct HomeView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: Int
-        
+    @State private var selectedMonth: Int = 1
+    @State private var selectedYear: Int = 20
+    var yearRange: Range<Int> = 19..<Calendar.current.component(.year, from: Date())-2000+1
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             RoundedRectangleCustom {
@@ -38,7 +41,25 @@ struct HomeView: View {
             .frame(height: 125)
             
             VStack {
-                SectionTitleCustom(title: "This month revenue")
+                HStack {
+                    SectionTitleCustom(title: "Month revenue")
+                    
+                    Spacer()
+                    
+                    Picker("", selection: $selectedMonth) {
+                        ForEach(1..<13) { month in
+                            Text("\(month)")
+                                .tag(month)
+                        }
+                    }
+                    Text("/")
+                    Picker("", selection: $selectedYear) {
+                        ForEach(yearRange) { year in
+                            Text("20\(year)")
+                                .tag(year)
+                        }
+                    }
+                }
                 
                 RoundedRectangleCustom {
                     AnyView(VStack {
@@ -112,10 +133,17 @@ struct HomeView: View {
         .padding(.horizontal)
         .onAppear {
             revenuesController.downloadRevenues(for: userController.connectedUser)
-            revenuesController.downloadThisMonth(for: userController.connectedUser)
             revenuesController.downloadAllMonths(for: userController.connectedUser)
             estimatesController.downloadEstimatesSummary(for: userController.connectedUser)
             invoicesController.downloadInvoicesSummary(for: userController.connectedUser)
+            selectedMonth = Calendar.current.component(.month, from: Date())
+            selectedYear = Calendar.current.component(.year, from: Date())-2000
+        }
+        .onChange(of: selectedMonth) { newValue in
+            revenuesController.downloadMonthRevenues(for: selectedMonth, and: 2000+selectedYear, by: userController.connectedUser)
+        }
+        .onChange(of: selectedYear) { newValue in
+            revenuesController.downloadMonthRevenues(for: selectedMonth, and: 2000+selectedYear, by: userController.connectedUser)
         }
     }
     
@@ -142,6 +170,7 @@ struct HomeView_Previews: PreviewProvider {
                 .environmentObject(UserController(appController: AppController()))
                 .environmentObject(RevenuesController(appController: AppController()))
                 .environmentObject(EstimatesController(appController: AppController()))
+                .environmentObject(InvoicesController(appController: AppController()))
         }
     }
 }

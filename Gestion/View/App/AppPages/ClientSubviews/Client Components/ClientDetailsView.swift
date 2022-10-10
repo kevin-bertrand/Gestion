@@ -28,7 +28,7 @@ struct ClientDetailsView: View {
                let lastname = selectedClient.lastname {
                 Label("\(selectedClient.gender == .man ? "M " : ((selectedClient.gender == .woman) ? "Mme " : ""))\(firstname) \(lastname)", systemImage: "person.fill")
             }
-
+            
             if let company = selectedClient.company {
                 Label("\(company)", systemImage: "building.2.fill")
             }
