@@ -65,6 +65,7 @@
 		066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */; };
 		066F406E28BE7ECA000718D7 /* InfoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406D28BE7ECA000718D7 /* InfoTile.swift */; };
 		066F407028BEA1C3000718D7 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066F406F28BEA1C3000718D7 /* TileView.swift */; };
+		067F2A222901918E006A6AA8 /* UpdateProductSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067F2A212901918E006A6AA8 /* UpdateProductSelectionView.swift */; };
 		06A63AEC28BD51EC009805CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A63AEB28BD51EC009805CB /* Assets.xcassets */; };
 		06A63AF028BD53C0009805CB /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AEF28BD53C0009805CB /* StartView.swift */; };
 		06A63AF328BD55CB009805CB /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A63AF228BD55CB009805CB /* AnyTransition.swift */; };
@@ -209,6 +210,7 @@
 		066F406B28BE7BA4000718D7 /* RoundedRectangleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleCustom.swift; sourceTree = "<group>"; };
 		066F406D28BE7ECA000718D7 /* InfoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTile.swift; sourceTree = "<group>"; };
 		066F406F28BEA1C3000718D7 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		067F2A212901918E006A6AA8 /* UpdateProductSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProductSelectionView.swift; sourceTree = "<group>"; };
 		06A63AEB28BD51EC009805CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06A63AEF28BD53C0009805CB /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		06A63AF228BD55CB009805CB /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				06D357FF28C741D80093C564 /* ProductTileView.swift */,
 				06180C1028C9D2A200E79AC4 /* ProductsListSectionView.swift */,
 				06180C2828C9F08200E79AC4 /* SelectProductSection.swift */,
+				067F2A212901918E006A6AA8 /* UpdateProductSelectionView.swift */,
 			);
 			path = "Product Components";
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				06D1A16328BFB4F9002533F5 /* Domain.swift in Sources */,
 				062DC58A28CB54F300A8968B /* PDFUIView.swift in Sources */,
 				06D3580028C741D80093C564 /* ProductTileView.swift in Sources */,
+				067F2A222901918E006A6AA8 /* UpdateProductSelectionView.swift in Sources */,
 				06D357F228C71B4E0093C564 /* ClientController.swift in Sources */,
 				066F406C28BE7BA4000718D7 /* RoundedRectangleCustom.swift in Sources */,
 				06180C2528C9ED9B00E79AC4 /* EstimatesListSectionView.swift in Sources */,

@@ -17,15 +17,19 @@ struct ProductListUpdateView: View {
     var body: some View {
         Section(header: Text(sectionTitle)) {
             List {
-                ForEach(products, id:\.title) { product in
+                ForEach($products, id:\.title) { $product in
                     if product.productCategory == category {
-                        VStack(alignment: .leading) {
-                            Text(product.title)
-                                .font(.title2.bold())
-                            Text("Quantity: \(product.quantity.twoDigitPrecision)")
-                            Text("Price: \(product.price.twoDigitPrecision) \(product.unity ?? "")")
-                            Text("Reduction: \(product.reduction.twoDigitPrecision) %")
-                            Text("Total product: \((product.quantity * product.price * ((100-product.reduction)/100)).twoDigitPrecision) €")
+                        NavigationLink {
+                            UpdateProductSelectionView(product: $product)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(product.title)
+                                    .font(.title2.bold())
+                                Text("Quantity: \(product.quantity.twoDigitPrecision)")
+                                Text("Price: \(product.price.twoDigitPrecision) \(product.unity ?? "")")
+                                Text("Reduction: \(product.reduction.twoDigitPrecision) %")
+                                Text("Total product: \((product.quantity * product.price * ((100-product.reduction)/100)).twoDigitPrecision) €")
+                            }
                         }
                     }
                 }.onDelete { index in

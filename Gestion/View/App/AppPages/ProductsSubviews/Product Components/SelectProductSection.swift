@@ -22,7 +22,7 @@ struct SelectProductSection: View {
     var body: some View {
         Section {
             ForEach(list, id: \.id) { product in
-                if product.productCategory == category {
+                if product.productCategory == category && selectedProducts.filter{$0.title == product.title}.count == 0 {
                     ProductTileView(title: product.title, price: product.price, unity: product.unity)
                         .onTapGesture {
                             if reduction == "" {

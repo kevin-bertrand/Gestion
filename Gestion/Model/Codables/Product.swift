@@ -35,8 +35,8 @@ struct Product: Codable {
     
     struct Informations: Codable, Equatable {
         let id: UUID
-        let quantity: Double
-        let reduction: Double
+        var quantity: Double
+        var reduction: Double
         let title: String
         let unity: String?
         let domain: Domain
