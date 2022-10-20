@@ -120,9 +120,13 @@ final class UserManager {
     
     /// update profile picture
     func updateProfilePicture(_ image: UIImage, by user: User) {
-        guard let imageData = image.jpegData(compressionQuality: 0.9) else {
-            return
-        }
+        #if os(macOS)
+            let imageData = image.jpegDataFrom(image: image)
+        #else
+            guard let imageData = image.jpegData(compressionQuality: 0.9) else {
+                return
+            }
+        #endif
         
         networkManager.uploadFiles(urlParams: NetworkConfigurations.staffUpdateProfilePicture.urlParams,
                                    method: NetworkConfigurations.staffUpdateProfilePicture.method,
