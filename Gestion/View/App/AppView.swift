@@ -7,63 +7,27 @@
 
 import SwiftUI
 
-struct AppView: View {
-    @EnvironmentObject var userController: UserController
-    
-    @State private var selectedTab: Int = 1
-    
+struct AppView: View {    
     var body: some View {
-        TabView(selection: $selectedTab) {
-            NavigationStack {
-                HomeView(selectedTab: $selectedTab)
-            }
-            .tabItem {
-                Label("Home", systemImage: "house.fill")
-            }
-            .tag(1)
-            
-            NavigationStack {
-                EstimatesView()
-            }
-            .tabItem {
-                Label("Estimates", systemImage: "pencil.and.ruler.fill")
-            }
-            .tag(2)
-            
-            NavigationStack {
-                InvoicesView()
-            }
-            .tabItem {
-                Label("Invoices", systemImage: "eurosign")
-            }
-            .tag(3)
-            
-            NavigationStack {
-                SettingsView()
-            }
-            .tabItem {
-                Label("Settings", systemImage: "gearshape.2.fill")
-            }
-            .tag(4)
-        }
-        .alert(isPresented: $userController.loginShowBiometricAlert) {
-            Alert(title: Text("Would you like to use FaceId for further login?"),
-                  primaryButton: .default(Text("Yes"), action: {
-                userController.canUseBiometric = true
-            }),
-                  secondaryButton: .cancel(Text("No"), action: {
-                userController.canUseBiometric = false
-            }))
-        }
-        .onAppear {
-            userController.askBiometricsActivation()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            iPadTabView()
+        } else {
+            iPhoneTabView()
         }
     }
 }
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        Group {
+            AppView()
+                .previewDevice(.init(rawValue: "iPhone 14 Pro Max"))
+            AppView()
+                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (3rd generation)"))
+        }
             .environmentObject(UserController(appController: AppController()))
+            .environmentObject(EstimatesController(appController: AppController()))
+            .environmentObject(InvoicesController(appController: AppController()))
+            .environmentObject(RevenuesController(appController: AppController()))
     }
 }

@@ -20,7 +20,7 @@ struct RevenueChartView: View {
                      formatter: { number in
             return "\(number)"
         }, colorScheme: colorScheme)
-        .frame(height: 420)
+        .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 1125 : 475)
     }
 }
 

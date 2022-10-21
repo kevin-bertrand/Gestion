@@ -15,7 +15,7 @@ struct HomeView: View {
     @EnvironmentObject var invoicesController: InvoicesController
     
     @Environment(\.colorScheme) var colorScheme
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: Int?
     @State private var selectedMonth: Int = 1
     @State private var selectedYear: Int = 20
     var yearRange: Range<Int> = 19..<Calendar.current.component(.year, from: Date())-2000+1
@@ -66,7 +66,7 @@ struct HomeView: View {
                         RevenueChartView(totalMaterials: revenuesController.thisMonthRevenue.totalMaterials, totalServices: revenuesController.thisMonthRevenue.totalServices, totalDivers: revenuesController.thisMonthRevenue.totalDivers)
                             .padding()
                     })
-                }.frame(height: 475)
+                }.frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 1125 : 475)
             }
             
             VStack {
@@ -167,6 +167,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView(selectedTab: .constant(1))
+                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (3rd generation)"))
                 .environmentObject(UserController(appController: AppController()))
                 .environmentObject(RevenuesController(appController: AppController()))
                 .environmentObject(EstimatesController(appController: AppController()))
