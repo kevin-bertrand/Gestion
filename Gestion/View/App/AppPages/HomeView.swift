@@ -15,7 +15,7 @@ struct HomeView: View {
     @EnvironmentObject var invoicesController: InvoicesController
     
     @Environment(\.colorScheme) var colorScheme
-    @Binding var selectedTab: Int?
+    @Binding var selectedTab: Int
     @State private var selectedMonth: Int = 1
     @State private var selectedYear: Int = 20
     @State private var chartHeight: CGFloat = 0.0

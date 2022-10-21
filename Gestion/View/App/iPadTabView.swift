@@ -11,6 +11,7 @@ struct iPadTabView: View {
     @EnvironmentObject var userController: UserController
     @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
     @State private var selectedView: Int? = 1
+    @State private var selectedTab: Int = 1
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility, sidebar: {
@@ -27,7 +28,7 @@ struct iPadTabView: View {
         }, detail: {
             switch selectedView {
             case 1:
-                HomeView(selectedTab: $selectedView)
+                HomeView(selectedTab: $selectedTab)
             case 2:
                 EstimatesView()
             case 3:
@@ -49,6 +50,9 @@ struct iPadTabView: View {
         }
         .onAppear {
             userController.askBiometricsActivation()
+        }
+        .onChange(of: selectedView ?? 0) { newValue in
+            selectedTab = newValue
         }
     }
 }

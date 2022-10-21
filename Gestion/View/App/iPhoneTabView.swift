@@ -9,7 +9,8 @@ import SwiftUI
 
 struct iPhoneTabView: View {
     @EnvironmentObject var userController: UserController
-    @State private var selectedTab: Int? = 1
+    @State private var selectedTab: Int = 1
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationStack {
