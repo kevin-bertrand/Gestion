@@ -13,14 +13,22 @@ struct RevenueChartView: View {
     let totalMaterials: Double
     let totalServices: Double
     let totalDivers: Double
+    @State private var chartHeight: CGFloat = 0.0
     
     var body: some View {
         PieChartView(values: [totalMaterials, totalServices, totalDivers],
                      names: ["Materials", "Services", "Divers"],
                      formatter: { number in
             return "\(number)"
-        }, colorScheme: colorScheme)
-        .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 1125 : 475)
+        }, colorScheme: colorScheme, size: { size in
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                chartHeight = size.width
+            } else {
+                chartHeight = size.width * 1.5
+            }
+        })
+        .padding()
+        .frame(height: chartHeight)
     }
 }
 

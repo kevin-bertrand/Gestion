@@ -18,6 +18,7 @@ struct HomeView: View {
     @Binding var selectedTab: Int?
     @State private var selectedMonth: Int = 1
     @State private var selectedYear: Int = 20
+    @State private var chartHeight: CGFloat = 0.0
     var yearRange: Range<Int> = 19..<Calendar.current.component(.year, from: Date())-2000+1
     
     var body: some View {
@@ -65,8 +66,11 @@ struct HomeView: View {
                     AnyView(VStack {
                         RevenueChartView(totalMaterials: revenuesController.thisMonthRevenue.totalMaterials, totalServices: revenuesController.thisMonthRevenue.totalServices, totalDivers: revenuesController.thisMonthRevenue.totalDivers)
                             .padding()
+                            .readSize { size in
+                                chartHeight = size.height
+                            }
                     })
-                }.frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 1125 : 475)
+                }.frame(height: chartHeight)
             }
             
             VStack {

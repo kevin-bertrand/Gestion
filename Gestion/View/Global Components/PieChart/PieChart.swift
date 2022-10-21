@@ -19,6 +19,7 @@ public struct PieChartView: View {
     private var innerRadiusFraction: CGFloat
     
     @State private var activeIndex: Int = -1
+    private var size: (CGSize)->Void
     
     var slices: [PieSliceData] {
         let sum = values.reduce(0, +)
@@ -41,11 +42,12 @@ public struct PieChartView: View {
                                    Color.orange],
                 colorScheme: ColorScheme,
                 widthFraction: CGFloat = 0.75,
-                innerRadiusFraction: CGFloat = 0.60){
+                innerRadiusFraction: CGFloat = 0.60,
+                size: @escaping (CGSize) -> Void){
         self.values = values
         self.names = names
         self.formatter = formatter
-        
+        self.size = size
         self.colors = colors
         self.foregroundColor = (colorScheme == .dark) ? .white : .black
         self.widthFraction = widthFraction
@@ -106,6 +108,10 @@ public struct PieChartView: View {
             }
             .background(Color("TileBackground"))
             .foregroundColor(Color.white)
+            .preference(key: SizePreferenceKey.self, value: geometry.size)
+        }
+        .onPreferenceChange(SizePreferenceKey.self) { newSize in
+            self.size(newSize)
         }
     }
 }
@@ -141,6 +147,6 @@ struct PieChartRows: View {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)}, colorScheme: .dark)
+        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)}, colorScheme: .dark, size: {_ in})
     }
 }
