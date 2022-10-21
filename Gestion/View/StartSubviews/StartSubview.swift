@@ -17,7 +17,7 @@ struct StartSubview: View {
         VStack {
             Image("Logo")
                 .resizable()
-                .frame(width: 170, height: 150)
+                .frame(width: 110, height: 150)
                 .padding()
             Spacer()
             
