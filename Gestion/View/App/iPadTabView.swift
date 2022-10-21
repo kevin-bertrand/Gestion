@@ -28,13 +28,21 @@ struct iPadTabView: View {
         }, detail: {
             switch selectedView {
             case 1:
-                HomeView(selectedTab: $selectedTab)
+                NavigationStack {
+                    HomeView(selectedTab: $selectedTab)
+                }
             case 2:
-                EstimatesView()
+                NavigationStack {
+                    EstimatesView()
+                }
             case 3:
-                InvoicesView()
+                NavigationStack {
+                    InvoicesView()
+                }
             case 4:
-                SettingsView()
+                NavigationStack {
+                    SettingsView()
+                }
             default:
                 Text("Hello")
             }
