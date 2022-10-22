@@ -31,6 +31,7 @@ final class InvoicesController: ObservableObject {
     
     // New invoice
     @Published var newInvoiceReference: String = ""
+    @Published var newInternalReference: String = ""
     @Published var successCreatingNewInvoice: Bool = false
     
     // Update invoice
@@ -45,6 +46,12 @@ final class InvoicesController: ObservableObject {
         guard let user = user else { return }
         
         invoicesManager.gettingNewReference(for: user)
+    }
+    
+    func gettingNewInternalReference(by user: User?, for domain: Domain) {
+        guard let user = user else { return }
+        
+        invoicesManager.gettingNewInternalReference(by: user, for: domain)
     }
     
     /// Download invoices for home page
@@ -108,6 +115,9 @@ final class InvoicesController: ObservableObject {
         // Configure home notifications
         configureNotification(for: Notification.Desyntic.invoicesSummarySuccess.notificationName)
         
+        // Configure new internal reference notifications
+        configureNotification(for: Notification.Desyntic.internalReference.notificationName)
+        
         // Configure details notification
         configureNotification(for: Notification.Desyntic.invoicesGettingOne.notificationName)
         
@@ -162,6 +172,8 @@ final class InvoicesController: ObservableObject {
                     self.appController.showAlertView(withMessage: notificationMessage, andTitle: "Error")
                 case Notification.Desyntic.invoiceIsPaied.notificationName:
                     self.isPayed = true
+                case Notification.Desyntic.internalReference.notificationName:
+                    self.newInternalReference = notificationMessage
                 default: break
                 }
             }

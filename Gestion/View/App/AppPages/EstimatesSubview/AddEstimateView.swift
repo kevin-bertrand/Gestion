@@ -17,13 +17,24 @@ struct AddEstimateView: View {
     @State private var limitDate: Date = Date()
     @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
+    @State private var domain: Domain = .electricity
     
     var body: some View {
         Form {
             ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
-                TextField("Référence interne", text: $newEstimate.internalReference)
+                Picker("Domain", selection: $domain) {
+                    ForEach(Domain.allCases, id: \.self) { domain in
+                        Text(domain.rawValue)
+                    }
+                }
+                HStack {
+                    Text("Internal ref")
+                    Spacer()
+                    Text(estimatesController.newInternalReference)
+                        .foregroundColor(.gray)
+                }
                 TextField("Object", text: $newEstimate.object)
                 DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
@@ -87,9 +98,14 @@ struct AddEstimateView: View {
                 dismiss()
             }
         }
+        .onChange(of: domain, perform: { newValue in
+            estimatesController.gettingNewInternalReference(by: userController.connectedUser, for: newValue)
+
+        })
         .navigationTitle(newEstimate.reference)
         .onAppear {
             estimatesController.gettingNewReference(by: userController.connectedUser)
+            estimatesController.gettingNewInternalReference(by: userController.connectedUser, for: domain)
         }
         .onDisappear {
             estimatesController.newEstimateReference = ""

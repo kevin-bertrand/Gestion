@@ -29,6 +29,9 @@ extension Notification {
         case revenueThisMonth = "Getting this month success!"
         case revenueAllMonths = "All months are downloaded!"
         
+        // Internal references
+        case internalReference = "Tetting internal reference success"
+        
         // Estimates
         case estimatesSummarySuccess = "Estimates for home page are downloaded!"
         case estimatesListDownload = "The list of estimates is downloaded!"

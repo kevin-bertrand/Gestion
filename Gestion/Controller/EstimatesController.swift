@@ -31,6 +31,7 @@ final class EstimatesController: ObservableObject {
     
     // New estimate page
     @Published var newEstimateReference: String = ""
+    @Published var newInternalReference: String = ""
     @Published var newEstimateCreateSuccess: Bool = false
     
     // Update estimate page
@@ -67,6 +68,13 @@ final class EstimatesController: ObservableObject {
         estimatesManager.gettingNewReference(by: user)
     }
     
+    /// Getting new internal reference
+    func gettingNewInternalReference(by user: User?, for domain: Domain) {
+        guard let user = user else { return }
+        
+        estimatesManager.gettingNewInternalReference(by: user, for: domain)
+    }
+    
     /// Create new estimate
     func create(estimate: Estimate.Create, by user: User?) {
         guard let user = user else { return }
@@ -100,6 +108,9 @@ final class EstimatesController: ObservableObject {
         
         // Configure home notifications
         configureNotification(for: Notification.Desyntic.estimatesSummarySuccess.notificationName)
+        
+        // Configure new internal reference notifications
+        configureNotification(for: Notification.Desyntic.internalReference.notificationName)
         
         // Configure list notification
         configureNotification(for: Notification.Desyntic.estimatesListDownload.notificationName)
@@ -156,6 +167,8 @@ final class EstimatesController: ObservableObject {
                     self.updateEstimateSuccess = true
                 case Notification.Desyntic.estimateExportToInvoiceSuccess.notificationName :
                     self.estimateIsExportedToInvoice = true
+                case Notification.Desyntic.internalReference.notificationName:
+                    self.newInternalReference = notificationMessage
                 default: break
                 }
             }

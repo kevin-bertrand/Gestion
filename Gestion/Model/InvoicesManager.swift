@@ -36,6 +36,26 @@ final class InvoicesManager {
         }
     }
     
+    /// Getting new internal reference
+    func gettingNewInternalReference(by user: User, for domain: Domain) {
+        var params = NetworkConfigurations.internalReference.urlParams
+        params.append(domain.rawValue)
+        
+        networkManager.request(urlParams: params,
+                               method: NetworkConfigurations.internalReference.method,
+                               authorization: .authorization(bearerToken: user.token),
+                               body: nil) { data, response, error in
+            if let statusCode = response?.statusCode,
+               statusCode == 200,
+               let data = data,
+               let reference = try? JSONDecoder().decode(String.self, from: data) {
+                Notification.Desyntic.internalReference.sendNotification(customMessage: reference)
+            } else {
+                Notification.Desyntic.unknownError.sendNotification()
+            }
+        }
+    }
+    
     /// Download three latest invoices
     func downloadThreeLatests(for user: User) {
         var params = NetworkConfigurations.invoiceGetList.urlParams

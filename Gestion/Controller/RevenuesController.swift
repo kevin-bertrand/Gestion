@@ -28,12 +28,6 @@ final class RevenuesController: ObservableObject {
     }
     
     /// Download this month revenues
-//    func downloadThisMonth(for user: User?) {
-//        guard let user = user else { return }
-//        
-//        revenuesManager.gettingThisMonthRevenues(for: user)
-//    }
-    
     func downloadMonthRevenues(for month: Int, and year: Int, by user: User?) {
         guard let user = user else { return }
         

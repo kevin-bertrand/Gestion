@@ -14,6 +14,9 @@ enum NetworkConfigurations {
     case clientUpdate
     case clientGetList
     
+    // MARK: Internal Reference
+    case internalReference
+    
     // MARK: Estimates
     case estimateGetReference
     case estimateGetList
@@ -80,6 +83,7 @@ enum NetworkConfigurations {
                 .staffUpdate, .staffUpdatePassword, .staffUpdateProfilePicture:
             method = .patch
         case .clientGetList,
+                .internalReference,
                 .estimateGetReference, .estimateGetList, .estimateGetDetails, .estimatePDF,
                 .invoiceGetOne, .invoiceGetReference, .invoiceGetList, .invoicePDF,
                 .productGetList, .productGetCategories, .productGetDomains,
@@ -101,6 +105,8 @@ enum NetworkConfigurations {
         switch self {
         case .clientUpdate, .clientGetList, .clientAdd:
             params = ["client"]
+        case .internalReference:
+            params = ["internalRef"]
         case .estimateGetDetails, .estimateUpdate, .estimateAdd:
             params = ["estimate"]
         case .estimatePDF:

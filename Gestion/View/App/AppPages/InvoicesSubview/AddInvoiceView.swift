@@ -18,13 +18,24 @@ struct AddInvoiceView: View {
     @State private var products: [Product.Informations] = []
     @State private var client: Client.Informations = ClientController.emptyClientInfo
     @State private var comment: String = ""
+    @State private var domain: Domain = .electricity
     
     var body: some View {
         Form {
             ClientDetailsView(selectedClient: $client, canSelectUser: true)
             
             Section {
-                TextField("Référence interne", text: $newInvoice.internalReference)
+                Picker("Domain", selection: $domain) {
+                    ForEach(Domain.allCases, id: \.self) { domain in
+                        Text(domain.rawValue)
+                    }
+                }
+                HStack {
+                    Text("Internal ref")
+                    Spacer()
+                    Text(invoiceController.newInternalReference)
+                        .foregroundColor(.gray)
+                }
                 TextField("Object", text: $newInvoice.object)
                 DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
@@ -103,9 +114,13 @@ struct AddInvoiceView: View {
                 newInvoice.comment = newValue
             }
         })
+        .onChange(of: domain, perform: { newValue in
+            invoiceController.gettingNewInternalReference(by: userController.connectedUser, for: newValue)
+        })
         .navigationTitle(newInvoice.reference)
         .onAppear {
             invoiceController.gettingNewReference(for: userController.connectedUser)
+            invoiceController.gettingNewInternalReference(by: userController.connectedUser, for: domain)
         }
         .onDisappear {
             invoiceController.newInvoiceReference = ""
