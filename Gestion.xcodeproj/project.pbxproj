@@ -117,6 +117,11 @@
 		06DF3DE728BF77AE00117C38 /* UpdateInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */; };
 		06DF3DE928BF7AFA00117C38 /* ProductListUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */; };
 		06DF3DEB28BF923900117C38 /* AddInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */; };
+		06E0DACC2904438800433C33 /* Gestion_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0DACB2904438800433C33 /* Gestion_MacApp.swift */; };
+		06E0DAD02904438800433C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E0DACF2904438800433C33 /* Assets.xcassets */; };
+		06E0DAD32904438800433C33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E0DAD22904438800433C33 /* Preview Assets.xcassets */; };
+		06E0DADE2904438900433C33 /* Gestion_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0DADD2904438900433C33 /* Gestion_MacTests.swift */; };
+		06E0DAF7290443FD00433C33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0DAF6290443FD00433C33 /* LoginView.swift */; };
 		06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67328BE2A980052BEA0 /* AppView.swift */; };
 		06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67628BE2C550052BEA0 /* SettingsView.swift */; };
 		06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */; };
@@ -150,6 +155,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0661ABD028BD50CC00E88116;
 			remoteInfo = Gestion;
+		};
+		06E0DADA2904438900433C33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0661ABC928BD50CC00E88116 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06E0DAC82904438700433C33;
+			remoteInfo = "Gestion-Mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -266,6 +278,14 @@
 		06DF3DE628BF77AE00117C38 /* UpdateInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvoiceView.swift; sourceTree = "<group>"; };
 		06DF3DE828BF7AFA00117C38 /* ProductListUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListUpdateView.swift; sourceTree = "<group>"; };
 		06DF3DEA28BF923900117C38 /* AddInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceView.swift; sourceTree = "<group>"; };
+		06E0DAC92904438700433C33 /* Gestion-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gestion-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06E0DACB2904438800433C33 /* Gestion_MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gestion_MacApp.swift; sourceTree = "<group>"; };
+		06E0DACF2904438800433C33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06E0DAD22904438800433C33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		06E0DAD42904438800433C33 /* Gestion_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gestion_Mac.entitlements; sourceTree = "<group>"; };
+		06E0DAD92904438800433C33 /* Gestion-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gestion-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06E0DADD2904438900433C33 /* Gestion_MacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gestion_MacTests.swift; sourceTree = "<group>"; };
+		06E0DAF6290443FD00433C33 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		06EFE67328BE2A980052BEA0 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		06EFE67628BE2C550052BEA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
@@ -302,6 +322,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0661ABDE28BD50CD00E88116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06E0DAC62904438700433C33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06E0DAD62904438800433C33 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,7 +451,8 @@
 			children = (
 				0661ABD328BD50CC00E88116 /* Gestion */,
 				0661ABE428BD50CD00E88116 /* GestionTests */,
-				0661ABEE28BD50CD00E88116 /* GestionUITests */,
+				06E0DACA2904438800433C33 /* Gestion-Mac */,
+				06E0DADC2904438900433C33 /* Gestion-MacTests */,
 				0661ABD228BD50CC00E88116 /* Products */,
 				067F2A782901A7A6006A6AA8 /* Frameworks */,
 			);
@@ -428,6 +463,8 @@
 			children = (
 				0661ABD128BD50CC00E88116 /* Gestion.app */,
 				0661ABE128BD50CD00E88116 /* GestionTests.xctest */,
+				06E0DAC92904438700433C33 /* Gestion-Mac.app */,
+				06E0DAD92904438800433C33 /* Gestion-MacTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,13 +504,6 @@
 				06180BE828C8DEA400E79AC4 /* PaymentTest.swift */,
 			);
 			path = GestionTests;
-			sourceTree = "<group>";
-		};
-		0661ABEE28BD50CD00E88116 /* GestionUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GestionUITests;
 			sourceTree = "<group>";
 		};
 		0661ABFE28BD516600E88116 /* Model */ = {
@@ -682,6 +712,50 @@
 			path = ClientSubviews;
 			sourceTree = "<group>";
 		};
+		06E0DACA2904438800433C33 /* Gestion-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				06E0DAF5290443F100433C33 /* Views */,
+				06E0DAF4290443B700433C33 /* Supporting Files */,
+			);
+			path = "Gestion-Mac";
+			sourceTree = "<group>";
+		};
+		06E0DAD12904438800433C33 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				06E0DAD22904438800433C33 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		06E0DADC2904438900433C33 /* Gestion-MacTests */ = {
+			isa = PBXGroup;
+			children = (
+				06E0DADD2904438900433C33 /* Gestion_MacTests.swift */,
+			);
+			path = "Gestion-MacTests";
+			sourceTree = "<group>";
+		};
+		06E0DAF4290443B700433C33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06E0DAD12904438800433C33 /* Preview Content */,
+				06E0DAD42904438800433C33 /* Gestion_Mac.entitlements */,
+				06E0DACF2904438800433C33 /* Assets.xcassets */,
+				06E0DACB2904438800433C33 /* Gestion_MacApp.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06E0DAF5290443F100433C33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06E0DAF6290443FD00433C33 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		06EFE67228BE28000052BEA0 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +856,41 @@
 			productReference = 0661ABE128BD50CD00E88116 /* GestionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		06E0DAC82904438700433C33 /* Gestion-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06E0DAEB2904438900433C33 /* Build configuration list for PBXNativeTarget "Gestion-Mac" */;
+			buildPhases = (
+				06E0DAC52904438700433C33 /* Sources */,
+				06E0DAC62904438700433C33 /* Frameworks */,
+				06E0DAC72904438700433C33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gestion-Mac";
+			productName = "Gestion-Mac";
+			productReference = 06E0DAC92904438700433C33 /* Gestion-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		06E0DAD82904438800433C33 /* Gestion-MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06E0DAEE2904438900433C33 /* Build configuration list for PBXNativeTarget "Gestion-MacTests" */;
+			buildPhases = (
+				06E0DAD52904438800433C33 /* Sources */,
+				06E0DAD62904438800433C33 /* Frameworks */,
+				06E0DAD72904438800433C33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06E0DADB2904438900433C33 /* PBXTargetDependency */,
+			);
+			name = "Gestion-MacTests";
+			productName = "Gestion-MacTests";
+			productReference = 06E0DAD92904438800433C33 /* Gestion-MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -798,6 +907,13 @@
 					0661ABE028BD50CD00E88116 = {
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 0661ABD028BD50CC00E88116;
+					};
+					06E0DAC82904438700433C33 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					06E0DAD82904438800433C33 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 06E0DAC82904438700433C33;
 					};
 				};
 			};
@@ -820,6 +936,8 @@
 			targets = (
 				0661ABD028BD50CC00E88116 /* Gestion */,
 				0661ABE028BD50CD00E88116 /* GestionTests */,
+				06E0DAC82904438700433C33 /* Gestion-Mac */,
+				06E0DAD82904438800433C33 /* Gestion-MacTests */,
 			);
 		};
 /* End PBXProject section */
@@ -853,6 +971,22 @@
 				06180C0D28C9CA2400E79AC4 /* PaymentsList.json in Resources */,
 				06180BF728C8F3F300E79AC4 /* RevenuesYear.json in Resources */,
 				06180C0528C904AE00E79AC4 /* InvoicesLatest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06E0DAC72904438700433C33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E0DAD32904438800433C33 /* Preview Assets.xcassets in Resources */,
+				06E0DAD02904438800433C33 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06E0DAD72904438800433C33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1122,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06E0DAC52904438700433C33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E0DAF7290443FD00433C33 /* LoginView.swift in Sources */,
+				06E0DACC2904438800433C33 /* Gestion_MacApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06E0DAD52904438800433C33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06E0DADE2904438900433C33 /* Gestion_MacTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -995,6 +1146,11 @@
 			isa = PBXTargetDependency;
 			target = 0661ABD028BD50CC00E88116 /* Gestion */;
 			targetProxy = 0661ABE228BD50CD00E88116 /* PBXContainerItemProxy */;
+		};
+		06E0DADB2904438900433C33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06E0DAC82904438700433C33 /* Gestion-Mac */;
+			targetProxy = 06E0DADA2904438900433C33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1229,6 +1385,106 @@
 			};
 			name = Release;
 		};
+		06E0DAEC2904438900433C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Gestion-Mac/Supporting Files/Gestion_Mac.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gestion-Mac/Supporting Files/Preview Content\"";
+				DEVELOPMENT_TEAM = 6MAUVS763K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		06E0DAED2904438900433C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Gestion-Mac/Supporting Files/Gestion_Mac.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gestion-Mac/Supporting Files/Preview Content\"";
+				DEVELOPMENT_TEAM = 6MAUVS763K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		06E0DAEF2904438900433C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6MAUVS763K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gestion-Mac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gestion-Mac";
+			};
+			name = Debug;
+		};
+		06E0DAF02904438900433C33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6MAUVS763K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gestion-Mac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gestion-Mac";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1255,6 +1511,24 @@
 			buildConfigurations = (
 				0661ABF928BD50CD00E88116 /* Debug */,
 				0661ABFA28BD50CD00E88116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06E0DAEB2904438900433C33 /* Build configuration list for PBXNativeTarget "Gestion-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06E0DAEC2904438900433C33 /* Debug */,
+				06E0DAED2904438900433C33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06E0DAEE2904438900433C33 /* Build configuration list for PBXNativeTarget "Gestion-MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06E0DAEF2904438900433C33 /* Debug */,
+				06E0DAF02904438900433C33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
