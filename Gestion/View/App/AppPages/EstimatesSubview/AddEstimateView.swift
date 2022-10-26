@@ -92,6 +92,9 @@ struct AddEstimateView: View {
         .onChange(of: estimatesController.newEstimateReference) { newValue in
             newEstimate.reference = newValue
         }
+        .onChange(of: estimatesController.newInternalReference, perform: { newValue in
+            newEstimate.internalReference = newValue
+        })
         .onChange(of: estimatesController.newEstimateCreateSuccess) { newValue in
             if newValue {
                 estimatesController.newEstimateCreateSuccess = false

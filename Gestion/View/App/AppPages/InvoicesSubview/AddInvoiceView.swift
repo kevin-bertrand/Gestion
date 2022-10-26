@@ -117,6 +117,9 @@ struct AddInvoiceView: View {
         .onChange(of: domain, perform: { newValue in
             invoiceController.gettingNewInternalReference(by: userController.connectedUser, for: newValue)
         })
+        .onChange(of: invoiceController.newInternalReference, perform: { newValue in
+            newInvoice.internalReference = newValue
+        })
         .navigationTitle(newInvoice.reference)
         .onAppear {
             invoiceController.gettingNewReference(for: userController.connectedUser)

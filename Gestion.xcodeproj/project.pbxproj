@@ -122,6 +122,16 @@
 		06E0DAD32904438800433C33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E0DAD22904438800433C33 /* Preview Assets.xcassets */; };
 		06E0DADE2904438900433C33 /* Gestion_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0DADD2904438900433C33 /* Gestion_MacTests.swift */; };
 		06E0DAF7290443FD00433C33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0DAF6290443FD00433C33 /* LoginView.swift */; };
+		06E0DAF8290445FD00433C33 /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C349B428BDE974004D0960 /* ButtonCustom.swift */; };
+		06E0DAFA2904479000433C33 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA686F28C091FC0075B635 /* UserController.swift */; };
+		06E0DAFB2904479000433C33 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687328C09E5D0075B635 /* AppController.swift */; };
+		06E0DAFC2904479C00433C33 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687D28C0AE3C0075B635 /* Notification.swift */; };
+		06E0DAFD290447AF00433C33 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14F28BFB19B002533F5 /* Address.swift */; };
+		06E0DAFE290447AF00433C33 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687728C0A9DA0075B635 /* User.swift */; };
+		06E0DAFF290447B300433C33 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA687528C0A9270075B635 /* UserManager.swift */; };
+		06E0DB00290447B600433C33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14A28BFAA51002533F5 /* NetworkManager.swift */; };
+		06E0DB01290447B600433C33 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D1A14C28BFAA96002533F5 /* Network.swift */; };
+		06E0DB03290447C300433C33 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06E0DB02290447C300433C33 /* Alamofire */; };
 		06EFE67428BE2A980052BEA0 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67328BE2A980052BEA0 /* AppView.swift */; };
 		06EFE67728BE2C550052BEA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67628BE2C550052BEA0 /* SettingsView.swift */; };
 		06EFE67A28BE4D0A0052BEA0 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFE67928BE4D0A0052BEA0 /* UserCellView.swift */; };
@@ -332,6 +342,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E0DB03290447C300433C33 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,6 +880,9 @@
 			dependencies = (
 			);
 			name = "Gestion-Mac";
+			packageProductDependencies = (
+				06E0DB02290447C300433C33 /* Alamofire */,
+			);
 			productName = "Gestion-Mac";
 			productReference = 06E0DAC92904438700433C33 /* Gestion-Mac.app */;
 			productType = "com.apple.product-type.application";
@@ -1126,8 +1140,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E0DAFF290447B300433C33 /* UserManager.swift in Sources */,
+				06E0DAF8290445FD00433C33 /* ButtonCustom.swift in Sources */,
+				06E0DB00290447B600433C33 /* NetworkManager.swift in Sources */,
+				06E0DAFB2904479000433C33 /* AppController.swift in Sources */,
+				06E0DAFC2904479C00433C33 /* Notification.swift in Sources */,
+				06E0DB01290447B600433C33 /* Network.swift in Sources */,
 				06E0DAF7290443FD00433C33 /* LoginView.swift in Sources */,
+				06E0DAFE290447AF00433C33 /* User.swift in Sources */,
+				06E0DAFA2904479000433C33 /* UserController.swift in Sources */,
 				06E0DACC2904438800433C33 /* Gestion_MacApp.swift in Sources */,
+				06E0DAFD290447AF00433C33 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1400,6 +1423,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Gestion;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1407,7 +1431,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = com.desyntic.mac.Gestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1430,6 +1454,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Gestion;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1437,7 +1462,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.desyntic.Gestion-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = com.desyntic.mac.Gestion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1559,6 +1584,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 062DC58B28CB62AA00A8968B /* XCRemoteSwiftPackageReference "PDFViewer" */;
 			productName = PDFViewer;
+		};
+		06E0DB02290447C300433C33 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06F5C18928C23C6800B3F37A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		06F5C18A28C23C6800B3F37A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

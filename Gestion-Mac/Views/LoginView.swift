@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var username: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
-        Text("Hello, World!")
+        HStack {
+            Image("Logo")
+                .frame(width: 150, height: 400)
+            
+            Spacer(minLength: 200)
+            
+            VStack {
+                TextField("Username", text: $username)
+                    .padding()
+            }
+        }
     }
 }
 
