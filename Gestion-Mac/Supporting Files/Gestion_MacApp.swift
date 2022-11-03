@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct Gestion_MacApp: App {
+    @State private var isConnected: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            LoginView()
-                .frame(minWidth: 1500, minHeight: 90)
+            Group {
+                if isConnected {
+                    AppView()
+                } else {
+                    LoginView(isConnected: $isConnected)
+                }
+            }.frame(minWidth: 1250, minHeight: 800)
         }
     }
 }

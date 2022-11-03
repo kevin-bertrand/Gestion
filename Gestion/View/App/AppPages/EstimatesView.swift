@@ -34,7 +34,7 @@ struct EstimatesView: View {
                 Image(systemName: "plus.circle")
             }
         }
-        .onAppear {
+        .task {
             estimatesController.downloadAllEstimatesSummary(for: userController.connectedUser)
         }
     }

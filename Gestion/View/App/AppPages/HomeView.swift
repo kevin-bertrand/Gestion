@@ -19,7 +19,7 @@ struct HomeView: View {
     @State private var selectedMonth: Int = 1
     @State private var selectedYear: Int = 20
     @State private var chartHeight: CGFloat = 0.0
-    var yearRange: Range<Int> = 19..<Calendar.current.component(.year, from: Date())-2000+1
+    var yearRange: Range<Int> = 20..<Calendar.current.component(.year, from: Date())-2000+1
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -135,11 +135,13 @@ struct HomeView: View {
         }
         .navigationTitle(Text("Welcome"))
         .padding(.horizontal)
-        .onAppear {
+        .task {
             revenuesController.downloadRevenues(for: userController.connectedUser)
             revenuesController.downloadAllMonths(for: userController.connectedUser)
             estimatesController.downloadEstimatesSummary(for: userController.connectedUser)
             invoicesController.downloadInvoicesSummary(for: userController.connectedUser)
+        }
+        .onAppear {
             selectedMonth = Calendar.current.component(.month, from: Date())
             selectedYear = Calendar.current.component(.year, from: Date())-2000
         }

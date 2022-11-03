@@ -31,7 +31,7 @@ struct InvoicesView: View {
                 Image(systemName: "plus.circle")
             }
         }
-        .onAppear {
+        .task {
             invoicesController.downloadAllInvoicesSummary(for: userController.connectedUser)
         }
     }
