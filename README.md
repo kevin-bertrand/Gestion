@@ -18,7 +18,7 @@ That's why I decided to create an application that would allow me to create esti
 |:--:|
 
 ### Estimate
-| <img src="/Screenshots/EstimatesList.PNG" width="350"> | <img src="/Screenshots/EstimateDetails.png" width="350"> | <img src="/Screenshots/EstimateUpdate.png" width="350"> |
+| <img src="/Screenshots/EstimatesList.PNG" width="350"> | <img src="/Screenshots/EstimateDetails.png" width="350"> | <img src="/Screenshots/EstimateUpdate.jpeg" width="350"> |
 |:--:|:--:|:--:|
 | *Estimates list* | *Estimates details* | *Updating estimate* |
 
