@@ -14,23 +14,18 @@ That's why I decided to create an application that would allow me to create esti
 
 ## App screenshots
 ### Home
-| <img src="/Screenshots/Home.png" width="350"> |
+| <img src="/Screenshots/Home.PNG" width="350"> |
 |:--:|
 
 ### Estimate
-| <img src="/Screenshots/EstimatesList.png" width="350"> | <img src="/Screenshots/EstimateDetails.png" width="350"> | <img src="/Screenshots/EstimateUpdate.png" width="350"> |
+| <img src="/Screenshots/EstimatesList.PNG" width="350"> | <img src="/Screenshots/EstimateDetails.PNG" width="350"> | <img src="/Screenshots/EstimateUpdate.PNG" width="350"> |
 |:--:|:--:|:--:|
 | *Estimates list* | *Estimates details* | *Updating estimate* |
 
 ### Invoice List
-| <img src="/Screenshots/InvoicesList.png" width="350"> | <img src="/Screenshots/InvoiceDetails.png" width="350"> | <img src="/Screenshots/InvoiceUpdate.png" width="350"> |
+| <img src="/Screenshots/InvoicesList.PNG" width="350"> | <img src="/Screenshots/InvoiceDetails.PNG" width="350"> | <img src="/Screenshots/InvoiceUpdate.PNG" width="350"> |
 |:--:|:--:|:--:|
 | *Invoices list* | *Invoice details* | *Updating invoice* |
-
-### Showing PDF
-| <img src="/Screenshots/EstimatePDF.png" width="350"> | <img src="/Screenshots/InvoicePDF.png" width="350"> |
-|:--:|:--:|
-| *Estimate PDF* | *Invoice PDF* |
 
 ## Technical stack
 - Swift
