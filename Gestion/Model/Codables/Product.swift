@@ -18,7 +18,11 @@ struct Product: Codable {
     func toInformation(with quantity: Double, and reduction: Double) -> Product.Informations {
         return .init(id: self.id, quantity: quantity,
                      reduction: reduction,
-                     title: self.title, unity: self.unity, domain: self.domain, productCategory: self.productCategory, price: self.price)
+                     title: self.title,
+                     unity: self.unity,
+                     domain: self.domain,
+                     productCategory: self.productCategory,
+                     price: self.price)
     }
     
     struct CreateDocument: Codable {

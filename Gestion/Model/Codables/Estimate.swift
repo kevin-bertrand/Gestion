@@ -62,20 +62,5 @@ struct Estimate {
         let isArchive: Bool
         let client: Client.Informations
         let products: [Product.Informations]
-        
-        func toUpdate() -> Estimate.Update {
-            return .init(id: self.id,
-                         reference: self.reference,
-                         internalReference: self.internalReference,
-                         object: self.object,
-                         totalServices: self.totalServices,
-                         totalMaterials: self.totalMaterials,
-                         totalDivers: self.totalDivers,
-                         total: self.total,
-                         status: self.status,
-                         limitValidifyDate: ISO8601DateFormatter().string(from: limitValidityDate),
-                         sendingDate: ISO8601DateFormatter().string(from: sendingDate),
-                         products: self.products.map({$0.toUpdateDocuments()}))
-        }
     }
 }

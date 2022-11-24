@@ -17,7 +17,7 @@ struct EstimateDetail: View {
     let selectedEstimate: UUID?
     
     var body: some View {
-        List {
+        Form {
             ClientDetailsView(selectedClient: .constant(estimateController.selectedEstimate.client))
             
             Section {
@@ -39,9 +39,7 @@ struct EstimateDetail: View {
             Section {
                 if estimateController.selectedEstimate.status != .accepted || estimateController.selectedEstimate.status != .refused {
                     NavigationLink("Update") {
-                        UpdateEstimateView(estimate: estimateController.selectedEstimate.toUpdate(),
-                                           client: estimateController.selectedEstimate.client,
-                                           products: estimateController.selectedEstimate.products)
+                        UpdateEstimateView(estimate: estimateController.selectedEstimate)
                     }
                 }
                 
