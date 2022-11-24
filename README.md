@@ -1,7 +1,7 @@
 # Gestion
 ## Presentation
 ### Context
-As a freelance, I must encode my turnover ever month on the application/website of the URSAFF. Being a young freelance means that you do not necessarily have the financial means to pay for software for managin estimates and invoices.
+As a freelance, I must encode my turnover ever month on the application/website of the URSAAF. Being a young freelance means that you do not necessarily have the financial means to pay for software for managin estimates and invoices.
 That's why I decided to create an application that would allow me to create estimates and invoices as well as to see the turnover made for a particular month or year.
 
 ### Needs
