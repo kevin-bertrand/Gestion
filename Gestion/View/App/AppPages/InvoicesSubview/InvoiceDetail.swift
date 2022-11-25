@@ -74,9 +74,7 @@ struct InvoiceDetail: View {
             Section {
                 if invoicesController.selectedInvoice.status != .payed {
                     NavigationLink("Update") {
-                        UpdateInvoiceView(invoice: invoicesController.selectedInvoice.toUpdate(),
-                                          client: invoicesController.selectedInvoice.client,
-                                          products: invoicesController.selectedInvoice.products)
+                        UpdateInvoiceView(invoice: invoicesController.selectedInvoice)
                     }
                 }
                 

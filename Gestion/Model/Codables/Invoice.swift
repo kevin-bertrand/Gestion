@@ -76,25 +76,5 @@ struct Invoice {
         let payment: Payment?
         let limitMaximumInterests: Date?
         let maxInterests: Double?
-        
-        func toUpdate() -> Invoice.Update {
-            return .init(id: self.id, reference:
-                            self.reference,
-                         internalReference: self.internalReference,
-                         object: self.object,
-                         totalServices: self.totalServices,
-                         totalMaterials: self.totalMaterials,
-                         totalDivers: self.totalDivers,
-                         total: self.total,
-                         grandTotal: self.grandTotal,
-                         status: self.status,
-                         limitPayementDate: ISO8601DateFormatter().string(from: limitPayementDate),
-                         facturationDate: ISO8601DateFormatter().string(from: facturationDate),
-                         paymentID: payment?.id,
-                         comment: comment,
-                         limitMaximumInterests: ISO8601DateFormatter().string(from: limitMaximumInterests ?? Date()),
-                         maxInterests: maxInterests,
-                         products: self.products.map({$0.toUpdateDocuments()}))
-        }
     }
 }

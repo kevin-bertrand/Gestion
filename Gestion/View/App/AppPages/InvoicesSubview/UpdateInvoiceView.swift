@@ -13,31 +13,71 @@ struct UpdateInvoiceView: View {
     @EnvironmentObject var invoiceController: InvoicesController
     @EnvironmentObject var userController: UserController
     
-    @State var invoice: Invoice.Update
-    @State var client: Client.Informations
-    @State private var limitDate: Date = Date()
-    @State private var facturationDate: Date = Date()
-    @State var products: [Product.Informations] = []
-    @State private var payment: Payment = PaymentController.emptyPayment
-    @State private var comment: String = ""
-    @State private var hasAnInterestsCeiling: Bool = false
-    @State private var maxInterests: String = ""
-    @State private var maxLimitInterets: Date = Date()
+    @State private var client: Client.Informations
+    @State private var products: [Product.Informations]
+    
+    private let id: UUID
+    private let reference: String
+    @State private var internalReference: String
+    @State private var object: String
+    @State private var limitDate: Date
+    @State private var facturationDate: Date
+    @State private var payment: Payment
+    @State private var comment: String
+    @State private var hasAnInterestsCeiling: Bool
+    @State private var maxInterestsValue: String
+    @State private var maxInterestsDate: Date
+    @State private var status: InvoiceStatus
+    @State private var totalServices: Double
+    @State private var totalMaterials: Double
+    @State private var totalDivers: Double
+    @State private var grandTotal: Double
+    @State private var total: Double
+    
+    init(invoice: Invoice.Informations) {
+        _client = State(initialValue: invoice.client)
+        _products = State(initialValue: invoice.products)
+        
+        id = invoice.id
+        reference = invoice.reference
+        _internalReference = State(initialValue: invoice.internalReference)
+        _object = State(initialValue: invoice.object)
+        _payment = State(initialValue: invoice.payment ?? PaymentController.emptyPayment)
+        _limitDate = State(initialValue: invoice.limitPayementDate)
+        _facturationDate = State(initialValue: invoice.facturationDate)
+        _comment = State(initialValue: invoice.comment ?? "")
+        _status = State(initialValue: invoice.status)
+        _totalServices = State(initialValue: invoice.totalServices)
+        _totalMaterials = State(initialValue: invoice.totalMaterials)
+        _totalDivers = State(initialValue: invoice.totalDivers)
+        _grandTotal = State(initialValue: invoice.grandTotal)
+        _total = State(initialValue: invoice.total)
+        _maxInterestsDate = State(initialValue: invoice.limitMaximumInterests ?? Date())
+        
+        if let _ = invoice.limitMaximumInterests,
+           let maxInterests = invoice.maxInterests {
+            _hasAnInterestsCeiling = State(initialValue: true)
+            _maxInterestsValue = State(initialValue: "\(maxInterests)")
+        } else {
+            _hasAnInterestsCeiling = State(initialValue: false)
+            _maxInterestsValue = State(initialValue: "")
+        }
+    }
     
     var body: some View {
         Form {
             ClientDetailsView(selectedClient: $client, canSelectUser: true)
-            
+
             Section {
-                TextField("Référence interne", text: $invoice.internalReference)
-                TextField("Object", text: $invoice.object)
+                TextField("Référence interne", text: $internalReference)
+                TextField("Object", text: $object)
                 DatePicker(selection: $facturationDate, displayedComponents: .date) {
                     Text("Date de facturation")
                 }
                 DatePicker(selection: $limitDate, displayedComponents: .date) {
                     Text("Date de validité")
                 }
-                Picker("Statut", selection: $invoice.status) {
+                Picker("Statut", selection: $status) {
                     ForEach(InvoiceStatus.allCases, id: \.self) { status in
                         if status != .payed {
                             Text(status.rawValue)
@@ -47,7 +87,7 @@ struct UpdateInvoiceView: View {
             } header: {
                 Text("Informations")
             }
-            
+
             Section("Payment information") {
                 NavigationLink {
                     SelectPaymentListView(selectedPayment: $payment)
@@ -55,30 +95,28 @@ struct UpdateInvoiceView: View {
                     Text("Select payment method")
                         .foregroundColor(.accentColor)
                 }
-                
+
                 Text("Title: \(payment.title)")
                 Text("BIC: \(payment.bic)")
                 Text("IBAN: \(payment.iban)")
             }
-            
-            
+
+
             Section {
                 if hasAnInterestsCeiling {
                     Button {
                         hasAnInterestsCeiling = false
-                        invoice.maxInterests = nil
-                        invoice.limitMaximumInterests = nil
+                        maxInterestsValue = ""
                     } label: {
                         Text("Remove interest limit")
                     }
-                    TextField("Maximum interests", text: $maxInterests)
+                    TextField("Maximum interests", text: $maxInterestsValue)
                         .keyboardType(.decimalPad)
-                    DatePicker("Limit maximum", selection: $maxLimitInterets,displayedComponents: .date)
+//                    DatePicker("Limit maximum", selection: $maxLimitInterets,displayedComponents: .date)
                 } else {
                     Button {
                         hasAnInterestsCeiling = true
-                        invoice.maxInterests = 0
-                        invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: Date())
+                        maxInterestsValue = "0"
                     } label: {
                         Text("Add interest limit")
                     }
@@ -86,13 +124,13 @@ struct UpdateInvoiceView: View {
             } header: {
                 Text("Interests")
             }
-            
+
             Section {
                 TextEditor(text: $comment)
             } header: {
                 Text("Comments")
             }
-            
+
             Section {
                 NavigationLink {
                     SelectProductView(selectedProducts: $products)
@@ -101,38 +139,28 @@ struct UpdateInvoiceView: View {
                         .foregroundColor(.accentColor)
                 }
             }
-            
+
             ProductListUpdateView(products: $products,
-                                  total: $invoice.totalServices,
+                                  total: $totalServices,
                                   sectionTitle: "Services",
                                   category: .service)
             ProductListUpdateView(products: $products,
-                                  total: $invoice.totalMaterials,
+                                  total: $totalMaterials,
                                   sectionTitle: "Materials",
                                   category: .material)
             ProductListUpdateView(products: $products,
-                                  total: $invoice.totalDivers,
+                                  total: $totalDivers,
                                   sectionTitle: "Divers",
                                   category: .divers)
-            
-            TotalSectionView(totalService: invoice.totalServices,
-                             totalMaterials: invoice.totalMaterials,
-                             totalDivers: invoice.totalDivers,
-                             total: invoice.total)            
+
+            TotalSectionView(totalService: totalServices,
+                             totalMaterials: totalMaterials,
+                             totalDivers: totalDivers,
+                             total: total)
         }
         .onChange(of: products, perform: { newValue in
-            invoice.total = 0
-            newValue.forEach({ invoice.total += ($0.quantity * $0.price) })
-            
-            invoice.products = products.map({
-                .init(productID: $0.id, quantity: $0.quantity, reduction: $0.reduction)
-            })
-        })
-        .onChange(of: limitDate, perform: { newValue in
-            invoice.limitPayementDate = newValue.ISO8601Format()
-        })
-        .onChange(of: facturationDate, perform: { newValue in
-            invoice.facturationDate = newValue.ISO8601Format()
+            total = 0
+            newValue.forEach({ total += ($0.quantity * $0.price * ((100.0 - $0.reduction)/100.0)) })
         })
         .onChange(of: invoiceController.successUpdateInvoice, perform: { newValue in
             if newValue {
@@ -140,58 +168,46 @@ struct UpdateInvoiceView: View {
                 dismiss()
             }
         })
-        .onChange(of: comment, perform: { newValue in
-            if newValue.isEmpty {
-                invoice.comment = nil
-            } else {
-                invoice.comment = newValue
-            }
-        })
-        .onChange(of: maxInterests, perform: { newValue in
-            if let maxDouble = Double(maxInterests) {
-                invoice.maxInterests = maxDouble
-            }
-        })
-        .onChange(of: maxLimitInterets, perform: { newValue in
-            invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: newValue)
-        })
-        .navigationTitle(invoice.reference)
+        .navigationTitle(reference)
         .toolbar {
             Button {
+                var paymentID: UUID? = nil
+                
                 if payment.id != UUID(uuid: UUID_NULL) {
-                    invoice.paymentID = payment.id
+                    paymentID = payment.id
                 }
                 
-                invoiceController.update(invoice: invoice, by: userController.connectedUser)
+                var limitMaximumInterests: String? = nil
+                var maxInterestsUpdate: Double? = nil
+                
+                if hasAnInterestsCeiling {
+                    limitMaximumInterests = maxInterestsDate.ISO8601Format()
+
+                    if let maxInterestsDouble = Double(maxInterestsValue) {
+                        maxInterestsUpdate = maxInterestsDouble
+                    }
+                }
+                
+                invoiceController.update(invoice: .init(id: id,
+                                                        reference: reference,
+                                                        internalReference: internalReference,
+                                                        object: object,
+                                                        totalServices: totalServices,
+                                                        totalMaterials: totalMaterials,
+                                                        totalDivers: totalDivers,
+                                                        total: total,
+                                                        grandTotal: grandTotal,
+                                                        status: status,
+                                                        limitPayementDate: limitDate.ISO8601Format(),
+                                                        facturationDate: facturationDate.ISO8601Format(),
+                                                        paymentID: paymentID,
+                                                        comment: comment.isEmpty ? nil : comment,
+                                                        limitMaximumInterests: limitMaximumInterests,
+                                                        maxInterests: maxInterestsUpdate,
+                                                        products: products.map({ $0.toUpdateDocuments()})),
+                                         by: userController.connectedUser)
             } label: {
                 Image(systemName: "v.circle")
-            }
-        }
-        .onAppear {
-            if let oldPayment = invoiceController.selectedInvoice.payment {
-                payment = oldPayment
-            }
-            
-            if let limitPaymentDate = invoice.limitPayementDate,
-               let date = limitPaymentDate.toDate{
-                limitDate = date
-            }
-            
-            if let date = invoice.facturationDate.toDate {
-                facturationDate = date
-            }
-            
-            if let comments = invoice.comment {
-                comment = comments
-            }
-            
-            if let interestsCeilingDate = invoiceController.selectedInvoice.limitMaximumInterests,
-               let maxInterests = invoiceController.selectedInvoice.maxInterests {
-                hasAnInterestsCeiling = true
-                invoice.maxInterests = maxInterests
-                self.maxInterests = "\(maxInterests)"
-                invoice.limitMaximumInterests = ISO8601DateFormatter().string(from: interestsCeilingDate)
-                self.maxLimitInterets = interestsCeilingDate
             }
         }
     }
@@ -200,8 +216,7 @@ struct UpdateInvoiceView: View {
 struct UpdateInvoiceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            UpdateInvoiceView(invoice: InvoicesController.emptyUpdateInvoice,
-                              client: ClientController.emptyClientInfo)
+            UpdateInvoiceView(invoice: InvoicesManager.emptyInvoiceDetail)
             .environmentObject(InvoicesController(appController: AppController()))
             .environmentObject(UserController(appController: AppController()))
         }
