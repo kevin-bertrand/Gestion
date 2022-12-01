@@ -1,54 +1,57 @@
 {
-    "id": "2FA270AD-7690-478D-B1EA-146372D921A5",
-    "limitPayementDate": 686829484.36110997,
-    "payment": {
-        "id": "D3D47F1A-E83F-4A25-B6B7-5BB2B6FC1D57",
-        "title": "Défauts",
-        "bic": "ABC",
-        "iban": "1234"
-    },
-    "grandTotal": 4000,
-    "isArchive": false,
-    "totalDivers": 0,
-    "totalServices": 4000,
-    "total": 4000,
-    "internalReference": "Test",
-    "object": "T’es",
-    "reduction": 0,
-    "products": [
-        {
-            "domain": "automation",
-            "quantity": 10,
-            "id": "2197DDC7-6188-4AC1-A89C-331DC58FACDD",
-            "price": 400,
-            "title": "Prestation à la journée",
-            "unity": "€",
-            "productCategory": "service"
-        }
-    ],
-    "reference": "F-202209-001",
-    "totalMaterials": 0,
-    "status": "inCreation",
-    "client": {
-        "phone": "0123456789",
-        "gender": "notDetermined",
-        "address": {
-            "city": "Paris",
-            "country": "France",
-            "longitude": 0,
-            "complement": "",
-            "id": "451FC61E-5D5F-48BE-8728-F0DE3B4AFB3C",
-            "latitude": 0,
-            "roadName": "Test ",
-            "streetNumber": "15",
-            "comment": "",
-            "zipCode": "75001"
-        },
-        "id": "4CEE6022-7886-4540-89EA-721F3885CA04",
-        "company": "Test",
-        "siret": "1234",
-        "email": "jon@doe.com",
-        "personType": "company",
-        "tva": "1234"
+  "isArchive": true,
+  "id": "736354DF-0329-420B-B758-88342CF9B615",
+  "total": 2880,
+  "client": {
+    "personType": "company",
+    "email": "company@email.com",
+    "company": "Company",
+    "tva": "FR10",
+    "id": "AFF0916A-F436-46CD-AE18-959A7C89FC3A",
+    "siret": "123456778",
+    "gender": "notDetermined",
+    "phone": "0123456789",
+    "address": {
+      "longitude": 0,
+      "city": "City",
+      "country": "France",
+      "id": "54994C60-A577-45BE-9BBF-8A8A30F50F4F",
+      "complement": "",
+      "streetNumber": "123",
+      "zipCode": "75000",
+      "latitude": 0,
+      "roadName": "Street",
+      "comment": ""
     }
+  },
+  "limitPayementDate": 680832000,
+  "products": [
+    {
+      "domain": "automation",
+      "reduction": 0,
+      "title": "Automatisation - Forfait journée",
+      "id": "7B1E7DDF-60F3-4F87-BB79-BF7DAC336167",
+      "price": 480,
+      "unity": "€\/jours",
+      "productCategory": "service",
+      "quantity": 6
+    }
+  ],
+  "payment": {
+    "iban": "FR76",
+    "bic": "BOUS FRPP XXX",
+    "title": "Boursorama Banque",
+    "id": "5DD45A63-BAAB-4602-B4F8-834C0B2D9C13"
+  },
+  "reference": "F-202205-001",
+  "totalMaterials": 0,
+  "internalReference": "AU22001",
+  "object": "Automatisation d’une régulation de température d’une cuve de gaz liquide",
+  "totalDivers": 0,
+  "facturationDate": 675561600,
+  "totalDelay": 0,
+  "totalServices": 2880,
+  "grandTotal": 2880,
+  "status": "payed",
+  "delayDays": 0
 }

@@ -322,11 +322,11 @@ final class EstimatesTest: XCTestCase {
                                 
     /// Getting estimate to create
     private func getCreateEstimate() -> Estimate.Create {
-        return .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .accepted, clientID: UUID(uuid: UUID_NULL), products: [])
+        return .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, status: .accepted, clientID: UUID(uuid: UUID_NULL), products: [])
     }
     
     /// Getting estimate to update
     private func getEstimateToUpdate() -> Estimate.Update {
-        return .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .accepted, products: [])
+        return .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, status: .accepted, sendingDate: Date().ISO8601Format(), products: [])
     }
 }

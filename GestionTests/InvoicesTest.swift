@@ -297,11 +297,11 @@ final class InvoicesTest: XCTestCase {
     
     /// Getting invoice to create
     private func getInvoiceToCreate() -> Invoice.Create {
-        return .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, limitPayementDate: "", clientID: UUID(uuid: UUID_NULL), products: [])
+        return .init(reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .inCreation, limitPayementDate: "", clientID: UUID(uuid: UUID_NULL), products: [])
     }
     
     /// Getting incoive to update
     private func getInvoiceToUpdate() -> Invoice.Update {
-        return .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, reduction: 0, grandTotal: 0, status: .inCreation, products: [])
+        return .init(id: UUID(uuid: UUID_NULL), reference: "", internalReference: "", object: "", totalServices: 0, totalMaterials: 0, totalDivers: 0, total: 0, grandTotal: 0, status: .inCreation, facturationDate: Date().ISO8601Format(), products: [])
     }
 }

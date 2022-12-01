@@ -50,7 +50,7 @@ final class RevenuesTest: XCTestCase {
         configureManager(correctData: .revenuesThisMonth, response: .status200, status: .correctData)
         
         // When
-        revenuesManager.gettingThisMonthRevenues(for: getConnectedUser())
+        revenuesManager.gettingThisMonthRevenues(forMonth: 1, andYear: 1, by: getConnectedUser())
         
         // Then
         XCTAssertNotEqual(revenuesManager.thisMonthRevenue.grandTotal, 0)
@@ -62,7 +62,7 @@ final class RevenuesTest: XCTestCase {
         configureManager(correctData: .revenuesThisMonth, response: .status0, status: .error)
         
         // When
-        revenuesManager.gettingThisMonthRevenues(for: getConnectedUser())
+        revenuesManager.gettingThisMonthRevenues(forMonth: 1, andYear: 1, by: getConnectedUser())
         
         // Then
         XCTAssertEqual(revenuesManager.thisMonthRevenue.grandTotal, 0)

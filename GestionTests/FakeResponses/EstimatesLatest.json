@@ -1,13 +1,13 @@
 [
-  {
-    "status": "accepted",
-    "reference": "D-202209-001",
-    "client": {
-      "company": "Test"
-    },
-    "id": "AF05DA80-8CD4-4A0C-BF0F-A6E11FD039A3",
-    "isArchive": true,
-    "grandTotal": 4000,
-    "limitValidifyDate": 686051820
-  }
+    {
+      "status": "accepted",
+      "client": {
+        "company": "Company"
+      },
+      "isArchive": true,
+      "reference": "D-202209-001",
+      "total": 4000,
+      "limitValidifyDate": 688521600,
+      "id": "3F6EE8CD-F840-466A-9C9F-83C9B5BEFDFE"
+    }
 ]

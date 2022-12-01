@@ -1,48 +1,49 @@
 {
-    "id": "AF05DA80-8CD4-4A0C-BF0F-A6E11FD039A3",
-    "limitValidityDate": 686051820,
-    "grandTotal": 4000,
-    "isArchive": true,
-    "totalDivers": 0,
-    "totalServices": 4000,
-    "total": 4000,
-    "internalReference": "Test",
-    "object": "T’es",
-    "reduction": 0,
-    "products": [
-        {
-            "domain": "automation",
-            "quantity": 10,
-            "id": "2197DDC7-6188-4AC1-A89C-331DC58FACDD",
-            "price": 400,
-            "title": "Prestation à la journée",
-            "unity": "€",
-            "productCategory": "service"
-        }
-    ],
-    "reference": "D-202209-001",
-    "totalMaterials": 0,
-    "status": "accepted",
-    "client": {
-        "phone": "0123456789",
-        "gender": "notDetermined",
-        "address": {
-            "city": "Paris",
-            "country": "France",
-            "id": "451FC61E-5D5F-48BE-8728-F0DE3B4AFB3C",
-            "complement": "",
-            "longitude": 0,
-            "latitude": 0,
-            "roadName": "rest",
-            "streetNumber": "15",
-            "zipCode": "75001",
-            "comment": ""
-        },
-        "id": "4CEE6022-7886-4540-89EA-721F3885CA04",
-        "company": "Test",
-        "siret": "1234",
-        "email": "jon@doe.com ",
-        "personType": "company",
-        "tva": "1234"
+  "total": 2400,
+  "reference": "D-202204-001",
+  "totalServices": 2400,
+  "sendingDate": 671068800,
+  "totalDivers": 0,
+  "client": {
+    "siret": "1234567890",
+    "gender": "notDetermined",
+    "personType": "company",
+    "company": "Company",
+    "address": {
+      "city": "City",
+      "id": "54994C60-A577-45BE-9BBF-8A8A30F50F4F",
+      "comment": "",
+      "streetNumber": "12345",
+      "latitude": 0,
+      "zipCode": "75000",
+      "roadName": "Street",
+      "longitude": 0,
+      "country": "France",
+      "complement": ""
+    },
+    "phone": "0123456789",
+    "email": "company@mail.com",
+    "tva": "FR10",
+    "id": "AFF0916A-F436-46CD-AE18-959A7C89FC3A"
+  },
+  "status": "accepted",
+  "internalReference": "AU22001",
+  "isArchive": true,
+  "limitValidityDate": 673833600,
+  "id": "0CA336E0-61A5-479F-8988-042785C85BFA",
+  "products": [
+    {
+      "quantity": 5,
+      "price": 480,
+      "domain": "automation",
+      "unity": "€\/jours",
+      "productCategory": "service",
+      "title": "Automatisation - Forfait journée",
+      "reduction": 0,
+      "id": "7B1E7DDF-60F3-4F87-BB79-BF7DAC336167"
     }
+  ],
+  "creationDate": 685957733.350757,
+  "totalMaterials": 0,
+  "object": "Automatisation d’une régulation de température d’une cuve de gaz liquide"
 }
