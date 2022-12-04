@@ -13,6 +13,7 @@ extension Notification {
         case unknownError = "An unknown error occurs... Try later!"
         case notAuthorized = "You are not authorized to perform this action. Ask to an administrator!"
         case notFound = "The component was not found!"
+        case lateInvoice = "The invoice is late"
         
         // User
         case loginSuccess = "Successfull login!"

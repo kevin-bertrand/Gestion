@@ -19,6 +19,7 @@ final class UserController: ObservableObject {
     var connectedUser: User? { userManager.connectedUser }
     
     // Login properties
+    @AppStorage("desyntic-deviceToken") var deviceToken: String = ""
     @AppStorage("desyntic-savedEmail") var savedEmail: String = ""
     @AppStorage("desyntic-savedPassword") var savedPassword: String = ""
     @AppStorage("desyntic-canUseBiometric") var canUseBiometric: Bool = true {
@@ -82,7 +83,9 @@ final class UserController: ObservableObject {
         
         appController.setLoadingInProgress(withMessage: "Log in... Please wait!")
         
-        userManager.login(user: User.Login(email: loginEmailTextField, password: loginPasswordTextField))
+        userManager.login(user: User.Login(email: loginEmailTextField,
+                                           password: loginPasswordTextField,
+                                           deviceToken: deviceToken))
     }
     
     /// Login with biometrics

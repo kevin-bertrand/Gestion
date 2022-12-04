@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct GestionApp: App {
+    // Setting App Delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    // Getting color scheme settings store in memory
     @AppStorage("desyntic_useDefaultScheme") var useDefaultColorScheme: Bool = true
     @AppStorage("desyntic_useDarkMode") var useDarkMode: Bool = false
     
+    // Declaration of state objects
     @StateObject private var appController: AppController
     @StateObject private var userController: UserController
     @StateObject private var revenuesController: RevenuesController
@@ -63,6 +68,11 @@ struct GestionApp: App {
             .preferredColorScheme(useDefaultColorScheme ? nil : (useDarkMode ? .dark : .light))
             .alert(isPresented: $appController.showAlertView) {
                 Alert(title: Text(appController.alertViewTitle), message: Text(appController.alertViewMessage), dismissButton: .default(Text("OK")))
+            }
+            .onAppear {
+                UNUserNotificationCenter
+                    .current()
+                    .requestAuthorization(options: [.alert, .sound, .badge]) {_, _ in}
             }
         }
     }

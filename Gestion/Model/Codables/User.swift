@@ -24,6 +24,7 @@ struct User: Codable {
     struct Login: Codable {
         let email: String
         let password: String
+        let deviceToken: String
     }
     
     struct Update: Codable {
