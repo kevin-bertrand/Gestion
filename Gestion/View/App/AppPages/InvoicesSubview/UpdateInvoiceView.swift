@@ -112,7 +112,7 @@ struct UpdateInvoiceView: View {
                     }
                     TextField("Maximum interests", text: $maxInterestsValue)
                         .keyboardType(.decimalPad)
-//                    DatePicker("Limit maximum", selection: $maxLimitInterets,displayedComponents: .date)
+                    DatePicker("Limit maximum", selection: $maxInterestsDate,displayedComponents: .date)
                 } else {
                     Button {
                         hasAnInterestsCeiling = true
