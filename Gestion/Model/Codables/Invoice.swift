@@ -74,7 +74,7 @@ struct Invoice {
         let isArchive: Bool
         let comment: String?
         let payment: Payment?
-        let limitMaximumInterests: Date?
+        var limitMaximumInterests: Date?
         let maxInterests: Double?
     }
 }

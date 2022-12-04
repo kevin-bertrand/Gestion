@@ -107,6 +107,7 @@ final class InvoicesManager {
                     if let data = data,
                        let invoice = try? JSONDecoder().decode(Invoice.Informations.self, from: data) {
                         self.invoiceDetail = invoice
+                        self.invoiceDetail.limitMaximumInterests = self.invoiceDetail.limitMaximumInterests ?? Date()
                         self.downloadPDF(of: invoice.reference, by: user)
                     } else {
                         Notification.Desyntic.unknownError.sendNotification()
