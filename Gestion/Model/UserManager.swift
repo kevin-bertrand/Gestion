@@ -38,7 +38,7 @@ final class UserManager {
         networkManager.request(urlParams: NetworkConfigurations.staffLogin.urlParams,
                                method: NetworkConfigurations.staffLogin.method,
                                authorization: .authorization(username: user.email, password: user.password),
-                               body: nil) { [weak self] data, response, error in
+                               body: User.DeviceToken(token: user.deviceToken)) { [weak self] data, response, error in
             if let self = self,
                let statusCode = response?.statusCode,
                let data = data {

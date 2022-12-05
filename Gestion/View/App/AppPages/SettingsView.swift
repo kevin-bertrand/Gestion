@@ -14,7 +14,7 @@ struct SettingsView: View {
     @AppStorage("desyntic_useDefaultScheme") var useDefaultColorScheme: Bool = true
     @AppStorage("desyntic_useDarkMode") var useDarkMode: Bool = false
     @State private var allowNotifications: Bool = true
-    
+    @State private var showSettingsAlert: Bool = false
     private let laContext = LAContext()
     
     var body: some View {
@@ -50,7 +50,7 @@ struct SettingsView: View {
                     } label: {
                         Label("Client list", systemImage: "person.3.fill")
                     }
-
+                    
                     NavigationLink {
                         List {
                             ForEach(ProductCategory.allCases, id: \.self) {
@@ -99,6 +99,9 @@ struct SettingsView: View {
                     
                     Toggle("Allow notifications", isOn: $allowNotifications)
                         .disabled(true)
+                        .onTapGesture {
+                            showSettingsAlert.toggle()
+                        }
                 } header: {
                     Text("App settings")
                 }
@@ -127,7 +130,27 @@ struct SettingsView: View {
                     }.listRowBackground(Color.clear)
                 }
             }
-        }.navigationTitle(Text("Settings"))
+        }
+        .navigationTitle(Text("Settings"))
+        .onAppear {
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                switch settings.authorizationStatus {
+                case .authorized, .ephemeral, .provisional:
+                    self.allowNotifications = true
+                default:
+                    self.allowNotifications = false
+                }
+            }
+        }
+        .alert(isPresented: $showSettingsAlert) {
+            Alert(title: Text("Settings"),
+                  message: Text("Go to the iPhone settings' to change notifications and location authorization!"),
+                  primaryButton: .default(Text("Cancel")),
+                  secondaryButton: .default(Text("Go to settings"),
+                                            action: {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }))
+        }
     }
 }
 
