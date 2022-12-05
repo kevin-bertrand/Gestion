@@ -219,6 +219,7 @@
 		0687C0362901D69F00991785 /* iPadTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadTabView.swift; sourceTree = "<group>"; };
 		0687C0382902C95100991785 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		068CC15E293CCD9C008BC577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		068CC160293DEC58008BC577 /* Gestion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gestion.entitlements; sourceTree = "<group>"; };
 		06A63AEB28BD51EC009805CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06A63AEF28BD53C0009805CB /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		06A63AF228BD55CB009805CB /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
@@ -436,6 +437,7 @@
 		0661ABD328BD50CC00E88116 /* Gestion */ = {
 			isa = PBXGroup;
 			children = (
+				068CC160293DEC58008BC577 /* Gestion.entitlements */,
 				06AA687F28C0B4C40075B635 /* Info.plist */,
 				06A63AF128BD55B8009805CB /* Extensions */,
 				0661AC0128BD517700E88116 /* Supporting Files */,
@@ -1114,6 +1116,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gestion/Gestion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Supporting Files/Preview Content\"";
@@ -1152,6 +1155,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gestion/Gestion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Gestion/Supporting Files/Preview Content\"";
