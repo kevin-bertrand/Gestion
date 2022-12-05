@@ -27,6 +27,10 @@ struct User: Codable {
         let deviceToken: String
     }
     
+    struct DeviceToken: Codable {
+        let token: String
+    }
+    
     struct Update: Codable {
         let id: UUID
         var firstname: String
