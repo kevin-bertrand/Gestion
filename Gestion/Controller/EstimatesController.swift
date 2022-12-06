@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 final class EstimatesController: ObservableObject {
     // MARK: Static
@@ -142,6 +143,7 @@ final class EstimatesController: ObservableObject {
     
     /// Initialise all notification for this controller
     @objc private func processNotification(_ notification: Notification) {
+        WidgetCenter.shared.reloadAllTimelines()
         if let notificationName = notification.userInfo?["name"] as? Notification.Name,
            let notificationMessage = notification.userInfo?["message"] as? String {
             DispatchQueue.main.async {

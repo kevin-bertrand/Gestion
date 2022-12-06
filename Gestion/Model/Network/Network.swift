@@ -14,6 +14,9 @@ enum NetworkConfigurations {
     case clientUpdate
     case clientGetList
     
+    // MARK: Widget
+    case widgetGetData
+    
     // MARK: Internal Reference
     case internalReference
     
@@ -89,7 +92,8 @@ enum NetworkConfigurations {
                 .productGetList, .productGetCategories, .productGetDomains,
                 .paymentGetList,
                 .revenueGetYear, .revenueGetMonth, .revenueAllMonths,
-                .staffGetList, .staffGetOne, .staffProfilePicture:
+                .staffGetList, .staffGetOne, .staffProfilePicture,
+                .widgetGetData:
             method = .get
         case .paymentDelete,
                 .staffDelete:
@@ -103,6 +107,8 @@ enum NetworkConfigurations {
         var params: [String]
         
         switch self {
+        case .widgetGetData:
+            params = ["widget"]
         case .clientUpdate, .clientGetList, .clientAdd:
             params = ["client"]
         case .internalReference:

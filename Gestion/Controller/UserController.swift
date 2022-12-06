@@ -19,9 +19,9 @@ final class UserController: ObservableObject {
     var connectedUser: User? { userManager.connectedUser }
     
     // Login properties
+    @AppStorage("desyntic-savedEmail", store: UserDefaults(suiteName: "group.com.desyntic.gestion")) var savedEmail: String = ""
+    @AppStorage("desyntic-savedPassword", store: UserDefaults(suiteName: "group.com.desyntic.gestion")) var savedPassword: String = ""
     @AppStorage("desyntic-deviceToken") var deviceToken: String = ""
-    @AppStorage("desyntic-savedEmail") var savedEmail: String = ""
-    @AppStorage("desyntic-savedPassword") var savedPassword: String = ""
     @AppStorage("desyntic-canUseBiometric") var canUseBiometric: Bool = true {
         didSet {
             if canUseBiometric {
