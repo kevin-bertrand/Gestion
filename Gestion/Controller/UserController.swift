@@ -82,9 +82,7 @@ final class UserController: ObservableObject {
         }
         
         appController.setLoadingInProgress(withMessage: "Log in... Please wait!")
-        
-        print(deviceToken)
-        userManager.login(user: User.Login(email: loginEmailTextField,
+                userManager.login(user: User.Login(email: loginEmailTextField,
                                            password: loginPasswordTextField,
                                            deviceToken: deviceToken))
     }

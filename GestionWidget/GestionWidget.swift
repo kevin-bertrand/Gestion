@@ -28,8 +28,6 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         let entryDate = Calendar.current.date(byAdding: .hour, value: 6, to: currentDate) ?? currentDate.addingTimeInterval(6 * 60 * 60)
 
-        print("ok")
-        
         networkManager.request(urlParams: NetworkConfigurations.widgetGetData.urlParams,
                                method: NetworkConfigurations.widgetGetData.method,
                                authorization: .authorization(username: savedEmail, password: savedPassword),
