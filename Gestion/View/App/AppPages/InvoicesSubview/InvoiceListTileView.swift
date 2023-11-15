@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InvoiceListTileView: View {
+struct Na: View {
     let invoice: Invoice.Summary
     
     var body: some View {
